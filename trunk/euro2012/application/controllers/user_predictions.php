@@ -138,4 +138,68 @@ class User_predictions extends Controller {
 		    $this->load->view('template', $vars);
             }                
 	}
+	
+	public function submit() {
+
+        if(logged_in()){
+            $user_id = logged_in();
+            $predictions = Doctrine_Query::create()
+                ->select('p.id,
+                          p.home_goals,
+                          p.away_goals,
+                          p.home_id,
+                          p.away_id,
+                          p.match_number,
+                          m.match_number,
+                          m.time_close,
+                          m.venue_id,
+                          v.venue_id,
+                          v.time_offset_utc
+                          ')
+                ->from('Predictions p INDEXBY p.id, p.Match m, m.Venue v')
+                ->where('p.user_id = '.$user_id)
+                ->orderBy('m.match_time')
+                ->execute();
+
+        $arrPost = $this->input->post('post_array'); //get all posted values in one array
+        foreach ($arrPost as $id => $value) { // $id represents the 'id' column in the predictions table
+            foreach ($value as $k => $v) {    // $k represents 'home_goals', 'away_goals' etc.  
+                $predictions[$id][$k]=$v;
+                }
+            }
+        $predictions->save();
+        $vars['title'] = "Predictions Saved";
+        $vars['message'] = "All your predictions were saved";
+        $vars['content_view'] = "success";
+        $vars['settings'] = $this->settings_functions->settings();
+        $this->load->view('template', $vars);
+
+
+//                if ($this->_submit_validate() === FALSE) {
+//                    $this->index();
+//                    return;
+//                    }
+//                
+//                    if ($team = Doctrine::getTable('Teams')->findOneById($this->input->post('id'))) {
+//                        
+//                            $team->name = $this->input->post('teamname');
+//                            $team->flag = $this->input->post('teamflag');
+//                        
+//                        // and save the result!                
+//                        $team->save();
+//                        $vars['message'] = "Team ".$team->name." changed!";
+//                        $vars['title'] = "Team Changed";
+//                        $vars['content_view'] = "success";
+//                        $vars['settings'] = $this->settings_functions->settings();
+//            		    $this->load->view('template', $vars);
+//                    }
+                } else {        
+                // Nobody is logged in
+                $vars['title'] = "Not logged in";
+                $vars['content_view'] = "not_logged_in";
+                $vars['settings'] = $this->settings_functions->settings();
+	            $this->load->view('template', $vars);
+                }
+	}
+
 }

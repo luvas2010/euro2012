@@ -22,23 +22,22 @@
 		                <tr>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
-	                            <label for="home_goals['<?php echo $prediction['id']; ?>']"><?php echo $prediction['Match']['TeamHome']['name']; ?>:</label>
+	                            <label for="post_array[<?php echo $prediction['id'];?>][home_goals]"><?php echo $prediction['Match']['TeamHome']['name']; ?>:</label>
 		                    </td>
 		                    <td>
-		                        <?php echo form_input('home_goals['.$prediction['id'].']',$prediction['home_goals'],'size=2'); ?>
+		                        <?php echo form_input('post_array['.$prediction['id'].'][home_goals]',$prediction['home_goals'],'size=2'); ?>
 	                        </td>
 	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
 	                        <td>
-		                        <label for="away_goals['<?php echo $prediction['id']; ?>']>"><?php echo $prediction['Match']['TeamAway']['name']; ?>:</label>
+		                        <label for="post_array[<?php echo $prediction['id'];?>][away_goals]"><?php echo $prediction['Match']['TeamAway']['name']; ?>:</label>
 		                    </td>
 		                    <td>
-		                        <?php echo form_input('away_goals['.$prediction['id'].']',$prediction['home_goals'], 'size=2'); ?>
+		                        <?php echo form_input('post_array['.$prediction['id'].'][away_goals]',$prediction['away_goals'], 'size=2'); ?>
 	                        </td>
 	                        <td><?php echo $prediction['Match']['time_close']; ?></td> 
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
-		                <?php echo form_hidden('id'.$prediction['id'],$prediction['id']); ?>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
 	                            <?php echo $prediction['Match']['TeamHome']['name']; ?>
