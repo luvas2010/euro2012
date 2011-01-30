@@ -6,7 +6,7 @@
 	    
 	    <h3>Group Stage</h3>
 	    <!-- groupmatches -->
-	    <?php echo unix_to_human(now()). " - ".unix_to_human(mysql_to_unix($predictions[0]['Match']['time_close']) -$predictions[0]['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?>
+	    <!--<?php echo unix_to_human(now()). " - ".unix_to_human(mysql_to_unix($predictions[0]['Match']['time_close']) -$predictions[0]['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?> -->
 	    <table>
 	        <thead>
 	            <tr>
@@ -20,7 +20,6 @@
 		        <?php if ($prediction['Match']['type_id'] == 6) : //these are the group matches ?> 
 		                <?php if (now() <  (mysql_to_unix($prediction['Match']['time_close']) -$prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'])): ?>
 		                <tr>
-		                <?php echo form_hidden('id['.$prediction['id'].']',$prediction['id']); ?>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
 	                            <label for="home_goals['<?php echo $prediction['id']; ?>']"><?php echo $prediction['Match']['TeamHome']['name']; ?>:</label>
