@@ -1,0 +1,450 @@
+teams:
+
+ t1:
+  team_id_home: 1
+  team_id_away: 1
+  name: Poland
+  shortname: Pol
+  team_group: A
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: poland.png
+ t2:
+  team_id_home: 2
+  team_id_away: 2
+  name: Group A, Team 2
+  shortname: A2
+  flag: A2.png
+  team_group: A
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t3:
+  team_id_home: 3
+  team_id_away: 3
+  name: Group A, Team 3
+  shortname: A3
+  team_group: A
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t4:
+  team_id_home: 4
+  team_id_away: 4
+  name: Group A, Team 4
+  shortname: A4
+  flag: A4.png
+  team_group: A
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t5:
+  team_id_home: 5
+  team_id_away: 5
+  name: Group B, Team 1
+  shortname: B1
+  flag: B1.png
+  team_group: B
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t6:
+  team_id_home: 6
+  team_id_away: 6
+  name: Group B, Team 2
+  shortname: B2
+  flag: B2.png
+  team_group: B
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t7:
+  team_id_home: 7
+  team_id_away: 7
+  name: Group B, Team 3
+  shortname: B3
+  flag: B3.png
+  team_group: B
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t8:
+  team_id_home: 8
+  team_id_away: 8
+  name: Group B, Team 4
+  shortname: B4
+  flag: B4.png
+  team_group: B
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t9:
+  team_id_home: 9
+  team_id_away: 9
+  name: Group C, Team 1
+  shortname: C1
+  flag: C1.png
+  team_group: C
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t10:
+  team_id_home: 10
+  team_id_away: 10
+  name: Group C, Team 2
+  shortname: C2
+  flag: C2.png
+  team_group: C
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t11:
+  team_id_home: 11
+  team_id_away: 11
+  name: Group C, Team 3
+  shortname: C3
+  flag: C3.png
+  team_group: C
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t12:
+  team_id_home: 12
+  team_id_away: 12
+  name: Group C, Team 4
+  shortname: C4
+  flag: C4.png
+  team_group: C
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t13:
+  team_id_home: 13
+  team_id_away: 13
+  name: Ukraine
+  shortname: ukr
+  team_group: D
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: ukraine.png
+ t14:
+  team_id_home: 14
+  team_id_away: 14
+  name: Group D, Team 2
+  shortname: D2
+  flag: D2.png
+  team_group: D
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t15:
+  team_id_home: 15
+  team_id_away: 15
+  name: Group D, Team 3
+  shortname: D3
+  flag: D3.png
+  team_group: D
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t16:
+  team_id_home: 16
+  team_id_away: 16
+  name: Group D, Team 4
+  shortname: D4
+  flag: D4.png
+  team_group: D
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t17:
+  team_id_home: 50
+  team_id_away: 50
+  name: Group A1
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t18:
+  team_id_home: 51
+  team_id_away: 51
+  name: Group A2
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t19:
+  team_id_home: 52
+  team_id_away: 52
+  name: Group B1
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t20:
+  team_id_home: 53
+  team_id_away: 53
+  name: Group B2
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t21:
+  team_id_home: 54
+  team_id_away: 54
+  name: Group C1
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t22:
+  team_id_home: 55
+  team_id_away: 55
+  name: Group C2
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t23:
+  team_id_home: 56
+  team_id_away: 56
+  name: Group D1
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t24:
+  team_id_home: 57
+  team_id_away: 57
+  name: Group D2
+  flag: QF
+  team_group: QF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t25:
+  team_id_home: 80
+  team_id_away: 80
+  name: Winner QF1
+  flag: SF
+  team_group: SF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t26:
+  team_id_home: 81
+  team_id_away: 81
+  name: Winner QF2
+  flag: SF
+  team_group: SF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t27:
+  team_id_home: 82
+  team_id_away: 82
+  name: Winner QF3
+  flag: SF
+  team_group: SF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t28:
+  team_id_home: 83
+  team_id_away: 83
+  name: Winner QF4
+  flag: SF
+  team_group: SF
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t29:
+  team_id_home: 90
+  team_id_away: 90
+  name: Winner SF1
+  flag: F
+  team_group: F
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t30:
+  team_id_home: 91
+  team_id_away: 91
+  name: Winner SF2
+  flag: F
+  team_group: F
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+ t31:
+  team_id_home: 99
+  team_id_away: 99
+  name: Winner Final
+  flag: F
+  team_group: F
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: euro.png
+

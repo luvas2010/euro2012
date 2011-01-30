@@ -1,0 +1,44 @@
+settings:
+ set1: 
+  setting: poolname
+  value: Euro 2012
+  description: The name of your website/pool
+ set2:
+  setting: version
+  value: 1.0 Alpha
+ set3:
+  setting: points_for_goals
+  value: 3
+  description: Points awarded for getting the goals for home or away team correct
+ set4:
+  setting: points_for_wdl
+  value: 3
+  description: Points awarded for getting win-draw-loss correct
+ set5:
+  setting: points_for_exact_score
+  value: 5
+  description: Points awarded for getting the exact score correct
+ set6:
+  setting: points_for_team_qf
+  value: 7
+  description: Points awarded for getting a team in the quarter finals correct
+ set7:
+  setting: points_for_team_sf
+  value: 11
+  description: Points awarded for getting a team in the semi finals correct
+ set8:
+  setting: points_for_team_f
+  value: 13
+  description: Points awarded for getting a team in the final correct
+ set9:
+  setting: points_for_champion
+  value: 19
+  description: Points awarded for getting the champion correct
+ set10:
+  setting: view_other_users
+  value: 1
+  description: If set to 1, people can view each others predictions
+ set11:
+  setting: use_cards
+  value: 0
+  description: If set to 1, you need to predict read and yellow cards  
