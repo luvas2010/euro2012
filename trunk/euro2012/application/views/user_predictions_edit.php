@@ -30,10 +30,10 @@
 	                        </td>
 	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
 	                        <td>
-		                        <label for="away_goals<?php echo $prediction['id']; ?>>"><?php echo $prediction['Match']['TeamAway']['name']; ?>:</label>
+		                        <label for="away_goals['<?php echo $prediction['id']; ?>']>"><?php echo $prediction['Match']['TeamAway']['name']; ?>:</label>
 		                    </td>
 		                    <td>
-		                        <?php echo form_input('away_goals'.$prediction['id'],$prediction['home_goals'], 'size=2'); ?>
+		                        <?php echo form_input('away_goals['.$prediction['id'].']',$prediction['home_goals'], 'size=2'); ?>
 	                        </td>
 	                        <td><?php echo $prediction['Match']['time_close']; ?></td> 
 	                    </tr>
