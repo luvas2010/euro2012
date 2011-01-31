@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-        <?php $rank = 1; $lasttotal = 0; foreach ($rankings as $ranking): ?>
+        <?php $rank = 1; $lastrank = 0; $lasttotal = 0; foreach ($rankings as $ranking): ?>
             <tr>
                 <td><?php if ($ranking['total'] != $lasttotal) {echo $rank; $lastrank = $rank;} else {echo $lastrank;} ?></td>
                 <td><?php if ($ranking['user_id'] == logged_in()) {echo "<a name='user'></a><span class='red'>";} //mark red when it's this user ?> 
