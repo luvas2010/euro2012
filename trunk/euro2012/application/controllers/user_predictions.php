@@ -80,8 +80,8 @@ class User_predictions extends Controller {
         $settings = $this->settings_functions->settings();
         if (logged_in()) {
             $user_id = logged_in();
-             // Lookup the matches in this group, and their predictions by this user
-            $vars['predictions'] = Doctrine_Query::create()
+             // Lookup the matches in the group phase, and their predictions by this user
+            $vars['predictions_group_phase'] = Doctrine_Query::create()
                 ->select('m.match_name,
                           m.match_number,
                           m.match_time,
@@ -107,11 +107,146 @@ class User_predictions extends Controller {
                           ')
                 ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u')
                 ->where('p.user_id = '.$user_id)
+                ->andWhere('m.type_id = 6') // group matches
                 ->orderBy('m.match_time')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
-            
-            foreach ($vars['predictions'] as $prediction)
+                
+            $vars['predictions_qf'] = Doctrine_Query::create()
+                ->select('m.match_name,
+                          m.match_number,
+                          m.match_time,
+                          m.home_goals,
+                          m.away_goals,
+                          m.home_id,
+                          m.time_close,
+                          m.match_group,
+                          m.group_home,
+                          m.group_away,
+                          m.type_id,
+                          th.name,
+                          th.flag,
+                          ta.name,
+                          ta.flag,
+                          p.home_goals,
+                          p.away_goals,
+                          p.points_total_this_match,
+                          p.calculated,
+                          p.home_id,
+                          p.away_id,
+                          pth.name,
+                          pth.flag,
+                          pta.name,
+                          pta.flag,
+                          u.nickname,
+                          v.name,
+                          v.time_offset_utc
+                          ')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, p.TeamHome pth, p.TeamAway pta, m.Venue v, p.User u')
+                ->where('p.user_id = '.$user_id)
+                ->andWhere('m.type_id = 4') // quarter final matches
+                ->orderBy('m.match_time')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+                
+            $vars['predictions_sf'] = Doctrine_Query::create()
+                ->select('m.match_name,
+                          m.match_number,
+                          m.match_time,
+                          m.home_goals,
+                          m.away_goals,
+                          m.home_id,
+                          m.time_close,
+                          m.match_group,
+                          m.group_home,
+                          m.group_away,
+                          m.type_id,
+                          th.name,
+                          th.flag,
+                          ta.name,
+                          ta.flag,
+                          p.home_goals,
+                          p.away_goals,
+                          p.points_total_this_match,
+                          p.calculated,
+                          p.home_id,
+                          p.away_id,
+                          pth.name,
+                          pth.flag,
+                          pta.name,
+                          pta.flag,
+                          u.nickname,
+                          v.name,
+                          v.time_offset_utc
+                          ')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, p.TeamHome pth, p.TeamAway pta, m.Venue v, p.User u')
+                ->where('p.user_id = '.$user_id)
+                ->andWhere('m.type_id = 2') // semi final matches
+                ->orderBy('m.match_time')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+                
+            $vars['predictions_f'] = Doctrine_Query::create()
+                ->select('m.match_name,
+                          m.match_number,
+                          m.match_time,
+                          m.home_goals,
+                          m.away_goals,
+                          m.home_id,
+                          m.time_close,
+                          m.match_group,
+                          m.group_home,
+                          m.group_away,
+                          m.type_id,
+                          th.name,
+                          th.flag,
+                          ta.name,
+                          ta.flag,
+                          p.home_goals,
+                          p.away_goals,
+                          p.points_total_this_match,
+                          p.calculated,
+                          p.home_id,
+                          p.away_id,
+                          pth.name,
+                          pth.flag,
+                          pta.name,
+                          pta.flag,
+                          u.nickname,
+                          v.name,
+                          v.time_offset_utc
+                          ')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, p.TeamHome pth, p.TeamAway pta, m.Venue v, p.User u')
+                ->where('p.user_id = '.$user_id)
+                ->andWhere('m.type_id = 1') // final match
+                ->orderBy('m.match_time')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+                
+                // Get the teams, and pass them on for the dropdown
+                $teams = Doctrine_Query::create()
+                    ->select('t.name,
+                              t.team_group,
+                              t.team_id_home')
+                    ->from('Teams t')
+                    ->where('t.team_id_home < 50')
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                    ->execute();
+                foreach ($teams as $team) {
+                    $vars['teams'.strtolower($team['team_group'])][$team['team_id_home']] = $team['name'];
+                    }
+                $vars['teamsa'][0] = "-";
+                $vars['teamsb'][0] = "-";
+                $vars['teamsc'][0] = "-";
+                $vars['teamsd'][0] = "-";
+                
+                $vars['teamsab'] = array_replace($vars['teamsa'], $vars['teamsb']);
+                    ksort($vars['teamsab']);
+                $vars['teamscd'] = array_replace($vars['teamsc'], $vars['teamsd']);
+                    ksort($vars['teamscd']);
+                $vars['teamsabcd'] = array_replace($vars['teamsab'], $vars['teamscd']);
+                    ksort($vars['teamsabcd']);
+            foreach ($vars['predictions_group_phase'] as $prediction)
                 {
                 $num = $prediction['Match']['match_number'];
                 if (mysql_to_unix($prediction['Match']['time_close']) > time())
@@ -161,9 +296,9 @@ class User_predictions extends Controller {
                 ->orderBy('m.match_time')
                 ->execute();
 
-        $arrPost = $this->input->post('post_array'); //get all posted values in one array
-        foreach ($arrPost as $id => $value) { // $id represents the 'id' column in the predictions table
-            foreach ($value as $k => $v) {    // $k represents 'home_goals', 'away_goals' etc.  
+        $arrPost = $this->input->post('post_array');    //get all posted values in one array
+        foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the predictions table
+            foreach ($value as $k => $v) {              // $k represents 'home_goals', 'away_goals' etc.  
                 $predictions[$id][$k]=$v;
                 }
             }

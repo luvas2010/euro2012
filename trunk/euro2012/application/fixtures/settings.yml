@@ -41,4 +41,11 @@ settings:
  set11:
   setting: use_cards
   value: 0
-  description: If set to 1, you need to predict read and yellow cards  
+  description: If set to 1, you need to predict read and yellow cards
+ set12:
+  setting: server_time_offset_utc
+  value: 3600
+ set13:
+  setting: user_activation
+  value: 1
+    
