@@ -240,11 +240,29 @@ class User_predictions extends Controller {
                 $vars['teamsc'][0] = "-";
                 $vars['teamsd'][0] = "-";
                 
-                $vars['teamsab'] = array_replace($vars['teamsa'], $vars['teamsb']);
+                //$vars['teamsab'] = array_replace($vars['teamsa'], $vars['teamsb']);
+                foreach ($vars['teamsa'] as $k => $v) {
+                    $vars['teamsab'][$k] = $v;
+                    }
+                foreach ($vars['teamsb'] as $k => $v) {
+                    $vars['teamsab'][$k] = $v;
+                    }
+                foreach ($vars['teamsc'] as $k => $v) {
+                    $vars['teamscd'][$k] = $v;
+                    }
+                foreach ($vars['teamsd'] as $k => $v) {
+                    $vars['teamscd'][$k] = $v;
+                    }
+                foreach ($vars['teamsab'] as $k => $v) {
+                    $vars['teamsabcd'][$k] = $v;
+                    }
+                foreach ($vars['teamscd'] as $k => $v) {
+                    $vars['teamsabcd'][$k] = $v;
+                    }        
                     ksort($vars['teamsab']);
-                $vars['teamscd'] = array_replace($vars['teamsc'], $vars['teamsd']);
+                //$vars['teamscd'] = array_replace($vars['teamsc'], $vars['teamsd']);
                     ksort($vars['teamscd']);
-                $vars['teamsabcd'] = array_replace($vars['teamsab'], $vars['teamscd']);
+                //$vars['teamsabcd'] = array_replace($vars['teamsab'], $vars['teamscd']);
                     ksort($vars['teamsabcd']);
             foreach ($vars['predictions_group_phase'] as $prediction)
                 {
