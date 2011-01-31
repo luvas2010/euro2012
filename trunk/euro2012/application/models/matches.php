@@ -2,6 +2,7 @@
 class Matches extends Doctrine_Record {
     
    public function setTableDefinition() {
+        $this->setTableName('matches');
         $this->hasColumn('match_name', 'string', 255);
         $this->hasColumn('match_number','integer', 4,array('unique'=>'true'));
         $this->hasColumn('home_id', 'integer', 4);

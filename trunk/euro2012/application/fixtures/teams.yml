@@ -447,4 +447,18 @@ teams:
   goals_for: 0
   goals_against: 0
   flag: euro.png
+t0:
+  team_id_home: 0
+  team_id_away: 0
+  name: -
+  shortname: -
+  team_group: 
+  played: 0
+  won: 0
+  tie: 0
+  lost: 0
+  points: 0
+  goals_for: 0
+  goals_against: 0
+  flag: unknown.png
 

@@ -45,3 +45,5 @@ Doctrine_Manager::getInstance()->setAttribute(
 Doctrine_Manager::getInstance()->setAttribute(
 	Doctrine::ATTR_DEFAULT_IDENTIFIER_OPTIONS,
 	array('name' => 'id', 'type' => 'integer', 'length' => 4));
+
+    Doctrine_Manager::getInstance()->setAttribute(Doctrine::ATTR_TBLNAME_FORMAT, $db['default']['dbprefix'].'%s');
