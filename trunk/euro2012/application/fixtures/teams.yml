@@ -1,5 +1,4 @@
 teams:
-
  t1:
   team_id_home: 1
   team_id_away: 1
@@ -447,7 +446,7 @@ teams:
   goals_for: 0
   goals_against: 0
   flag: euro.png
-t0:
+ t0:
   team_id_home: 0
   team_id_away: 0
   name: -

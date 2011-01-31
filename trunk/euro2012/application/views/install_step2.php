@@ -9,10 +9,35 @@
             </ul>
     </div>
     <h3>Create the first user (administrator)</h3>
-    <?php form_open('install/create_user'); ?>
-    
-    
-    
-    <p class='buttons'><?php echo anchor('install/step3','<img src="'.base_url().'/images/icons/database_table.png" alt=""/ >Populate tables and go to Step 3', 'class="positive"')?></p>
-    
+    <?php echo form_open('install/first_user'); ?>
+    <?php echo validation_errors('<div class="error">','</div>'); ?>
+	<p>
+		<label for="username">Username: </label>
+		<?php echo form_input('username',set_value('username')); ?>
+	</p>
+	<p>
+		<label for="nickname">Nickname: </label>
+		<?php echo form_input('nickname',set_value('nickname')); ?>
+	</p>
+	<p>
+		<label for="password">Password: </label>
+		<?php echo form_password('password'); ?>
+	</p>
+	<p>
+		<label for="passconf">Confirm Password: </label>
+		<?php echo form_password('passconf'); ?>
+	</p>
+	<p>
+		<label for="email">E-mail: </label>
+		<?php echo form_input('email',set_value('email')); ?>
+	</p>
+	<p>
+	   <label for="play">Does the admin play the game? </label>
+	   <?php echo form_checkbox('play', 'play', true); ?>
+	</p>
+    <p>
+		<?php echo form_submit('submit','Create my account'); ?>
+	</p>
+	<?php echo form_close(); ?>
+	        
 </div>
