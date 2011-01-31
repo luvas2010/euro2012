@@ -1,8 +1,6 @@
 <?php
 class Home extends Controller {
 
-
-
 	public function index() {
         // Get all matches    
         if (logged_in()) {
