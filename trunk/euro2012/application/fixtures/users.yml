@@ -1,9 +1,0 @@
-users:
- admin: 
-  username: admin
-  password: admin
-  email: admin@example.com
-  nickname: admin
-  admin: 1
-  paid: 0
-  active: 0
