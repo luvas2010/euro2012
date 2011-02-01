@@ -38,6 +38,7 @@ class Prediction extends Controller {
                 ->from('Predictions p, p.Match m, p.TeamHome pth, p.TeamAway pta, m.TeamHome th, m.TeamAway ta, m.Venue v')
                 ->where('p.user_id = '.$user_id)
                 ->andWhere('p.match_number = '.$match_number)
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
                 
                 $vars['prediction'] = $predictions[0];

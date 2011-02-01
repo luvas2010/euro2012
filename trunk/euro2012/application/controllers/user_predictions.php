@@ -26,15 +26,24 @@ class User_predictions extends Controller {
                               m.home_id,
                               m.time_close,
                               m.match_group,
+                              m.type_id,
                               th.name,
+                              th.flag,
                               ta.name,
+                              ta.flag,
                               p.home_goals,
                               p.away_goals,
                               p.points_total_this_match,
                               p.calculated,
+                              pth.team_id_home,
+                              pth.name,
+                              pth.flag,
+                              pta.name,
+                              pta.flag,
+                              pta.team_id_home,
                               u.nickname
                               ')
-                    ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u')
+                    ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u, p.TeamHome pth, p.TeamAway pta')
                     ->where('p.user_id = '.$user_id)
                     ->orderBy('m.match_time')
                     ->execute();

@@ -25,6 +25,9 @@ table thead tr th, table tfoot tr th {
 	background-color: #CDCFE3;
 	padding: 10px 16px 10px 8px;
 	color:#333;
+    font-weight:normal;
+    }
+table thead tr th{
 	font-weight: bold;
 }
 table thead tr .header {

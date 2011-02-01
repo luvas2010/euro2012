@@ -1,5 +1,6 @@
         <h3>Edit my predictions</h3>
-        
+        <p>Here you can edit your preditctions. You can either predict every match for yourself, or you can click the button below, and let Octopus Paul do it for you. After Octopus Paul puts his predictions in, you can change them to whatever you like. If you have existing predictions, you will keep those. Octopus Paul will only predict results and teams if you have not filled them out yet!</p>
+        <p class='buttons'><?php echo anchor('user_predictions/octopus', '<img src="'.base_url().'images/icons/wand.png" alt="" />Let Paul do it!'); ?></p>
 	    <?php echo form_open('user_predictions/submit'); ?>
 
 	    <?php echo validation_errors('<p class="error">','</p>'); ?>
