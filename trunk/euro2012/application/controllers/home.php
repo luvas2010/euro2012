@@ -42,9 +42,9 @@ class Home extends Controller {
                     $closed[$num] = 1;
                     }
                 }
-
-        $vars['closed'] = $closed;
-        $vars['title'] = "Home";
+		$this->lang->load('match', 'dutch');
+		$vars['closed'] = $closed;
+        $vars['title'] = $this->lang->line('tilte_home');
 		$vars['content_view'] = "match_list";
         $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);

@@ -5,7 +5,7 @@
 	<title><?php echo $settings['pool_name']; ?></title>
 	<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"
 		type="text/css" media="all"> -->
-</head>
+	</head>
 <body>
 <div>
 	<?php if(Current_User::user()): ?>
