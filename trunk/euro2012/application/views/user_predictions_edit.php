@@ -4,7 +4,7 @@
 
 	    <?php echo validation_errors('<p class="error">','</p>'); ?>
 	    
-	    <h3>Group Stage</h3>
+	    <h3 class="topline">Group Stage</h3>
 	    <!-- groupmatches -->
 	    <!--<?php echo unix_to_human(now()). " - ".unix_to_human(mysql_to_unix($predictions_group_phase[0]['Match']['time_close']) -$predictions_group_phase[0]['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?> -->
 	    <table>
@@ -64,7 +64,7 @@
 	        <?php echo anchor('/','<img src="'.base_url().'images/icons/cross.png" alt="" />Cancel', 'class="negative"'); ?>
         </p>
         <!-- Quarter final matches -->
-        <h3>Quarter Finals</h3>
+        <h3 class="topline">Quarter Finals</h3>
 	    <table>
 	        <thead>
 	            <tr>
@@ -76,6 +76,11 @@
 	                <th>Closing Time</th>
 	            </tr>
 	        </thead>
+            <tfoot>
+                <tr>
+                    <th colspan=8 class="info">Make sure you fill out the home and away teams before the start of the tournament!</th>
+                </tr>
+            </tfoot>  
 	        <tbody>
             <?php foreach ($predictions_qf as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 4) : //these are the quarter final matches ?> 
@@ -154,7 +159,7 @@
         </p>     
 
         <!-- Semi final matches -->
-        <h3>Semi Finals</h3>
+        <h3 class="topline">Semi Finals</h3>
 	    <table>
 	        <thead>
 	            <tr>
@@ -166,6 +171,11 @@
 	                <th>Closing Time</th>
 	            </tr>
 	        </thead>
+            <tfoot>
+                <tr>
+                    <th colspan=8 class="info">Make sure you fill out the home and away teams before the start of the tournament!</th>
+                </tr>
+            </tfoot>                
 	        <tbody>
             <?php foreach ($predictions_sf as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 2) : //these are the semi final matches, extra check, unneccessary ?> 
@@ -229,7 +239,7 @@
         </p>     
 
         <!-- Final match -->
-        <h3>Final</h3>
+        <h3 class="topline">Final</h3>
 	    <table>
 	        <thead>
 	            <tr>
@@ -241,6 +251,11 @@
 	                <th>Closing Time</th>
 	            </tr>
 	        </thead>
+            <tfoot>
+                <tr>
+                    <th colspan=8 class="info">Make sure you fill out the home and away teams before the start of the tournament!</th>
+                </tr>
+            </tfoot>  
 	        <tbody>
             <?php foreach ($predictions_f as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 1) : //this is the final match ?> 
