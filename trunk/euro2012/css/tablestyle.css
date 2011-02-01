@@ -89,3 +89,4 @@ display: block;
 div.up {background-position: 0px 0px;}
 tr.details {border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
 tr.details td{background-color:#fdfdfd;}
+th.info {padding-bottom:20px;}}

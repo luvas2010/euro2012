@@ -194,8 +194,8 @@ button.positive, .buttons a.positive, .buttons input[type="submit"], .buttons_sm
 form p {
     margin: 3px 0px;
     } 
-form input {
-    margin-bottom:10px;
+form input, form select {
+    margin-bottom:6px 0px;
     }
 form p label {
     float: left;
@@ -204,6 +204,7 @@ form p label {
     padding: 3px 5px 0px;
     }
 
+#content h3.topline {margin-top:12px;padding-top:4px; border-top:1px solid #ccc;}
 /*Message Boxes*/
 .info {
     color: #00529B;
