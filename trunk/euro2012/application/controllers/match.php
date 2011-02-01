@@ -119,7 +119,44 @@ class Match extends Controller {
                                 
                         $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
                         $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
-                        } 
+                        }
+                        
+                   if ($vars['match'][0]['type_id'] == 1) { //the final
+                   
+                        $findteamshome = Doctrine_Query::create()
+                            ->select('m.home_id,
+                                       m.away_id,
+                                       th.name,
+                                       th.team_id_home,
+                                       ta.name,
+                                       ta.team_id_away')
+                             ->from('Matches m, m.TeamHome th, m.TeamAway ta')
+                             ->where('m.match_number = 61')
+                             ->execute();
+
+                        $findteamsaway = Doctrine_Query::create()
+                            ->select('m.home_id,
+                                       m.away_id,
+                                       th.name,
+                                       th.team_id_home,
+                                       ta.name,
+                                       ta.team_id_away')
+                             ->from('Matches m, m.TeamHome th, m.TeamAway ta')
+                             ->where('m.match_number = 62')
+                             ->execute();
+                             
+                        foreach ($findteamshome as $team) {
+                                $vars['teamshome'][$team['home_id']] = $team['TeamHome']['name'];
+                                $vars['teamshome'][$team['away_id']] = $team['TeamAway']['name'];
+                                }
+                        foreach ($findteamsaway as $team) {
+                                $vars['teamsaway'][$team['home_id']] = $team['TeamHome']['name'];
+                                $vars['teamsaway'][$team['away_id']] = $team['TeamAway']['name'];
+                                }                                
+                                
+                        $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
+                        $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
+                        }                     
                     
                 // Get the venues, and pass them on for the dropdown
                 $venues = Doctrine_Query::create()
