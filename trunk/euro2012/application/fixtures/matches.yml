@@ -214,10 +214,10 @@ matches:
   home_id: 6
   away_id: 7
   venue_id: 7
-  match_time: 2012/08/17 20:45:00
+  match_time: 2012/06/17 20:45:00
   type_id: 6
   match_group: B
-  time_close: 2012/08/17 20:45:00
+  time_close: 2012/06/17 20:45:00
   description: B2-B3
  m21:
   match_name: Group C Match 5

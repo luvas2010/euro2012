@@ -249,7 +249,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t18:
   team_id_home: 51
   team_id_away: 51
@@ -263,7 +263,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t19:
   team_id_home: 52
   team_id_away: 52
@@ -277,7 +277,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t20:
   team_id_home: 53
   team_id_away: 53
@@ -291,7 +291,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t21:
   team_id_home: 54
   team_id_away: 54
@@ -305,7 +305,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t22:
   team_id_home: 55
   team_id_away: 55
@@ -319,7 +319,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t23:
   team_id_home: 56
   team_id_away: 56
@@ -333,7 +333,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t24:
   team_id_home: 57
   team_id_away: 57
@@ -347,7 +347,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t25:
   team_id_home: 80
   team_id_away: 80
@@ -361,7 +361,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t26:
   team_id_home: 81
   team_id_away: 81
@@ -375,7 +375,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t27:
   team_id_home: 82
   team_id_away: 82
@@ -389,7 +389,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t28:
   team_id_home: 83
   team_id_away: 83
@@ -403,7 +403,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t29:
   team_id_home: 90
   team_id_away: 90
@@ -417,7 +417,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t30:
   team_id_home: 91
   team_id_away: 91
@@ -431,7 +431,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t31:
   team_id_home: 99
   team_id_away: 99
@@ -445,7 +445,7 @@ teams:
   points: 0
   goals_for: 0
   goals_against: 0
-  flag: euro.png
+  flag: unknown.png
  t0:
   team_id_home: 0
   team_id_away: 0

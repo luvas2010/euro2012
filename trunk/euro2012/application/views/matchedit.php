@@ -31,13 +31,13 @@
                         <label for="teamhome">Team Home:</label>
                     </td>
                     <td>
-                        <?php echo form_dropdown('teamhome',$teams,$match[0]['TeamHome']->team_id_home); ?>
+                        <?php echo form_dropdown('teamhome',$teamshome,$match[0]['TeamHome']['team_id_home']); ?>
                     </td>
                     <td>
                         <label for="teamaway">Team Away:</label>
                     </td>
                     <td>
-                        <?php echo form_dropdown('teamaway',$teams,$match[0]['TeamAway']->team_id_away); ?>
+                        <?php echo form_dropdown('teamaway',$teamsaway,$match[0]['TeamAway']['team_id_away']); ?>
                     </td>
                 </tr>
                 <tr>
