@@ -1,6 +1,12 @@
 <?php
 /* haal taalbestand op */
-$this->lang->load('welcome', 'nederlands');
+if (logged_in()) {
+    $language = Current_User::user()->language;
+    }
+else {
+    $language = 'english';
+    }    
+$this->lang->load('welcome', $language );
 /* Dit moet nog aangepast worden*/
 ?>
 
