@@ -2,7 +2,7 @@
 // File: /system/application/views/settings.php
 // Version: 1.0
 // Author: Schop 
-$this->lang->load('set', 'dutch');
+$this->lang->load('set', 'nederlands');
 ?>
         <h3><?php echo $this->lang->line('edit_settings');?></h3>
         
