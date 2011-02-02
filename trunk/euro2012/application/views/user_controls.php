@@ -1,7 +1,6 @@
 <?php
-/* haal taalbestand op */
+// fetch language file
 $this->lang->load('welcome', language() );
-/* Dit moet nog aangepast worden*/
 ?>
 
 	<?php if (logged_in()) { ?>
