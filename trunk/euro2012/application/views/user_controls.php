@@ -1,17 +1,23 @@
+<?php
+/* haal taalbestand op */
+$this->lang->load('welcome', 'nederlands');
+/* Dit moet nog aangepast worden*/
+?>
+
 	<?php if (logged_in()) { ?>
-		<h3>Hello <em><?php echo Current_User::user()->nickname; ?></em>.</h3>
-		<?php echo anchor('home','Home'); ?>&nbsp;&nbsp;
-        <?php echo anchor('logout','Logout'); ?>&nbsp;&nbsp;
-        <?php echo anchor('user_predictions/view/'.Current_User::user()->id,'See My Predictions'); ?>&nbsp;&nbsp;
-        <?php echo anchor('user_predictions/edit/','Edit My Predictions'); ?>&nbsp;&nbsp;
-        <?php echo anchor('user_info','Account info'); ?>
+		<h3><?php echo $this->lang->line('greetings');?>< <em><?php echo Current_User::user()->nickname; ?></em>.</h3>
+		<?php echo anchor('home',$this->lang->line('home')); ?>&nbsp;&nbsp;
+        <?php echo anchor('logout',$this->lang->line('logout')); ?>&nbsp;&nbsp;
+        <?php echo anchor('user_predictions/view/'.Current_User::user()->id,$this->lang->line('see_my_predictions')); ?>&nbsp;&nbsp;
+        <?php echo anchor('user_predictions/edit/',$this->lang->line('edit_my_predictions')); ?>&nbsp;&nbsp;
+        <?php echo anchor('user_info',$this->lang->line('account_info')); ?>
         <?php
             if (admin()) {
-                echo "<p class='buttons'>".anchor('settings_admin','<img src="'.base_url().'images/icons/wrench.png" alt="" />Edit settings').anchor('admin_functions','<img src="'.base_url().'images/icons/star.png" alt="" />Admin Functions')."</p>";
+                echo "<p class='buttons'>".anchor('settings_admin','<img src="'.base_url().'images/icons/wrench.png" alt="" />'.$this->lang->line('edit_settings')).anchor('admin_functions','<img src="'.base_url().'images/icons/star.png" alt="" />'.$this->lang->line('admin_functions'))."</p>";
                 }
         }
         else {
         ?>
-		<h3>New Users: <?php echo anchor('signup','Create an Account'); ?>.</h3>
-		<h3>Members: <?php echo anchor('login','Login'); ?>.</h3>
+		<h3><?php echo $this->lang->line('new_user');?>: <?php echo anchor('signup',$this->lang->line('create')); ?>.</h3>
+		<h3><?php echo $this->lang->line('members');?>: <?php echo anchor('login',$this->lang->line('login')); ?>.</h3>
 	<?php } ?>
