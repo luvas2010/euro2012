@@ -10,6 +10,13 @@ $this->lang->load('welcome', language() );
         <?php echo anchor('user_predictions/view/'.Current_User::user()->id,$this->lang->line('see_my_predictions')); ?>&nbsp;&nbsp;
         <?php echo anchor('user_predictions/edit/',$this->lang->line('edit_my_predictions')); ?>&nbsp;&nbsp;
         <?php echo anchor('user_info',$this->lang->line('account_info')); ?>
+        <?php if (language() == 'nederlands') {
+                echo anchor('user_info/switch_language/english', '<img src="'.base_url().'images/flags/16/uk.png" />', 'title="Switch to English"');
+                }
+              else {
+                echo anchor('user_info/switch_language/nederlands', '<img src="'.base_url().'images/flags/16/nl.png" />', 'title="Nederlands"');
+                } 
+        ?>
         <?php
             if (admin()) {
                 echo "<p class='buttons'>".anchor('settings_admin','<img src="'.base_url().'images/icons/wrench.png" alt="" />'.$this->lang->line('edit_settings')).anchor('admin_functions','<img src="'.base_url().'images/icons/star.png" alt="" />'.$this->lang->line('admin_functions'))."</p>";

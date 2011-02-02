@@ -179,4 +179,15 @@ class User_info extends Controller {
     		$this->load->view('template', $vars);
             }
     }
+    
+    public function switch_language($language) {
+        if (logged_in()) {
+            $id = logged_in();
+            $userTable = Doctrine::getTable("Users");
+            $user = $userTable->find($id);        
+            $user->language = $language;
+            $user->save();
+            redirect('/');
+            }
+    }
 }
