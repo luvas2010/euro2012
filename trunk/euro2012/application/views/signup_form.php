@@ -36,6 +36,11 @@
 		<label for="email">E-mail: </label>
 		<?php echo form_input('email',set_value('email')); ?>
 	</p>
+    <p>
+        <label for="language">Language: </label>
+        <?php $languages = Array('english' => 'english',
+                                 'nederlands' =>  'nederlands'); ?>
+        <?php echo form_dropdown('language',$languages, 'english');?>
 	<p>
 		<label for="street">Adress: </label>
 		<?php echo form_input('street',set_value('street')); ?>
