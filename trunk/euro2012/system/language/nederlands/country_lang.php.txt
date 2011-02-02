@@ -3,4 +3,4 @@ $lang['poland'] = "Polen";
 $lang['Netherlands'] = "Nederland";
 
 /* End of file country_lang.php */
-/* Location: ./system/language/nl/country_lang.php */
+/* Location: ./system/language/nederlands/country_lang.php */

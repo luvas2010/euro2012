@@ -36,4 +36,4 @@ $lang['save'] = "Bewaar";
 $lang['cancel'] = "Annuleer";
 
 /* End of file match_lang.php */
-/* Location: ./system/language/nl/match_lang.php */
+/* Location: ./system/language/nederlands/match_lang.php */

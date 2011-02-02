@@ -43,4 +43,4 @@ $lang['total_points'] = "Totaal aantal punten";
 $lang['total_points_after_this_match'] = "Totaal aantal punten na deze wedstrijd";
 $lang['your_results_for_this_match'] = "Uw uitslag voor deze wedstrijd";
 /* End of file match_lang.php */
-/* Location: ./system/language/nl/match_lang.php */
+/* Location: ./system/language/nederlands/match_lang.php */
