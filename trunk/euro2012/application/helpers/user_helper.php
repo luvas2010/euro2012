@@ -37,6 +37,17 @@ if ( ! function_exists('logged_in'))
             }           		
 	}
 }
-           
 
+if ( ! function_exists('language'))
+{
+    function language() {
+        if (Current_User::user()) {
+            return Current_User::user()->language;
+            }
+        else {
+            return 'english';
+            }
+        }
+
+}
 /* End of file user_helper.php */
