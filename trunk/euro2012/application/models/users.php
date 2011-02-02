@@ -11,6 +11,7 @@ class Users extends Doctrine_Record {
 		$this->hasColumn('city', 'string', 255, array('notnull' => false));
 		$this->hasColumn('phone', 'string', 255, array('notnull' => false));
 		$this->hasColumn('poolgroup', 'string', 255, array('notnull' => false));
+        $this->hasColumn('language', 'string', 255, array('default' => 'english'));
 		$this->hasColumn('admin', 'boolean');
 		$this->hasColumn('paid', 'boolean');
 		$this->hasColumn('active', 'boolean');
