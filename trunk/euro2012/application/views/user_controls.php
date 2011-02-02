@@ -5,7 +5,7 @@ $this->lang->load('welcome', 'nederlands');
 ?>
 
 	<?php if (logged_in()) { ?>
-		<h3><?php echo $this->lang->line('greetings');?>< <em><?php echo Current_User::user()->nickname; ?></em>.</h3>
+		<h3><?php echo $this->lang->line('greetings');?> <em><?php echo Current_User::user()->nickname; ?></em>.</h3>
 		<?php echo anchor('home',$this->lang->line('home')); ?>&nbsp;&nbsp;
         <?php echo anchor('logout',$this->lang->line('logout')); ?>&nbsp;&nbsp;
         <?php echo anchor('user_predictions/view/'.Current_User::user()->id,$this->lang->line('see_my_predictions')); ?>&nbsp;&nbsp;
