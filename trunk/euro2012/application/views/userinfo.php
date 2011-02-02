@@ -30,6 +30,12 @@
             
 		    <?php echo form_password('passconf'); ?>
 	    </p>
+        <p>
+            <label for="language">Language: </label>
+            <?php $languages = Array('english' => 'english',
+                                     'nederlands' =>  'nederlands'); ?>
+            <?php echo form_dropdown('language',$languages, 'english');?>
+        <p>        
 	    <p>
 		    <label for="email">E-mail: </label>
            
