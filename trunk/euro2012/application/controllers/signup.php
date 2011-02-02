@@ -33,6 +33,7 @@ class Signup extends Controller {
 		$u->city = $this->input->post('city');
 		$u->phone = $this->input->post('phone');
 		$u->activecode = $activation;
+        $u->language = $this->input->post('language');
         if ($settings['user_activation'] == 0) {
             $u->active = 1;
             }
