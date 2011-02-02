@@ -1,7 +1,6 @@
 <?php
-/* haal taalbestand op */
-$this->lang->load('welcome', 'nederlands');
-/* Dit moet nog aangepast worden*/
+// fetch language file
+$this->lang->load('welcome', language() );
 ?>
 
 <p><?php echo $this->lang->line('intro');?> <?php echo $settings['poolname']; ?>

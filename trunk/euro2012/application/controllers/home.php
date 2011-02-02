@@ -42,7 +42,7 @@ class Home extends Controller {
                     $closed[$num] = 1;
                     }
                 }
-		$this->lang->load('match', 'nederlands');
+		$this->lang->load('match', language());
 		$vars['closed'] = $closed;
         $vars['title'] = $this->lang->line('tilte_home');
 		$vars['content_view'] = "match_list";
