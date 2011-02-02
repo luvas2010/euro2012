@@ -104,7 +104,7 @@ class User_info extends Controller {
     	$u->password = $this->input->post('password');
  		$u->email = $this->input->post('email');
 		$u->nickname = $this->input->post('nickname');
-        $u->language = $this->input-.post('language');
+        $u->language = $this->input->post('language');
 		$u->street = $this->input->post('street');
 		$u->zipcode = $this->input->post('zip');
 		$u->city = $this->input->post('city');
