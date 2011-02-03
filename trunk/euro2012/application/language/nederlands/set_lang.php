@@ -30,7 +30,7 @@ $lang['points_for_team_f_description'] = "Punten voor elk correct voorspeld team
 $lang['points_for_champion_description'] = "Punten voor het correct voorspellen van de kampioen.";
 $lang['view_other_users_description'] = "Vul -1- in om de voorspellingen van andere gebruikers te tonen";
 $lang['use_cards_description'] = "Vul -1- in om de voorspellingen van gele en rode kaarten te activeren.";
-$lang['user_activation_description'] = "Is de gebruiker geactiveerd";
+$lang['user_activation_description'] = "Vereis activatie van gebruiker";
 $lang['server_time_offset_utc_description'] = "Corrigeerd de tijd met x minuten op de server";
 
 $lang['save'] = "Bewaar";
