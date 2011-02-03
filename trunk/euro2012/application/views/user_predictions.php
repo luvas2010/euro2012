@@ -1,14 +1,15 @@
+<?php $this->lang->load('user', language());?>	
 	<h3><?php echo $predictions[0]['User']['nickname']; ?>&nbsp;-&nbsp;<?php echo $title; ?> </h3>
 	<table class="match_table">
         <thead>
             <tr>
-                <th class="th-left">Match</th>
-                <th colspan="2" class="th-left">Home</th>
-                <th colspan="2" class="th-left">Away</th>
-                <th>Prediction</th>
-                <th>Points earned</th>
-                <th>Closing time</th>
-                <th>Action</th>
+                <th class="th-left"><?php echo $this->lang->line('Match');?></th>
+                <th colspan="2" class="th-left"><?php echo $this->lang->line('Home');?></th>
+                <th colspan="2" class="th-left"><?php echo $this->lang->line('Away');?></th>
+                <th><?php echo $this->lang->line('Prediction');?></th>
+                <th><?php echo $this->lang->line('Points_earmed');?></th>
+                <th><?php echo $this->lang->line('Closing_Time');?></th>
+                <th><?php echo $this->lang->line('Action');?></th>
             </tr>
 		</thead>
         <tbody>
@@ -32,14 +33,14 @@
                 <td class="td-center"><?php echo $prediction['home_goals']." - ".$prediction['away_goals']; ?></td>
                 <td class="td-center"><?php echo $prediction['points_total_this_match']; ?></td>
                 <?php if ($prediction['calculated']): ?>
-                <td class="td-center"><span class="red bold">Closed</span></td>
-                <td class="td-center"><?php echo anchor('matchstats/score/'.$num,'Check scores'); ?></td>
+                <td class="td-center"><span class="red bold"><?php echo $this->lang->line('Closed');?></span></td>
+                <td class="td-center"><?php echo anchor('matchstats/score/'.$num,$this->lang->line('Check_scores')); ?></td>
                 <?php elseif (!$closed[$num] && !$prediction['calculated'] ): ?>
                     <td class="td-center"><?php echo $prediction['Match']['time_close']; ?></td>
-                    <td class="td-center"><?php echo anchor('prediction/edit/'.$num,'Edit prediction'); ?></td>
+                    <td class="td-center"><?php echo anchor('prediction/edit/'.$num,$this->lang->line('Edit_prediction')); ?></td>
                 <?php elseif ($closed[$num] && !$prediction['calculated']): ?>
-                    <td class="td-center"><span class="red bold">Closed</span></td>
-                    <td><span class="green bold">Pending Calculation</span></td>
+                    <td class="td-center"><span class="red bold"><?php echo $this->lang->line('Closed');?></span></td>
+                    <td><span class="green bold"><?php echo $this->lang->line('Pending_Calculation');?></span></td>
                 <?php endif; ?>
 			</tr>
         <?php endforeach; ?>
@@ -47,6 +48,6 @@
     </table>
     <?php if ($warning): ?>
     <p class='error'>
-        You have not filled out all the teams for the final matches. You have to do this before the tournament starts! Click on 'Edit prediction' for any Quarter Final, Semi final or the Final match to do it, or go to '<?php echo anchor('user_predictions/edit', 'Edit My Predictions'); ?>'.
+   <?php echo $this->lang->line('warning_1').anchor('user_predictions/edit', $this->lang->line('Edit_my_predictions')); ?>
     </p>
     <?php endif; ?>
