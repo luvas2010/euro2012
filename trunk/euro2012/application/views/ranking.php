@@ -2,21 +2,22 @@
 // File: application/views/ranking.php
 // Author: Schop
 // Version: 1.0
+$this->lang->load('rank', language());
 ?>
 
-    <h3><?php echo $title; ?></h3><a href="#user">Find myself</a>
+    <h3><?php echo $title; ?></h3><a href="#user"><?php echo $this->lang->line('Find_myself');?></a>
     <table id='ranking' class='tablesorter'>
         <thead>
             <tr>
-                <th class='th-left'>Rank</th>
-                <th class='th-left'>User</th>
-                <th>Total points</th>
-                <th>Points for home goals</th>
-                <th>Points for away goals</th>
-                <th>Points for Win-Draw-Loss</th>
+                <th class='th-left'><?php echo $this->lang->line('Rank');?></th>
+                <th class='th-left'><?php echo $this->lang->line('User');?></th>
+                <th><?php echo $this->lang->line('Total_points');?></th>
+                <th><?php echo $this->lang->line('Points_for_home_goals');?></th>
+                <th><?php echo $this->lang->line('Points_for_away_goals');?></th>
+                <th><?php echo $this->lang->line('Points_for_Win-Draw-Loss');?></th>
                 <?php if ($settings['use_cards']): ?>
-                <th>Points for yellow cards</th>
-                <th>Points for red cards</th>
+                <th><?php echo $this->lang->line('Points_for_yellow_cards');?></th>
+                <th><?php echo $this->lang->line('Points_for_red_cards');?></th>
                 <?php endif; ?>
             </tr>
         </thead>
