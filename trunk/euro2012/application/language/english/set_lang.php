@@ -20,7 +20,7 @@ $lang['user_activation'] = "User activation";
 $lang['server_time_offset_utc'] = "Server ime offset UTC";
 
 $lang['poolname_description'] = "The name of your website/pool";
-$lang['version_decription'] = "version_decription";
+$lang['version_description'] = "Current version";
 $lang['points_for_goals_description'] = "Points awarded for getting the goals for home or away team correct";
 $lang['points_for_wdl_description'] = "Points awarded for getting win-draw-loss correct";
 $lang['points_for_exact_score_description'] = "Points awarded for getting the exact score correct";
@@ -30,8 +30,8 @@ $lang['points_for_team_f_description'] = "Points awarded for getting a team in t
 $lang['points_for_champion_description'] = "Points awarded for getting the champion correct";
 $lang['view_other_users_description'] = "If set to 1, people can view each others predictions";
 $lang['use_cards_description'] = "If set to 1, you need to predict read and yellow cards";
-$lang['user_activation_description'] = "Is de gebruiker geactiveerd";
-$lang['server_time_offset_utc_description'] = "Corrigeerd de tijd met x minuten op de server";
+$lang['user_activation_description'] = "Activate user";
+$lang['server_time_offset_utc_description'] = "Correct offset time of the server";
 
 $lang['save'] = "Save";
 $lang['cancel'] = "Cancel";

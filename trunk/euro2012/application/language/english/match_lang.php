@@ -8,10 +8,15 @@ $lang['home'] = "Home";
 $lang['match'] = "Match";
 $lang['venue'] = "Venue";
 $lang['time'] = "Time";
+$lang['team'] = "Team";
+$lang['check'] = "Check";
+$lang['for'] = " for ";
+$lang['results_administration'] = " results administration";
 
 /*settings */
 $lang['edit_settings'] = "Edit Settings";
 $lang['administration'] = "Administrator";
+$lang['admin'] = "Admin";
 $lang['save'] = "Save";
 $lang['edit'] = "Edit";
 $lang['edit_team'] = "Edit Team";
@@ -22,9 +27,10 @@ $land['admin_functions'] = "Administrator functions";
 /* match_list */
 $lang['match_group_stage'] = "Match group stage";
 $lang['team_home'] = "Team Home";
-$lang['match'] = "Match";
+$lang['matches'] = "Matches";
 $lang['group'] = "Group";
 $lang['result'] = "Result";
+$lang['standings'] = "Standings";
 $lang['team_away'] = "Team Away";
 $lang['links_for_this_match'] = "Links for this match";
 $lang['pending_calculation'] = "Pending calculation";
@@ -33,6 +39,7 @@ $lang['show_prediction'] = "Show prediction";
 $lang['edit_match_results'] = "Edit match results";
 $lang['edit_match_details'] = "Edit match details";
 $lang['your_prediction'] = "your prediction";
+$lang['my_predictions'] = "my predictions";
 $lang['points_earned'] = "Points earned";
 $lang['closing_time'] = "Closing time";
 $lang['points_for_home_goals'] = "Points for home goals";
@@ -43,9 +50,17 @@ $lang['total_points'] = "Total points";
 $lang['total_points_after_this_match'] = "Total points after this match";
 $lang['your_results_for_this_match'] = "Your results for this match";
 
+$lang['played'] = "Played";
+$lang['won'] = "Won";
+$lang['lost'] = "Lost";
+$lang['tie'] = "Tie";
+$lang['points'] = "Points";
+$lang['goals_for'] = "Goals for";
+$lang['goals_against'] ="Goals against";
+
 /*additions by Schop*/
 $lang['matches_knockout_phase'] = "Matches Knockout Phase";
 $lang['quarter_final'] = "Quarter Final";
 $lang['semi_final'] = "Semi Final";
 /* End of file match_lang.php */
-/* Location: ./system/language/nederlands/match_lang.php */
+/* Location: ./system/language/english/match_lang.php */

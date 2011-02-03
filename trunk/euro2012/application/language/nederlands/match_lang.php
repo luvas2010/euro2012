@@ -8,10 +8,15 @@ $lang['home'] = "Thuis";
 $lang['match'] = "Wedstrijd";
 $lang['venue'] = "Stadion";
 $lang['time'] = "Tijdstip";
+$lang['team'] = "Team";
+$lang['check'] = "Controleer";
+$lang['for'] = " voor ";
+$lang['results_administration'] = " uitslagen beheer";
 
 /*settings */
 $lang['edit_settings'] = "Wijzig instellingen";
 $lang['administration'] = "Administrator";
+$lang['admin'] = "Admin";
 $lang['save'] = "Bewaren";
 $lang['edit'] = "Bewerken";
 $lang['edit_team'] = "Bewerk Team";
@@ -22,9 +27,10 @@ $land['admin_functions'] = "Administrator Functies";
 /* match_list */
 $lang['match_group_stage'] = "Wedstrijden per groep";
 $lang['team_home'] = "Thuisploeg";
-$lang['match'] = "Wedstrijden";
+$lang['matches'] = "Wedstrijden";
 $lang['group'] = "Groep";
 $lang['result'] = "Uitslag";
+$lang['standings'] = "Stand";
 $lang['team_away'] = "Uitploeg";
 $lang['links_for_this_match'] = "Koppelingen voor deze wedstrijd";
 $lang['pending_calculation'] = "Berkening loopt";
@@ -33,6 +39,7 @@ $lang['show_prediction'] = "Toon uw voorspelling";
 $lang['edit_match_results'] = "Bewerk wedstrijd uitslagen";
 $lang['edit_match_details'] = "Bewerk wedstrijd gegevens";
 $lang['your_prediction'] = "Uw voorspelling";
+$lang['my_predictions'] = "mijn voorspellingen";
 $lang['points_earned'] = "Uw punten";
 $lang['closing_time'] = "Sluitingstijd";
 $lang['points_for_home_goals'] = "Punten voor thuisdoelpunten";
@@ -42,6 +49,14 @@ $lang['bonus_points_for_exact'] = "Bonuspunten voor exacte score";
 $lang['total_points'] = "Totaal aantal punten";
 $lang['total_points_after_this_match'] = "Totaal aantal punten na deze wedstrijd";
 $lang['your_results_for_this_match'] = "Uw uitslag voor deze wedstrijd";
+
+$lang['played'] = "Gespeeld";
+$lang['won'] = "Gewonnen";
+$lang['lost'] = "Verloren";
+$lang['tie'] = "Gelijkspel";
+$lang['points'] = "Punten";
+$lang['goals_for'] = "Voor";
+$lang['goals_against'] ="Tegen";
 
 /*additions by Schop*/
 $lang['matches_knockout_phase'] = "Knockout Wedstrijden";
