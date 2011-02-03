@@ -40,6 +40,10 @@ class User_info extends Controller {
         //echo base_url().'/user_info/new_password/'.$user->resetcode;
         $this->email->send();
         $vars['message'] = "Er is een e-mail gestuurd naar ".$user->email." met een link. Klik op de link om een nieuw wachtwoord in te stellen.";
+        $vars['title'] = "Password reset";
+		$vars['content_view'] = "success";
+		$vars['settings'] = $settings;
+		$this->load->view('template', $vars);
     }
 
 	private function _reset_pass_submit_validate() {
