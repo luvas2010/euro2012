@@ -51,7 +51,7 @@ $autoload['libraries'] = array('session', 'form_validation', 'groupcalc', 'setti
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'date', 'form', 'user');
+$autoload['helper'] = array('url', 'date', 'form', 'user', 'language');
 
 
 /*
@@ -95,7 +95,7 @@ $autoload['config'] = array();
 |
 */
 
-$autoload['language'] = array();
+$autoload['language'] = array('globals');
 
 
 /*

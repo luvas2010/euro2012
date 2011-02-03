@@ -16,9 +16,11 @@ class User_info extends Controller {
     }
     
     public function reset_password() {
-    
-    $this->load->view('password_reset_form');
-        
+
+        $vars['title'] = "Password Reset";
+        $vars['content_view'] = "password_reset_form";
+        $vars['settings'] = $this->settings_functions->settings();
+		$this->load->view('template', $vars);        
     }
     
     public function reset_pass_submit () {
@@ -58,16 +60,21 @@ class User_info extends Controller {
     
     public function new_password($resetcode) {
     
-    if ($user = Doctrine::getTable('Users')->findOneByResetcode($resetcode)) {
-            $vars['user'] = $user;
-            $vars['title'] = "User Info";
-            $vars['content_view'] = "userinfo";
+        if ($user = Doctrine::getTable('Users')->findOneByResetcode($resetcode)) {
+                $vars['user'] = $user;
+                $vars['title'] = lang('user_info');
+                $vars['content_view'] = "userinfo";
+                
+                $this->load->view('template', $vars);
+            }
+        else { 
+            $vars['title'] = 'Error';
+            $vars['message'] = 'That activation code is not in the database.';
+            $vars['content_view'] = "error";
             $vars['settings'] = $this->settings_functions->settings();
-		    $this->load->view('template', $vars);
+            $this->load->view('template', $vars);
         }
-    else { echo "something is terribly wrong";}
     }
-    
     public function user_edit($id) {
         
         if (admin()) {

@@ -1,14 +1,14 @@
 <?php $this->lang->load('match', language()); ?> 
-	<h3><?php echo $this->lang->line('matches_knockout_phase'); ?></h3>
+	<h3><?php echo lang('matches_knockout_phase'); ?></h3>
 	<table>
         <thead>
 			<tr>
-				<th class='th-left'><?php echo $this->lang->line('match');?></th>
-				<th class='th-left' colspan="2"><?php echo $this->lang->line('home'); ?></th>
-				<th class='th-left' colspan="2"><?php echo $this->lang->line('away'); ?></th>
-				<th><?php echo $this->lang->line('result'); ?></th>
-				<th class='th-left'><?php echo $this->lang->line('venue'); ?></th>
-				<th><?php echo $this->lang->line('time'); ?></th>
+				<th class='th-left'><?php echo lang('match');?></th>
+				<th class='th-left' colspan="2"><?php echo lang('home'); ?></th>
+				<th class='th-left' colspan="2"><?php echo lang('away'); ?></th>
+				<th><?php echo lang('result'); ?></th>
+				<th class='th-left'><?php echo lang('venue'); ?></th>
+				<th><?php echo lang('time'); ?></th>
                 <?php if (admin()): ?>
                 <th>Admin</th>
 				<?php endif; ?>
@@ -26,7 +26,7 @@
 				<td><?php echo $match->Venue->name; ?></td>
 				<td class='td-center'><?php echo $match->match_time; ?></td>
                 <?php if (admin()): ?>
-                <td><?php echo anchor('match/details/'.$match['match_number'],$this->lang->line('edit_match_details'), 'class="adminlink" title="Edit this match"'); ?></td>
+                <td><?php echo anchor('match/details/'.$match['match_number'],lang('edit_match_details'), 'class="adminlink" title="Edit this match"'); ?></td>
                 <?php endif; ?> 
 			</tr>
         <?php endforeach; ?>

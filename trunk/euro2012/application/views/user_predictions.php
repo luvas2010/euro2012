@@ -3,13 +3,13 @@
 	<table class="match_table">
         <thead>
             <tr>
-                <th class="th-left"><?php echo $this->lang->line('Match');?></th>
-                <th colspan="2" class="th-left"><?php echo $this->lang->line('Home');?></th>
-                <th colspan="2" class="th-left"><?php echo $this->lang->line('Away');?></th>
-                <th><?php echo $this->lang->line('Prediction');?></th>
-                <th><?php echo $this->lang->line('Points_earmed');?></th>
-                <th><?php echo $this->lang->line('Closing_Time');?></th>
-                <th><?php echo $this->lang->line('Action');?></th>
+                <th class="th-left"><?php echo lang('Match');?></th>
+                <th colspan="2" class="th-left"><?php echo lang('Home');?></th>
+                <th colspan="2" class="th-left"><?php echo lang('Away');?></th>
+                <th><?php echo lang('Prediction');?></th>
+                <th><?php echo lang('Points_earmed');?></th>
+                <th><?php echo lang('Closing_Time');?></th>
+                <th><?php echo lang('Action');?></th>
             </tr>
 		</thead>
         <tbody>
@@ -33,14 +33,14 @@
                 <td class="td-center"><?php echo $prediction['home_goals']." - ".$prediction['away_goals']; ?></td>
                 <td class="td-center"><?php echo $prediction['points_total_this_match']; ?></td>
                 <?php if ($prediction['calculated']): ?>
-                <td class="td-center"><span class="red bold"><?php echo $this->lang->line('Closed');?></span></td>
-                <td class="td-center"><?php echo anchor('matchstats/score/'.$num,$this->lang->line('Check_scores')); ?></td>
+                <td class="td-center"><span class="red bold"><?php echo lang('Closed');?></span></td>
+                <td class="td-center"><?php echo anchor('matchstats/score/'.$num,lang('Check_scores')); ?></td>
                 <?php elseif (!$closed[$num] && !$prediction['calculated'] ): ?>
                     <td class="td-center"><?php echo $prediction['Match']['time_close']; ?></td>
-                    <td class="td-center"><?php echo anchor('prediction/edit/'.$num,$this->lang->line('Edit_prediction')); ?></td>
+                    <td class="td-center"><?php echo anchor('prediction/edit/'.$num,lang('Edit_prediction')); ?></td>
                 <?php elseif ($closed[$num] && !$prediction['calculated']): ?>
-                    <td class="td-center"><span class="red bold"><?php echo $this->lang->line('Closed');?></span></td>
-                    <td><span class="green bold"><?php echo $this->lang->line('Pending_Calculation');?></span></td>
+                    <td class="td-center"><span class="red bold"><?php echo lang('Closed');?></span></td>
+                    <td><span class="green bold"><?php echo lang('Pending_Calculation');?></span></td>
                 <?php endif; ?>
 			</tr>
         <?php endforeach; ?>
@@ -48,6 +48,6 @@
     </table>
     <?php if ($warning): ?>
     <p class='error'>
-   <?php echo $this->lang->line('warning_1').anchor('user_predictions/edit', $this->lang->line('Edit_my_predictions')); ?>
+   <?php echo lang('warning_1').anchor('user_predictions/edit', lang('Edit_my_predictions')); ?>
     </p>
     <?php endif; ?>

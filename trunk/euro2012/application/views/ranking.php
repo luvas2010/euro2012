@@ -5,19 +5,19 @@
 $this->lang->load('rank', language());
 ?>
 
-    <h3><?php echo $title; ?></h3><a href="#user"><?php echo $this->lang->line('Find_myself');?></a>
+    <h3><?php echo $title; ?></h3><a href="#user"><?php echo lang('Find_myself');?></a>
     <table id='ranking' class='tablesorter'>
         <thead>
             <tr>
-                <th class='th-left'><?php echo $this->lang->line('Rank');?></th>
-                <th class='th-left'><?php echo $this->lang->line('User');?></th>
-                <th><?php echo $this->lang->line('Total_points');?></th>
-                <th><?php echo $this->lang->line('Points_for_home_goals');?></th>
-                <th><?php echo $this->lang->line('Points_for_away_goals');?></th>
-                <th><?php echo $this->lang->line('Points_for_Win-Draw-Loss');?></th>
+                <th class='th-left'><?php echo lang('Rank');?></th>
+                <th class='th-left'><?php echo lang('User');?></th>
+                <th><?php echo lang('Total_points');?></th>
+                <th><?php echo lang('Points_for_home_goals');?></th>
+                <th><?php echo lang('Points_for_away_goals');?></th>
+                <th><?php echo lang('Points_for_Win-Draw-Loss');?></th>
                 <?php if ($settings['use_cards']): ?>
-                <th><?php echo $this->lang->line('Points_for_yellow_cards');?></th>
-                <th><?php echo $this->lang->line('Points_for_red_cards');?></th>
+                <th><?php echo lang('Points_for_yellow_cards');?></th>
+                <th><?php echo lang('Points_for_red_cards');?></th>
                 <?php endif; ?>
             </tr>
         </thead>

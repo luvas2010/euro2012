@@ -7,15 +7,15 @@ class Settings_admin extends Controller {
 
 	public function index() {
 
-        if(Current_User::user()){
-            if(Current_User::user()->admin){
+        if(logged_in()){
+            if(admin()){
     
                  $vars['settings_ad'] = Doctrine_Query::create()
                 ->select('*')
                 ->from('Settings')
                 ->execute();
                 
-                $vars['title'] = "Settings";
+                $vars['title'] = lang('settings');
                 $vars['content_view'] = "settings";
                 $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);
