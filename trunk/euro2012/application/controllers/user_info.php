@@ -8,14 +8,60 @@ class User_info extends Controller {
     public function index() {
         
         $user_id =logged_in();
-        
         $vars['user'] = Doctrine::getTable('Users')->findOneById($user_id);
-        
         $vars['title'] = "User Info";
         $vars['content_view'] = "userinfo";
         $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);
+    }
     
+    public function reset_password() {
+    
+    $this->load->view('password_reset_form');
+        
+    }
+    
+    public function reset_pass_submit () {
+   
+        if ($this->_reset_pass_submit_validate() === FALSE) {
+			$this->reset_password();
+			return;
+		}
+        $settings = $this->settings_functions->settings();
+        $resetcode = random_string('alnum', 32);
+        $user = Doctrine::getTable('Users')->findOneByEmail($this->input->post('email'));
+        $user->resetcode = $resetcode;
+        $user->save();
+        $this->load->library('email');
+        $this->email->from('info@voetbalpool.nl', 'Voetbalpool2012.nl');
+        $this->email->to($user->email); 
+        $this->email->subject($settings['poolname'].' Reset password request');
+        $this->email->message('Hi '.$user->nickname.'. Go here to set a new password: '.base_url().'/user_info/new_password/'.$user->resetcode);
+        //echo base_url().'/user_info/new_password/'.$user->resetcode;
+        $this->email->send();
+        $vars['message'] = "Er is een e-mail gestuurd naar ".$user->email." met een link. Klik op de link om een nieuw wachtwoord in te stellen.";
+    }
+
+	private function _reset_pass_submit_validate() {
+
+		
+		$this->form_validation->set_rules('email', 'E-mail',
+			'required|valid_email|exists[Users.email]');
+			
+		return $this->form_validation->run();
+
+	}
+    
+    public function new_password($resetcode) {
+    
+    if ($user = Doctrine::getTable('Users')->findOneByResetcode($resetcode)) {
+            $vars['user'] = $user;
+            $vars['title'] = "User Info";
+            $vars['content_view'] = "userinfo";
+            $vars['settings'] = $this->settings_functions->settings();
+		    $this->load->view('template', $vars);
+        }
+    else { echo "something is terribly wrong";}
     }
     
     public function user_edit($id) {

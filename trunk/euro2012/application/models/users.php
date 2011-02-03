@@ -17,6 +17,7 @@ class Users extends Doctrine_Record {
 		$this->hasColumn('active', 'boolean');
 		$this->hasColumn('lastlogin', 'timestamp');
 		$this->hasColumn('activecode', 'string', 255);
+        $this->hasColumn('resetcode', 'string', 255);
 		$this->hasColumn('points', 'integer',4);
 		$this->hasColumn('previouspoints', 'integer',4);
 		$this->hasColumn('position', 'integer',4);

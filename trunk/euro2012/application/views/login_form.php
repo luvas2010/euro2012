@@ -15,7 +15,9 @@
 		<?php echo form_password('password'); ?>
 	</p>
 	<p class="buttons">
-		<?php echo form_submit('submit','Login'); ?><?php echo anchor('signup','<img src="'.base_url().'images/icons/user_add.png" alt="" />Create a New Account'); ?>
+		<?php echo form_submit('submit','Login'); ?>
+        <?php echo anchor('signup','<img src="'.base_url().'images/icons/user_add.png" alt="" />Create a New Account'); ?>
+        <?php echo anchor('user_info/reset_password','<img src="'.base_url().'images/icons/exclamation.png" alt="" />I forgot my password'); ?>
 	</p>
 
 	<?php echo form_close(); ?>

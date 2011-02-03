@@ -20,5 +20,23 @@ class MY_Form_validation extends CI_Form_validation {
 		}
 
 	}
+    
+    function exists($value, $params)
+    {
+		$CI =& get_instance();
+        list($model, $field) = explode(".", $params, 2);
+		$CI->form_validation->set_message('exists',
+			'The e-mail address '.$value.' is not in the database.');
+
+		
+
+		$find = "findOneBy".$field;
+
+		if (Doctrine::getTable($model)->$find($value)) {
+			return true;
+		} else {
+			return false;
+		}    
+    }
 }
 
