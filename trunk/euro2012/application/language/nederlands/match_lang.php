@@ -42,5 +42,10 @@ $lang['bonus_points_for_exact'] = "Bonuspunten voor exacte score";
 $lang['total_points'] = "Totaal aantal punten";
 $lang['total_points_after_this_match'] = "Totaal aantal punten na deze wedstrijd";
 $lang['your_results_for_this_match'] = "Uw uitslag voor deze wedstrijd";
+
+/*additions by Schop*/
+$lang['matches_knockout_phase'] = "Knockout Wedstrijden";
+$lang['quarter_final'] = "Kwart finale";
+$lang['semi_final'] = "Halve Finale";
 /* End of file match_lang.php */
 /* Location: ./system/language/nederlands/match_lang.php */

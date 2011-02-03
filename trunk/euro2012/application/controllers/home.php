@@ -44,7 +44,7 @@ class Home extends Controller {
                 }
 		//$this->lang->load('match', language());
 		$vars['closed'] = $closed;
-        $vars['title'] = $this->lang->line('tilte_home');
+        $vars['title'] = $this->lang->line('title_home');
 		$vars['content_view'] = "match_list";
         $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);

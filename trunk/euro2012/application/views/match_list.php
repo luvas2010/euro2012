@@ -1,7 +1,4 @@
-<?php 
-
-	$this->lang->load('match', language());
-?> 
+<?php $this->lang->load('match', language()); ?> 
 	<h3><?php echo $this->lang->line('match_group_stage');?></h3>
 	<table id="home_table" class="match_table">
         <thead>
