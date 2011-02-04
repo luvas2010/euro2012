@@ -182,19 +182,34 @@ class Calculation_functions {
                     $prediction['points_away_id'] = 0;
                     
                     // Team points not in group stage
-                    if ($prediction['Match']['type_id'] == 4) {
+                    if ($prediction['Match']['type_id'] == 6) {
                         $prediction['points_home_id'] = 0;
                         $prediction['points_away_id'] = 0;
                         }               
                             
-                    if ($prediction['Match']['type_id'] == 4) { // this is a quarter final match
-                        // to be done
+                    if ($prediction['Match']['type_id'] == 4 && $prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL) { // this is a quarter final match
+                        if ($prediction['home_id'] == $prediction['Match']['home_id']) {
+                            $prediction['points_home_id'] = $settings['points_for_team_qf'];
+                            }
+                        if ($prediction['away_id'] == $prediction['Match']['away_id']) {
+                            $prediction['points_away_id'] = $settings['points_for_team_qf'];
+                            }
                         }
-                    if ($prediction['Match']['type_id'] == 2) { // this is a semi final match
-                        // to be done
+                    if ($prediction['Match']['type_id'] == 2 && $prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL) { // this is a semi final match
+                        if ($prediction['home_id'] == $prediction['Match']['home_id']) {
+                            $prediction['points_home_id'] = $settings['points_for_team_sf'];
+                            }
+                        if ($prediction['away_id'] == $prediction['Match']['away_id']) {
+                            $prediction['points_away_id'] = $settings['points_for_team_sf'];
+                            }
                         }
-                    if ($prediction['Match']['type_id'] == 1) { // this is the final match
-                        // to be done
+                    if ($prediction['Match']['type_id'] == 1 && $prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL) { // this is the final match
+                        if ($prediction['home_id'] == $prediction['Match']['home_id']) {
+                            $prediction['points_home_id'] = $settings['points_for_team_f'];
+                            }
+                        if ($prediction['away_id'] == $prediction['Match']['away_id']) {
+                            $prediction['points_away_id'] = $settings['points_for_team_f'];
+                            }
                         }
                     
                     // add all points up        

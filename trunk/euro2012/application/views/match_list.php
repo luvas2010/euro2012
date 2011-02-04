@@ -16,33 +16,18 @@
         <?php foreach($predictions as $prediction): ?>
             <?php $num = $prediction['match_number']; ?>
 			<tr>
-				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" />
-                <?php if ($prediction['Match']['type_id'] < 6):?>
-                    <br />
-                    <img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" />
-                <?php endif; ?>
-                </td>
-                <td><?php echo $prediction['Match']['TeamHome']['name'] ?>
-                <?php if ($prediction['Match']['type_id'] < 6):?>
-                    <br /><br />
-                    <?php echo $prediction['TeamHome']['name'];?>
-                <?php endif; ?>
-                </td>
-				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" />
-                <?php if ($prediction['Match']['type_id'] < 6):?>
-                    <br />
-                    <img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" />
-                <?php endif; ?> 
-                </td>
-                <td><?php echo $prediction['Match']['TeamAway']['name']; ?>
-                <?php if ($prediction['Match']['type_id'] < 6):?>
-                    <br /><br />
-                    <?php echo $prediction['TeamAway']['name'];?>
-                <?php endif; ?>
-                </td>
+				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>
+                <td><?php echo $prediction['Match']['TeamHome']['name'] ?></td>
+				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
+                <td><?php echo $prediction['Match']['TeamAway']['name']; ?></td>
                 <td class="td-center"><?php echo $prediction['Match']['match_group']; ?></td>
-				<td class="td-center"><?php echo $prediction['Match']['home_goals']." - ".$prediction['Match']['away_goals']; ?></td>
-				<td class="td-center"><?php echo $prediction['home_goals']." - ".$prediction['away_goals']; ?></td>
+				<td class="td-center">
+                <?php echo $prediction['Match']['home_goals']." - ".$prediction['Match']['away_goals']; ?></td>
+				<td class="td-center">
+                    <?php if ($prediction['Match']['type_id'] < 6):?>
+                    <?php echo $prediction['TeamHome']['name'];?> - <?php echo $prediction['TeamAway']['name'];?><br /><br />
+                    <?php endif; ?>                
+                    <?php echo $prediction['home_goals']." - ".$prediction['away_goals']; ?></td>
                 <td class="td-center"><?php if($prediction['calculated']) {echo $prediction['points_total_this_match'];} else {echo "-";}; ?></td>
                 <?php if ((     $prediction['calculated'] 
                                 && $prediction['Match']['home_goals'] != NULL 
@@ -109,6 +94,18 @@
                                     <?php echo $settings['points_for_exact_score'].' '.lang('bonus_points_for_exact');?>
                                     <?php if ($prediction['points_exact'] == 0){ echo "</span>"; } ?>
                                 </li>
+                                <?php if ($prediction['Match']['type_id'] == 4) : ?>
+                                    <li>
+                                    <?php if ($prediction['points_home_id'] == 0) {echo "<span class='strikethrough'>";} ?>
+                                    <?php echo $settings['points_for_team_qf']." ".lang('points_for_home_team'); ?>
+                                    <?php if ($prediction['points_home_id'] == 0) {echo "</span>";} ?>
+                                    </li>
+                                    <li>
+                                    <?php if ($prediction['points_away_id'] == 0) {echo "<span class='strikethrough'>";} ?>
+                                    <?php echo $settings['points_for_team_qf']." ".lang('points_for_away_team'); ?>
+                                    <?php if ($prediction['points_away_id'] == 0) {echo "</span>";} ?>
+                                    </li>                                        
+                                <?php endif; ?>
                                 <li class="list-sum"><?php echo $prediction['points_total_this_match'].' '.lang('total_points');?></li>    
                             </ul>
                             </div>
