@@ -1,14 +1,113 @@
 <?php
 // File: /system/application/controllers/match.php
-// Version: 1.0
+// Version: 1.01
 // Author: Schop
 // Revisions:
+//      1.01 added result()
 
 class Match extends Controller {
 
 
     public function index(){
+    //nothing here, these are just match functions
     }
+    
+    public function result($match_id) {
+        if (admin()) {
+            $vars['match'] = Doctrine_Query::create()
+            ->select('m.match_name,
+                      m.match_time,
+                      m.home_goals,
+                      m.away_goals,
+                      m.home_id,
+                      m.away_id,
+                      m.type_id,
+                      m.match_group,
+                      m.group_home,
+                      m.group_away,
+                      m.match_number,
+                      m.time_close,
+                      th.name,
+                      th.flag,
+                      ta.name,
+                      ta.flag,
+                      v.name,
+                      v.venue_id')
+            ->from('Matches m, m.TeamHome th, m.TeamAway ta, m.Venue v')
+            ->where('m.match_number = '.$match_id)
+            ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+            ->execute();
+
+            $vars['title'] = "Change match results";
+            $vars['content_view'] = "matchresultedit";
+            $vars['settings'] = $this->settings_functions->settings();
+      		$this->load->view('template', $vars);            
+            
+            }
+        else {      
+            // Current user is not an admin
+            $vars['title'] = "Access denied";
+            $vars['content_view'] = "access_denied";
+            $vars['settings'] = $this->settings_functions->settings();
+	        $this->load->view('template', $vars);
+            }
+    }
+    
+    public function match_result_submit() {
+    
+        if (admin()) {
+            if ($this->_submit_result_validate() === FALSE) {
+                $this->index();
+                return;
+                }
+            
+                if ($match = Doctrine::getTable('Matches')->findOneById($this->input->post('id'))) {
+                    
+                    if ($this->input->post('homegoals') != NULL) {
+                        $match->home_goals = $this->input->post('homegoals');
+                        }
+                    else {
+                        $match->home_goals = NULL; //probably wiping out a wrong result, save it as NULL
+                        }
+                    if ($this->input->post('awaygoals') != NULL) {
+                        $match->away_goals = $this->input->post('awaygoals');
+                        }
+                    else {
+                        $match->away_goals = NULL;
+                        }
+                    
+                    // and save the result!                
+                    $match->save();
+                    $vars['message'] = "Match ".$match->match_name." changed!";
+                    $vars['title'] = "Match Saved";
+                    $vars['content_view'] = "success";
+                    $vars['settings'] = $this->settings_functions->settings();
+        		    $this->load->view('template', $vars);
+                }        
+            }
+        else {      
+            // Current user is not an admin
+            $vars['title'] = "Access denied";
+            $vars['content_view'] = "access_denied";
+            $vars['settings'] = $this->settings_functions->settings();
+	        $this->load->view('template', $vars);
+            }
+
+    }
+    
+    private function _submit_result_validate() {
+
+		// validation rules
+		$this->form_validation->set_rules('homegoals', 'Home Goals',
+			'numeric');
+
+		$this->form_validation->set_rules('awaygoals', 'Away Goals',
+			'numeric');
+			
+		return $this->form_validation->run();
+
+	}
+    
 	public function details($match_id) { //edit function for match details (time, teams)
 
         if(logged_in()){
@@ -35,6 +134,7 @@ class Match extends Controller {
                               v.venue_id')
                     ->from('Matches m, m.TeamHome th, m.TeamAway ta, m.Venue v')
                     ->where('m.match_number = '.$match_id)
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                     ->execute();
                 
                 

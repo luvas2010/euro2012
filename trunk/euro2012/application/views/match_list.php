@@ -79,7 +79,7 @@
                             <div class="match-detail-block">
                             <ul>
                                 <li><h4><?php echo lang('other_things');?>:</h4></li>
-                                <li><?php echo lang('total_points_after_this_match');?>:: <span class='bold'><?php echo $prediction['total_points_curr']; ?></span></li>
+                                <li><?php echo lang('total_points_after_this_match');?>: <span class='bold'><?php echo $prediction['total_points_curr']; ?></span></li>
                             </ul>
                             </div>
                         <?php endif; ?>                   
