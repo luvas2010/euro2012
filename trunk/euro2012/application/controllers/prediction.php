@@ -22,16 +22,22 @@ class Prediction extends Controller {
                           m.home_id,
                           m.time_close,
                           m.match_group,
+                          m.group_home,
+                          m.group_away,
                           m.type_id,
                           th.name,
+                          th.id,
                           th.flag,
                           ta.name,
                           ta.flag,
+                          ta.id,
                           p.*,
                           pth.name,
                           pth.flag,
+                          pth.id,
                           pta.name,
                           pta.flag,
+                          pta.id,
                           v.time_offset_utc,
                           v.city
                           ')
@@ -40,7 +46,34 @@ class Prediction extends Controller {
                 ->andWhere('p.match_number = '.$match_number)
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
+            
+                // Get the teams, and pass them on for the dropdown
+                $teams = Doctrine_Query::create()
+                    ->select('t.name,
+                              t.id,
+                              t.team_group,
+                              t.team_id_home,
+                              t.team_id_away')
+                    ->from('Teams t')
+                    ->where('t.team_id_home < 50')
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                    ->execute();
                 
+                foreach ($teams as $team) {
+                    //see if this team is in the 'group_home' for this match
+                    if (!(strpos($predictions[0]['Match']['group_home'], $team['team_group']) === false) ) {
+                        $teamshome[$team['id']] = $team['name'];
+                        }
+                    if (!(strpos($predictions[0]['Match']['group_away'], $team['team_group']) === false) ) {
+                        $teamsaway[$team['id']] = $team['name'];
+                        }
+                    }
+                $teamshome[0] = "-";
+                $teamsaway[0] = "-";
+                ksort($teamshome);
+                ksort($teamsaway);
+                $vars['teamshome'] = $teamshome;
+                $vars['teamsaway'] = $teamsaway;
                 $vars['prediction'] = $predictions[0];
                 $vars['title'] = "Change prediction";
                 $vars['content_view'] = "predictionedit";
@@ -66,10 +99,25 @@ class Prediction extends Controller {
             
                 if ($prediction = Doctrine::getTable('Predictions')->findOneById($this->input->post('id'))) {
                     
-                        
+                    if ($this->input->post('homegoals') != NULL) {    
                         $prediction->home_goals = $this->input->post('homegoals');
+                        }
+                    else {
+                        $prediction->home_goals = NULL;
+                        }
+                    if ($this->input->post('awaygoals') != NULL) {    
                         $prediction->away_goals = $this->input->post('awaygoals');
-                    
+                        }
+                    else {
+                        $prediction->away_goals = NULL;
+                        }
+                    if ($this->input->post('home_id') != NULL) {
+                        $prediction->home_id = $this->input->post('home_id');
+                        }
+                    if ($this->input->post('away_id') != NULL) {
+                        $prediction->away_id = $this->input->post('away_id');
+                        }
+                                                     
                     // and save the result!                
                     $prediction->save();
                     $vars['message'] = "Prediction for ".$prediction['Match']['TeamHome']['name']." - ".$prediction['Match']['TeamAway']['name']." changed!";
@@ -92,9 +140,9 @@ class Prediction extends Controller {
 
 		// validation rules
 		$this->form_validation->set_rules('homegoals', 'Home goals',
-			'required|numeric');
+			'numeric');
 	    $this->form_validation->set_rules('awaygoals', 'Away goals',
-			'required|numeric');
+			'numeric');
 			
 		return $this->form_validation->run();
 		    

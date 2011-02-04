@@ -242,37 +242,35 @@ class User_predictions extends Controller {
                     ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                     ->execute();
                 foreach ($teams as $team) {
-                    $vars['teams'.strtolower($team['team_group'])][$team['team_id_home']] = $team['name'];
+                    $vars['teams'.strtolower($team['team_group'])][$team['team_id_home']] = $team['name']; //make separate arrays for each group
                     }
-                $vars['teamsa'][0] = "-";
+                $vars['teamsa'][0] = "-"; // add an item to the array for 'none selected'
                 $vars['teamsb'][0] = "-";
                 $vars['teamsc'][0] = "-";
                 $vars['teamsd'][0] = "-";
                 
-                //$vars['teamsab'] = array_replace($vars['teamsa'], $vars['teamsb']);
                 foreach ($vars['teamsa'] as $k => $v) {
-                    $vars['teamsab'][$k] = $v;
+                    $vars['teamsab'][$k] = $v; // make an array for teams from group A & B. The Key ($k) equals the 'id' in the database
                     }
                 foreach ($vars['teamsb'] as $k => $v) {
-                    $vars['teamsab'][$k] = $v;
+                    $vars['teamsab'][$k] = $v; // make an array for teams from group A & B
                     }
                 foreach ($vars['teamsc'] as $k => $v) {
-                    $vars['teamscd'][$k] = $v;
+                    $vars['teamscd'][$k] = $v; // make an array for teams from group C & D
                     }
                 foreach ($vars['teamsd'] as $k => $v) {
-                    $vars['teamscd'][$k] = $v;
+                    $vars['teamscd'][$k] = $v; // make an array for teams from group C & D
                     }
                 foreach ($vars['teamsab'] as $k => $v) {
-                    $vars['teamsabcd'][$k] = $v;
+                    $vars['teamsabcd'][$k] = $v; // make an array for teams from group A & B & C & D
                     }
                 foreach ($vars['teamscd'] as $k => $v) {
-                    $vars['teamsabcd'][$k] = $v;
+                    $vars['teamsabcd'][$k] = $v; // make an array for teams from group A & B & C & D
                     }        
-                    ksort($vars['teamsab']);
-                //$vars['teamscd'] = array_replace($vars['teamsc'], $vars['teamsd']);
+                    ksort($vars['teamsab']); // sort the arrays on 'id'
                     ksort($vars['teamscd']);
-                //$vars['teamsabcd'] = array_replace($vars['teamsab'], $vars['teamscd']);
                     ksort($vars['teamsabcd']);
+                    
             foreach ($vars['predictions_group_phase'] as $prediction)
                 {
                 $num = $prediction['Match']['match_number'];
@@ -336,25 +334,6 @@ class User_predictions extends Controller {
         $vars['settings'] = $this->settings_functions->settings();
         $this->load->view('template', $vars);
 
-
-//                if ($this->_submit_validate() === FALSE) {
-//                    $this->index();
-//                    return;
-//                    }
-//                
-//                    if ($team = Doctrine::getTable('Teams')->findOneById($this->input->post('id'))) {
-//                        
-//                            $team->name = $this->input->post('teamname');
-//                            $team->flag = $this->input->post('teamflag');
-//                        
-//                        // and save the result!                
-//                        $team->save();
-//                        $vars['message'] = "Team ".$team->name." changed!";
-//                        $vars['title'] = "Team Changed";
-//                        $vars['content_view'] = "success";
-//                        $vars['settings'] = $this->settings_functions->settings();
-//            		    $this->load->view('template', $vars);
-//                    }
                 } else {        
                 // Nobody is logged in
                 $vars['title'] = "Not logged in";
