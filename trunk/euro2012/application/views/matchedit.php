@@ -3,7 +3,8 @@
 // Version: 1.0
 // Author: Schop 
 ?>
-       <h3>Edit Match Details</h3>
+<?php $this->lang->load('matchedit', language()); ?> 
+       <h3><?php echo lang('edit_match_details'); ?></h3>
         
 	    <?php echo form_open('match/match_submit'); ?>
 
@@ -14,13 +15,13 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan="4">Edit Match Details</th>
+                    <th colspan="4"><?php echo lang('edit_match_details'); ?></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>
-                        <label for="matchname">Match Name:</label>
+                        <label for="matchname"><?php echo lang('match_name');?>:</label>
                     </td>
                     <td colspan="3">
                         <?php echo form_input('matchname',$match[0]->match_name); ?>
@@ -28,13 +29,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="teamhome">Team Home:</label>
+                        <label for="teamhome"><?php echo lang('team_home');?>:</label>
                     </td>
                     <td>
                         <?php echo form_dropdown('teamhome',$teamshome,$match[0]['TeamHome']['team_id_home']); ?>
                     </td>
                     <td>
-                        <label for="teamaway">Team Away:</label>
+                        <label for="teamaway"><?php echo lang('team_away');?>:</label>
                     </td>
                     <td>
                         <?php echo form_dropdown('teamaway',$teamsaway,$match[0]['TeamAway']['team_id_away']); ?>
@@ -42,7 +43,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="matchtime">Match Time (local):</label>
+                        <label for="matchtime"><?php echo lang('match_time');?> (<?php echo lang('local');?>):</label>
                     </td>
                     <td colspan="3" >
                         <?php echo form_input('matchtime',$match[0]->match_time); ?>
@@ -50,7 +51,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="matchtime">Closing Time (local):</label>
+                        <label for="matchtime"><?php echo lang('closing_time');?> (<?php echo lang('local');?>):</label>
                     </td>
                     <td colspan="3" >
                         <?php echo form_input('timeclose',$match[0]->time_close); ?>
@@ -58,7 +59,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <label for="venue">Venue:</label>
+                        <label for="venue"><?php echo lang('venue');?>:</label>
                     </td>
                     <td colspan="3">
                         <?php echo form_dropdown('venue',$venues,$match[0]['Venue']->venue_id); ?>
@@ -66,7 +67,7 @@
                 </tr>
             </tbody>
         </table>
-        <p class='info'>Make sure you use the local time at the venue! Venues have their own time zone, and the match time will automatically be calculated to your server's local time.</p>
+        <p class='info'><?php echo lang('local_time_warning'); ?></p>
         
         <p class='buttons'>
 	        <?php echo form_submit('submit','Save'); ?>
