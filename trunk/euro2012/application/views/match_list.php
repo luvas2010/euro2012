@@ -1,4 +1,4 @@
-<?php $this->lang->load('match', language()); ?> 
+<?php $this->lang->load('match', language()); ?>
 	<h3><?php echo lang('match_group_stage');?></h3>
 	<table id="home_table" class="match_table">
         <thead>
@@ -16,19 +16,55 @@
         <?php foreach($predictions as $prediction): ?>
             <?php $num = $prediction['match_number']; ?>
 			<tr>
-				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>
-                <td><?php echo $prediction['Match']['TeamHome']['name'] ?></td>
-				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
-                <td><?php echo $prediction['Match']['TeamAway']['name']; ?></td>
+				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" />
+                <?php if ($prediction['Match']['type_id'] < 6):?>
+                    <br />
+                    <img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" />
+                <?php endif; ?>
+                </td>
+                <td><?php echo $prediction['Match']['TeamHome']['name'] ?>
+                <?php if ($prediction['Match']['type_id'] < 6):?>
+                    <br /><br />
+                    <?php echo $prediction['TeamHome']['name'];?>
+                <?php endif; ?>
+                </td>
+				<td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" />
+                <?php if ($prediction['Match']['type_id'] < 6):?>
+                    <br />
+                    <img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" />
+                <?php endif; ?> 
+                </td>
+                <td><?php echo $prediction['Match']['TeamAway']['name']; ?>
+                <?php if ($prediction['Match']['type_id'] < 6):?>
+                    <br /><br />
+                    <?php echo $prediction['TeamAway']['name'];?>
+                <?php endif; ?>
+                </td>
                 <td class="td-center"><?php echo $prediction['Match']['match_group']; ?></td>
 				<td class="td-center"><?php echo $prediction['Match']['home_goals']." - ".$prediction['Match']['away_goals']; ?></td>
 				<td class="td-center"><?php echo $prediction['home_goals']." - ".$prediction['away_goals']; ?></td>
                 <td class="td-center"><?php if($prediction['calculated']) {echo $prediction['points_total_this_match'];} else {echo "-";}; ?></td>
-                <?php if (($prediction['calculated'] && $prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL) || ($prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL && $prediction['home_goals'] == NULL && $prediction['away_goals'] == NULL)) : // has been calulated, so prediction is 'closed' ?>
+                <?php if ((     $prediction['calculated'] 
+                                && $prediction['Match']['home_goals'] != NULL 
+                                && $prediction['Match']['away_goals'] != NULL) //has been set to calculated and has a result
+                            || ($prediction['Match']['home_goals'] != NULL
+                                && $prediction['Match']['away_goals'] != NULL
+                                && $prediction['home_goals'] == NULL
+                                && $prediction['away_goals'] == NULL)) : // OR has a result, but no prediction ?? this has to be reviewed ?>
                     <td class="td-center"><span class="red bold"><?php echo lang('closed');?></span></td>
-                <?php elseif (!$closed[$num] && !$prediction['calculated'] && $prediction['Match']['home_goals'] == NULL && $prediction['Match']['away_goals'] == NULL): // not closed, no calculation, no result so the prediction is 'open' ?>
+                <?php elseif (  !$closed[$num]
+                                && !$prediction['calculated']
+                                && $prediction['Match']['home_goals'] == NULL
+                                && $prediction['Match']['away_goals'] == NULL): // not closed, no calculation, no result so the prediction is 'open' ?>
                     <td class="td-center"><?php echo $prediction['Match']['time_close']; ?></td>
-                <?php elseif (($closed[$num] && !$prediction['calculated']) || ($prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL && !$prediction['calculated']) || ($prediction['Match']['home_goals'] == NULL && $prediction['Match']['away_goals'] == NULL && $prediction['calculated'])): // prediction is closed, or has a result, but has not been calculated yet, o rhas been calculated but the result has been removed ?>
+                <?php elseif ((     $closed[$num]
+                                    && !$prediction['calculated'])
+                               ||   ($prediction['Match']['home_goals'] != NULL
+                                    && $prediction['Match']['away_goals'] != NULL
+                                    && !$prediction['calculated'])
+                               ||   ($prediction['Match']['home_goals'] == NULL
+                                    && $prediction['Match']['away_goals'] == NULL
+                                    && $prediction['calculated'])): // prediction is closed, or has a result, but has not been calculated yet, o rhas been calculated but the result has been removed ?>
                     <td class="td-center"><span class="green bold"><?php echo lang('pending_calculation');?></span></td>
                 <?php endif; ?>
                 <td><div class="arrow"></div></td>
