@@ -45,7 +45,8 @@ if ( ! function_exists('language'))
             return Current_User::user()->language;
             }
         else {
-            return 'english';
+            $settings = Doctrine::getTable('Settings')->findOneBySetting('default_language');
+            return $settings['value'];
             }
         }
 

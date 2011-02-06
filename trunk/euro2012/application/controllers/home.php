@@ -52,7 +52,7 @@ class Home extends Controller {
     else {
 	    // No user is logged in
 
-	    $vars['text'] = content('text_welcome');    
+	    $vars['text'] = content('text_welcome');
         $vars['title'] = "Welcome";
         $vars['content_view'] = "welcome_message";
         $vars['settings'] = $this->settings_functions->settings();

@@ -2,9 +2,9 @@
 
 if ( ! function_exists('content'))
 {
-	function content($var)
+	function content($textvar, $user_id = -1)
 	{	
-	    $text = Doctrine::getTable('Texts')->findOneByText_name($var);
+	    $text = Doctrine::getTable('Texts')->findOneByText_name($textvar);
 	    if (language() == 'nederlands') {
 	        $returntext = $text['text_nl'];
 	        }
@@ -14,10 +14,19 @@ if ( ! function_exists('content'))
 
         $settings = Doctrine::getTable('Settings')->findAll();
         foreach ($settings as $setting) {
-            $replacekey = "%".$setting['setting']."%";
+            $replacekey = "[[".$setting['setting']."]]";
             $replacewith = $setting['value'];
             $returntext = str_replace($replacekey, $replacewith, $returntext);
             }
+        if ($user_id > -1) {
+            $user = Doctrine::getTable('Users')->findOneById($user_id);
+            
+            foreach ($user as $field => $value) {
+                $replacekey = "[[".$field."]]";
+                $replacewith = $value;
+                $returntext = str_replace($replacekey, $replacewith, $returntext);
+                }
+            }    
         return $returntext;         		
 	}
 }

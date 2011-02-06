@@ -14,7 +14,6 @@ class Text extends Controller {
             $vars['title'] = "Text Edit";
             $vars['content_view'] = "textedit";
             $vars['settings'] = $this->settings_functions->settings();
-		    //print_r($vars['text']->toArray());
 		    $this->load->view('template', $vars);
             }
         else {
