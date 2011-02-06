@@ -20,7 +20,8 @@ body {
 #content {
     margin-bottom:10px;
     overflow: hidden;
-    }
+
+    }   
     
 #content p {
     line-height:1.4em;
@@ -34,7 +35,7 @@ a.adminlink, .adminlink a {
     color: #F75F07;
     }
 div.adminlink {float:right;}
-
+ul li{line-height:1.5em;}
 /* user controls */
 
 #user-controls {

@@ -9,7 +9,8 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jExpand.js"></script>
-    
+    <script type="text/javascript" src="<?php echo base_url(); ?>system/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>system/ckeditor/adapters/jquery.js"></script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/tablestyle.css" type="text/css" media="all" />
     <script type="text/javascript">
         $(document).ready(function() {
@@ -19,7 +20,8 @@
                 {sortList: [[2,1]]});
             $("#ranking").tablesorter(
                 {sortList: [[2,1]]});
-            $("#home_table").jExpand(); 
+            $("#home_table").jExpand();
+            $( 'textarea.ckeditor' ).ckeditor();
         });
     </script>
     
@@ -33,7 +35,9 @@
 		<?php $this->load->view('navigation'); ?>
 	</div> <!-- end navigation -->
 	<div id="content">
-		<?php $this->load->view($content_view); ?>    
+
+    	<?php $this->load->view($content_view); ?> 
+
 	</div> <!-- end content -->
 	<div id="footer">
 	    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=BTH8AYCVJLDD4">Doneren via PayPal</a>&nbsp;|&nbsp;<?php echo $settings['poolname'];?>&nbsp;|&nbsp;Version <?php echo $settings['version'];?>
