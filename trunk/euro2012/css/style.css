@@ -20,7 +20,7 @@ body {
 #content {
     margin-bottom:10px;
     overflow: hidden;
-
+    clear:both;
     }   
     
 #content p {
@@ -56,10 +56,10 @@ ul li{line-height:1.5em;}
 
 /* navigation */
 #navigation {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 3px;
-    margin-bottom: 3px;
-    overflow: hidden;
+	background:#BDD2FF;
+	width:100%;
+	float:left;
+	margin-bottom:8px;
     }
 #footer {
     border-top: 1px solid #ddd;

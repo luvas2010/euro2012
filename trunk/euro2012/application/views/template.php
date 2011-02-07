@@ -9,9 +9,13 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tablesorter.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jExpand.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/hoverIntent.js"></script> 
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/superfish.js"></script> 
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/supersubs.js"></script> 
     <script type="text/javascript" src="<?php echo base_url(); ?>system/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>system/ckeditor/adapters/jquery.js"></script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/tablestyle.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/superfish.css" type="text/css" media="all" />
     <script type="text/javascript">
         $(document).ready(function() {
             $("table:not(#home_table) tr:odd").addClass("odd");
@@ -22,6 +26,12 @@
                 {sortList: [[2,1]]});
             $("#home_table").jExpand();
             $( 'textarea.ckeditor' ).ckeditor();
+            $("ul.sf-menu").supersubs({ 
+            minWidth:    12,   // minimum width of sub-menus in em units 
+            maxWidth:    27,   // maximum width of sub-menus in em units 
+            extraWidth:  1     // extra width can ensure lines don't sometimes turn over 
+                               // due to slight rounding differences and font-family 
+        }).superfish();
         });
     </script>
     
