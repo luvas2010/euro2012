@@ -38,7 +38,7 @@ $lang['Edit_prediction'] = "Bewerk voorspelling";
 $lang['Pending_Calculation'] = "Wacht op berekening";
 
 /* Big textstrings */
-$lang['info_1'] = "Let op!! Vul voor aanvang van het toernoei de uit en thuis teams in!";
+$lang['info_1'] = "Let op!! Vul voor aanvang van het toernooi de uit en thuis teams in!";
 
 $lang['warning_1'] = "Je hebt nog niet alle landen voorspeld voor alle finale wedstrijden. Dit moet je doen voor het toernooi begint. Klik op 'Bewerk voorspelling' voor de kwart finale, halve finale en finale om alsnog deze voorspelling in te vullen of ga naar ";
 

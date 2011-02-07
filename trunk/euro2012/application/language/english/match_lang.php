@@ -66,5 +66,6 @@ $lang['quarter_final'] = "Quarter Final";
 $lang['semi_final'] = "Semi Final";
 $lang['prediction'] = "prediction";
 $lang['overview'] = "Overview";
+$lang['warning_1'] = "You have not filled out all the teams for the final matches. You have to do this before the tournament starts! Click on 'Edit prediction' for any Quarter Final, Semi final or the Final match to do it, or go to ";
 /* End of file match_lang.php */
 /* Location: ./system/language/english/match_lang.php */

@@ -66,5 +66,6 @@ $lang['quarter_final'] = "Kwart finale";
 $lang['semi_final'] = "Halve Finale";
 $lang['prediction'] = "voorspeld";
 $lang['overview'] = "Overzicht";
+$lang['warning_1'] = "Je hebt nog niet alle landen voorspeld voor alle finale wedstrijden. Dit moet je doen voor het toernooi begint. Klik op 'Bewerk voorspelling' voor de kwart finale, halve finale en finale om alsnog deze voorspelling in te vullen of ga naar ";
 /* End of file match_lang.php */
 /* Location: ./system/language/nederlands/match_lang.php */

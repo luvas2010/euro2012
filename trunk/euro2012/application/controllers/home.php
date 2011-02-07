@@ -31,7 +31,7 @@ class Home extends Controller {
                 ->orderBy('m.match_time')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY) //This makes it quicker, we don't need to update the database, just see the predictions
                 ->execute();
-        
+            
             foreach ($vars['predictions'] as $prediction)
                 {
                 $num = $prediction['match_number'];
@@ -41,7 +41,17 @@ class Home extends Controller {
                 else {
                     $closed[$num] = 1;
                     }
+                    
+                if ($prediction['Match']['type_id'] < 6) {
+                        if ($prediction['home_id'] == 0 || $prediction['away_id'] == 0) {
+                            $vars['warning_predict_teams'] = 1;
+                            }
+                        else {
+                            $vars['warning_predict_teams'] = 0;
+                            }    
+                    }
                 }
+                
 		//$this->lang->load('match', language());
         $vars['text'] = content('text_welcome_logged_in', $user_id);
 		$vars['closed'] = $closed;

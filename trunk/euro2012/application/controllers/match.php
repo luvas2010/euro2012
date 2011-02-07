@@ -156,108 +156,133 @@ class Match extends Controller {
                             }
                         }
                     }
-                        
-                 if ($vars['match'][0]['type_id'] == 4) {
-                        if ($vars['match'][0]['group_home'] == "A") {
-                            foreach ($teams as $team) {
-                                if ($team['team_group'] == "A") {
-                                    $vars['teamshome'][$team['team_id_home']] = $team['name'];
-                                    }
-                                elseif ($team['team_group'] == "B") {    
-                                    $vars['teamsaway'][$team['team_id_away']] = $team['name'];
-                                    }
-                                }
-                            $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
-                            $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
-                            }
-                        if ($vars['match'][0]['group_home'] == "C") {
-                            foreach ($teams as $team) {
-                                if ($team['team_group'] == "C") {
-                                    $vars['teamshome'][$team['team_id_home']] = $team['name'];
-                                    }
-                                elseif ($team['team_group'] == "D") {    
-                                    $vars['teamsaway'][$team['team_id_away']] = $team['name'];
-                                    }
-                                }
-                            $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
-                            $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
-                            }
-                        }                                        
-                    
-                   if ($vars['match'][0]['type_id'] == 2) {
-                   
-                        $findteamshome = Doctrine_Query::create()
-                            ->select('m.home_id,
-                                       m.away_id,
-                                       th.name,
-                                       th.team_id_home,
-                                       ta.name,
-                                       ta.team_id_away')
-                             ->from('Matches m, m.TeamHome th, m.TeamAway ta')
-                             ->where('m.match_number = '.($vars['match'][0]['match_number'] - 10))
-                             ->execute();
-
-                        $findteamsaway = Doctrine_Query::create()
-                            ->select('m.home_id,
-                                       m.away_id,
-                                       th.name,
-                                       th.team_id_home,
-                                       ta.name,
-                                       ta.team_id_away')
-                             ->from('Matches m, m.TeamHome th, m.TeamAway ta')
-                             ->where('m.match_number = '.($vars['match'][0]['match_number'] - 8))
-                             ->execute();
-                             
-                        foreach ($findteamshome as $team) {
-                                $vars['teamshome'][$team['home_id']] = $team['TeamHome']['name'];
-                                $vars['teamshome'][$team['away_id']] = $team['TeamAway']['name'];
-                                }
-                        foreach ($findteamsaway as $team) {
-                                $vars['teamsaway'][$team['home_id']] = $team['TeamHome']['name'];
-                                $vars['teamsaway'][$team['away_id']] = $team['TeamAway']['name'];
-                                }                                
-                                
-                        $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
-                        $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
+                
+                if ($vars['match'][0]['type_id'] < 6) {
+                foreach ($teams as $team) {
+                    //see if this team is in the 'group_home' for this match
+                    if (!(strpos($vars['match'][0]['group_home'], $team['team_group']) === false) ) {
+                        $teamshome[$team['team_id_home']] = $team['name'];
                         }
-                        
-                   if ($vars['match'][0]['type_id'] == 1) { //the final
-                   
-                        $findteamshome = Doctrine_Query::create()
-                            ->select('m.home_id,
-                                       m.away_id,
-                                       th.name,
-                                       th.team_id_home,
-                                       ta.name,
-                                       ta.team_id_away')
-                             ->from('Matches m, m.TeamHome th, m.TeamAway ta')
-                             ->where('m.match_number = 61')
-                             ->execute();
+                    if (!(strpos($vars['match'][0]['group_away'], $team['team_group']) === false) ) {
+                        $teamsaway[$team['team_id_away']] = $team['name'];
+                        }
+                    if ($vars['match'][0]['match_group'] == $team['team_group']) {
+                        $teamshome[$team['team_id_home']] = $team['name'];
+                        $teamsaway[$team['team_id_away']] = $team['name'];
+                        }
+                    }
+                
+                    $teamshome[0] = "-";
+                    $teamsaway[0] = "-";
+                    ksort($teamshome);
+                    ksort($teamsaway);
+                    $vars['teamshome']=$teamshome;
+                    $vars['teamsaway']=$teamsaway;
+                    }
 
-                        $findteamsaway = Doctrine_Query::create()
-                            ->select('m.home_id,
-                                       m.away_id,
-                                       th.name,
-                                       th.team_id_home,
-                                       ta.name,
-                                       ta.team_id_away')
-                             ->from('Matches m, m.TeamHome th, m.TeamAway ta')
-                             ->where('m.match_number = 62')
-                             ->execute();
-                             
-                        foreach ($findteamshome as $team) {
-                                $vars['teamshome'][$team['home_id']] = $team['TeamHome']['name'];
-                                $vars['teamshome'][$team['away_id']] = $team['TeamAway']['name'];
-                                }
-                        foreach ($findteamsaway as $team) {
-                                $vars['teamsaway'][$team['home_id']] = $team['TeamHome']['name'];
-                                $vars['teamsaway'][$team['away_id']] = $team['TeamAway']['name'];
-                                }                                
-                                
-                        $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
-                        $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
-                        }                     
+                
+                 // if ($vars['match'][0]['type_id'] == 4) {
+                        // if ($vars['match'][0]['group_home'] == "A") {
+                            // foreach ($teams as $team) {
+                                // if ($team['team_group'] == "A") {
+                                    // $vars['teamshome'][$team['team_id_home']] = $team['name'];
+                                    // }
+                                // elseif ($team['team_group'] == "B") {    
+                                    // $vars['teamsaway'][$team['team_id_away']] = $team['name'];
+                                    // }
+                                // }
+                            // $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
+                            // $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
+                            // }
+                        // if ($vars['match'][0]['group_home'] == "C") {
+                            // foreach ($teams as $team) {
+                                // if ($team['team_group'] == "C") {
+                                    // $vars['teamshome'][$team['team_id_home']] = $team['name'];
+                                    // }
+                                // elseif ($team['team_group'] == "D") {    
+                                    // $vars['teamsaway'][$team['team_id_away']] = $team['name'];
+                                    // }
+                                // }
+                            // $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
+                            // $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
+                            // }
+                        // }                                        
                     
+                   // if ($vars['match'][0]['type_id'] == 2) {
+                   
+                        // $findteamshome = Doctrine_Query::create()
+                            // ->select('m.home_id,
+                                       // m.away_id,
+                                       // th.name,
+                                       // th.team_id_home,
+                                       // ta.name,
+                                       // ta.team_id_away')
+                             // ->from('Matches m, m.TeamHome th, m.TeamAway ta')
+                             // ->where('m.match_number = '.($vars['match'][0]['match_number'] - 10))
+                             // ->execute();
+
+                        // $findteamsaway = Doctrine_Query::create()
+                            // ->select('m.home_id,
+                                       // m.away_id,
+                                       // th.name,
+                                       // th.team_id_home,
+                                       // ta.name,
+                                       // ta.team_id_away')
+                             // ->from('Matches m, m.TeamHome th, m.TeamAway ta')
+                             // ->where('m.match_number = '.($vars['match'][0]['match_number'] - 8))
+                             // ->execute();
+                             
+                        // foreach ($findteamshome as $team) {
+                                // $vars['teamshome'][$team['home_id']] = $team['TeamHome']['name'];
+                                // $vars['teamshome'][$team['away_id']] = $team['TeamAway']['name'];
+                                // }
+                        // foreach ($findteamsaway as $team) {
+                                // $vars['teamsaway'][$team['home_id']] = $team['TeamHome']['name'];
+                                // $vars['teamsaway'][$team['away_id']] = $team['TeamAway']['name'];
+                                // }                                
+                                
+                        // $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
+                        // $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
+                        // }
+                        
+                   // if ($vars['match'][0]['type_id'] == 1) { //the final
+                   
+                        // $findteamshome = Doctrine_Query::create()
+                            // ->select('m.home_id,
+                                       // m.away_id,
+                                       // th.name,
+                                       // th.team_id_home,
+                                       // ta.name,
+                                       // ta.team_id_away')
+                             // ->from('Matches m, m.TeamHome th, m.TeamAway ta')
+                             // ->where('m.match_number = 61')
+                             // ->execute();
+
+                        // $findteamsaway = Doctrine_Query::create()
+                            // ->select('m.home_id,
+                                       // m.away_id,
+                                       // th.name,
+                                       // th.team_id_home,
+                                       // ta.name,
+                                       // ta.team_id_away')
+                             // ->from('Matches m, m.TeamHome th, m.TeamAway ta')
+                             // ->where('m.match_number = 62')
+                             // ->execute();
+                             
+                        // foreach ($findteamshome as $team) {
+                                // $vars['teamshome'][$team['home_id']] = $team['TeamHome']['name'];
+                                // $vars['teamshome'][$team['away_id']] = $team['TeamAway']['name'];
+                                // }
+                        // foreach ($findteamsaway as $team) {
+                                // $vars['teamsaway'][$team['home_id']] = $team['TeamHome']['name'];
+                                // $vars['teamsaway'][$team['away_id']] = $team['TeamAway']['name'];
+                                // }                                
+                                
+                        // $vars['teamshome'][$vars['match'][0]['home_id']] = $vars['match'][0]['TeamHome']['name'];
+                        // $vars['teamsaway'][$vars['match'][0]['away_id']] = $vars['match'][0]['TeamAway']['name'];
+                        // }                     
+                        // $vars['teamshome'][0] = "-";
+                        // $vars['teamsaway'][0] = "-";
                 // Get the venues, and pass them on for the dropdown
                 $venues = Doctrine_Query::create()
                     ->select('v.name,
