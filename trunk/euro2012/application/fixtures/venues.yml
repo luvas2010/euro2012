@@ -1,22 +1,22 @@
 venues:
  v1:
   venue_id: 1
-  name: Municipal Stadium Gdansk
+  name: Municipal Stadium
   city: Gdansk
   capacity: 40000
  v2:
   venue_id: 2
-  name: Miejski Stadium Poznan
+  name: Miejski Stadium
   city: Poznan
   capacity: 40000
  v3:
   venue_id: 3
-  name: National Stadium Warsaw
+  name: National Stadium
   city: Warsaw
   capacity: 50000
  v4:
   venue_id: 4
-  name: Municipal Stadium Wroclaw
+  name: Municipal Stadium
   city: Wroclaw
   capacity: 40000
  v5:

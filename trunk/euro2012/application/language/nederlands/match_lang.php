@@ -65,5 +65,6 @@ $lang['matches_knockout_phase'] = "Knockout Wedstrijden";
 $lang['quarter_final'] = "Kwart finale";
 $lang['semi_final'] = "Halve Finale";
 $lang['prediction'] = "voorspeld";
+$lang['overview'] = "Overzicht";
 /* End of file match_lang.php */
 /* Location: ./system/language/nederlands/match_lang.php */

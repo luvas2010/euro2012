@@ -1,7 +1,6 @@
         <h3>Group <?php echo strtoupper($group); ?> Administration</h3>
-        
-	    <?php echo form_open('group'.$group.'_admin/submit'); ?>
-
+       
+        <?php echo form_open('group/result_submit'); ?>
 	    <?php echo validation_errors('<p class="error">','</p>'); ?>
 	    <table>
 	        <thead>
@@ -18,20 +17,19 @@
 	        <tbody>
         <?php foreach ($matches as $match): ?>
 		    <tr>
-		    <?php echo form_hidden('match_number'.$match->match_number,$match->match_number); ?>
-                <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $match->TeamHome->flag;?>" alt="" /></td>	            
+                <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $match['TeamHome']['flag'];?>" alt="" /></td>	            
 	            <td>
-	                <label for="home_goals<?php echo $match->match_number; ?>"><?php echo $match->TeamHome->name; ?>:</label>
+	                <label for="post_array[<?php echo $match['id']; ?>][home_goals]"><?php echo $match['TeamHome']['name']; ?>:</label>
 		        </td>
 		        <td>
-		            <?php echo form_input('home_goals'.$match->match_number,$match->home_goals,'size=1'); ?>
+		            <?php echo form_input('post_array['.$match['id'].'][home_goals]',$match['home_goals'],'size=1'); ?>
 	            </td>
-	            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $match->TeamAway->flag;?>" alt="" /></td>
+	            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $match['TeamAway']['flag'];?>" alt="" /></td>
 	            <td>
-		            <label for="away_goals<?php echo $match->match_number; ?>>"><?php echo $match->TeamAway->name; ?>:</label>
+		            <label for="post_array[<?php echo $match['id']; ?>][away_goals]"><?php echo $match['TeamAway']['name']; ?>:</label>
 		        </td>
 		        <td>
-		            <?php echo form_input('away_goals'.$match->match_number,$match->away_goals, 'size=1'); ?>
+		            <?php echo form_input('post_array['.$match['id'].'][away_goals]',$match['away_goals'], 'size=1'); ?>
 	            </td>
 	        </tr>
 	<?php endforeach; ?>
@@ -39,6 +37,6 @@
     </table>
     <p class='buttons'>
 	    <?php echo form_submit('submit','Save'); ?>
-	    <?php echo anchor('group'.$group,'<img src="'.base_url().'images/icons/cross.png" alt="" />Cancel', 'class="negative"'); ?>
+	    <?php echo anchor('group/overview/'.$group,'<img src="'.base_url().'images/icons/cross.png" alt="" />Cancel', 'class="negative"'); ?>
     </p>
     <?php echo form_close(); ?>

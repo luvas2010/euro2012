@@ -65,5 +65,6 @@ $lang['matches_knockout_phase'] = "Matches Knockout Phase";
 $lang['quarter_final'] = "Quarter Final";
 $lang['semi_final'] = "Semi Final";
 $lang['prediction'] = "prediction";
+$lang['overview'] = "Overview";
 /* End of file match_lang.php */
 /* Location: ./system/language/english/match_lang.php */

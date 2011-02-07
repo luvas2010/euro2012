@@ -31,6 +31,6 @@
     </table>
     <p class='buttons'>
 	    <?php echo form_submit('submit','Save'); ?>
-	    <?php echo anchor('groupa','<img src="'.base_url().'images/icons/cross.png" alt="" />Cancel', 'class="negative"'); ?>
+	    <?php echo anchor('group/overview/a','<img src="'.base_url().'images/icons/cross.png" alt="" />Cancel', 'class="negative"'); ?>
     </p>
     <?php echo form_close(); ?>

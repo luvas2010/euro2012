@@ -20,16 +20,22 @@ class User_predictions_a extends Controller {
                           m.home_goals,
                           m.away_goals,
                           m.home_id,
+                          m.away_id,
                           m.time_close,
                           m.match_group,
+                          th.team_id_home,
                           th.name,
+                          th.flag,
+                          ta.team_id_away,
                           ta.name,
+                          ta.flag
                           p.home_goals,
                           p.away_goals,
                           p.points_total_this_match,
-                          p.calculated
+                          p.calculated,
+                          u.*
                           ')
-                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u')
                 ->where('p.user_id = '.$user_id.' AND m.match_group = "A"')
                 ->orderBy('m.match_time')
                 ->execute();

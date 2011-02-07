@@ -11,6 +11,71 @@ class User_predictions extends Controller {
     public function index(){
     
     }
+
+	public function group($group) {
+        if($user_id = logged_in()){
+             // Lookup the matches in this group, and their predictions by this user
+            $vars['predictions'] = Doctrine_Query::create()
+                ->select('m.match_name,
+                          m.match_number,
+                          m.match_time,
+                          m.home_goals,
+                          m.away_goals,
+                          m.home_id,
+                          m.away_id,
+                          m.type_id,
+                          m.time_close,
+                          m.match_group,
+                          th.team_id_home,
+                          th.name,
+                          th.flag,
+                          pth.name,
+                          pth.flag,
+                          ta.team_id_away,
+                          ta.name,
+                          ta.flag,
+                          pta.name,
+                          pta.flag,
+                          p.home_goals,
+                          p.away_goals,
+                          p.points_total_this_match,
+                          p.calculated,
+                          u.*
+                          ')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u, p.TeamHome pth, p.TeamAway pta')
+                ->where('p.user_id = '.$user_id)
+                ->andWhere('m.match_group = "'.$group.'"')
+                ->orderBy('m.match_time')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+            
+            foreach ($vars['predictions'] as $prediction)
+                {
+                $num = $prediction['Match']['match_number'];
+                if (mysql_to_unix($prediction['Match']['time_close']) > time())
+                    {
+                    $closed[$num] = 0;
+                    }
+                else
+                    {
+                    $closed[$num] = 1;
+                    }
+                }
+            $vars['closed'] = $closed;    
+            $vars['title'] = "Predictions Group ".strtoupper($group);
+            $vars['content_view'] = "user_predictions";		
+            $vars['settings'] = $this->settings_functions->settings();
+		$this->load->view('template', $vars);
+        }    
+        else {
+            // No user is logged in
+            // Current user is not an admin
+            $vars['title'] = "Not logged in";
+            $vars['content_view'] = "not_logged_in";
+            $vars['settings'] = $this->settings_functions->settings();
+		$this->load->view('template', $vars);
+            }             
+	}
     
 	public function view($user_id) {
         $settings = $this->settings_functions->settings();

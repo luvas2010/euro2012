@@ -19,6 +19,7 @@
 			<tr>
                 <td><?php echo $prediction['Match']['match_name']; ?></td>
                 <?php if ($prediction['Match']['type_id'] == 6): ?>
+                <?php $warning = 0; ?>
                     <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>
                     <td><?php echo $prediction['Match']['TeamHome']['name'];?></td>
                     <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
