@@ -5,7 +5,7 @@
 ?>
        <h3>Edit Prediction</h3>
 	    <div id="prediction_form">
-	    <?php echo form_open('prediction/prediction_submit'); ?>
+	    <?php echo form_open('user_predictions/prediction_single_submit'); ?>
 
 	    <?php echo validation_errors('<p class="error">','</p>'); ?>
             <?php $local_close = strtotime($prediction['Match']['time_close']) + $settings['server_time_offset_utc'] - $prediction['Match']['Venue']['time_offset_utc']; ?>

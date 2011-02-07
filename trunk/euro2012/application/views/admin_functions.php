@@ -7,6 +7,7 @@
     <?php echo anchor('admin_functions/calculate_new', 'Calculate new results'); ?>
     <?php echo anchor('admin_functions/recalculate_all','Recalculate all predictions'); ?>
     <?php echo anchor('user_info/list_all','View all users'); ?>
+    <?php echo anchor('text/view', 'See standard texts'); ?>
 </p>
 <h2>Testing functions (not for use in functioning pools)</h2>
 <p class='warning'>Functions come with no warranty</p> 

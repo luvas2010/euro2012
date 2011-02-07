@@ -7,7 +7,7 @@
                 <th colspan="2" class="th-left"><?php echo lang('Home');?></th>
                 <th colspan="2" class="th-left"><?php echo lang('Away');?></th>
                 <th><?php echo lang('Prediction');?></th>
-                <th><?php echo lang('Points_earmed');?></th>
+                <th><?php echo lang('Points_earned');?></th>
                 <th><?php echo lang('Closing_Time');?></th>
                 <th><?php echo lang('Action');?></th>
             </tr>
@@ -38,7 +38,7 @@
                 <td class="td-center"><?php echo anchor('matchstats/score/'.$num,lang('Check_scores')); ?></td>
                 <?php elseif (!$closed[$num] && !$prediction['calculated'] ): ?>
                     <td class="td-center"><?php echo $prediction['Match']['time_close']; ?></td>
-                    <td class="td-center"><?php echo anchor('prediction/edit/'.$num,lang('Edit_prediction')); ?></td>
+                    <td class="td-center"><?php echo anchor('user_predictions/edit_single/'.$num,lang('Edit_prediction')); ?></td>
                 <?php elseif ($closed[$num] && !$prediction['calculated']): ?>
                     <td class="td-center"><span class="red bold"><?php echo lang('Closed');?></span></td>
                     <td><span class="green bold"><?php echo lang('Pending_Calculation');?></span></td>

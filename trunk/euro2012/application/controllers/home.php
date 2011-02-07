@@ -2,8 +2,8 @@
 class Home extends Controller {
 
 	public function index() {
-        // Get all matches    
-        if (logged_in()) {
+            
+        if (logged_in()) { // Get all matches
             $user_id = Current_User::user()->id;
              // Lookup the matches in this group, and their predictions by this user
             $vars['predictions'] = Doctrine_Query::create()
@@ -43,16 +43,18 @@ class Home extends Controller {
                     }
                 }
 		//$this->lang->load('match', language());
+        $vars['text'] = content('text_welcome_logged_in', $user_id);
 		$vars['closed'] = $closed;
         $vars['title'] = $this->lang->line('title_home');
 		$vars['content_view'] = "match_list";
+        $vars['content_view'] = "home_page";
         $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);
 		}
     else {
 	    // No user is logged in
 
-	    $vars['text'] = content('text_welcome');
+	    $vars['text'] = content('text_welcome_not_logged_in');
         $vars['title'] = "Welcome";
         $vars['content_view'] = "welcome_message";
         $vars['settings'] = $this->settings_functions->settings();

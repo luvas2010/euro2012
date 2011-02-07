@@ -22,7 +22,7 @@ $lang['Edit_my_predictions'] = "Bewerk mijn voorspellingen";
 $lang['Group_Stage'] = "Groep voorrondes";
 $lang['Home'] = "Thuis";
 $lang['Away'] = "Uit";
-$lang['Closing_Time'] = "Sluitingsdatum";
+$lang['Closing_Time'] = "Sluitingstijd";
 $lang['Closed'] = "Gesloten";
 $lang['Quarter_Finals'] = "Kwart finales";
 $lang['Semi_Finals'] = "Halve finale";
@@ -35,12 +35,12 @@ $lang['Points_earned'] = "Punten verdiend";
 $lang['Action'] = "Actie";
 $lang['Check_scores'] = "Controleer Score";
 $lang['Edit_prediction'] = "Bewerk voorspelling";
-$lang['Pending_Calculation'] = "Lopende calculatie";
+$lang['Pending_Calculation'] = "Wacht op berekening";
 
 /* Big textstrings */
 $lang['info_1'] = "Let op!! Vul voor aanvang van het toernoei de uit en thuis teams in!";
 
-$lang['warning_1'] = "U heeft niet alle voorspellingen ingevuld voor alle finale wedstrijden. Dit moet u doen voor aanvang van het toernoei. Klik op 'Bewerk mijn voorspelling' voor de kwart finale / halve finale en finale om alsnog deze voorspelling in te vullen of ga naar ";
+$lang['warning_1'] = "Je hebt nog niet alle landen voorspeld voor alle finale wedstrijden. Dit moet je doen voor het toernooi begint. Klik op 'Bewerk voorspelling' voor de kwart finale, halve finale en finale om alsnog deze voorspelling in te vullen of ga naar ";
 
 
 /* This string will most prop be placed in the database */

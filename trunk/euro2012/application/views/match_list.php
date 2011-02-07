@@ -64,7 +64,7 @@
                                 <?php if ($prediction['calculated']): ?>
                                     <li><?php echo anchor('matchstats/score/'.$num,'Check other people&rsquo;s score'); ?></li>
                                 <?php elseif (!$prediction['calculated'] && !$closed[$num] && $prediction['Match']['home_goals'] == NULL && $prediction['Match']['away_goals'] == NULL) : ?>
-                                    <li><?php echo anchor('prediction/edit/'.$num,lang('edit_prediction')); ?></li>
+                                    <li><?php echo anchor('user_predictions/edit_single/'.$num,lang('edit_prediction')); ?></li>
                                 <?php elseif (($closed[$num] && !$prediction['calculated']) || ($prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL && !$prediction['calculated'])): ?>
                                     <li><span class="green bold"><?php echo lang('pending_calculation');?></span></li>
                                 <?php endif; ?>

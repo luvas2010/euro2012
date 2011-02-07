@@ -25,7 +25,7 @@ $lang['log_out'] = "Afmelden";
 $land['admin_functions'] = "Administrator Functies";
 
 /* match_list */
-$lang['match_group_stage'] = "Wedstrijden per groep";
+$lang['match_group_stage'] = "Groepswedstrijden";
 $lang['team_home'] = "Thuisploeg";
 $lang['matches'] = "Wedstrijden";
 $lang['group'] = "Groep";
@@ -36,7 +36,7 @@ $lang['links_for_this_match'] = "Koppelingen voor deze wedstrijd";
 $lang['pending_calculation'] = "Wacht op berekening";
 $lang['edit_prediction'] = "Bewerk voorspelling";
 $lang['show_prediction'] = "Toon uw voorspelling";
-$lang['edit_match_results'] = "Bewerk wedstrijd uitslagen";
+$lang['edit_match_results'] = "Vul de uitslag in";
 $lang['edit_match_details'] = "Bewerk wedstrijd gegevens";
 $lang['your_prediction'] = "Uw voorspelling";
 $lang['my_predictions'] = "mijn voorspellingen";

@@ -273,3 +273,10 @@ form p label {
 .stats-name img {
     margin: 0 auto;
     }
+    
+div.textview {
+    margin: 10px 30px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
