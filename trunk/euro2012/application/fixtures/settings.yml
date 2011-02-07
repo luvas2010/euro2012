@@ -51,4 +51,7 @@ settings:
   setting: user_activation
   value: 1
   description: user_activation_description
-    
+ set14:
+  setting: admin_email
+  value: admin@example.com
+  description: admin_email_description

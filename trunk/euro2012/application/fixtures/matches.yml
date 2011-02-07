@@ -275,7 +275,7 @@ matches:
   group_home: A
   group_away: B
   time_close: 2012/06/21 20:45:00
-  description: A#1 - B#2
+  description: Winner Group A - Runner Up Group B
  m26:
   match_name: Quarter Final 2
   match_number: 52
@@ -288,7 +288,7 @@ matches:
   group_home: B
   group_away: A
   time_close: 2012/06/22 20:45:00
-  description: B#1 - A#2
+  description: Winner Group B - Runner Up Group A
  m27:
   match_name: Quarter Final 3
   match_number: 53
@@ -301,7 +301,7 @@ matches:
   group_home: C
   group_away: D
   time_close: 2012/06/23 20:45:00
-  description: C#1 - D#2
+  description: Winner Group C - Runner Up Group D
  m28:
   match_name: Quarter Final 4
   match_number: 54
@@ -314,7 +314,7 @@ matches:
   group_home: D
   group_away: C
   time_close: 2012/06/24 19:45:00
-  description: D#1 - C#2
+  description: Winner Group D - Runner Up Group C
  m29:
   match_name: Semi Final 1
   match_number: 61
@@ -327,7 +327,7 @@ matches:
   group_home: AB
   group_away: CD
   time_close: 2012/06/27 20:45:00
-  description: QF1 - QF3
+  description: Winner QF1 - Winner QF3
  m30:
   match_name: Semi Final 2
   match_number: 62
@@ -340,7 +340,7 @@ matches:
   group_home: AB
   group_away: CD
   time_close: 2012/06/28 20:45:00
-  description: QF2 - QF4
+  description: Winner QF2 - Winner QF4
  m31:
   match_name: Final
   match_number: 99
@@ -353,5 +353,5 @@ matches:
   group_home: ABCD
   group_away: ABCD
   time_close: 2012/07/01 20:45:00
-  description: SF1 - SF2
+  description: Winner SF1 - Winner SF2
 
