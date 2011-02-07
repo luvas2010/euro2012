@@ -47,7 +47,7 @@ class Home extends Controller {
 		$vars['closed'] = $closed;
         $vars['title'] = $this->lang->line('title_home');
 		$vars['content_view'] = "match_list";
-        $vars['content_view'] = "home_page";
+        //$vars['content_view'] = "home_page";
         $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);
 		}
