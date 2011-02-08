@@ -287,7 +287,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-INSERT INTO users (`id`, `username`, `password`, `email`, `nickname`, `street`, `zipcode`, `city`, `phone`, `poolgroup`, `language`, `admin`, `paid`, `active`, `lastlogin`, `activecode`, `resetcode`, `points`, `previouspoints`, `position`, `lastposition`, `pred_total_goals`, `created_at`, `updated_at`) VALUES (1, 'schop', '35589117afefdd6a71f2ef2b5fd7c93a', 'john.schop@gmail.com', 'Schop Zelf', '6021 BRADFORD WAY', NULL, 'Hudson', '5353535', NULL, 'english', 1, 0, 0, '0000-00-00 00:00:00', 'c23WFC1jXlJDEPzl', '', 0, 0, 0, 0, NULL, '2011-02-07 23:18:28', '2011-02-07 23:18:28');
+INSERT INTO users (`id`, `username`, `password`, `email`, `nickname`, `street`, `zipcode`, `city`, `phone`, `poolgroup`, `language`, `admin`, `paid`, `active`, `lastlogin`, `activecode`, `resetcode`, `points`, `previouspoints`, `position`, `lastposition`, `pred_total_goals`, `created_at`, `updated_at`) VALUES (1, 'schop', '35589117afefdd6a71f2ef2b5fd7c93a', 'john.schop@gmail.com', 'Schop Zelf', '6021 BRADFORD WAY', NULL, 'Hudson', '5353535', NULL, 'english', 1, 0, 1, '0000-00-00 00:00:00', 'c23WFC1jXlJDEPzl', '', 0, 0, 0, 0, NULL, '2011-02-07 23:18:28', '2011-02-07 23:18:28');
 
 
 #
