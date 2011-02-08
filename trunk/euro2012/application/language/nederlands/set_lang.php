@@ -31,7 +31,7 @@ $lang['points_for_champion_description'] = "Punten voor het correct voorspellen 
 $lang['view_other_users_description'] = "Vul -1- in om de voorspellingen van andere gebruikers te tonen";
 $lang['use_cards_description'] = "Vul -1- in om de voorspellingen van gele en rode kaarten te activeren.";
 $lang['user_activation_description'] = "Vereis activatie van gebruiker";
-$lang['server_time_offset_utc_description'] = "Corrigeerd de tijd met x minuten op de server";
+$lang['server_time_offset_utc_description'] = "Server tijdcorrectie in seconden (t.o.v. GMT)";
 
 $lang['save'] = "Bewaar";
 $lang['cancel'] = "Annuleer";
