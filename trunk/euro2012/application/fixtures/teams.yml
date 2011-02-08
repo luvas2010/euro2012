@@ -239,8 +239,7 @@ teams:
  t17:
   team_id_home: 50
   team_id_away: 50
-  name: Group A1
-  flag: QF
+  name: Winner Group A
   team_group: QF
   played: 0
   won: 0
@@ -253,8 +252,7 @@ teams:
  t18:
   team_id_home: 51
   team_id_away: 51
-  name: Group A2
-  flag: QF
+  name: Runner up Group A
   team_group: QF
   played: 0
   won: 0
@@ -267,8 +265,7 @@ teams:
  t19:
   team_id_home: 52
   team_id_away: 52
-  name: Group B1
-  flag: QF
+  name: Winner Group B
   team_group: QF
   played: 0
   won: 0
@@ -281,8 +278,7 @@ teams:
  t20:
   team_id_home: 53
   team_id_away: 53
-  name: Group B2
-  flag: QF
+  name: Runner Up Group B
   team_group: QF
   played: 0
   won: 0
@@ -295,8 +291,7 @@ teams:
  t21:
   team_id_home: 54
   team_id_away: 54
-  name: Group C1
-  flag: QF
+  name: Winner Group C
   team_group: QF
   played: 0
   won: 0
@@ -309,8 +304,7 @@ teams:
  t22:
   team_id_home: 55
   team_id_away: 55
-  name: Group C2
-  flag: QF
+  name: Runner Up Group C
   team_group: QF
   played: 0
   won: 0
@@ -323,8 +317,7 @@ teams:
  t23:
   team_id_home: 56
   team_id_away: 56
-  name: Group D1
-  flag: QF
+  name: Winner Group D
   team_group: QF
   played: 0
   won: 0
@@ -337,8 +330,7 @@ teams:
  t24:
   team_id_home: 57
   team_id_away: 57
-  name: Group D2
-  flag: QF
+  name: Runner Up Group D
   team_group: QF
   played: 0
   won: 0
@@ -352,7 +344,6 @@ teams:
   team_id_home: 80
   team_id_away: 80
   name: Winner QF1
-  flag: SF
   team_group: SF
   played: 0
   won: 0
@@ -366,7 +357,6 @@ teams:
   team_id_home: 81
   team_id_away: 81
   name: Winner QF2
-  flag: SF
   team_group: SF
   played: 0
   won: 0
@@ -380,7 +370,6 @@ teams:
   team_id_home: 82
   team_id_away: 82
   name: Winner QF3
-  flag: SF
   team_group: SF
   played: 0
   won: 0
@@ -394,7 +383,6 @@ teams:
   team_id_home: 83
   team_id_away: 83
   name: Winner QF4
-  flag: SF
   team_group: SF
   played: 0
   won: 0
@@ -408,7 +396,6 @@ teams:
   team_id_home: 90
   team_id_away: 90
   name: Winner SF1
-  flag: F
   team_group: F
   played: 0
   won: 0
@@ -422,7 +409,6 @@ teams:
   team_id_home: 91
   team_id_away: 91
   name: Winner SF2
-  flag: F
   team_group: F
   played: 0
   won: 0

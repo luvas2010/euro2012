@@ -24,13 +24,13 @@ $this->lang->load('set', language() );
 		    <tr>
 		    <?php echo form_hidden('id'.$setting->id,$setting->id); ?>            
 	            <td>
-	                <label for="value<?php echo $setting->id; ?>"><?php echo lang($setting->setting);?>:</label>
+	                <label for="value<?php echo $setting->id; ?>"><?php echo $setting['setting'];?>:</label>
 		        </td>
 		        <td>
-		            <?php echo form_input('value'.$setting->id,$setting->value); ?>
+		            <?php echo form_input('value'.$setting['id'],$setting['value']); ?>
 	            </td>
 	            <td>
-		            <?php echo lang($setting->description); ?>
+		            <?php echo lang($setting['description']); ?>
 	            </td>
 	        </tr>
 	<?php endforeach; ?>
