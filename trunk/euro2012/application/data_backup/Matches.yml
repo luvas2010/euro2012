@@ -1,0 +1,528 @@
+Matches:
+  Matches_1:
+    match_name: 'Group A Match 1'
+    Prediction: Predictions_11
+    TeamHome: Teams_1
+    TeamAway: Teams_2
+    Venue: Venues_3
+    match_time: '2012-06-08 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: A
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-08 18:00:00'
+    description: A1-A2
+  Matches_2:
+    match_name: 'Group A Match 2'
+    Prediction: Predictions_12
+    TeamHome: Teams_3
+    TeamAway: Teams_4
+    Venue: Venues_4
+    match_time: '2012-06-08 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: A
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-08 20:45:00'
+    description: A3-A4
+  Matches_3:
+    match_name: 'Group B Match 1'
+    Prediction: Predictions_21
+    TeamHome: Teams_5
+    TeamAway: Teams_6
+    Venue: Venues_6
+    match_time: '2012-06-09 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: B
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-09 18:00:00'
+    description: B1-B2
+  Matches_4:
+    match_name: 'Group B Match 2'
+    Prediction: Predictions_22
+    TeamHome: Teams_7
+    TeamAway: Teams_8
+    Venue: Venues_8
+    match_time: '2012-06-09 19:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: B
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-09 19:45:00'
+    description: B3-B4
+  Matches_5:
+    match_name: 'Group C Match 1'
+    Prediction: Predictions_31
+    TeamHome: Teams_9
+    TeamAway: Teams_10
+    Venue: Venues_1
+    match_time: '2012-06-10 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: C
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-10 18:00:00'
+    description: C1-C2
+  Matches_6:
+    match_name: 'Group C Match 2'
+    Prediction: Predictions_32
+    TeamHome: Teams_11
+    TeamAway: Teams_12
+    Venue: Venues_2
+    match_time: '2012-06-10 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: C
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-10 20:45:00'
+    description: C3-C4
+  Matches_7:
+    match_name: 'Group D Match 1'
+    Prediction: Predictions_41
+    TeamHome: Teams_15
+    TeamAway: Teams_16
+    Venue: Venues_5
+    match_time: '2012-06-11 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: D
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-11 18:00:00'
+    description: D3-D4
+  Matches_8:
+    match_name: 'Group D Match 2'
+    Prediction: Predictions_42
+    TeamHome: Teams_13
+    TeamAway: Teams_14
+    Venue: Venues_7
+    match_time: '2012-06-11 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: D
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-11 20:45:00'
+    description: D1-D2
+  Matches_9:
+    match_name: 'Group A Match 3'
+    Prediction: Predictions_13
+    TeamHome: Teams_2
+    TeamAway: Teams_4
+    Venue: Venues_4
+    match_time: '2012-06-12 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: A
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-12 16:00:00'
+    description: A2-A4
+  Matches_10:
+    match_name: 'Group A Match 4'
+    Prediction: Predictions_14
+    TeamHome: Teams_1
+    TeamAway: Teams_3
+    Venue: Venues_3
+    match_time: '2012-06-12 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: A
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-12 20:45:00'
+    description: A1-A3
+  Matches_11:
+    match_name: 'Group B Match 3'
+    Prediction: Predictions_23
+    TeamHome: Teams_5
+    TeamAway: Teams_7
+    Venue: Venues_6
+    match_time: '2012-06-13 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: B
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-13 18:00:00'
+    description: B1-B3
+  Matches_12:
+    match_name: 'Group B Match 4'
+    Prediction: Predictions_24
+    TeamHome: Teams_6
+    TeamAway: Teams_8
+    Venue: Venues_8
+    match_time: '2012-06-13 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: B
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-13 18:00:00'
+    description: B2-B4
+  Matches_13:
+    match_name: 'Group C Match 3'
+    Prediction: Predictions_33
+    TeamHome: Teams_10
+    TeamAway: Teams_12
+    Venue: Venues_7
+    match_time: '2012-06-14 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: C
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-14 18:00:00'
+    description: C2-C4
+  Matches_14:
+    match_name: 'Group C Match 4'
+    Prediction: Predictions_34
+    TeamHome: Teams_9
+    TeamAway: Teams_11
+    Venue: Venues_1
+    match_time: '2012-06-14 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: C
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-14 20:45:00'
+    description: C1-C3
+  Matches_15:
+    match_name: 'Group D Match 3'
+    Prediction: Predictions_43
+    TeamHome: Teams_14
+    TeamAway: Teams_16
+    Venue: Venues_7
+    match_time: '2012-06-15 18:00:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: D
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-15 18:00:00'
+    description: D2-D4
+  Matches_16:
+    match_name: 'Group D Match 4'
+    Prediction: Predictions_44
+    TeamHome: Teams_13
+    TeamAway: Teams_15
+    Venue: Venues_5
+    match_time: '2012-06-15 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: D
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-15 20:45:00'
+    description: D1-D3
+  Matches_17:
+    match_name: 'Group A Match 5'
+    Prediction: Predictions_15
+    TeamHome: Teams_2
+    TeamAway: Teams_3
+    Venue: Venues_3
+    match_time: '2012-06-16 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: A
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-16 20:45:00'
+    description: A2-A3
+  Matches_18:
+    match_name: 'Group A Match 6'
+    Prediction: Predictions_16
+    TeamHome: Teams_4
+    TeamAway: Teams_1
+    Venue: Venues_4
+    match_time: '2012-06-16 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: A
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-16 20:45:00'
+    description: A4-A1
+  Matches_19:
+    match_name: 'Group B Match 5'
+    Prediction: Predictions_25
+    TeamHome: Teams_8
+    TeamAway: Teams_5
+    Venue: Venues_6
+    match_time: '2012-06-17 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: B
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-17 20:45:00'
+    description: B4-B1
+  Matches_20:
+    match_name: 'Group B Match 6'
+    Prediction: Predictions_26
+    TeamHome: Teams_6
+    TeamAway: Teams_7
+    Venue: Venues_7
+    match_time: '2012-06-17 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: B
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-17 20:45:00'
+    description: B2-B3
+  Matches_21:
+    match_name: 'Group C Match 5'
+    Prediction: Predictions_35
+    TeamHome: Teams_12
+    TeamAway: Teams_9
+    Venue: Venues_1
+    match_time: '2012-06-18 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: C
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-18 20:45:00'
+    description: C4-C1
+  Matches_22:
+    match_name: 'Group C Match 6'
+    Prediction: Predictions_36
+    TeamHome: Teams_10
+    TeamAway: Teams_11
+    Venue: Venues_2
+    match_time: '2012-06-18 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: C
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-18 20:45:00'
+    description: C2-C3
+  Matches_23:
+    match_name: 'Group D Match 5'
+    Prediction: Predictions_45
+    TeamHome: Teams_14
+    TeamAway: Teams_15
+    Venue: Venues_7
+    match_time: '2012-06-19 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: D
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-19 20:45:00'
+    description: D2-D3
+  Matches_24:
+    match_name: 'Group D Match 6'
+    Prediction: Predictions_46
+    TeamHome: Teams_16
+    TeamAway: Teams_13
+    Venue: Venues_5
+    match_time: '2012-06-19 20:45:00'
+    type_id: '6'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: D
+    group_home: ''
+    group_away: ''
+    time_close: '2012-06-19 20:45:00'
+    description: D4-D1
+  Matches_25:
+    match_name: 'Quarter Final 1'
+    Prediction: Predictions_51
+    TeamHome: Teams_50
+    TeamAway: Teams_53
+    Venue: Venues_3
+    match_time: '2012-06-21 20:45:00'
+    type_id: '4'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: QF
+    group_home: A
+    group_away: B
+    time_close: '2012-06-21 20:45:00'
+    description: 'Winner Group A - Runner Up Group B'
+  Matches_26:
+    match_name: 'Quarter Final 2'
+    Prediction: Predictions_52
+    TeamHome: Teams_52
+    TeamAway: Teams_51
+    Venue: Venues_1
+    match_time: '2012-06-22 20:45:00'
+    type_id: '4'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: QF
+    group_home: B
+    group_away: A
+    time_close: '2012-06-22 20:45:00'
+    description: 'Winner Group B - Runner Up Group A'
+  Matches_27:
+    match_name: 'Quarter Final 3'
+    Prediction: Predictions_53
+    TeamHome: Teams_54
+    TeamAway: Teams_57
+    Venue: Venues_5
+    match_time: '2012-06-23 20:45:00'
+    type_id: '4'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: QF
+    group_home: C
+    group_away: D
+    time_close: '2012-06-23 20:45:00'
+    description: 'Winner Group C - Runner Up Group D'
+  Matches_28:
+    match_name: 'Quarter Final 4'
+    Prediction: Predictions_54
+    TeamHome: Teams_56
+    TeamAway: Teams_55
+    Venue: Venues_7
+    match_time: '2012-06-24 19:45:00'
+    type_id: '4'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: QF
+    group_home: D
+    group_away: C
+    time_close: '2012-06-24 19:45:00'
+    description: 'Winner Group D - Runner Up Group C'
+  Matches_29:
+    match_name: 'Semi Final 1'
+    Prediction: Predictions_61
+    TeamHome: Teams_80
+    TeamAway: Teams_82
+    Venue: Venues_5
+    match_time: '2012-06-27 20:45:00'
+    type_id: '2'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: SF
+    group_home: AB
+    group_away: CD
+    time_close: '2012-06-27 20:45:00'
+    description: 'Winner QF1 - Winner QF3'
+  Matches_30:
+    match_name: 'Semi Final 2'
+    Prediction: Predictions_62
+    TeamHome: Teams_81
+    TeamAway: Teams_83
+    Venue: Venues_3
+    match_time: '2012-06-28 20:45:00'
+    type_id: '2'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: SF
+    group_home: AB
+    group_away: CD
+    time_close: '2012-06-28 20:45:00'
+    description: 'Winner QF2 - Winner QF4'
+  Matches_31:
+    match_name: Final
+    Prediction: Predictions_99
+    TeamHome: Teams_90
+    TeamAway: Teams_91
+    Venue: Venues_7
+    match_time: '2012-07-01 20:45:00'
+    type_id: '1'
+    home_goals: null
+    away_goals: null
+    red_cards: null
+    yellow_cards: null
+    match_group: F
+    group_home: ABCD
+    group_away: ABCD
+    time_close: '2012-07-01 20:45:00'
+    description: 'Winner SF1 - Winner SF2'
