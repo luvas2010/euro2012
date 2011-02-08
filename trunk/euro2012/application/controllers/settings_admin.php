@@ -75,12 +75,19 @@ class Settings_admin extends Controller {
     
     public function add_setting_submit() {
     
-        $setting = New Settings();
-        $setting['setting'] = $this->input->post('setting');
-        $setting['value'] = $this->input->post('value');
-        $setting['description'] = $this->input->post('description');
-        $setting->save();
-        $this->index();
+        if (admin()) {
+            
+            if ($this->_add_settings_validate() === FALSE) {
+                    $this->index();
+                    return;
+                }
+            $setting = New Settings();
+            $setting['setting'] = $this->input->post('settingnew');
+            $setting['value'] = $this->input->post('valuenew');
+            $setting['description'] = $this->input->post('descriptionnew');
+            $setting->save();
+            $this->index();
+            }
     }
 	
     public function delete($id) {
@@ -94,9 +101,17 @@ class Settings_admin extends Controller {
     }
     
     
-    private function _submit_validate() {
+    private function _add_settings_validate() {
 
-
+		// validation rules
+		$this->form_validation->set_rules('settingnew', 'Setting',
+			'required|alpha_dash|min_length[1]|max_length[40]|unique[Settings.setting]');
+        
+		$this->form_validation->set_rules('valuenew', 'Value',
+			'required');
+		$this->form_validation->set_message('required', 'Je moet een waarde in vullen voor "%s"');
+        $this->form_validation->set_message('alpha_dash', '"%s" mag geen spaties of andere tekens hebben, behalve "_" en "-".');
+		return $this->form_validation->run();
 		    
 		return true;
 

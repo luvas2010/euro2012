@@ -9,8 +9,14 @@ $this->lang->load('set', language() );
         <h3><?php echo lang('edit_settings');?></h3>
         
 	    <?php echo form_open('settings_admin/submit'); ?>
-
-	    <?php echo validation_errors('<p class="error">','</p>'); ?>
+        <?php if (validation_errors()): ?>
+        <div class='error'>
+            Er is een probleem met de ingevulde data:
+            <ul>
+            <?php echo validation_errors('<li>','</li>'); ?>
+            </ul>
+        </div>
+        <?php endif; ?>
 	    <table>
 	        <thead>
 	            <tr>
@@ -45,8 +51,6 @@ $this->lang->load('set', language() );
     <?php echo form_close(); ?>
     <br /><hr />
 	<?php echo form_open('settings_admin/add_setting_submit'); ?>
-
-	    <?php echo validation_errors('<p class="error">','</p>'); ?>
         <h3>Voeg een parameter toe</h3>
 	    <table>
 	        <thead>
@@ -59,13 +63,13 @@ $this->lang->load('set', language() );
 	        <tbody>
 		    <tr>            
 	            <td>
-	                <?php echo form_input('setting',''); ?>
+	                <?php echo form_input('settingnew',''); ?>
 		        </td>
 		        <td>
-		            <?php echo form_input('value',''); ?>
+		            <?php echo form_input('valuenew',''); ?>
 	            </td>
 	            <td>
-		            <?php echo form_input('description','', 'size="80"'); ?>
+		            <?php echo form_input('descriptionnew','', 'size="80"'); ?>
 	            </td>
 	        </tr>
 	    </tbody>

@@ -6,7 +6,7 @@ SET foreign_key_checks = 0;
 DROP TABLE IF EXISTS matches;
 
 CREATE TABLE `matches` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `match_name` varchar(255) NOT NULL,
   `match_number` int(10) unsigned NOT NULL,
   `home_id` int(10) unsigned NOT NULL,
@@ -14,16 +14,16 @@ CREATE TABLE `matches` (
   `venue_id` int(10) unsigned NOT NULL,
   `match_time` datetime NOT NULL,
   `type_id` int(10) unsigned NOT NULL,
-  `home_goals` int(10) unsigned DEFAULT NULL,
-  `away_goals` int(10) unsigned DEFAULT NULL,
-  `red_cards` int(10) unsigned DEFAULT NULL,
-  `yellow_cards` int(10) unsigned DEFAULT NULL,
+  `home_goals` int(10) unsigned default NULL,
+  `away_goals` int(10) unsigned default NULL,
+  `red_cards` int(10) unsigned default NULL,
+  `yellow_cards` int(10) unsigned default NULL,
   `match_group` varchar(255) NOT NULL,
   `group_home` varchar(255) NOT NULL,
   `group_away` varchar(255) NOT NULL,
   `time_close` datetime NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `description` varchar(255) default NULL,
+  PRIMARY KEY  (`id`),
   KEY `home_id_idx` (`home_id`),
   KEY `away_id_idx` (`away_id`),
   KEY `match_number_idx` (`match_number`),
@@ -73,30 +73,30 @@ INSERT INTO matches (`id`, `match_name`, `match_number`, `home_id`, `away_id`, `
 DROP TABLE IF EXISTS predictions;
 
 CREATE TABLE `predictions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `user_id` int(10) unsigned NOT NULL,
   `match_number` int(10) unsigned NOT NULL,
-  `home_goals` int(10) unsigned DEFAULT NULL,
-  `away_goals` int(10) unsigned DEFAULT NULL,
-  `red_cards` int(10) unsigned DEFAULT NULL,
-  `home_id` int(10) unsigned DEFAULT '0',
-  `away_id` int(10) unsigned DEFAULT '0',
-  `yellow_cards` int(10) unsigned DEFAULT NULL,
-  `points_home_goals` int(10) unsigned DEFAULT NULL,
-  `points_away_goals` int(10) unsigned DEFAULT NULL,
-  `points_toto` int(10) unsigned DEFAULT NULL,
-  `points_exact` int(10) unsigned DEFAULT NULL,
-  `points_red_cards` int(10) unsigned DEFAULT NULL,
-  `points_yellow_cards` int(10) unsigned DEFAULT NULL,
-  `points_home_id` int(10) unsigned DEFAULT NULL,
-  `points_away_id` int(10) unsigned DEFAULT NULL,
-  `points_total_this_match` int(10) unsigned DEFAULT NULL,
-  `position_prev` int(10) unsigned DEFAULT NULL,
-  `position_curr` int(10) unsigned DEFAULT NULL,
-  `total_points_curr` int(10) unsigned DEFAULT NULL,
-  `total_points_prev` int(10) unsigned DEFAULT NULL,
+  `home_goals` int(10) unsigned default NULL,
+  `away_goals` int(10) unsigned default NULL,
+  `red_cards` int(10) unsigned default NULL,
+  `home_id` int(10) unsigned default '0',
+  `away_id` int(10) unsigned default '0',
+  `yellow_cards` int(10) unsigned default NULL,
+  `points_home_goals` int(10) unsigned default NULL,
+  `points_away_goals` int(10) unsigned default NULL,
+  `points_toto` int(10) unsigned default NULL,
+  `points_exact` int(10) unsigned default NULL,
+  `points_red_cards` int(10) unsigned default NULL,
+  `points_yellow_cards` int(10) unsigned default NULL,
+  `points_home_id` int(10) unsigned default NULL,
+  `points_away_id` int(10) unsigned default NULL,
+  `points_total_this_match` int(10) unsigned default NULL,
+  `position_prev` int(10) unsigned default NULL,
+  `position_curr` int(10) unsigned default NULL,
+  `total_points_curr` int(10) unsigned default NULL,
+  `total_points_prev` int(10) unsigned default NULL,
   `calculated` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   KEY `user_id_idx` (`user_id`),
   KEY `match_number_idx` (`match_number`),
   KEY `home_id_idx` (`home_id`),
@@ -131,7 +131,7 @@ INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_go
 INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (22, 1, 44, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (23, 1, 45, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (24, 1, 46, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
-INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (25, 1, 51, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (25, 1, 51, 1, 1, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (26, 1, 52, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (27, 1, 53, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_goals`, `red_cards`, `home_id`, `away_id`, `yellow_cards`, `points_home_goals`, `points_away_goals`, `points_toto`, `points_exact`, `points_red_cards`, `points_yellow_cards`, `points_home_id`, `points_away_id`, `points_total_this_match`, `position_prev`, `position_curr`, `total_points_curr`, `total_points_prev`, `calculated`) VALUES (28, 1, 54, NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
@@ -147,15 +147,15 @@ INSERT INTO predictions (`id`, `user_id`, `match_number`, `home_goals`, `away_go
 DROP TABLE IF EXISTS settings;
 
 CREATE TABLE `settings` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `setting` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL,
   `description` longtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
-INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (1, 'poolname', 'Euro 2012', 'poolname_description');
-INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (2, 'version', '1.0 Alpha', 'version_description');
+INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (1, 'poolname', 'Euro 2012 Voetbal Pool', 'poolname_description');
+INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (2, 'version', '1.0 Beta', 'version_description');
 INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (3, 'points_for_goals', '3', 'points_for_goals_description');
 INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (4, 'points_for_wdl', '3', 'points_for_wdl_description');
 INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (5, 'points_for_exact_score', '5', 'points_for_exact_score_description');
@@ -168,6 +168,10 @@ INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (11, 'use_
 INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (12, 'server_time_offset_utc', '3600', 'server_time_offset_utc_description');
 INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (13, 'user_activation', '1', 'user_activation_description');
 INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (14, 'admin_email', 'admin@example.com', 'admin_email_description');
+INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (15, 'default_language', 'nederlands', '');
+INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (18, 'payment_required', '1', 'Zet op \'1\' voor een pool met inschrijfgeld');
+INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (19, 'payment_amount', '10', 'Bedrag Inschrijfgeld ');
+INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (21, 'payout_key', '50,25,15,10', 'Percentages (gescheiden met een komma) die je kunt winnen');
 
 
 #
@@ -177,13 +181,13 @@ INSERT INTO settings (`id`, `setting`, `value`, `description`) VALUES (14, 'admi
 DROP TABLE IF EXISTS teams;
 
 CREATE TABLE `teams` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
   `team_id_home` int(10) unsigned NOT NULL,
   `team_id_away` int(10) unsigned NOT NULL,
-  `shortname` varchar(255) DEFAULT NULL,
-  `flag` varchar(255) DEFAULT NULL,
-  `team_group` varchar(255) DEFAULT NULL,
+  `shortname` varchar(255) default NULL,
+  `flag` varchar(255) default NULL,
+  `team_group` varchar(255) default NULL,
   `played` int(10) unsigned NOT NULL,
   `won` int(10) unsigned NOT NULL,
   `tie` int(10) unsigned NOT NULL,
@@ -191,12 +195,12 @@ CREATE TABLE `teams` (
   `points` int(10) unsigned NOT NULL,
   `goals_for` int(10) unsigned NOT NULL,
   `goals_against` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `team_id_home_idx` (`team_id_home`),
   UNIQUE KEY `team_id_away_idx` (`team_id_away`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
-INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (1, 'Poland', 1, 1, 'Pol', 'poland.png', 'A', 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (1, 'Polen', 1, 1, 'Pol', 'poland.png', 'A', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (2, 'Group A, Team 2', 2, 2, 'A2', 'euro.png', 'A', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (3, 'Group A, Team 3', 3, 3, 'A3', 'euro.png', 'A', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (4, 'Group A, Team 4', 4, 4, 'A4', 'euro.png', 'A', 0, 0, 0, 0, 0, 0, 0);
@@ -208,7 +212,7 @@ INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `f
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (10, 'Group C, Team 2', 10, 10, 'C2', 'euro.png', 'C', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (11, 'Group C, Team 3', 11, 11, 'C3', 'euro.png', 'C', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (12, 'Group C, Team 4', 12, 12, 'C4', 'euro.png', 'C', 0, 0, 0, 0, 0, 0, 0);
-INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (13, 'Ukraine', 13, 13, 'ukr', 'ukraine.png', 'D', 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (13, 'OekraÃ¯ne', 13, 13, 'ukr', 'ukraine.png', 'D', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (14, 'Group D, Team 2', 14, 14, 'D2', 'euro.png', 'D', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (15, 'Group D, Team 3', 15, 15, 'D3', 'euro.png', 'D', 0, 0, 0, 0, 0, 0, 0);
 INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `flag`, `team_group`, `played`, `won`, `tie`, `lost`, `points`, `goals_for`, `goals_against`) VALUES (16, 'Group D, Team 4', 16, 16, 'D4', 'euro.png', 'D', 0, 0, 0, 0, 0, 0, 0);
@@ -237,12 +241,12 @@ INSERT INTO teams (`id`, `name`, `team_id_home`, `team_id_away`, `shortname`, `f
 DROP TABLE IF EXISTS texts;
 
 CREATE TABLE `texts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `text_name` varchar(255) NOT NULL,
   `text_en` longtext NOT NULL,
   `text_nl` longtext NOT NULL,
   `text_default` longtext NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `text_name` (`text_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -257,17 +261,17 @@ INSERT INTO texts (`id`, `text_name`, `text_en`, `text_nl`, `text_default`) VALU
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `nickname` varchar(255) NOT NULL,
-  `street` varchar(255) DEFAULT NULL,
-  `zipcode` varchar(10) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `poolgroup` varchar(255) DEFAULT NULL,
-  `language` varchar(255) NOT NULL DEFAULT 'english',
+  `street` varchar(255) default NULL,
+  `zipcode` varchar(10) default NULL,
+  `city` varchar(255) default NULL,
+  `phone` varchar(255) default NULL,
+  `poolgroup` varchar(255) default NULL,
+  `language` varchar(255) NOT NULL default 'english',
   `admin` tinyint(1) NOT NULL,
   `paid` tinyint(1) NOT NULL,
   `active` tinyint(1) NOT NULL,
@@ -278,16 +282,16 @@ CREATE TABLE `users` (
   `previouspoints` int(10) unsigned NOT NULL,
   `position` int(10) unsigned NOT NULL,
   `lastposition` int(10) unsigned NOT NULL,
-  `pred_total_goals` int(10) unsigned DEFAULT NULL,
+  `pred_total_goals` int(10) unsigned default NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
-INSERT INTO users (`id`, `username`, `password`, `email`, `nickname`, `street`, `zipcode`, `city`, `phone`, `poolgroup`, `language`, `admin`, `paid`, `active`, `lastlogin`, `activecode`, `resetcode`, `points`, `previouspoints`, `position`, `lastposition`, `pred_total_goals`, `created_at`, `updated_at`) VALUES (1, 'schop', '35589117afefdd6a71f2ef2b5fd7c93a', 'john.schop@gmail.com', 'Schop Zelf', '6021 BRADFORD WAY', NULL, 'Hudson', '5353535', NULL, 'english', 1, 0, 1, '0000-00-00 00:00:00', 'c23WFC1jXlJDEPzl', '', 0, 0, 0, 0, NULL, '2011-02-07 23:18:28', '2011-02-07 23:18:28');
+INSERT INTO users (`id`, `username`, `password`, `email`, `nickname`, `street`, `zipcode`, `city`, `phone`, `poolgroup`, `language`, `admin`, `paid`, `active`, `lastlogin`, `activecode`, `resetcode`, `points`, `previouspoints`, `position`, `lastposition`, `pred_total_goals`, `created_at`, `updated_at`) VALUES (1, 'schop', '35589117afefdd6a71f2ef2b5fd7c93a', 'john.schop@gmail.com', 'Schop Zelf', '6021 BRADFORD WAY', NULL, 'Hudson', '5353535', NULL, 'nederlands', 1, 0, 1, '2011-02-08 11:39:48', 'c23WFC1jXlJDEPzl', '', 0, 0, 0, 0, NULL, '2011-02-07 23:18:28', '2011-02-08 11:39:48');
 
 
 #
@@ -297,13 +301,13 @@ INSERT INTO users (`id`, `username`, `password`, `email`, `nickname`, `street`, 
 DROP TABLE IF EXISTS venues;
 
 CREATE TABLE `venues` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL auto_increment,
   `venue_id` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
-  `city` varchar(255) DEFAULT NULL,
+  `city` varchar(255) default NULL,
   `capacity` bigint(20) unsigned NOT NULL,
   `time_offset_utc` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `venue_id_idx` (`venue_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 

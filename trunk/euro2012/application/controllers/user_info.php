@@ -147,7 +147,39 @@ class User_info extends Controller {
             }
         }
         
- 
+    public function submit_all() {
+        
+        // print_r($arrPost);
+        $u = Doctrine_Query::create()
+            ->select('u.*')
+            ->from('Users u')
+            ->execute();
+        $replace = false;
+        $arrPost = $this->input->post('post_array');    //get all posted values in one array
+        foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the user table
+            foreach ($value as $k => $v) {              // $k represents 'street', 'city' etc.  
+                if ($u[$id][$k]!= $v) {
+                    $u[$id][$k]=$v;
+                    $replace = true;
+                    echo $u[$id][$k]." - ".$v."<br/>";
+                    }
+                }
+                if ($replace) {
+                    print_r($u[$id]->toArray());
+                    $u[$id]->replace();
+                    $replace= false;
+                    }
+            }
+        
+        //foreach($u as $user) {
+        //    foreach ($user as $k => $v) {
+        //    if ($v != $arrPost[$user->id][$k]) { $k = $arrPost[$user->id][$k];}
+        //    }
+            //if ($user['zipcode'] != $arrPost[$user->id]['zipcode']) { $user['zipcode'] = $arrPost[$user->id]['zipcode'];}
+
+        //    }           
+        }
+    
     public function submit() {
 
 		if ($this->_submit_validate() === FALSE) {
