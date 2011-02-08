@@ -1,10 +1,12 @@
 <?php $this->lang->load('match', language()); ?>
 <?php echo $text; ?>
+ 
     <?php if ($warning_predict_teams): ?>
         <p class='error'>
        <?php echo lang('warning_1').anchor('user_predictions/edit', lang('Edit_my_predictions')); ?>
         </p>
     <?php endif; ?>
+
 	<h3><?php echo lang('match_group_stage');?></h3>
 	<table id="home_table" class="match_table">
         <thead>

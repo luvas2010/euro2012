@@ -424,6 +424,7 @@ class User_predictions extends Controller {
                           m.group_home,
                           m.group_away,
                           m.type_id,
+                          m.description,
                           th.name,
                           th.id,
                           th.flag,
@@ -457,6 +458,13 @@ class User_predictions extends Controller {
                     ->where('t.team_id_home < 50')
                     ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                     ->execute();
+                
+                if (($predictions[0]['home_id'] == 0 || $predictions[0]['away_id'] == 0) && $predictions[0]['Match']['type_id'] < 6) {
+                    $vars['warning'] = 1;
+                    }
+                else {
+                    $vars['warning'] = 0;
+                    }
                 
                 foreach ($teams as $team) {
                     //see if this team is in the 'group_home' for this match
@@ -519,7 +527,7 @@ class User_predictions extends Controller {
                                                      
                     // and save the result!                
                     $prediction->save();
-                    $vars['message'] = "Prediction for ".$prediction['Match']['TeamHome']['name']." - ".$prediction['Match']['TeamAway']['name']." changed!";
+                    $vars['message'] = "Voorspelling voor ".$prediction['Match']['match_name']." (".$prediction['Match']['TeamHome']['name']." - ".$prediction['Match']['TeamAway']['name'].") opgeslagen!";
                     $vars['title'] = "Prediction Changed";
                     $vars['content_view'] = "success";
                     $vars['settings'] = $this->settings_functions->settings();

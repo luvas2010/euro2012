@@ -4,7 +4,11 @@ $this->lang->load('welcome', language() );
 ?>
 
 	<?php if (logged_in()) { ?>
-		<h3><?php echo lang('greetings');?> <em><?php echo Current_User::user()->nickname; ?></em>.</h3>
+		<?php if ((Current_User::user()->paid == 0) && ($settings['payment_required'])) : ?>
+            <p class="error">
+                Volgens de administratie heb je nog niet betaald voor deelname aan de pool. Betaal zo snel mogelijk! Als je denkt dat je deze melding ten onrechte ziet, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
+            </p>
+        <?php endif; ?> 
 		<?php echo anchor('home',lang('home')); ?>&nbsp;&nbsp;
         <?php echo anchor('logout',lang('logout')); ?>&nbsp;&nbsp;
         <?php echo anchor('user_predictions/view/'.Current_User::user()->id,lang('see_my_predictions')); ?>&nbsp;&nbsp;

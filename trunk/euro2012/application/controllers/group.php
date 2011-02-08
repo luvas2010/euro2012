@@ -83,7 +83,7 @@ class Group extends Controller {
                 ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u, p.TeamHome pth, p.TeamAway pta')
                 ->where('p.user_id = '.$user_id)
                 ->andWhere('m.match_group = "'.$group.'"')
-                ->orderBy('m.match_time')
+                ->orderBy('m.match_time, m.match_name')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
             
@@ -100,15 +100,14 @@ class Group extends Controller {
                     }
                 }
             $vars['closed'] = $closed;    
-            $vars['title'] = "Predictions Group ".strtoupper($group);
+            $vars['title'] = "Voorspellingen Groep ".strtoupper($group);
             $vars['content_view'] = "user_predictions";		
             $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);
         }    
         else {
             // No user is logged in
-            // Current user is not an admin
-            $vars['title'] = "Not logged in";
+            $vars['title'] = "Niet ingelogd";
             $vars['content_view'] = "not_logged_in";
             $vars['settings'] = $this->settings_functions->settings();
 		$this->load->view('template', $vars);

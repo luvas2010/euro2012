@@ -72,7 +72,28 @@ class Settings_admin extends Controller {
             }
         }
 	}
+    
+    public function add_setting_submit() {
+    
+        $setting = New Settings();
+        $setting['setting'] = $this->input->post('setting');
+        $setting['value'] = $this->input->post('value');
+        $setting['description'] = $this->input->post('description');
+        $setting->save();
+        $this->index();
+    }
 	
+    public function delete($id) {
+    if (admin()) {
+        $q = Doctrine_Query::create()
+            ->delete('Settings s')
+            ->where('s.id = '.$id)
+            ->execute();
+        $this->index();
+        }
+    }
+    
+    
     private function _submit_validate() {
 
 

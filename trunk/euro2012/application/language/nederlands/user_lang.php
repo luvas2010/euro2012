@@ -1,5 +1,5 @@
 <?php
-/* Standard user settigns */
+/* Standard user settings */
 $lang['Edit_User_Info']= "Bewerk gebruikersinfo";
 $lang['User_name:'] = "Gebruikersnaam :";
 $lang['Nick_name:'] = "Nickname :";
@@ -31,7 +31,7 @@ $lang['Match'] = "Wedstrijd";
 $lang['Team_Home'] = "Thuisteam";
 $lang['Team_Away'] = "Uitteam";
 $lang['Prediction'] = "Voorspelling";
-$lang['Points_earned'] = "Punten verdiend";
+$lang['Points_earned'] = "Punten";
 $lang['Action'] = "Actie";
 $lang['Check_scores'] = "Controleer Score";
 $lang['Edit_prediction'] = "Bewerk voorspelling";

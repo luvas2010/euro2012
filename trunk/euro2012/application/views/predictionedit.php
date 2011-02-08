@@ -3,7 +3,8 @@
 // Version: 1.0
 // Author: Schop 
 ?>
-       <h3>Edit Prediction</h3>
+       <h3>Voorspelling invoeren voor <?php echo $prediction['Match']['match_name']; ?></h3>
+       <h4><?php echo $prediction['Match']['description']; ?></h4>
 	    <div id="prediction_form">
 	    <?php echo form_open('user_predictions/prediction_single_submit'); ?>
 
@@ -16,19 +17,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="3" class="th-left">Home</th>
-                            <th colspan="3" class="th-left">Away</th>
-                            <th>Match Time (in <?php echo $prediction['Match']['Venue']['city'];?>)</th>
-                            <th>Closing Time (on this server)</th>
+                            <th colspan="2" class="th-left">Thuis ploeg</th>
+                            <th>Goals</th>
+                            <th colspan="2" class="th-left">Uit ploeg</th>
+                            <th>Goals</th>
+                            <th>Wedstrijd begint om<br />(in <?php echo $prediction['Match']['Venue']['city'];?>)</th>
+                            <th>Sluitingstijd<br />(op deze server)</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th colspan="8" class="info th-left">
-                                <p>You can change your prediction until the match starts. Make sure you pay attention to the closing time 'on this server'.<br />The current time on the server is <?php echo unix_to_human(time()); ?></p>
-                            </th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <tr>
                             <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>
@@ -48,20 +44,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="3" class="th-left">Home</th>
-                            <th colspan="3" class="th-left">Away</th>
-                            <th>Match Time (in <?php echo $prediction['Match']['Venue']['city'];?>)</th>
-                            <th>Closing Time (on this server)</th>
+                            <th colspan="2" class="th-left">Thuis ploeg</th>
+                            <th>Goals</th>
+                            <th colspan="2" class="th-left">Uit ploeg</th>
+                            <th>Goals</th>
+                            <th>Wedstrijd tijd<br />(in <?php echo $prediction['Match']['Venue']['city'];?>)</th>
+                            <th>Sluitingstijd<br />(op deze server)</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th colspan="8" class="info th-left">
-                                <p>You can change the goals prediction until the match starts. Make sure you pay attention to the closing time 'on this server'.<br />The current time on the server is <?php echo unix_to_human(time()); ?></p>
-                                <p class='bold'>You will have to predict the teams before the tournament starts.</p>
-                            </th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         <tr>
                             <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>
@@ -75,6 +65,15 @@
                         </tr>
                     </tbody>
                 </table>
+            <?php endif; ?>
+            <div class="info">
+            <p>Je kunt de uitslag voorspellen tot aan de sluitingstijd. Let op, de tijd op de server wordt hiervoor gebruikt!.<br />De tijd op de server is nu <?php echo unix_to_human(time()); ?></p>
+            <?php if ($prediction['Match']['type_id'] < 6) : ?>
+                <p class='bold'>Welke teams deze wedstijd spelen, moet je voor het toernooi begint voorspellen!</p>
+            <?php endif; ?>
+            </div>
+            <?php if ($warning) : ?>
+                <p class='error'>Je hebt de landen nog niet voorspeld voor deze wedstijd! Doe dit v&oacute;&oacute;r het toernooi begint, anders loop je misschien kostbare punten mis!</p>
             <?php endif; ?>
 
             

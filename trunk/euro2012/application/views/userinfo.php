@@ -11,6 +11,11 @@ $this->lang->load('user', language());
 ?>
     <h3><?php echo lang('Edit_User_Info');?></h3>
 
+    <?php if ($user['paid'] == 0) : ?>
+        <p class="error">
+            Volgens de administratie heb je nog niet betaald voor deelname aan de pool. Betaal zo snel mogelijk! Als je denkt dat je deze melding ten onrechte ziet, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
+        </p>
+    <?php endif; ?>    
     <?php echo form_open('user_info/submit'); ?>
 
         <?php echo validation_errors('<p class="error">','</p>'); ?>

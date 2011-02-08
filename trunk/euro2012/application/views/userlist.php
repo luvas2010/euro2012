@@ -31,7 +31,7 @@
         <li>Points: <span class='bold'><?php echo $user['points']?></span></li>
     </ul>
     <ul>
-        <li>Position: <span class='bold'><?php echo $user['created_at']?></span></li>
+        <li>Created on: <span class='bold'><?php echo $user['created_at']?></span></li>
         <li>Last login: <span class='bold'><?php echo $user['lastlogin']?></span></li>
     </ul>
 
