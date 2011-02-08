@@ -8,6 +8,7 @@
     <?php echo anchor('admin_functions/recalculate_all','Recalculate all predictions'); ?>
     <?php echo anchor('user_info/list_all','View all users'); ?>
     <?php echo anchor('text/view', 'See standard texts'); ?>
+    <?php echo anchor('admin_functions/backup', 'Backup all data'); ?>
 </p>
 <h2>Testing functions (not for use in functioning pools)</h2>
 <p class='warning'>Functions come with no warranty</p> 

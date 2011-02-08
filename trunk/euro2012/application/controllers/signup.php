@@ -97,7 +97,7 @@ class Signup extends Controller {
 			'required|valid_email|unique[Users.email]');
 
 		$this->form_validation->set_rules('nickname', 'Nickname',
-			'required|alpha_numeric|min_length[4]|max_length[40]|unique[Users.nickname]');
+			'required|min_length[4]|max_length[40]|unique[Users.nickname]');
 	
 		$this->form_validation->set_rules('street', 'Adress',
 			'min_length[4]|max_length[60]');

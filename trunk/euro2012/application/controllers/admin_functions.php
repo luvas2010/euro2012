@@ -304,7 +304,35 @@ class Admin_functions extends Controller {
 	        $this->load->view('template', $vars);           
             }
                            
-            
+    public function backup() {
+        // Load the DB utility class
+        $filename = "backup_".time().".sql";
+        $this->load->dbutil();
+        $prefs = array( 'format'      => 'txt',             // gzip, zip, txt
+                        'filename'    => $filename,    // File name - NEEDED ONLY WITH ZIP FILES
+                        'add_drop'    => TRUE,              // Whether to add DROP TABLE statements to backup file
+                        'add_insert'  => TRUE,              // Whether to add INSERT data to backup file
+                        'newline'     => "\n"               // Newline character used in backup file
+                      );
+        // Backup your entire database and assign it to a variable
+        $backup =& $this->dbutil->backup($prefs); 
+
+        // Load the file helper and write the file to your server
+        $this->load->helper('file');
+        $data = "SET foreign_key_checks = 0;\n"; // Need this to be able to restore it later
+        $backup = $data.$backup;
+        write_file('application/data_backup/'.$filename, $backup);
+        
+
+
+        //Doctrine::dumpData('application/data_backup', true);
+            $vars['message'] = 'Dumped all data in application/data_backup/'.$filename.'. You can restore the data using  tool like phpMyAdmin.';
+            $vars['title'] = "Data backup complete";
+            $vars['content_view'] = "success";
+            $vars['settings'] = $this->settings_functions->settings();
+	        $this->load->view('template', $vars); 
+        
+    }
             
 
 }
