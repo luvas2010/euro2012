@@ -11,7 +11,7 @@ class Users extends Doctrine_Record {
 		$this->hasColumn('city', 'string', 255, array('notnull' => false));
 		$this->hasColumn('phone', 'string', 255, array('notnull' => false));
 		$this->hasColumn('poolgroup', 'string', 255, array('notnull' => false));
-        $this->hasColumn('language', 'string', 255, array('default' => 'english'));
+        $this->hasColumn('language', 'string', 255, array('default' => 'nederlands'));
 		$this->hasColumn('admin', 'boolean');
 		$this->hasColumn('paid', 'boolean');
 		$this->hasColumn('active', 'boolean');
@@ -37,6 +37,7 @@ class Users extends Doctrine_Record {
 
 	protected function _encrypt_password($value) {
 		$salt = '#*seCrEt!@-*%';
+        //$salt = 'auhf24rh98y&hggGK';
 		$this->_set('password', md5($salt . $value));
 	}
 }

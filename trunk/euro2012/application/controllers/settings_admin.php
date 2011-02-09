@@ -116,6 +116,12 @@ class Settings_admin extends Controller {
 		return true;
 
 	}
-	
+    private function _submit_validate() {
+
+		// validation rules
+		    
+		return true;
+
+	}	
 
 }

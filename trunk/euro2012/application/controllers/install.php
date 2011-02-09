@@ -12,17 +12,35 @@ class Install extends Controller {
 
     function index() {
     
-    $this->load->database();
-    $vars['db_set'] = $this->db;
-        //print_r ($db_set);
-    $vars['title'] = "Installation Step 1";
-    $vars['content_view'] = "install_step1";
-    $this->load->view('install_template', $vars);
-    
+        $this->load->database();
+        $this->load->dbutil(); 
+        $check_table = $this->db->dbprefix."users";
+        if ($this->db->table_exists($check_table)) {
+            $vars['warning']= true;
+            $vars['tables'] = $this->db->list_tables();
+        }
+        else {
+            $vars['warning'] = false;
+            }
+        
+        $vars['db_set'] = $this->db;
+            //print_r ($db_set);
+        $vars['title'] = "Installation Step 1";
+        $vars['content_view'] = "install_step1";
+        $this->load->view('install_template', $vars);
     }
     
     function step2() {
-
+        
+        $this->load->dbforge();
+        $checktables = array('predictions','matches','texts','venues','settings','teams','users');
+        foreach ($checktables as $checktable) {
+            $check_table = $this->db->dbprefix.$checktable;
+            if ($this->db->table_exists($check_table)) {
+                    $this->dbforge->drop_table($checktable);
+                    }
+            }
+    
         $conn = Doctrine_Manager::connection();
         Doctrine::createTablesFromModels();
         $vars['models'] = Doctrine::getLoadedModels();

@@ -148,36 +148,40 @@ class User_info extends Controller {
         }
         
     public function submit_all() {
-        
-        // print_r($arrPost);
-        $u = Doctrine_Query::create()
-            ->select('u.*')
-            ->from('Users u')
-            ->execute();
+            
+        $userTable = Doctrine::getTable('Users');
+        $userTable->setAttribute(Doctrine::ATTR_COLL_KEY, 'id'); // make sure they get indexed by ID
+        $u = $userTable->findAll();
         $replace = false;
         $arrPost = $this->input->post('post_array');    //get all posted values in one array
         foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the user table
             foreach ($value as $k => $v) {              // $k represents 'street', 'city' etc.  
-                if ($u[$id][$k]!= $v) {
-                    $u[$id][$k]=$v;
-                    $replace = true;
-                    echo $u[$id][$k]." - ".$v."<br/>";
+                
+                if ($u[$id][$k]!= $v) { // iterate over all fileds, see if one has changed
+                    
+                    if ($v != NULL) {
+                        $u[$id][$k]=$v;
+                        }
+                    else {
+                        $u[$id][$k]=NULL;
+                        }
+                    $replace = true;    // this record will have to be updated
                     }
                 }
                 if ($replace) {
-                    print_r($u[$id]->toArray());
-                    $u[$id]->replace();
+                    $u[$id]->replace(); // update the record
                     $replace= false;
                     }
             }
         
-        //foreach($u as $user) {
-        //    foreach ($user as $k => $v) {
-        //    if ($v != $arrPost[$user->id][$k]) { $k = $arrPost[$user->id][$k];}
-        //    }
-            //if ($user['zipcode'] != $arrPost[$user->id]['zipcode']) { $user['zipcode'] = $arrPost[$user->id]['zipcode'];}
-
-        //    }           
+        $u->free();
+        
+        $vars['title'] = "Success";
+        $vars['message'] = "All changed were saved";
+		$vars['content_view'] = "success";
+		$vars['settings'] = $this->settings_functions->settings();
+		$this->load->view('template', $vars);
+         
         }
     
     public function submit() {
@@ -277,6 +281,37 @@ class User_info extends Controller {
             $user->language = $language;
             $user->save();
             redirect('/');
+            }
+    }
+    
+    public function resetpw($id,$random) {
+        if (admin()) {
+            $userTable = Doctrine::getTable("Users");
+            $user = $userTable->find($id);        
+            $user->password = $random;
+            $user->save();
+            $vars['settings'] = $this->settings_functions->settings();
+                $this->load->library('email');
+                $this->email->from('info@voetbalpool.nl', 'Voetbalpool2012.nl');
+                $this->email->to($user->email); 
+                $this->email->subject($vars['settings']['poolname'].' wachtwoord reset');
+                $email = 'Hoi '.$user->nickname.'. Je wachtwoord voor '.$vars['settings']['poolname'].' is nu:<br /><br /><strong>'.$random.'</strong><br /><br />Je kunt dit veranderen door in te loggen op '.anchor("/", base_url()).' en naar '.anchor("/user_info","Mijn Account").' te gaan.';
+                $this->email->message($email);	
+                $this->email->send();
+                
+            $vars['title'] = "Password reset";
+            $vars['message'] = "Het wachtwoord voor ".$user->nickname." is gewijzigd. Er is een e-mail naar ".$user->email." gestuurd met de volgende tekst: <br/><br/>".$email;
+            $vars['content_view'] = "success";
+            $vars['settings'] = $this->settings_functions->settings();
+    		$this->load->view('template', $vars);
+            }
+        else {
+            // Current user is not an admin
+            $vars['title'] = "Access denied";
+            $vars['message'] = "You are not an administrator";
+            $vars['content_view'] = "error";
+            $vars['settings'] = $this->settings_functions->settings();
+    		$this->load->view('template', $vars);
             }
     }
 }

@@ -55,3 +55,20 @@ settings:
   setting: admin_email
   value: admin@example.com
   description: admin_email_description
+ set15:
+  setting: default_language
+  value: nederlands
+  description: default_language_description
+ set16:
+  setting: payment_required
+  value: 1
+  description: default_language_description
+ set17:
+  setting: payment_amount
+  value: 10
+  description: payment_amount_description
+ set15:
+  setting: payout_key
+  value: 50;25;15;10
+  description: payout_key_description
+  

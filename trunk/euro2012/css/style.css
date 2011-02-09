@@ -5,22 +5,32 @@
 /* reset stuff */
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
 /* end of reset stuff */
+html, body {height:100%;}
 
 body {
 	font-family: 'Droid Sans', Arial, sans;
 	background-color: #fafafa;
     font-size: 14px;
 	}
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}
 	
 #container{	
 	width: 1000px;
 	margin: 0 auto;
-	/*background-color: #fff;*/
+	min-height: 100%
 	}
 #content {
-    margin-bottom:10px;
-    overflow: hidden;
+
+    overflow: auto;
     clear:both;
+    padding-bottom:96px;
     }   
     
 p {
@@ -34,6 +44,8 @@ a {
 a.adminlink, .adminlink a {
     color: #F75F07;
     }
+a img {outline:none;
+border-style:none;}
 div.adminlink {float:right;}
 ul li{line-height:1.5em;}
 /* user controls */
@@ -66,7 +78,11 @@ div.user {overflow:hidden;border:1px solid #ccc;margin-bottom:10px;background-co
 #footer {
     border-top: 1px solid #ddd;
     padding-top: 5px;
-    margin: 10px 0px;
+    margin: -96px auto 0px;
+    height:90px;
+    width: 1000px;
+    clear:both;
+    overflow:hidden;
     }    
 
 
@@ -238,6 +254,7 @@ form p label {
     padding: 10px 10px 10px 50px;
     background: #FFBABA url('../images/error.png') 5px 5px no-repeat;
     }
+.error p, .success p {margin-top:0px;}
 /*specials*/
 .red, .red a {
     color:red;

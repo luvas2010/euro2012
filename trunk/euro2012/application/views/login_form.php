@@ -18,7 +18,7 @@
 		<?php echo form_submit('submit','Login'); ?>
         <?php echo anchor('user_info/reset_password','<img src="'.base_url().'images/icons/exclamation.png" alt="" />Wachtwoord vergeten?'); ?>
     </p>
-    <p>
+    <p class="buttons">
         <?php echo anchor('signup','<img src="'.base_url().'images/icons/user_add.png" alt="" />Maak een nieuwe gebruiker aan'); ?>
 	</p>
 

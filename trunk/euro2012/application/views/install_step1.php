@@ -8,12 +8,20 @@
         <li>User Name: <span class="bold"><?php echo $db_set->username; ?></span></li>
         <li>Database Password: <span class="bold"><?php echo $db_set->password; ?></span></li>
     </ul>
-    <p>If this is correct, you can create the tables and proceed to the next step.</p>
+    <?php if ($warning): ?>
+        <div class='error'>
+            <p class='bold'>De database bevat de volgende tabellen:</p>
+            <ul><?php foreach ($tables as $table) {echo "<li>".$table."</li>";} ?></ul>
+            <p>Om overschrijven van data te voorkomen, zou je een 'table prefix' in moeten vullen in <tt>application/config/database.php</tt>, en dan de installatie opnieuw starten door deze pagina te verversen. Je oude data blijft dan bewaard.</p>
+            <p>Als je de bestaande tabellen wilt overschrijven, ga dan door naar stap 2.</p>
+        </div>
+    <?php endif; ?>
+    <p>Als de informatie hierboven juist is, kun je door naar stap 2.</p>
     <p class='buttons'>
-        <?php echo anchor('install/step2','<img src="'.base_url().'/images/icons/database_add.png" alt=""/ >Create tables and go to Step 2', 'class="positive"') ?>
+        <?php echo anchor('install/step2','<img src="'.base_url().'/images/icons/database_add.png" alt=""/ >Maak de tabellen aan, en ga naar Stap 2', 'class="positive"') ?>
     </p>
-    <p>Otherwise, please check the settings in the database configuration file: <tt><?php echo base_url();?>application/config/database.php</tt>, and reload this page after making changes.</p>
+    <p>Is de informatie niet correct, verander dan de instellingen in: <tt><?php echo base_url();?>application/config/database.php</tt>, en ververs deze pagina nadat je wijzigingen hebt gemaakt.</p>
     <p class='buttons'>
-        <?php echo anchor('install/','<img src="'.base_url().'/images/icons/arrow_refresh.png" alt=""/ >Reload') ?>
+        <?php echo anchor('install/','<img src="'.base_url().'/images/icons/arrow_refresh.png" alt=""/ >Verversen') ?>
     </p>
 </div>

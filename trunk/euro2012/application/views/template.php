@@ -34,7 +34,11 @@
         }).superfish();
         });
     </script>
-    
+    <!--[if !IE 7]>
+        <style type="text/css">
+            #container {display:table;height:100%}
+        </style>
+    <![endif]-->
 </head>
 <body>
 <div id='container'>
@@ -49,15 +53,16 @@
     	<?php $this->load->view($content_view); ?> 
 
 	</div> <!-- end content -->
-	<div id="footer">
-	    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=BTH8AYCVJLDD4">Doneren via PayPal</a>&nbsp;|&nbsp;<?php echo $settings['poolname'];?>&nbsp;|&nbsp;Version <?php echo $settings['version'];?>
-        <p>
-            <a href="http://validator.w3.org/check?uri=referer"><img
-                src="http://www.w3.org/Icons/valid-xhtml10-blue"
-                alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
-          </p>	
-	</div>
 </div> <!-- end container -->
+<div id="footer">
+    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=BTH8AYCVJLDD4">Doneren via PayPal</a>&nbsp;|&nbsp;<?php echo $settings['poolname'];?>&nbsp;|&nbsp;Version <?php echo $settings['version'];?>
+    <p>
+        <a href="http://validator.w3.org/check?uri=referer"><img
+            src="http://www.w3.org/Icons/valid-xhtml10-blue"
+            alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+      </p>	
+</div>
+
 </body>
 </html>
 
