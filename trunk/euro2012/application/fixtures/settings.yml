@@ -67,7 +67,7 @@ settings:
   setting: payment_amount
   value: 10
   description: payment_amount_description
- set15:
+ set18:
   setting: payout_key
   value: 50;25;15;10
   description: payout_key_description
