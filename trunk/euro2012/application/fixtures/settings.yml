@@ -5,7 +5,7 @@ settings:
   description: poolname_description
  set2:
   setting: version
-  value: 1.0 Alpha
+  value: 1.0 Beta
   description: version_description
  set3:
   setting: points_for_goals

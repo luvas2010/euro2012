@@ -17,7 +17,12 @@ class Install extends Controller {
         $check_table = $this->db->dbprefix."users";
         if ($this->db->table_exists($check_table)) {
             $vars['warning']= true;
-            $vars['tables'] = $this->db->list_tables();
+            $tables = $this->db->list_tables();
+            foreach ($tables as $table) {
+                if (strncmp($table,$this->db->dbprefix, strlen($this->db->dbprefix)) == 0){
+                    $vars['tables'][] = $table;
+                    }
+                }
         }
         else {
             $vars['warning'] = false;
@@ -92,7 +97,12 @@ class Install extends Controller {
                 }
             $conn = Doctrine_Manager::connection();
             $conn->flush();    
-            }        
+            }
+            $vars['message'] = "Installatie is klaar. Je kunt nu ".anchor('login','inloggen')." als <strong>".$u['username']."</strong>.";
+            $vars['title'] = "Installation complete.";
+            $vars['content_view'] = "success";
+            $vars['settings'] = $this->settings_functions->settings();
+	        $this->load->view('template', $vars);             
     }
 
 	private function _submit_validate() {

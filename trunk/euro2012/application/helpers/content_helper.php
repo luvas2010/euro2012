@@ -2,9 +2,11 @@
 
 if ( ! function_exists('content'))
 {
+
 	function content($textvar, $user_id = -1)
 	{	
-	    $text = Doctrine::getTable('Texts')->findOneByText_name($textvar);
+	    if ($user_id == -1) { $user_id = logged_in();}
+        $text = Doctrine::getTable('Texts')->findOneByText_name($textvar);
 	    if (language() == 'nederlands') {
 	        $returntext = $text['text_nl'];
 	        }
@@ -18,15 +20,14 @@ if ( ! function_exists('content'))
             $replacewith = $setting['value'];
             $returntext = str_replace($replacekey, $replacewith, $returntext);
             }
-        if ($user_id > -1) {
-            $user = Doctrine::getTable('Users')->findOneById($user_id);
+        $user = Doctrine::getTable('Users')->findOneById($user_id);
             
-            foreach ($user as $field => $value) {
-                $replacekey = "[[".$field."]]";
-                $replacewith = $value;
-                $returntext = str_replace($replacekey, $replacewith, $returntext);
-                }
-            }    
+        foreach ($user as $field => $value) {
+            $replacekey = "[[".$field."]]";
+            $replacewith = $value;
+            $returntext = str_replace($replacekey, $replacewith, $returntext);
+            }
+           
         return $returntext;         		
 	}
 }

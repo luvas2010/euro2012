@@ -8,10 +8,21 @@ $this->lang->load('welcome', language() );
         <ul>
             <li>Positie: <?php echo $user['position']; ?></li>
             <li>Punten: <?php echo $user['points']; ?></li>
+            <li>Vorige positie: <?php echo $user['lastposition']; ?></li>
         </ul>
+        <?php if ($user['paid'] == 0): ?>
+        <p class='error'>
+            <strong>Je hebt nog niet betaald!</strong> Betaal zo snel mogelijk het inschrijfgeld van &euro;<?php echo $settings['payment_amount'];?>. Heb je w&eacute;l betaald, maar zie je nog steeds deze melding, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
+        </p>
+     <?php endif; ?>  
     </div>
     <div class="column_1">
-     test
+        <h3>Top Tien</h3>
+        <ul>
+            <?php foreach ($topten as $topuser) { ?>
+                <li><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></li>
+            <?php } ?>    
+        </ul>    
     </div>
     <div class="column_1">
      test
@@ -19,22 +30,22 @@ $this->lang->load('welcome', language() );
     <div class="column_1">
      <?php if ($user['paid'] == 0): ?>
         <p class='error'>
-            <strong>Je hebt nog niet betaald!</strong> Betaal zo snel mogelijk het inschrijfgeld van &euro;<?php echo $settings['payment_amount'];?>
+            <strong>Je hebt nog niet betaald!</strong> Betaal zo snel mogelijk het inschrijfgeld van &euro;<?php echo $settings['payment_amount'];?>. Heb je w&eacute;l betaald, maar zie je nog steeds deze melding, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
         </p>
      <?php endif; ?>   
     </div>
 </div>
 <div class="home_row">
+    <div class="column_2">
+         <?php echo content('text_news'); ?>
+         <?php if (admin()) : ?>
+            <?php echo anchor('text/edit/3','Tekst veranderen'); ?>
+         <?php endif; ?>
+    </div>
     <div class="column_1">
         <h3>Dummy tekst</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ille non pertimuit saneque fidenter: Istis quidem ipsis verbis, inquit; Si id dicis, vicimus. Sint modo partes vitae beatae. Iam id ipsum absurdum, maximum malum neglegi. Neminem videbis ita laudatum, ut artifex callidus comparandarum voluptatum diceretur. Quantum Aristoxeni ingenium consumptum videmus in musicis? Duo Reges: constructio interrete.
         </p>
-    </div>
-    <div class="column_2">
-         <h3>Het laatste nieuws van <?php echo $settings['poolname'];?></h3>
-         <p>
-            Dit is een test. Hier zou je een soort nieuwsitem kunnen publiceren of zo. Ik noem maar iets. <a href="http"//www.windmillwebwork.com">Windmill Web Work </a>
-         </p>   
     </div>
     <div class="column_1">
         <h3>Statistieken?</h3>

@@ -321,16 +321,18 @@ class Admin_functions extends Controller {
         $this->load->helper('file');
         $data = "SET foreign_key_checks = 0;\n"; // Need this to be able to restore it later
         $backup = $data.$backup;
-        write_file('application/data_backup/'.$filename, $backup);
+        //write_file('application/data_backup/'.$filename, $backup);
+        //also offer a download
+        $this->load->helper('download');
+        force_download($filename, $backup);
+
+
         
-
-
-        //Doctrine::dumpData('application/data_backup', true);
-            $vars['message'] = 'Dumped all data in application/data_backup/'.$filename.'. You can restore the data using  tool like phpMyAdmin.';
-            $vars['title'] = "Data backup complete";
-            $vars['content_view'] = "success";
-            $vars['settings'] = $this->settings_functions->settings();
-	        $this->load->view('template', $vars); 
+            // $vars['message'] = 'Dumped all data in application/data_backup/'.$filename.'. You can restore the data using  tool like phpMyAdmin.';
+            // $vars['title'] = "Data backup complete";
+            // $vars['content_view'] = "success";
+            // $vars['settings'] = $this->settings_functions->settings();
+	        // $this->load->view('template', $vars); 
         
     }
             

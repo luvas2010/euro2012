@@ -1,6 +1,6 @@
 <h2><?php echo $title; ?></h2>
 <div id='install'>
-<h3>Please check your database configuration before proceeding:</h3>
+<h3>Controleer de database gegevens voordat je verder gaat:</h3>
     <ul class="info">
         <li>Hostname: <span class="bold"><?php echo $db_set->hostname; ?></span></li>
         <li>Database Name: <span class="bold"><?php echo $db_set->database; ?></span></li>
@@ -10,12 +10,13 @@
     </ul>
     <?php if ($warning): ?>
         <div class='error'>
-            <p class='bold'>De database bevat de volgende tabellen:</p>
+            <p class='bold'>De database bevat reeds de volgende tabellen:</p>
             <ul><?php foreach ($tables as $table) {echo "<li>".$table."</li>";} ?></ul>
-            <p>Om overschrijven van data te voorkomen, zou je een 'table prefix' in moeten vullen in <tt>application/config/database.php</tt>, en dan de installatie opnieuw starten door deze pagina te verversen. Je oude data blijft dan bewaard.</p>
-            <p>Als je de bestaande tabellen wilt overschrijven, ga dan door naar stap 2.</p>
+            <p>Om overschrijven van data te voorkomen, zou je een andere 'table prefix' in moeten vullen in <tt>application/config/database.php</tt>, en dan de installatie opnieuw starten door deze pagina te verversen. Je oude data blijft dan bewaard.</p>
+            <p>Als je de bestaande tabellen wilt overschrijven, ga dan door naar stap 2. Je kunt nog wel <?php echo anchor('admin_functions/backup', 'eerst een backup maken'); ?>.</p>
         </div>
     <?php endif; ?>
+
     <p>Als de informatie hierboven juist is, kun je door naar stap 2.</p>
     <p class='buttons'>
         <?php echo anchor('install/step2','<img src="'.base_url().'/images/icons/database_add.png" alt=""/ >Maak de tabellen aan, en ga naar Stap 2', 'class="positive"') ?>

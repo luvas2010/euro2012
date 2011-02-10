@@ -310,7 +310,10 @@ div.home_row {
     padding-bottom: 5px;
     }
 div.home_row p{
-    text-align:     justify;
+    /*text-align:     justify;*/
+    }
+div.home_row ul{
+    padding-left:   0px;
     }
 div.column_1{
     float:          left;
