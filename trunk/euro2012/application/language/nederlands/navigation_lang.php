@@ -8,11 +8,11 @@ $lang['user'] = "Gebruiker";
 $lang['logout'] = "Uitloggen";
 
 /* Standard user settings */
-$lang['Edit_User_Info']= "Bewerk gebruikersinfo";
+$lang['Edit_User_Info']= "Bewerk&nbsp;gebruikersinfo";
 $lang['User_name:'] = "Gebruikersnaam :";
 $lang['Nick_name:'] = "Nickname :";
 $lang['Password:'] = "Wachtwoord :";
-$lang['Confirm_Password:'] = "Bevestig wachtwoord :";
+$lang['Confirm_Password:'] = "Bevestig&nbsp;wachtwoord :";
 $lang['Language:'] = "Taal :";
 $lang['E-mail:'] = "E-mail :";
 $lang['Adress:'] = "Adres :";
@@ -26,8 +26,8 @@ $lang['cancel'] = "Annuleer";
 $lang['Let_Paul_do_it'] = "Laat het snelle Henk voor je doen";
 
 /* Match strings */
-$lang['Edit_my_predictions'] = "Bewerk mijn voorspellingen";
-$lang['Group_Stage'] = "Groep voorrondes";
+$lang['Edit_my_predictions'] = "Bewerk&nbsp;mijn&nbsp;voorspellingen";
+$lang['Group_Stage'] = "Groepswedstrijden";
 $lang['Home'] = "Thuis";
 $lang['Away'] = "Uit";
 $lang['Closing_Time'] = "Sluitingstijd";
@@ -48,8 +48,8 @@ $lang['Pending_Calculation'] = "Wacht op berekening";
 $lang['greetings'] = "Hallo";
 $lang['intro'] = "Welkom op ";
 $lang['home'] = "Home";
-$lang['see_my_predictions'] = "Toon mijn voorspellingen";
-$lang['edit_my_predictions'] = "Bewerk mijn voorspellingen";
+$lang['see_my_predictions'] = "Toon&nbsp;mijn&nbsp;voorspellingen";
+$lang['edit_my_predictions'] = "Bewerk&nbsp;mijn&nbsp;voorspellingen";
 $lang['settings'] = "Instellingen";
 $lang['admin_functions'] = "Administrator functies";
 $lang['account_info'] = "Mijn account";

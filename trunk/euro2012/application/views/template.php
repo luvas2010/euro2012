@@ -23,7 +23,7 @@
             $("#match-stats-table").tablesorter(
                 {sortList: [[2,1]]});
             $("#ranking").tablesorter(
-                {sortList: [[2,1]]});
+                {sortList: [[1,1]]});
             $("#home_table").jExpand();
             $( 'textarea.ckeditor' ).ckeditor();
             $("ul.sf-menu").supersubs({ 

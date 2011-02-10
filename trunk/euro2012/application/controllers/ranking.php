@@ -9,24 +9,27 @@ class Ranking extends Controller {
         if (logged_in()) {
             $q = Doctrine_Query::create()
                 ->select('p.user_id,
+                          u.position,
+                          u.lastposition,
                           u.nickname')
                 ->addSelect('SUM(p.points_total_this_match) as total')
                 ->addSelect('SUM(p.points_home_goals) as homegoals')
                 ->addSelect('SUM(p.points_away_goals) as awaygoals')
                 ->addSelect('SUM(p.points_toto) as toto')
+                ->addSelect('SUM(p.points_exact) as exact')
                 ->addSelect('SUM(p.points_yellow_cards) as yellow')
                 ->addSelect('SUM(p.points_red_cards) as red')
                 ->addSelect('SUM(p.points_toto) as toto')
                 ->from('Predictions p, p.User u')
                 ->groupBy('p.user_id')
-                ->orderBy('total DESC')
+                ->orderBy('u.position')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
             $vars['rankings'] = $q;
             $vars['title'] = "Ranking";
             $vars['content_view'] = "ranking";
             $vars['settings'] = $this->settings_functions->settings();
-            $this->load->view('template', $vars);    
+            $this->load->view('template', $vars);
         }
         else {
             // No user is logged in

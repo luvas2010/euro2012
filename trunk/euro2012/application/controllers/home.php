@@ -3,63 +3,22 @@ class Home extends Controller {
 
 	public function index() {
             
-        if (logged_in()) { // Get all matches
-            $user_id = Current_User::user()->id;
-             // Lookup the matches in this group, and their predictions by this user
-            $vars['predictions'] = Doctrine_Query::create()
-                ->select('m.match_name,
-                          m.match_number,
-                          m.match_time,
-                          m.home_goals,
-                          m.away_goals,
-                          m.home_id,
-                          m.time_close,
-                          m.match_group,
-                          m.type_id,
-                          th.name,
-                          th.flag,
-                          ta.name,
-                          ta.flag,
-                          p.*,
-                          pth.name,
-                          pth.flag,
-                          pta.name,
-                          pta.flag
-                          ')
-                ->from('Predictions p, p.Match m, p.TeamHome pth, p.TeamAway pta, m.TeamHome th, m.TeamAway ta, m.Venue v')
-                ->where('p.user_id = '.$user_id)
-                ->orderBy('m.match_time')
-                ->setHydrationMode(Doctrine::HYDRATE_ARRAY) //This makes it quicker, we don't need to update the database, just see the predictions
+        if ($user_id = logged_in()) {
+            //show a 'portal'
+            $u = Doctrine_Query::create()
+                ->select('u.*')
+                ->from('Users u INDEXBY u.id')
+                ->where('u.active = 1')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
             
-            foreach ($vars['predictions'] as $prediction)
-                {
-                $num = $prediction['match_number'];
-                if (mysql_to_unix($prediction['Match']['time_close']) > time()) {
-                    $closed[$num] = 0;
-                    }
-                else {
-                    $closed[$num] = 1;
-                    }
-                    
-                if ($prediction['Match']['type_id'] < 6) {
-                        if ($prediction['home_id'] == 0 || $prediction['away_id'] == 0) {
-                            $vars['warning_predict_teams'] = 1;
-                            }
-                        else {
-                            $vars['warning_predict_teams'] = 0;
-                            }    
-                    }
-                }
-                
-		//$this->lang->load('match', language());
-        $vars['text'] = content('text_welcome_logged_in', $user_id);
-		$vars['closed'] = $closed;
-        $vars['title'] = $this->lang->line('title_home');
-		$vars['content_view'] = "match_list";
-        //$vars['content_view'] = "home_page";
-        $vars['settings'] = $this->settings_functions->settings();
-		$this->load->view('template', $vars);
+
+            $vars['title'] = "Work in progress";
+            $vars['u'] = $u;
+            $vars['user'] = $u[$user_id];
+            $vars['content_view'] = "home_page";
+            $vars['settings'] = $this->settings_functions->settings();
+            $this->load->view('template', $vars);
 		}
     else {
 	    // No user is logged in

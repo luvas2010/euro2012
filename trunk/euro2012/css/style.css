@@ -301,3 +301,24 @@ div.textview {
     background-color: #eee;
 }
 div.floatleft{float:left;}
+
+/*homepage styles*/
+div.home_row {
+    overflow:       hidden;
+    border-bottom:  1px solid #ccc;
+    margin:         0px 0px 10px 0px;
+    padding-bottom: 5px;
+    }
+div.home_row p{
+    text-align:     justify;
+    }
+div.column_1{
+    float:          left;
+    width:          240px;
+    padding:        0px 5px;
+    }
+div.column_2{
+    float:          left;
+    width:          490px;
+    padding:        0px 5px;
+    }

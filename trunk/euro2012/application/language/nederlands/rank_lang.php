@@ -3,10 +3,10 @@
 $lang['Find_myself'] = "Vind mezelf";
 $lang['Rank'] = "Rang";
 $lang['User'] = "Gebruiker";
-$lang['Total_points'] = "Totaal aantal punten";
-$lang['Points_for_home_goals'] = "Punten voor thuisdoelpunten";
-$lang['Points_for_away_goals'] = "Punten voor uitdoelpunten";
-$lang['Points_for_Win-Draw-Loss'] = "Punten voor winst/gelijkspel/verlies";
+$lang['Total_points'] = "Punten<br/>totaal";
+$lang['Points_for_home_goals'] = "Punten voor<br />thuisdoelpunten";
+$lang['Points_for_away_goals'] = "Punten voor<br />uitdoelpunten";
+$lang['Points_for_Win-Draw-Loss'] = "Punten voor<br />winst/gelijk/verlies";
 $lang['Points_for_yellow_cards'] = "Punten voor gele kaarten";
 $lang['Points_for_red_cards'] = "Punten voor rode kaarten";
 

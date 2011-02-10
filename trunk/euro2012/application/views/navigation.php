@@ -5,7 +5,7 @@
             <?php if (logged_in()) : ?>
                 <li><a href="#"><?php echo lang('matches');?></a>
                     <ul>
-                        <li><?php echo anchor('home','Alle wedstrijden'); ?></li>
+                        <li><?php echo anchor('match/viewall','Alle wedstrijden'); ?></li>
                         <li><?php echo anchor('group/overview/a',lang('group').' A'); ?>
                             <ul>
                                 <li><?php echo anchor('group/overview/a',lang('overview').' '.lang('group').' A'); ?></li>
@@ -67,7 +67,7 @@
                         <ul>
                             <li><?php echo anchor('admin_functions/create_users','Maak 50 test gebruikers aan'); ?></li>
                             <li><?php echo anchor('admin_functions/randomize_predictions','Vul alle voorspellingen willekeurig in'); ?></li>
-                            <li><?php echo anchor('admin_functions/clear_results','Verwijder alle uitslagen en punten'); ?></li>
+                            <li><?php echo anchor('admin_functions/clear_results','Wis alle uitslagen en punten'); ?></li>
                             <li><?php echo anchor('admin_functions/clear_predictions','Wis alle voorspellingen'); ?></li>
                         </ul>
                     </li>      

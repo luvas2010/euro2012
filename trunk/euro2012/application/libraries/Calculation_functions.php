@@ -15,10 +15,12 @@ class Calculation_functions {
 
     function reset_calculations() {
         $q = Doctrine_Query::create()
-            ->update('Predictions')
-            ->set('calculated', '0')
+            ->update('Predictions p, Users u')
+            ->set('p.calculated', '0')
+            ->set('u.points', '0')
             ->execute();
-         return true;
+
+            return true;
     }
     
     function matchstats($match_number) {
@@ -87,7 +89,10 @@ class Calculation_functions {
             //$predictionsTable = Doctrine::gettable("Predictions");
             //Calculations done by user
             $users = Doctrine_Query::create()
-                ->select('u.id')
+                ->select('u.id,
+                          u.points,
+                          u.previouspoints
+                          ')
                 ->from('Users u')
                 //->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
@@ -233,6 +238,34 @@ class Calculation_functions {
                     $predictions->save();
                 }
                 $users->save();
+                
+                //Now update position for each user
+                $users = Doctrine_Query::create()
+                    ->select('u.id,
+                              u.points,
+                              u.position,
+                              u.lastposition
+                              ')
+                    ->from('Users u')
+                    ->orderBy('u.points DESC')
+                    ->execute();
+                    
+                // print_r($users->toArray());
+                
+                $rank = 0;
+                $truerank = 0;
+                $lastpoints = 0;
+                foreach ($users as $user){
+                    $truerank++;
+                    if ($lastpoints != $user['points']) {
+                        $rank = $truerank;
+                        }
+                    $user['lastposition'] = $user['position'];
+                    $user['position'] = $rank;
+                    $lastpoints = $user['points'];
+                    }
+                    
+                $users->save();                    
                 return $total;
     }
       
