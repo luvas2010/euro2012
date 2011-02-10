@@ -33,7 +33,7 @@
 
     <p class='buttons'>
         <?php $random = random_string('alnum', 8); ?>
-        <?php echo anchor('/user_info/resetpw/'.$user['id'].'/'.$random, '<img src="'.base_url().'images/icons/key.png" alt="" />Wachtwoord reset', 'class="negative"'); ?>
+        <?php echo anchor('/user_info/resetpw/'.$user['id'], '<img src="'.base_url().'images/icons/key.png" alt="" />Wachtwoord reset', 'class="negative"'); ?>
         <?php echo anchor('/user_info/delete_user/'.$user['id'],'<img src="'.base_url().'images/icons/user_delete.png" alt="" />Delete User '.$user['nickname'], 'class="negative"'); ?></p>
 </div>
 <?php endforeach; ?>

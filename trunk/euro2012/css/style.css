@@ -11,6 +11,7 @@ body {
 	font-family: 'Droid Sans', Arial, sans;
 	background-color: #fafafa;
     font-size: 14px;
+    margin:0;
 	}
 /*Opera Fix*/
 body:before {

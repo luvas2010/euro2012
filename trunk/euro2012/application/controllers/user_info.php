@@ -284,8 +284,9 @@ class User_info extends Controller {
             }
     }
     
-    public function resetpw($id,$random) {
-        if (admin()) {
+    public function resetpw($id) {
+        $random = random_string('alnum', 8);
+        if (admin() || logged_in() == $id) {
             $userTable = Doctrine::getTable("Users");
             $user = $userTable->find($id);        
             $user->password = $random;
@@ -295,7 +296,7 @@ class User_info extends Controller {
                 $this->email->from('info@voetbalpool.nl', 'Voetbalpool2012.nl');
                 $this->email->to($user->email); 
                 $this->email->subject($vars['settings']['poolname'].' wachtwoord reset');
-                $email = 'Hoi '.$user->nickname.'. Je wachtwoord voor '.$vars['settings']['poolname'].' is nu:<br /><br /><strong>'.$random.'</strong><br /><br />Je kunt dit veranderen door in te loggen op '.anchor("/", base_url()).' en naar '.anchor("/user_info","Mijn Account").' te gaan.';
+                $email = 'Hoi '.$user->nickname.'. Je wachtwoord voor '.$vars['settings']['poolname'].' is nu:<br /><br /><strong>'.$random.'</strong><br /><br />Je kunt dit veranderen door in te loggen op '.anchor("/", $vars['settings']['poolname']).' en naar '.anchor("/user_info","Mijn Account").' te gaan.';
                 $this->email->message($email);	
                 $this->email->send();
                 

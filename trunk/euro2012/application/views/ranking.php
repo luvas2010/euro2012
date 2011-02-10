@@ -5,7 +5,7 @@
 $this->lang->load('rank', language());
 ?>
 
-    <h3><?php echo $title; ?></h3><a href="#user"><?php echo lang('Find_myself');?></a>
+    <h3><?php echo lang('ranking'); ?></h3><a href="#user"><?php echo lang('Find_myself');?></a>
     <table id='ranking' class='tablesorter'>
         <thead>
             <tr>

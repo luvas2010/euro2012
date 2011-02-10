@@ -14,6 +14,6 @@ $this->lang->load('welcome', language() );
     <div class="textview">
         <?php echo $text['text_nl']; ?>
     </div>
-    <p class="buttons"><?php echo anchor('text/edit/'.$text['id'], 'Edit Text'); ?></p>
+    <p class="buttons"><?php echo anchor('text/edit/'.$text['id'], '<img src="'.base_url().'images/icons/page_edit.png" alt="" />Edit Text', 'class="positive"'); ?></p>
     <hr />
 <?php endforeach; ?>    

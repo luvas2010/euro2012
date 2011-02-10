@@ -42,9 +42,6 @@
 </head>
 <body>
 <div id='container'>
-	<div id='user-controls'>
-		<?php $this->load->view('user_controls'); ?>
-	</div> <!-- end user-controls -->
 	<div id='navigation'>
 		<?php $this->load->view('navigation'); ?>
 	</div> <!-- end navigation -->

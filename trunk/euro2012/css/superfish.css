@@ -55,6 +55,7 @@ ul.sf-menu li li li.sfHover ul {
 /*** DEMO SKIN ***/
 .sf-menu {
 	float:			left;
+	font-size:      12px;
 	/*margin-bottom:	1em;*/
 }
 .sf-menu a {
@@ -65,6 +66,7 @@ ul.sf-menu li li li.sfHover ul {
 }
 .sf-menu a, .sf-menu a:visited  { /* visited pseudo selector so IE6 applies text colour*/
 	color:			#13a;
+	font-weight:    normal;
 }
 .sf-menu li {
 	background:		#BDD2FF;
