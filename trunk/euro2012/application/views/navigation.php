@@ -1,5 +1,5 @@
 <?php $this->lang->load('navigation', language()); ?>
-<?php $this->lang->load('match', language()); ?>  
+<?php $this->lang->load('match', language()); ?>
         <ul class="sf-menu">
             <li><?php echo anchor('home','Home'); ?></li>
             <?php if (logged_in()) : ?>

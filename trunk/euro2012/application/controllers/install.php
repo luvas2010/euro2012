@@ -77,32 +77,32 @@ class Install extends Controller {
 
 		$u->save();
 		
-		if ($this->input->post('play') == 'play'){
-    		// Get all match numbers
-    		$matches = Doctrine_Query::create()
-                ->select('m.match_number')
-                ->from('Matches m')
-                ->execute(); 
-    		
-    		// Now create a new set of predictions for this user
-    		// User gets a prediction record for each match
-    		
-    		$i = 1;
-    		foreach ($matches as $match) {
-                $p[$i] = new Predictions();
-                $p[$i]->user_id = $u['id'];
-                $p[$i]->match_number = $match->match_number;
-                $p[$i]->calculated = 0;
-                $i++;
-                }
-            $conn = Doctrine_Manager::connection();
-            $conn->flush();    
+
+		// Get all match numbers
+		$matches = Doctrine_Query::create()
+            ->select('m.match_number')
+            ->from('Matches m')
+            ->execute(); 
+		
+		// Now create a new set of predictions for this user
+		// User gets a prediction record for each match
+		
+		$i = 1;
+		foreach ($matches as $match) {
+            $p[$i] = new Predictions();
+            $p[$i]->user_id = $u['id'];
+            $p[$i]->match_number = $match->match_number;
+            $p[$i]->calculated = 0;
+            $i++;
             }
-            $vars['message'] = "Installatie is klaar. Je kunt nu ".anchor('login','inloggen')." als <strong>".$u['username']."</strong>.";
-            $vars['title'] = "Installation complete.";
-            $vars['content_view'] = "success";
-            $vars['settings'] = $this->settings_functions->settings();
-	        $this->load->view('template', $vars);             
+        $conn = Doctrine_Manager::connection();
+        $conn->flush();    
+        
+        $vars['message'] = "Installatie is klaar. Je kunt nu ".anchor('login','inloggen')." als <strong>".$u['username']."</strong>.<br/><span class='red bold'>Vergeet niet om je installatie bestand te verwijderen, want anders kan <u>iedereen</u>, zelfs <u>zonder wachtwoord</u>, je installatie om zeep helpen en gevoelige informatie verkrijgen. Het bestand staat hier: <tt>".base_url()."application/controllers/install.php</tt></span>.";
+        $vars['title'] = "Installation complete.";
+        $vars['content_view'] = "success";
+        $vars['settings'] = $this->settings_functions->settings();
+        $this->load->view('template', $vars);             
     }
 
 	private function _submit_validate() {

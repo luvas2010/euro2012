@@ -28,11 +28,7 @@ $this->lang->load('welcome', language() );
      test
     </div>
     <div class="column_1">
-     <?php if ($user['paid'] == 0): ?>
-        <p class='error'>
-            <strong>Je hebt nog niet betaald!</strong> Betaal zo snel mogelijk het inschrijfgeld van &euro;<?php echo $settings['payment_amount'];?>. Heb je w&eacute;l betaald, maar zie je nog steeds deze melding, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
-        </p>
-     <?php endif; ?>   
+        <p class='info'>Hier komen wat waarschuwingen, bijvoorbeeld als iemand nog geen landen voorspellingen heeft ingevuld, of nog geen uitslag heeft voorspeld en het is bijna sluitingstijd.</p> 
     </div>
 </div>
 <div class="home_row">

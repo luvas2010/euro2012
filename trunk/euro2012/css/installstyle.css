@@ -5,3 +5,4 @@ body {
 	}
 #install {margin-top:20px;}
 #install ul li {margin-bottom:4px;}
+label.wide {min-width:160px;}

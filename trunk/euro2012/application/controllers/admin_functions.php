@@ -335,6 +335,18 @@ class Admin_functions extends Controller {
 	        // $this->load->view('template', $vars); 
         
     }
-            
-
+    
+    public function install_delete() {
+    
+        $file = base_url()."application/controllers/install.php";
+        echo $file;
+        if (file_exists($file)) {
+            unlink($file);
+            $vars['message'] = "Klaar. Je kunt nu ".anchor('login','inloggen')."!";
+            $vars['title'] = "Installation complete";
+            $vars['content_view'] = "success";
+            $vars['settings'] = $this->settings_functions->settings();
+	        $this->load->view('template', $vars);                    
+            }
+        }    
 }

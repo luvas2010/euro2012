@@ -223,6 +223,8 @@ form p label {
     text-align: right;
     padding: 3px 5px 0px;
     }
+    
+p.wide label {min-width:160px;}
 
 #content h3.topline {margin-top:12px;padding-top:4px; border-top:1px solid #ccc;}
 /*Message Boxes*/

@@ -42,6 +42,12 @@
 </head>
 <body>
 <div id='container'>
+    <?php $installfile = 'application/controllers/install.php';
+      if (file_exists($installfile) && admin()): ?>
+      <div class='error'>
+        <p>Het installatie bestand staat nog hier: <tt><?php echo base_url();?>application/controllers/install.php</tt>. Je moet dit echt zo snel mogelijk verwijderen, anders kan het heel erg mis gaan met je voetbalpool.</p><p class='bold'>Deze melding wordt alleen aan beheerders getoond.</p>
+      </div>
+      <?php endif; ?>
 	<div id='navigation'>
 		<?php $this->load->view('navigation'); ?>
 	</div> <!-- end navigation -->
