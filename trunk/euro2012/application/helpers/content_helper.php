@@ -20,14 +20,16 @@ if ( ! function_exists('content'))
             $replacewith = $setting['value'];
             $returntext = str_replace($replacekey, $replacewith, $returntext);
             }
-        $user = Doctrine::getTable('Users')->findOneById($user_id);
-            
-        foreach ($user as $field => $value) {
-            $replacekey = "[[".$field."]]";
-            $replacewith = $value;
-            $returntext = str_replace($replacekey, $replacewith, $returntext);
+        
+        if (logged_in()) {
+            $user = Doctrine::getTable('Users')->findOneById($user_id);
+                
+            foreach ($user as $field => $value) {
+                $replacekey = "[[".$field."]]";
+                $replacewith = $value;
+                $returntext = str_replace($replacekey, $replacewith, $returntext);
+                }
             }
-           
         return $returntext;         		
 	}
 }
