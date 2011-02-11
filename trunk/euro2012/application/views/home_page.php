@@ -24,12 +24,21 @@ $this->lang->load('welcome', language() );
             <?php } ?>    
         </ul>    
     </div>
-    <div class="column_1">
-     test
-    </div>
-    <div class="column_1">
-        <p class='info'>Hier komen wat waarschuwingen, bijvoorbeeld als iemand nog geen landen voorspellingen heeft ingevuld, of nog geen uitslag heeft voorspeld en het is bijna sluitingstijd.</p> 
-    </div>
+    <div class="column_2">
+        <h3><img src="<?php echo base_url();?>images/clock.png" alt="" />Volgende wedstrijden</h3>
+        <ul>
+        <?php foreach ($nextmatches as $match): ?>
+            <?php $matchtime = mysql_to_unix($match['Match']['match_time']); $date = mdate("%d-%m, %H:%i", $matchtime); ?>
+            <?php $day="";if (date("m.d.y") == mdate("%m.%d.%y", $matchtime)) {$day = "Vandaag";} else {$day = mdate("%D %d %M",$matchtime);}?>
+            <?php $time = mdate("%G:%i",$matchtime); ?>
+            <?php if ($match['home_goals'] !== NULL && $match['away_goals'] !== NULL): ?>
+                <li><?php echo "<strong>".$day." ".$time."</strong> ".$match['Match']['TeamHome']['name']." - ".$match['Match']['TeamAway']['name']; ?>. Voorspeld: <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],$match['home_goals']." - ".$match['away_goals']);?></li>
+            <?php else: ?>
+                <li><?php echo "<strong>".$day." ".$time."</strong> ".$match['Match']['TeamHome']['name']." - ".$match['Match']['TeamAway']['name']; ?>. <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],'voorspellen');?></li>
+            <?php endif; ?>
+        <?php endforeach; ?>   
+        </ul>
+     </div>
 </div>
 <div class="home_row">
     <div class="column_2">

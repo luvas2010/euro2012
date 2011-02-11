@@ -33,8 +33,8 @@ $lang['use_cards_description'] = "Vul -1- in om de voorspellingen van gele en ro
 $lang['user_activation_description'] = "Vereis activatie van gebruiker";
 $lang['server_time_offset_utc_description'] = "Server tijdcorrectie in seconden (t.o.v. GMT)";
 
-$lang['save'] = "Bewaar";
-$lang['cancel'] = "Annuleer";
+$lang['save'] = "Opslaan";
+$lang['cancel'] = "Annuleren";
 
 /* End of file match_lang.php */
 /* Location: ./system/language/nederlands/match_lang.php */

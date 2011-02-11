@@ -44,6 +44,81 @@ class Admin_functions extends Controller {
             }             
 	}
 	
+    public function extra_questions($action, $saved = false) {
+        
+        if ($action == 'edit'){
+            if (admin()){
+                $vars['questions'] = Doctrine_Query::create()
+                    ->select('q.*,
+                              qt.*')
+                    ->from('Extra_questions q, q.QType qt')
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                    ->execute();
+                $vars['saved'] = $saved;
+                $vars['title'] = "Extra vragen";
+                $vars['content_view'] = "extraquestions";
+                $vars['settings'] = $this->settings_functions->settings();
+                $this->load->view('template', $vars);
+            }
+            else {
+                // Current user is not an admin
+                
+                $vars['title'] = "Access denied";
+                $vars['message'] = "You are not an administrator";
+                $vars['content_view'] = "error";
+                $vars['settings'] = $this->settings_functions->settings();
+                $this->load->view('template', $vars);
+            }
+        }
+        
+        if ($action == 'submit'){
+            if (admin()){
+               
+                
+                $qTable = Doctrine::getTable('Extra_questions');
+                $qTable->setAttribute(Doctrine::ATTR_COLL_KEY, 'id'); // make sure they get indexed by ID
+                $questions = $qTable->findAll();
+                $replace = false;
+                $arrPost = $this->input->post('post_array');    //get all posted values in one array
+                foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the user table
+                    foreach ($value as $k => $v) {              // $k represents 'street', 'city' etc.  
+                        
+                        if ($questions[$id][$k]!= $v) { // iterate over all fields, see if one has changed
+                            
+                            if ($v != NULL) {
+                                $questions[$id][$k]=$v;
+                                }
+                            else {
+                                $questions[$id][$k]=NULL;
+                                }
+                            $replace = true;    // this record will have to be updated
+                            }
+                        }
+                        if ($replace) {
+                            $questions[$id]->replace(); // update the record
+                            $replace= false;
+                            }
+                    }
+                
+                $questions->free();                
+                
+                $this->extra_questions('edit', true);
+               // $vars['title'] = "Extra vragen";
+               // $vars['content_view'] = "extraquestions";
+               // $vars['settings'] = $this->settings_functions->settings();
+               // $this->load->view('template', $vars);
+            }
+            else {
+                // Current user is not an admin
+                $vars['title'] = "Access denied";
+                $vars['message'] = "You are not an administrator";
+                $vars['content_view'] = "error";
+                $vars['settings'] = $this->settings_functions->settings();
+                $this->load->view('template', $vars);
+            }
+        }   
+    }
+    
 	public function recalculate_all() {
 	    $start = microtime(true);
 	    if (admin()) {

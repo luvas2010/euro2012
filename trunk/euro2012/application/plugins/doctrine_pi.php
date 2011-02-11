@@ -34,8 +34,8 @@ Doctrine::loadModels(APPPATH.'/models');
 
 // this will allow us to use "mutators"
 Doctrine_Manager::getInstance()->setAttribute(
-	Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
-
+	Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true);   
+    
 // this sets all table columns to notnull and unsigned (for ints) by default
 Doctrine_Manager::getInstance()->setAttribute(
 	Doctrine::ATTR_DEFAULT_COLUMN_OPTIONS,
@@ -46,4 +46,4 @@ Doctrine_Manager::getInstance()->setAttribute(
 	Doctrine::ATTR_DEFAULT_IDENTIFIER_OPTIONS,
 	array('name' => 'id', 'type' => 'integer', 'length' => 4));
 
-    Doctrine_Manager::getInstance()->setAttribute(Doctrine::ATTR_TBLNAME_FORMAT, $db['default']['dbprefix'].'%s');
+Doctrine_Manager::getInstance()->setAttribute(Doctrine::ATTR_TBLNAME_FORMAT, $db['default']['dbprefix'].'%s');

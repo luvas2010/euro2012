@@ -4,6 +4,7 @@ class Home extends Controller {
 	public function index() {
             
         if ($user_id = logged_in()) {
+            $curr_time = time();
             //show a 'portal'
             $u = Doctrine_Query::create()
                 ->select('u.*')
@@ -31,6 +32,22 @@ class Home extends Controller {
                 ->groupBy('p.user_id')
                 ->orderBy('u.position')
                 ->limit(10)
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+                
+            $vars['nextmatches'] = Doctrine_Query::create()
+                ->select('p.home_goals,
+                          p.away_goals,
+                          m.match_name,
+                          m.match_time,
+                          m.match_number,
+                          th.name,
+                          ta.name')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta')
+                ->where('p.user_id = '.$user_id)
+                ->andWhere('UNIX_TIMESTAMP(m.match_time) > '.$curr_time)
+                ->orderBy('m.match_time')
+                ->limit(4)
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
             

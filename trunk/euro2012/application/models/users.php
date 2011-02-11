@@ -33,6 +33,10 @@ class Users extends Doctrine_Record {
 			'local' => 'id',
 		    'foreign' => 'user_id'
             ));
+        $this->hasMany('Extra_answers as Answer', array(
+			'local' => 'id',
+		    'foreign' => 'user_id'
+            ));
 	}
 
 	protected function _encrypt_password($value) {

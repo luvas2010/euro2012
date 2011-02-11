@@ -38,7 +38,7 @@ class Install extends Controller {
     function step2() {
         
         $this->load->dbforge();
-        $checktables = array('predictions','matches','texts','venues','settings','teams','users');
+        $checktables = array('predictions','matches','extra_answers','extra_questions', 'extra_questions_types','texts','venues','settings','teams','users');
         foreach ($checktables as $checktable) {
             $check_table = $this->db->dbprefix.$checktable;
             if ($this->db->table_exists($check_table)) {
@@ -58,7 +58,7 @@ class Install extends Controller {
     function first_user() {
 
 		if ($this->_submit_validate() === FALSE) {
-			//$this->step2();
+			$this->step2();
 			return;
 		}
 		Doctrine_Manager::connection()->execute('SET FOREIGN_KEY_CHECKS = 0');

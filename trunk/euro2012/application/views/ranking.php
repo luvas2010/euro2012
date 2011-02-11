@@ -25,10 +25,10 @@ $this->lang->load('rank', language());
         <tbody>
         <?php foreach ($rankings as $ranking): ?>
             <tr>
-                <?php if ($ranking['User']['position'] < $ranking['User']['lastposition']){
+                <?php if (($ranking['User']['position'] < $ranking['User']['lastposition']) && $ranking['User']['lastposition'] != 0) {
                         $indication= "<img src='".base_url()."images/icons/arrow_up.png' alt='' /></td><td style='padding:0;'><span class='green'>(".$ranking['User']['lastposition'].")</span>";
                         }
-                      elseif ($ranking['User']['position'] > $ranking['User']['lastposition']) {
+                      elseif (($ranking['User']['position'] > $ranking['User']['lastposition']) && $ranking['User']['lastposition'] != 0) {
                         $indication= "<img src='".base_url()."images/icons/arrow_down_red.png' alt='' /></td><td style='padding:0;'><span class='red'>(".$ranking['User']['lastposition'].")</span>";
                         }
                       else {
