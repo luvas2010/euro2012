@@ -1,5 +1,6 @@
 <?php $this->lang->load('navigation', language()); ?>
 <?php $this->lang->load('match', language()); ?>
+
         <ul class="sf-menu">
             <li><?php echo anchor('home','Home'); ?></li>
             <?php if (logged_in()) : ?>
@@ -78,3 +79,5 @@
                 <li><?php echo anchor('signup',lang('create')); ?></li>
             <?php endif; ?>
         </ul>
+        <?php $servertime = time();?>
+        <div class='servertime'>Servertijd: <?php echo mdate("%m.%d.%y %G:%i",$servertime); ?></div>

@@ -14,7 +14,7 @@ class Home extends Controller {
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
                 
-            $q = Doctrine_Query::create()
+            $q = Doctrine_Query::create() 
                 ->select('p.user_id,
                           u.position,
                           u.lastposition,
@@ -42,8 +42,9 @@ class Home extends Controller {
                           m.match_time,
                           m.match_number,
                           th.name,
-                          ta.name')
-                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta')
+                          ta.name,
+                          v.time_offset_utc')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v')
                 ->where('p.user_id = '.$user_id)
                 ->andWhere('UNIX_TIMESTAMP(m.match_time) > '.$curr_time)
                 ->orderBy('m.match_time')

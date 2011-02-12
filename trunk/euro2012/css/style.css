@@ -99,6 +99,36 @@ p.wide label {
     margin-top:         12px;
     padding-top:        4px;
     }
+h3.clock {
+    background:         url('../images/clock.png') no-repeat;
+    height:             33px;
+    padding:            15px 0 0 55px;
+    vertical-align:     middle;
+    }
+h3.user {
+    background:         url('../images/user.png') no-repeat;
+    height:             33px;
+    padding:            15px 0 0 55px;
+    vertical-align:     middle;
+    }
+h3.top-ten {
+    background:         url('../images/thumbs_up.png') no-repeat;
+    height:             33px;
+    padding:            15px 0 0 55px;
+    vertical-align:     middle;
+    }
+h3.news {
+    background:         url('../images/newspaper.png') no-repeat;
+    height:             33px;
+    padding:            15px 0 0 55px;
+    vertical-align:     middle;
+    }
+h3.stats {
+    background:         url('../images/pie_chart.png') no-repeat;
+    height:             33px;
+    padding:            15px 0 0 55px;
+    vertical-align:     middle;
+    }
 /* user controls */
 div.user {
     background:         #eee;
@@ -261,7 +291,8 @@ button.positive, .buttons a.positive, .buttons input[type="submit"], .buttons_sm
     padding:            10px 10px 10px 50px;
     }
 .error {
-    background:         #FFBABA url('../images/error.png') 5px 5px no-repeat;
+    /*background:         #FFBABA url('../images/error.png') 5px 5px no-repeat;*/
+    background:         #dfdfdf url('../images/error.png') 5px 5px no-repeat;
     border:             1px solid #D8000C;
     color:              #D8000C;
     margin:             10px 0;
@@ -348,4 +379,11 @@ div.column_4{
     float:          left;
     width:          990px;
     padding:        0px 5px;
+    }
+div.servertime {
+    color:          #13A;
+    float:          right;
+    font-size:      13px;
+    font-weight:    bold;
+    padding:        14px 10px 6px;
     }

@@ -2,22 +2,26 @@
 // fetch language file
 $this->lang->load('welcome', language() );
 ?>
+<?php if ($user['paid'] == 0): ?>
+<div class="home_row">
+    <div class="column_4">
+        <p class='error'>
+            <strong>Je hebt nog niet betaald!</strong> Betaal zo snel mogelijk het inschrijfgeld van &euro;<?php echo $settings['payment_amount'];?>. Heb je w&eacute;l betaald, maar zie je nog steeds deze melding, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
+        </p>
+    </div>
+</div>
+<?php endif; ?> 
 <div class="home_row">
     <div class="column_1">
-        <h3><?php echo $user['nickname']; ?></h3>
+        <h3 class="user"><?php echo $user['nickname']; ?></h3>
         <ul>
             <li>Positie: <?php echo $user['position']; ?></li>
             <li>Punten: <?php echo $user['points']; ?></li>
             <li>Vorige positie: <?php echo $user['lastposition']; ?></li>
-        </ul>
-        <?php if ($user['paid'] == 0): ?>
-        <p class='error'>
-            <strong>Je hebt nog niet betaald!</strong> Betaal zo snel mogelijk het inschrijfgeld van &euro;<?php echo $settings['payment_amount'];?>. Heb je w&eacute;l betaald, maar zie je nog steeds deze melding, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
-        </p>
-     <?php endif; ?>  
+        </ul> 
     </div>
     <div class="column_1">
-        <h3>Top Tien</h3>
+        <h3 class="top-ten">Top Tien</h3>
         <ul>
             <?php foreach ($topten as $topuser) { ?>
                 <li><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></li>
@@ -25,10 +29,10 @@ $this->lang->load('welcome', language() );
         </ul>    
     </div>
     <div class="column_2">
-        <h3><img src="<?php echo base_url();?>images/clock.png" alt="" />Volgende wedstrijden</h3>
+        <h3 class="clock">Volgende wedstrijden</h3>
         <ul>
         <?php foreach ($nextmatches as $match): ?>
-            <?php $matchtime = mysql_to_unix($match['Match']['match_time']); $date = mdate("%d-%m, %H:%i", $matchtime); ?>
+            <?php $matchtime = mysql_to_unix($match['Match']['match_time'])- $match['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']; $date = mdate("%d-%m, %H:%i", $matchtime); ?>
             <?php $day="";if (date("m.d.y") == mdate("%m.%d.%y", $matchtime)) {$day = "Vandaag";} else {$day = mdate("%D %d %M",$matchtime);}?>
             <?php $time = mdate("%G:%i",$matchtime); ?>
             <?php if ($match['home_goals'] !== NULL && $match['away_goals'] !== NULL): ?>
@@ -42,19 +46,16 @@ $this->lang->load('welcome', language() );
 </div>
 <div class="home_row">
     <div class="column_2">
+        <h3 class="news">Nieuws</h3>
          <?php echo content('text_news'); ?>
          <?php if (admin()) : ?>
             <?php echo anchor('text/edit/3','Tekst veranderen'); ?>
          <?php endif; ?>
     </div>
-    <div class="column_1">
-        <h3>Dummy tekst</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At ille non pertimuit saneque fidenter: Istis quidem ipsis verbis, inquit; Si id dicis, vicimus. Sint modo partes vitae beatae. Iam id ipsum absurdum, maximum malum neglegi. Neminem videbis ita laudatum, ut artifex callidus comparandarum voluptatum diceretur. Quantum Aristoxeni ingenium consumptum videmus in musicis? Duo Reges: constructio interrete.
-        </p>
-    </div>
-    <div class="column_1">
-        <h3>Statistieken?</h3>
+    <div class="column_2">
+        <h3 class="stats">Statistieken?</h3>
         <p>
+            <?php if (started()) {echo 'Toernooi is begonnen!<br />';} else {echo 'Toernooi moet nog beginnen<br />';} ?>
             Dit is nog een test. Hier zou een stukje tekst kunnen komen, of de top tien, of een grafiekje. Uitslagen, wedstirjden, noem maar op.
         </p>
     </div>
