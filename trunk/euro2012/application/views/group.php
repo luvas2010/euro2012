@@ -31,7 +31,7 @@
 				<td><?php echo $match['TeamAway']['name']; ?></td>
 				<td class='td-center'><?php echo $match['home_goals']." - ".$match['away_goals']; ?></td>
 				<td><?php echo $match['Venue']['name']; ?><br /><?php echo $match['Venue']['city'];?></td>
-				<td class='td-center'><?php echo unix_to_human(mysql_to_unix($match['match_time']) - $match['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
+				<td class='td-center'><?php echo mdate("%d %M, %H:%i",mysql_to_unix($match['match_time']) - $match['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
 				<?php if (admin()): ?>
 				<td class='td-center'><?php echo anchor('match/details/'.$match['match_number'],lang('edit'), 'class="adminlink"'); ?></td>
 				<?php endif; ?>

@@ -24,7 +24,7 @@
 				<td><?php echo $match->TeamAway->name; ?></td>
 				<td class='td-center'><?php echo $match->home_goals." - ".$match->away_goals; ?></td>
 				<td><?php echo $match->Venue->name; ?></td>
-				<td class='td-center'><?php echo $match->match_time; ?></td>
+				<td class='td-center'><?php echo mdate("%d %M, %H:%i",mysql_to_unix($match['match_time']) - $match['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
                 <?php if (admin()): ?>
                 <td><?php echo anchor('match/details/'.$match['match_number'],lang('edit_match_details'), 'class="adminlink" title="Edit this match"'); ?></td>
                 <?php endif; ?> 

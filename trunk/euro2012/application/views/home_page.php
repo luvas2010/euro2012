@@ -24,7 +24,11 @@ $this->lang->load('welcome', language() );
         <h3 class="top-ten">Top Tien</h3>
         <ul>
             <?php foreach ($topten as $topuser) { ?>
+            <?php if ($topuser['id'] == logged_in()) : ?>
+                <li><span class='bold green'><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></span></li>
+            <?php else: ?>
                 <li><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></li>
+            <?php endif; ?>
             <?php } ?>    
         </ul>    
     </div>
@@ -33,7 +37,7 @@ $this->lang->load('welcome', language() );
         <ul>
         <?php foreach ($nextmatches as $match): ?>
             <?php $matchtime = mysql_to_unix($match['Match']['match_time'])- $match['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']; $date = mdate("%d-%m, %H:%i", $matchtime); ?>
-            <?php $day="";if (date("m.d.y") == mdate("%m.%d.%y", $matchtime)) {$day = "Vandaag";} else {$day = mdate("%D %d %M",$matchtime);}?>
+            <?php $day="";if (date("m.d.y") == mdate("%m.%d.%y", $matchtime)) {$day = "Vandaag";} else {$day = mdate("%D %d %M %Y",$matchtime);}?>
             <?php $time = mdate("%G:%i",$matchtime); ?>
             <?php if ($match['home_goals'] !== NULL && $match['away_goals'] !== NULL): ?>
                 <li><?php echo "<strong>".$day." ".$time."</strong> ".$match['Match']['TeamHome']['name']." - ".$match['Match']['TeamAway']['name']; ?>. Voorspeld: <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],$match['home_goals']." - ".$match['away_goals']);?></li>

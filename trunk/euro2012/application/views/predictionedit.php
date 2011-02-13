@@ -22,6 +22,7 @@
                             <th colspan="2" class="th-left">Uit ploeg</th>
                             <th>Goals</th>
                             <th>Wedstrijd begint om<br />(in <?php echo $prediction['Match']['Venue']['city'];?>)</th>
+                            <th>Wedstrijd begint om<br />(op deze server)</th>
                             <th>Sluitingstijd<br />(op deze server)</th>
                         </tr>
                     </thead>
@@ -33,8 +34,9 @@
                             <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
                             <td><label for="awaygoals"><?php echo $prediction['Match']['TeamAway']['name']; ?> :</label></td>
                             <td><?php echo form_input('awaygoals',$prediction['away_goals'], "size='2'"); ?></td>
-                            <td class='td-center'><?php echo $prediction['Match']['match_time'];?></td>
-                            <td class='td-center'><?php echo unix_to_human($local_close, false,'eu');?></td>
+                            <td class='td-center'><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['match_time'])); ?></td>
+                            <td class='td-center'><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['match_time']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
+                            <td class='td-center'><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
                         </tr>
                     </tbody>
                 </table>
@@ -67,7 +69,7 @@
                 </table>
             <?php endif; ?>
             <div class="info">
-            <p>Je kunt de uitslag voorspellen tot aan de sluitingstijd. Let op, de tijd op de server wordt hiervoor gebruikt!.<br />De tijd op de server is nu <?php echo unix_to_human(time()); ?></p>
+            <p>Je kunt de uitslag voorspellen tot aan de sluitingstijd. Let op, de tijd op de server wordt hiervoor gebruikt!.<br />De tijd op de server is nu <span class='bold'><?php echo mdate("%d %M %Y, %H:%i",time()); ?></span></p>
             <?php if ($prediction['Match']['type_id'] < 6) : ?>
                 <p class='bold'>Welke teams deze wedstijd spelen, moet je voor het toernooi begint voorspellen!</p>
             <?php endif; ?>
