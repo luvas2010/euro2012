@@ -35,7 +35,7 @@
                     </ul>
                 </li>
                 <li><?php echo anchor('ranking', lang('ranking')); ?></li>
-                <li><a href="#"><?php echo lang('user');?></a>
+                <li><a href="#"><?php echo Current_User::user()->nickname; ?></a>
                     <ul>
                         <li><?php echo anchor('user_predictions/view/'.Current_User::user()->id,lang('see_my_predictions')); ?></li>
                         <li><?php echo anchor('user_predictions/edit/',lang('edit_my_predictions')); ?></li>
@@ -80,4 +80,4 @@
             <?php endif; ?>
         </ul>
         <?php $servertime = time();?>
-        <div class='servertime'>Servertijd: <?php echo mdate("%m.%d.%y %G:%i",$servertime); ?></div>
+        <div class='servertime'>Servertijd: <?php echo mdate("%d %M %Y, %G:%i",$servertime); ?></div>

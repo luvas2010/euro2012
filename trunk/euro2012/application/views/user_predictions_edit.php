@@ -36,7 +36,7 @@
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][away_goals]',$prediction['away_goals'], 'size=2'); ?>
 	                        </td>
-	                        <td><?php echo $prediction['Match']['time_close']; ?></td> 
+	                        <td><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td> 
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
@@ -66,6 +66,7 @@
 	        <?php echo anchor('/','<img src="'.base_url().'images/icons/cross.png" alt="" />'.lang('cancel'), 'class="negative"'); ?>
         </p>
         <!-- Quarter final matches -->
+        <?php //todo: lock the teampredictionsafter the tournament has started. Use function started() to determine, it returns 'true' if started. ?>
         <h3 class="topline"><?php echo lang('Quarter_Finals');?></h3>
 	    <table>
 	        <thead>
@@ -86,7 +87,7 @@
 	        <tbody>
             <?php foreach ($predictions_qf as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 4) : //these are the quarter final matches ?> 
-		                <?php if (now() <  (mysql_to_unix($prediction['Match']['time_close']) -$prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'])): ?>
+		                <?php if (time() <  mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']): ?>
 		                <tr>
 		                    <td><?php echo $prediction['Match']['match_name']; ?></td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>	            
@@ -111,10 +112,7 @@
 		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?><br/>
 		                      (<?php echo $prediction['Match']['TeamHome']['name']; ?>)
 		                    </td>                          
-                           <!-- <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
-	                        <td>
-	                            <label for="post_array[<?php echo $prediction['id'];?>][home_goals]"><?php echo $prediction['Match']['TeamHome']['name']; ?>:</label>
-		                    </td> -->
+
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][home_goals]',$prediction['home_goals'],'size=2'); ?>
 	                        </td>
@@ -123,14 +121,11 @@
 		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?><br/>
 		                      (<?php echo $prediction['Match']['TeamAway']['name']; ?>)
 		                    </td>
-	                       <!-- <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
-	                        <td>
-		                        <label for="post_array[<?php echo $prediction['id'];?>][away_goals]"><?php echo $prediction['Match']['TeamAway']['name']; ?>:</label>
-		                    </td> -->
+
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][away_goals]',$prediction['away_goals'], 'size=2'); ?>
 	                        </td>
-	                        <td><?php echo $prediction['Match']['time_close']; ?></td> 
+	                        <td><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td> 
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
@@ -181,7 +176,7 @@
 	        <tbody>
             <?php foreach ($predictions_sf as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 2) : //these are the semi final matches, extra check, unneccessary ?> 
-		                <?php if (now() <  (mysql_to_unix($prediction['Match']['time_close']) -$prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'])): ?>
+		                <?php if (time() <  mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']): ?>
 		                <tr>
 		                    <td><?php echo $prediction['Match']['match_name']; ?></td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>	            
@@ -191,10 +186,6 @@
 		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?><br/>
 		                      (<?php echo $prediction['Match']['TeamHome']['name']; ?>)
 		                    </td>                          
-                           <!-- <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
-	                        <td>
-	                            <label for="post_array[<?php echo $prediction['id'];?>][home_goals]"><?php echo $prediction['Match']['TeamHome']['name']; ?>:</label>
-		                    </td> -->
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][home_goals]',$prediction['home_goals'],'size=2'); ?>
 	                        </td>
@@ -203,14 +194,11 @@
 		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?><br/>
 		                      (<?php echo $prediction['Match']['TeamAway']['name']; ?>)
 		                    </td>
-	                       <!-- <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
-	                        <td>
-		                        <label for="post_array[<?php echo $prediction['id'];?>][away_goals]"><?php echo $prediction['Match']['TeamAway']['name']; ?>:</label>
-		                    </td> -->
+
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][away_goals]',$prediction['away_goals'], 'size=2'); ?>
 	                        </td>
-	                        <td><?php echo $prediction['Match']['time_close']; ?></td> 
+	                        <td><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td> 
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
@@ -261,7 +249,7 @@
 	        <tbody>
             <?php foreach ($predictions_f as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 1) : //this is the final match ?> 
-		                <?php if (now() <  (mysql_to_unix($prediction['Match']['time_close']) -$prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'])): ?>
+		                <?php if (time() <  mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']): ?>
 		                <tr>
 		                    <td><?php echo $prediction['Match']['match_name']; ?></td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>	            
@@ -271,10 +259,6 @@
 		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?><br/>
 		                      (<?php echo $prediction['Match']['TeamHome']['name']; ?>)
 		                    </td>                          
-                           <!-- <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
-	                        <td>
-	                            <label for="post_array[<?php echo $prediction['id'];?>][home_goals]"><?php echo $prediction['Match']['TeamHome']['name']; ?>:</label>
-		                    </td> -->
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][home_goals]',$prediction['home_goals'],'size=2'); ?>
 	                        </td>
@@ -283,14 +267,10 @@
 		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?><br/>
 		                      (<?php echo $prediction['Match']['TeamAway']['name']; ?>)
 		                    </td>
-	                       <!-- <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
-	                        <td>
-		                        <label for="post_array[<?php echo $prediction['id'];?>][away_goals]"><?php echo $prediction['Match']['TeamAway']['name']; ?>:</label>
-		                    </td> -->
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][away_goals]',$prediction['away_goals'], 'size=2'); ?>
 	                        </td>
-	                        <td><?php echo $prediction['Match']['time_close']; ?></td> 
+	                        <td><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td> 
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>

@@ -324,18 +324,20 @@ class Match extends Controller {
                           pth.name,
                           pth.flag,
                           pta.name,
-                          pta.flag
+                          pta.flag,
+                          v.name,
+                          v.time_offset_utc
                           ')
                 ->from('Predictions p, p.Match m, p.TeamHome pth, p.TeamAway pta, m.TeamHome th, m.TeamAway ta, m.Venue v')
                 ->where('p.user_id = '.$user_id)
                 ->orderBy('m.match_time')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY) //This makes it quicker, we don't need to update the database, just see the predictions
                 ->execute();
-            
+            $settings = $this->settings_functions->settings();
             foreach ($vars['predictions'] as $prediction)
                 {
                 $num = $prediction['match_number'];
-                if (mysql_to_unix($prediction['Match']['time_close']) > time()) {
+                if (mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'] > time()) {
                     $closed[$num] = 0;
                     }
                 else {
@@ -358,7 +360,7 @@ class Match extends Controller {
         $vars['title'] = $this->lang->line('title_home');
 		$vars['content_view'] = "match_list";
         //$vars['content_view'] = "home_page";
-        $vars['settings'] = $this->settings_functions->settings();
+        $vars['settings'] = $settings;
 		$this->load->view('template', $vars);
 		}
     else {

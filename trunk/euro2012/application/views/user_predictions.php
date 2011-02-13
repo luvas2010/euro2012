@@ -37,7 +37,7 @@
                 <td class="td-center"><span class="red bold"><?php echo lang('Closed');?></span></td>
                 <td class="td-center"><?php echo anchor('matchstats/score/'.$num,lang('Check_scores')); ?></td>
                 <?php elseif (!$closed[$num] && !$prediction['calculated'] ): ?>
-                    <td class="td-center"><?php echo $prediction['Match']['time_close']; ?></td>
+                    <td class="td-center"><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
                     <td class="td-center"><?php echo anchor('user_predictions/edit_single/'.$num,lang('Edit_prediction')); ?></td>
                 <?php elseif ($closed[$num] && !$prediction['calculated']): ?>
                     <td class="td-center"><span class="red bold"><?php echo lang('Closed');?></span></td>

@@ -49,7 +49,7 @@
                                 && !$prediction['calculated']
                                 && $prediction['Match']['home_goals'] == NULL
                                 && $prediction['Match']['away_goals'] == NULL): // not closed, no calculation, no result so the prediction is 'open' ?>
-                    <td class="td-center"><?php echo $prediction['Match']['time_close']; ?></td>
+                    <td class="td-center"><?php echo mdate("%d %M, %H:%i",mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
                 <?php elseif ((     $closed[$num]
                                     && !$prediction['calculated'])
                                ||   ($prediction['Match']['home_goals'] != NULL

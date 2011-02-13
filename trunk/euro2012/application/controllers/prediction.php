@@ -98,7 +98,7 @@ class Prediction extends Controller {
                 }
             
                 if ($prediction = Doctrine::getTable('Predictions')->findOneById($this->input->post('id'))) {
-                    
+                    echo $prediction['Match']['match_time'];
                     if ($this->input->post('homegoals') != NULL) {    
                         $prediction->home_goals = $this->input->post('homegoals');
                         }

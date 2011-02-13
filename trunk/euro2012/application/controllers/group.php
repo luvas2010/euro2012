@@ -19,7 +19,8 @@ class Group extends Controller {
                       ta.name,
                       ta.flag,
                       v.name,
-                      v.city')
+                      v.city,
+                      v.time_offset_utc')
             ->from('Matches m, m.TeamHome th, m.TeamAway ta, m.Venue v')
             ->where('m.match_group = "'.strtoupper($group).'"')
             ->orderBy('m.match_time')
@@ -78,6 +79,7 @@ class Group extends Controller {
                           p.away_goals,
                           p.points_total_this_match,
                           p.calculated,
+                          v.time_offset_utc,
                           u.*
                           ')
                 ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u, p.TeamHome pth, p.TeamAway pta')
@@ -86,11 +88,11 @@ class Group extends Controller {
                 ->orderBy('m.match_time, m.match_name')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
-            
+            $settings = $this->settings_functions->settings();
             foreach ($vars['predictions'] as $prediction)
                 {
                 $num = $prediction['Match']['match_number'];
-                if (mysql_to_unix($prediction['Match']['time_close']) > time())
+                if (mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'] > time())
                     {
                     $closed[$num] = 0;
                     }
@@ -102,7 +104,7 @@ class Group extends Controller {
             $vars['closed'] = $closed;    
             $vars['title'] = "Voorspellingen Groep ".strtoupper($group);
             $vars['content_view'] = "user_predictions";		
-            $vars['settings'] = $this->settings_functions->settings();
+            $vars['settings'] = $settings;
 		$this->load->view('template', $vars);
         }    
         else {

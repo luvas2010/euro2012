@@ -339,7 +339,7 @@ class User_predictions extends Controller {
             foreach ($vars['predictions_group_phase'] as $prediction)
                 {
                 $num = $prediction['Match']['match_number'];
-                if (mysql_to_unix($prediction['Match']['time_close']) > time())
+                if (mysql_to_unix($prediction['Match']['time_close']- $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']) > time())
                     {
                     $closed[$num] = 0;
                     }
@@ -367,6 +367,7 @@ class User_predictions extends Controller {
 	public function submit() {
 
         if(logged_in()){
+            $vars['time_warning'] = false;
             $user_id = logged_in();
             $predictions = Doctrine_Query::create()
                 ->select('p.id,
@@ -376,6 +377,7 @@ class User_predictions extends Controller {
                           p.away_id,
                           p.match_number,
                           m.match_number,
+                          m.match_name
                           m.time_close,
                           m.venue_id,
                           v.venue_id,
@@ -385,13 +387,21 @@ class User_predictions extends Controller {
                 ->where('p.user_id = '.$user_id)
                 ->orderBy('m.match_time')
                 ->execute();
-
+        $server_offset = Doctrine::getTable('Settings')->findOneBySetting('server_time_offset_utc');
         $arrPost = $this->input->post('post_array');    //get all posted values in one array
         foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the predictions table
-            foreach ($value as $k => $v) {              // $k represents 'home_goals', 'away_goals' etc.  
-                $predictions[$id][$k]=$v;
+            
+          if (time() < (mysql_to_unix($predictions[$id]['Match']['time_close']) - $predictions[$id]['Match']['Venue']['time_offset_utc'] + $server_offset['value'])) {  
+            
+            foreach ($value as $k => $v) {              // $k represents 'home_goals', 'away_goals' etc.
+
+                    $predictions[$id][$k]=$v;
+                    }
+                  }
+                  else {
+                    $vars['time_warning'] = true;
+                    }
                 }
-            }
         $predictions->save();
         $vars['title'] = "Predictions Saved";
         $vars['message'] = "All your predictions were saved";
