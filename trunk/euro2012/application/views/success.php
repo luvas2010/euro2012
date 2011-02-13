@@ -8,8 +8,8 @@
         <p class='error'>Van tenminste &eacute;&eacute;n van de ingevulde wedstrijden is de tijdslimiet inmiddels verstreken. Waarschijnlijk is de wedstrijd begonnen voordat je hebt opgeslagen. Je oude voorspelling voor die wedstrijd(en) is daarom geldig.</p>
     <?php endif; ?>    
 <?php endif; ?>
-<p class="success">
-    <?php echo $message; ?>
+<div class="success">
+    <p><?php echo $message; ?></p>
     <?php if (isset($links)): ?>
     <ul>
     <?php foreach ($links as $link) {
@@ -17,4 +17,4 @@
         } ?>
     </ul>
     <?php endif; ?>
-</p>
+</div>

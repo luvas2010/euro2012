@@ -52,6 +52,20 @@ class Home extends Controller {
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
             
+            if (!started()) {
+                
+                $vars['warning_matches'] = Doctrine_Query::create()
+                    ->select('m.match_name,
+                              m.match_number,
+                              p.match_number,
+                              p.user_id')
+                    ->from('Predictions p, p.Match m, p.User u')
+                    ->where('(p.home_id = 0 OR p.away_id = 0) AND m.type_id < 6')
+                    ->andWhere('p.user_id = '.$user_id)
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                    ->execute();
+                }
+            
             $vars['topten'] = $q;
             $vars['settings'] = $this->settings_functions->settings();
             $vars['title'] = $vars['settings']['poolname'];

@@ -34,7 +34,6 @@
                         <li><?php echo anchor('knockoutphase',lang('knockout_phase')); ?></li>
                     </ul>
                 </li>
-                <li><?php echo anchor('ranking', lang('ranking')); ?></li>
                 <li><a href="#"><?php echo Current_User::user()->nickname; ?></a>
                     <ul>
                         <li><?php echo anchor('user_predictions/view/'.Current_User::user()->id,lang('see_my_predictions')); ?></li>

@@ -78,7 +78,8 @@ class Match extends Controller {
                     
                     // and save the result!                
                     $match->save();
-                    $vars['message'] = "Match ".$match->match_name." changed!";
+                    $vars['links'] = array(anchor('admin_functions/calculate_new','Punten berekenen'),anchor('/','Home'));
+                    $vars['message'] = "Uitslag voor ".$match->match_name." opgeslagen!";
                     $vars['title'] = "Match Saved";
                     $vars['content_view'] = "success";
                     $vars['settings'] = $this->settings_functions->settings();

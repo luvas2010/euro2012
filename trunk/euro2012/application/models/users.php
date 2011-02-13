@@ -12,9 +12,9 @@ class Users extends Doctrine_Record {
 		$this->hasColumn('phone', 'string', 255, array('notnull' => false));
 		$this->hasColumn('poolgroup', 'string', 255, array('notnull' => false));
         $this->hasColumn('language', 'string', 255, array('default' => 'nederlands'));
-		$this->hasColumn('admin', 'boolean');
-		$this->hasColumn('paid', 'boolean');
-		$this->hasColumn('active', 'boolean');
+		$this->hasColumn('admin', 'int',1, array('notnull' => false));
+		$this->hasColumn('paid', 'int',1, array('notnull' => false));
+		$this->hasColumn('active', 'int',1, array('notnull' => false));
 		$this->hasColumn('lastlogin', 'timestamp');
 		$this->hasColumn('activecode', 'string', 255);
         $this->hasColumn('resetcode', 'string', 255);

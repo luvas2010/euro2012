@@ -2,7 +2,7 @@
 // fetch language file
 $this->lang->load('welcome', language() );
 ?>
-<?php if ($user['paid'] == 0): ?>
+<?php if ($user['paid'] == 0 && $settings['payment_required']): ?>
 <div class="home_row">
     <div class="column_4">
         <p class='error'>
@@ -10,7 +10,8 @@ $this->lang->load('welcome', language() );
         </p>
     </div>
 </div>
-<?php endif; ?> 
+<?php endif; ?>                    
+
 <div class="home_row">
     <div class="column_1">
         <h3 class="user"><?php echo $user['nickname']; ?></h3>
@@ -18,7 +19,7 @@ $this->lang->load('welcome', language() );
             <li>Positie: <?php echo $user['position']; ?></li>
             <li>Punten: <?php echo $user['points']; ?></li>
             <li>Vorige positie: <?php echo $user['lastposition']; ?></li>
-        </ul> 
+        </ul>            
     </div>
     <div class="column_1">
         <h3 class="top-ten">Top Tien</h3>
@@ -29,7 +30,8 @@ $this->lang->load('welcome', language() );
             <?php else: ?>
                 <li><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></li>
             <?php endif; ?>
-            <?php } ?>    
+            <?php } ?>
+            <?php echo anchor('ranking', 'Bekijk de hele ranglijst'); ?>   
         </ul>    
     </div>
     <div class="column_2">
@@ -46,6 +48,17 @@ $this->lang->load('welcome', language() );
             <?php endif; ?>
         <?php endforeach; ?>   
         </ul>
+    <?php if (isset($warning_matches)) : ?>
+        <div class="error">
+            <p>Voordat het toernooi begint, moet je nog teams invullen voor de volgende wedstrijden:</p>
+            <ul>
+                <?php foreach ($warning_matches as $match) : ?>
+                    <li><?php echo $match['Match']['match_name']; ?> <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],'Voorspelling'); ?><li>
+                <?php endforeach; ?>
+                <li><?php echo anchor('user_predictions/edit','Bewerk alle voorspellingen');?></li>
+            <ul>
+            </div>
+    <?php endif; ?>         
      </div>
 </div>
 <div class="home_row">

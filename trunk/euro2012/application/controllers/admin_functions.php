@@ -149,7 +149,8 @@ class Admin_functions extends Controller {
             $settings = $this->settings_functions->settings();
             $count = $this->calculation_functions->calculate_points($settings);
             $duration = microtime(true) - $start;
-            $vars['message'] = 'Recalculated '.$count.' predictions in '.$duration.' seconds.';
+            $vars['links'] = array(anchor('ranking','Bekijk de ranglijst'),anchor('/','Home'));
+            $vars['message'] = $count.' voorspellingen berekend in '.$duration.' seconden.';
             $vars['title'] = "Recalculation complete";
             $vars['content_view'] = "success";
             $vars['settings'] = $this->settings_functions->settings();
@@ -307,8 +308,8 @@ class Admin_functions extends Controller {
 
             $conn->flush();
             $duration = microtime(true) - $start;
-            $vars['links'] = array(anchor('admin_functions/recalculate_all','Recalculate all predictions'),anchor('/','Home'));
-            $vars['message'] = 'Reset '.$countpred.' predictions in '.$duration.' seconds. Also reset points and position for each prediction.';
+            $vars['links'] = array(anchor('admin_functions/recalculate_all','Alles opnieuw berekenen'),anchor('/','Home'));
+            $vars['message'] = $countpred.' voorspellingen gewist in '.$duration.' seconden. Punten en ranglijst zijn ook gewist.';
             $vars['title'] = "Clear predictions complete";
             $vars['content_view'] = "success";
             $vars['settings'] = $this->settings_functions->settings();

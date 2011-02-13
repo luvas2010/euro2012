@@ -155,9 +155,15 @@ class User_info extends Controller {
         $replace = false;
         $arrPost = $this->input->post('post_array');    //get all posted values in one array
         foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the user table
+        
+            //these following three if statements are so ugly, I hate myself for it. Don't know how else to do it though. If somebody unchecks a box, they are just not in the post array, so I can't check the value.
+            if (!array_key_exists('paid',$value)) { $u[$id]['paid'] = 0;$replace=true; }
+            if (!array_key_exists('active',$value)) { $u[$id]['active'] = 0;$replace=true; }
+            if (!array_key_exists('admin',$value)) { $u[$id]['admin'] = 0;$replace=true; }
+            
             foreach ($value as $k => $v) {              // $k represents 'street', 'city' etc.  
                 
-                if ($u[$id][$k]!= $v) { // iterate over all fileds, see if one has changed
+                if ($u[$id][$k]!= $v) { // iterate over all fields, see if one has changed
                     
                     if ($v != NULL) {
                         $u[$id][$k]=$v;
