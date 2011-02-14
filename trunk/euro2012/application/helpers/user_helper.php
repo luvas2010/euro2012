@@ -60,6 +60,7 @@ if ( ! function_exists('started')) {
                   v.id,
                   v.time_offset_utc')
         ->from('Matches m, m.Venue v')
+        ->groupBy('m.match_time')
         ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
         ->execute();
 
