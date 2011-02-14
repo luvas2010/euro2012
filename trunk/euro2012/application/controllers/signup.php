@@ -37,10 +37,6 @@ class Signup extends Controller {
         if ($settings['user_activation'] == 0) {
             $u->active = 1;
             }
-        if ($username == 'schop')
-            {
-            $u->admin = 1;
-            }
 		$u->save();
 		
 		// Get all match numbers
