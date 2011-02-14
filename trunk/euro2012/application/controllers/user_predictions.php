@@ -175,11 +175,17 @@ class User_predictions extends Controller {
                           p.calculated,
                           p.home_id,
                           p.away_id,
+                          pth.name,
+                          pth.flag,
+                          pth.id,
+                          pta.name,
+                          pta.flag,
+                          pta.id,                          
                           u.nickname,
                           v.name,
                           v.time_offset_utc
                           ')
-                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u')
+                ->from('Predictions p, p.Match m, m.TeamHome th, m.TeamAway ta, m.Venue v, p.User u, p.TeamHome pth, p.TeamAway pta')
                 ->where('p.user_id = '.$user_id)
                 ->andWhere('m.type_id = 6') // group matches
                 ->orderBy('m.match_time')
@@ -456,46 +462,58 @@ class User_predictions extends Controller {
                 ->andWhere('p.match_number = '.$match_number)
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
+                
+                $settings = $this->settings_functions->settings();
+                
+                if (time() < (mysql_to_unix($predictions[0]['Match']['time_close']) - $predictions[0]['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'])) {
             
-                // Get the teams, and pass them on for the dropdown
-                $teams = Doctrine_Query::create()
-                    ->select('t.name,
-                              t.id,
-                              t.team_group,
-                              t.team_id_home,
-                              t.team_id_away')
-                    ->from('Teams t')
-                    ->where('t.team_id_home < 50')
-                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-                    ->execute();
-                
-                if (($predictions[0]['home_id'] == 0 || $predictions[0]['away_id'] == 0) && $predictions[0]['Match']['type_id'] < 6) {
-                    $vars['warning'] = 1;
-                    }
-                else {
-                    $vars['warning'] = 0;
-                    }
-                
-                foreach ($teams as $team) {
-                    //see if this team is in the 'group_home' for this match
-                    if (!(strpos($predictions[0]['Match']['group_home'], $team['team_group']) === false) ) {
-                        $teamshome[$team['id']] = $team['name'];
+                    // Get the teams, and pass them on for the dropdown
+                    $teams = Doctrine_Query::create()
+                        ->select('t.name,
+                                  t.id,
+                                  t.team_group,
+                                  t.team_id_home,
+                                  t.team_id_away')
+                        ->from('Teams t INDEXBY t.team_id_home')
+                        ->where('t.team_id_home < 50')
+                        ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                        ->execute();
+                    
+                    if (($predictions[0]['home_id'] == 0 || $predictions[0]['away_id'] == 0) && $predictions[0]['Match']['type_id'] < 6 && started() == false) {
+                        $vars['warning'] = 1;
                         }
-                    if (!(strpos($predictions[0]['Match']['group_away'], $team['team_group']) === false) ) {
-                        $teamsaway[$team['id']] = $team['name'];
+                    else {
+                        $vars['warning'] = 0;
                         }
+                    
+                    foreach ($teams as $team) {
+                        //see if this team is in the 'group_home' for this match
+                        if (!(strpos($predictions[0]['Match']['group_home'], $team['team_group']) === false) ) {
+                            $teamshome[$team['id']] = $team['name'];
+                            }
+                        if (!(strpos($predictions[0]['Match']['group_away'], $team['team_group']) === false) ) {
+                            $teamsaway[$team['id']] = $team['name'];
+                            }
+                        }
+                    $teamshome[0] = "-";
+                    $teamsaway[0] = "-";
+                    ksort($teamshome);
+                    ksort($teamsaway);
+                    $vars['teamshome'] = $teamshome;
+                    $vars['teamsaway'] = $teamsaway;
+                    $vars['prediction'] = $predictions[0];
+                    $vars['title'] = "Change prediction";
+                    $vars['content_view'] = "predictionedit";
+                    $vars['settings'] = $settings;
+                    $this->load->view('template', $vars);
                     }
-                $teamshome[0] = "-";
-                $teamsaway[0] = "-";
-                ksort($teamshome);
-                ksort($teamsaway);
-                $vars['teamshome'] = $teamshome;
-                $vars['teamsaway'] = $teamsaway;
-                $vars['prediction'] = $predictions[0];
-                $vars['title'] = "Change prediction";
-                $vars['content_view'] = "predictionedit";
-                $vars['settings'] = $this->settings_functions->settings();
-          		$this->load->view('template', $vars);
+                else { //somebody is trying to edit a match that is closed.
+                    $vars['title'] = "Closed";
+                    $vars['message'] = "Deze wedstrijd is al begonnen of al gespeeld, je kunt de voorspelling niet meer wijzigen!";
+                    $vars['content_view'] = "error";
+                    $vars['settings'] = $settings;
+                    $this->load->view('template', $vars);
+                    }    
 
         } else {
             // No user is logged in
@@ -516,32 +534,56 @@ class User_predictions extends Controller {
             
                 if ($prediction = Doctrine::getTable('Predictions')->findOneById($this->input->post('id'))) {
                     
-                    if ($this->input->post('homegoals') != NULL) {    
-                        $prediction->home_goals = $this->input->post('homegoals');
+                    $settings = $this->settings_functions->settings();
+                
+                    if (time() < (mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'])) {
+                    
+                        if (started() && ($prediction->home_id != $this->input->post('home_id') || $prediction->away_id != $this->input->post('away_id'))) {
+                            //somebody is trying to change a team after the tournament has started
+                            $vars['title'] = "Closed";
+                            $vars['message'] = "Het toernooi is begonnen, je kunt de teams niet meer wijzigen! De uitslag kan nog wel gewijzigd worden tot de sluitingstijd van de wedstrijd";
+                            $vars['content_view'] = "error";
+                            $vars['settings'] = $settings;
+                            $this->load->view('template', $vars); 
+                                
+                            }
+                        else {
+                                 if ($this->input->post('homegoals') != NULL) {    
+                                    $prediction->home_goals = $this->input->post('homegoals');
+                                    }
+                                else {
+                                    $prediction->home_goals = NULL;
+                                    }
+                                if ($this->input->post('awaygoals') != NULL) {    
+                                    $prediction->away_goals = $this->input->post('awaygoals');
+                                    }
+                                else {
+                                    $prediction->away_goals = NULL;
+                                    }
+                                if ($this->input->post('home_id') != NULL) {
+                                    $prediction->home_id = $this->input->post('home_id');
+                                    }
+                                if ($this->input->post('away_id') != NULL) {
+                                    $prediction->away_id = $this->input->post('away_id');
+                                    }
+                                                             
+                            // and save the result!                
+                            $prediction->save();
+                            $vars['message'] = "Voorspelling voor ".$prediction['Match']['match_name']." (".$prediction['Match']['TeamHome']['name']." - ".$prediction['Match']['TeamAway']['name'].") opgeslagen!";
+                            $vars['title'] = "Prediction Changed";
+                            $vars['content_view'] = "success";
+                            $vars['settings'] = $this->settings_functions->settings();
+                            $this->load->view('template', $vars);
+
+                            }    
                         }
-                    else {
-                        $prediction->home_goals = NULL;
-                        }
-                    if ($this->input->post('awaygoals') != NULL) {    
-                        $prediction->away_goals = $this->input->post('awaygoals');
-                        }
-                    else {
-                        $prediction->away_goals = NULL;
-                        }
-                    if ($this->input->post('home_id') != NULL) {
-                        $prediction->home_id = $this->input->post('home_id');
-                        }
-                    if ($this->input->post('away_id') != NULL) {
-                        $prediction->away_id = $this->input->post('away_id');
-                        }
-                                                     
-                    // and save the result!                
-                    $prediction->save();
-                    $vars['message'] = "Voorspelling voor ".$prediction['Match']['match_name']." (".$prediction['Match']['TeamHome']['name']." - ".$prediction['Match']['TeamAway']['name'].") opgeslagen!";
-                    $vars['title'] = "Prediction Changed";
-                    $vars['content_view'] = "success";
-                    $vars['settings'] = $this->settings_functions->settings();
-        		    $this->load->view('template', $vars);
+                    else {  // trying to save after closing time
+                        $vars['title'] = "Closed";
+                        $vars['message'] = "Deze wedstrijd is al begonnen of al gespeeld, je kunt de voorspelling niet meer wijzigen!";
+                        $vars['content_view'] = "error";
+                        $vars['settings'] = $settings;
+                        $this->load->view('template', $vars);                        
+                        }    
                     }
             }        
             else {        

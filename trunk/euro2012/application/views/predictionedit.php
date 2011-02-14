@@ -56,11 +56,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>
-                            <td><?php echo form_dropdown('home_id',$teamshome,$prediction['TeamHome']['id']);?></td>
+                            <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>
+                            <?php if (!started()) : ?>
+                                <td><?php echo form_dropdown('home_id',$teamshome,$prediction['TeamHome']['id']);?></td>
+                            <?php else: ?>
+                                <td><?php echo $prediction['TeamHome']['name']; ?></td>
+                            <?php endif; ?>    
                             <td><?php echo form_input('homegoals',$prediction['home_goals'], "size='2'"); ?></td>
-                            <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
-                            <td><?php echo form_dropdown('away_id',$teamsaway,$prediction['TeamAway']['id']);?></td>
+                            <td class='td-center'><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" /></td>
+                            <?php if (!started()) : ?>
+                                <td><?php echo form_dropdown('away_id',$teamsaway,$prediction['TeamAway']['id']);?></td>
+                            <?php else: ?>
+                                <td><?php echo $prediction['TeamAway']['name']; ?></td>
+                            <?php endif; ?> 
                             <td><?php echo form_input('awaygoals',$prediction['away_goals'], "size='2'"); ?></td>
                             <td class='td-center'><?php echo $prediction['Match']['match_time'];?></td>
                             <td class='td-center'><?php echo unix_to_human($local_close, false,'eu');?></td>
@@ -70,8 +78,10 @@
             <?php endif; ?>
             <div class="info">
             <p>Je kunt de uitslag voorspellen tot aan de sluitingstijd. Let op, de tijd op de server wordt hiervoor gebruikt!.<br />De tijd op de server is nu <span class='bold'><?php echo mdate("%d %M %Y, %H:%i",time()); ?></span></p>
-            <?php if ($prediction['Match']['type_id'] < 6) : ?>
+            <?php if (($prediction['Match']['type_id'] < 6) && (started() == false)) : ?>
                 <p class='bold'>Welke teams deze wedstijd spelen, moet je voor het toernooi begint voorspellen!</p>
+            <?php else: ?>
+                <p class='bold'>Omdat het toenooi is begonnen, kun je de voorspelling voor de landen niet meer wijzigen.</p>
             <?php endif; ?>
             </div>
             <?php if ($warning) : ?>

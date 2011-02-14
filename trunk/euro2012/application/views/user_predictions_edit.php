@@ -12,6 +12,7 @@
 	    <table>
 	        <thead>
 	            <tr>
+                    <th><?php echo lang('Match');?></th>
 	                <th colspan=3><?php echo lang('Home');?></th>
 	                <th colspan=3><?php echo lang('Away');?></th>
 	                <th><?php echo lang('Closing_Time');?></th>
@@ -22,6 +23,7 @@
 		        <?php if ($prediction['Match']['type_id'] == 6) : //these are the group matches ?> 
 		                <?php if (now() <  (mysql_to_unix($prediction['Match']['time_close']) -$prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc'])): ?>
 		                <tr>
+                            <td><?php echo $prediction['Match']['match_name']; ?></td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
 	                            <label for="post_array[<?php echo $prediction['id'];?>][home_goals]"><?php echo $prediction['Match']['TeamHome']['name']; ?>:</label>
@@ -40,6 +42,7 @@
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
+                            <td><?php echo $prediction['Match']['match_name']; ?></td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
 	                            <?php echo $prediction['Match']['TeamHome']['name']; ?>
@@ -66,7 +69,6 @@
 	        <?php echo anchor('/','<img src="'.base_url().'images/icons/cross.png" alt="" />'.lang('cancel'), 'class="negative"'); ?>
         </p>
         <!-- Quarter final matches -->
-        <?php //todo: lock the teampredictionsafter the tournament has started. Use function started() to determine, it returns 'true' if started. ?>
         <h3 class="topline"><?php echo lang('Quarter_Finals');?></h3>
 	    <table>
 	        <thead>
@@ -81,10 +83,14 @@
 	        </thead>
             <tfoot>
                 <tr>
+                <?php if (!started()) : ?>
                     <th colspan=8 class="info"><?php echo lang('info_1');?></th>
+                <?php else: ?>
+                    <th colspan=8 class="info">Het toernooi is begonnen, je kunt de voorspellingen voor de landen niet meer wijzigen</th>
+                <?php endif; ?> 
                 </tr>
-            </tfoot>  
-	        <tbody>
+            </tfoot>
+            <tbody>
             <?php foreach ($predictions_qf as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 4) : //these are the quarter final matches ?> 
 		                <?php if (time() <  mysql_to_unix($prediction['Match']['time_close']) - $prediction['Match']['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']): ?>
@@ -109,8 +115,11 @@
 		                              $teamsaway = $teamsc;
 		                              } ?>   
 		                    <td>
-		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?><br/>
-		                      (<?php echo $prediction['Match']['TeamHome']['name']; ?>)
+		                      <?php if (!started()) : ?>
+                                <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?>
+                              <?php else: ?>
+                                <?php echo $prediction['TeamHome']['name']; ?>
+                              <?php endif; ?>  
 		                    </td>                          
 
 		                    <td>
@@ -118,8 +127,11 @@
 	                        </td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" /></td>	            
 		                    <td>
-		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?><br/>
-		                      (<?php echo $prediction['Match']['TeamAway']['name']; ?>)
+		                      <?php if (!started()) : ?>
+                                <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?>
+                              <?php else: ?>
+                                <?php echo $prediction['TeamAway']['name']; ?>
+                              <?php endif; ?> 
 		                    </td>
 
 		                    <td>
@@ -129,16 +141,17 @@
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
-                            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
+                            <td><?php echo $prediction['Match']['match_name']; ?></td>
+                            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
-	                            <?php echo $prediction['Match']['TeamHome']['name']; ?>
+	                            <?php echo $prediction['TeamHome']['name']; ?>
 		                    </td>
 		                    <td class="td-center">
 		                        <?php echo $prediction['home_goals']; ?>
 	                        </td>
-	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
+	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" /></td>
 	                        <td>
-		                        <?php echo $prediction['Match']['TeamAway']['name']; ?>
+		                        <?php echo $prediction['TeamAway']['name']; ?>
 		                    </td>
 		                    <td class="td-center">
 		                        <?php echo $prediction['home_goals']; ?>
@@ -170,9 +183,13 @@
 	        </thead>
             <tfoot>
                 <tr>
+                <?php if (!started()) : ?>
                     <th colspan=8 class="info"><?php echo lang('info_1');?></th>
+                <?php else: ?>
+                    <th colspan=8 class="info">Het toernooi is begonnen, je kunt de voorspellingen voor de landen niet meer wijzigen</th>
+                <?php endif; ?> 
                 </tr>
-            </tfoot>                
+            </tfoot>            
 	        <tbody>
             <?php foreach ($predictions_sf as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 2) : //these are the semi final matches, extra check, unneccessary ?> 
@@ -180,21 +197,25 @@
 		                <tr>
 		                    <td><?php echo $prediction['Match']['match_name']; ?></td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>	            
-
                             <?php $teamshome = $teamsab;$teamsaway = $teamscd;?>
 		                    <td>
-		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?><br/>
-		                      (<?php echo $prediction['Match']['TeamHome']['name']; ?>)
+		                      <?php if (!started()) : ?>
+                                <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?>
+                              <?php else: ?>
+                                <?php echo $prediction['TeamHome']['name']; ?>
+                              <?php endif; ?> 
 		                    </td>                          
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][home_goals]',$prediction['home_goals'],'size=2'); ?>
 	                        </td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" /></td>	            
 		                    <td>
-		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?><br/>
-		                      (<?php echo $prediction['Match']['TeamAway']['name']; ?>)
+		                      <?php if (!started()) : ?>
+                                <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?>
+                              <?php else: ?>
+                                <?php echo $prediction['TeamAway']['name']; ?>
+                              <?php endif; ?> 
 		                    </td>
-
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][away_goals]',$prediction['away_goals'], 'size=2'); ?>
 	                        </td>
@@ -202,16 +223,17 @@
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
-                            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
+                            <td><?php echo $prediction['Match']['match_name']; ?></td>
+                            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
-	                            <?php echo $prediction['Match']['TeamHome']['name']; ?>
+	                            <?php echo $prediction['TeamHome']['name']; ?>
 		                    </td>
 		                    <td class="td-center">
 		                        <?php echo $prediction['home_goals']; ?>
 	                        </td>
-	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
+	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" /></td>
 	                        <td>
-		                        <?php echo $prediction['Match']['TeamAway']['name']; ?>
+		                        <?php echo $prediction['TeamAway']['name']; ?>
 		                    </td>
 		                    <td class="td-center">
 		                        <?php echo $prediction['home_goals']; ?>
@@ -234,7 +256,7 @@
 	        <thead>
 	            <tr>
 	                <th><?php echo lang('Match');?></th>
-                    <th colspan=2><?php echo lang('Team_Home');?>/th>	                
+                    <th colspan=2><?php echo lang('Team_Home');?></th>	                
 	                <th><?php echo lang('Home');?></th>
 	                <th colspan=2><?php echo lang('Team_Away');?></th>
 	                <th><?php echo lang('Away');?></th>
@@ -243,9 +265,13 @@
 	        </thead>
             <tfoot>
                 <tr>
+                <?php if (!started()) : ?>
                     <th colspan=8 class="info"><?php echo lang('info_1');?></th>
+                <?php else: ?>
+                    <th colspan=8 class="info">Het toernooi is begonnen, je kunt de voorspellingen voor de landen niet meer wijzigen</th>
+                <?php endif; ?> 
                 </tr>
-            </tfoot>  
+            </tfoot> 
 	        <tbody>
             <?php foreach ($predictions_f as $prediction): ?>
 		        <?php if ($prediction['Match']['type_id'] == 1) : //this is the final match ?> 
@@ -256,16 +282,22 @@
 
                             <?php $teamshome = $teamsabcd;$teamsaway = $teamsabcd;?>
 		                    <td>
-		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?><br/>
-		                      (<?php echo $prediction['Match']['TeamHome']['name']; ?>)
+		                      <?php if (!started()) : ?>
+                                <?php echo form_dropdown('post_array['.$prediction['id'].'][home_id]',$teamshome,$prediction['home_id']); ?>
+                              <?php else: ?>
+                                <?php echo $prediction['TeamHome']['name']; ?>
+                              <?php endif; ?> 
 		                    </td>                          
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][home_goals]',$prediction['home_goals'],'size=2'); ?>
 	                        </td>
                             <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" /></td>	            
 		                    <td>
-		                      <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?><br/>
-		                      (<?php echo $prediction['Match']['TeamAway']['name']; ?>)
+		                      <?php if (!started()) : ?>
+                                <?php echo form_dropdown('post_array['.$prediction['id'].'][away_id]',$teamsaway,$prediction['away_id']); ?>
+                              <?php else: ?>
+                                <?php echo $prediction['TeamAway']['name']; ?>
+                              <?php endif; ?> 
 		                    </td>
 		                    <td>
 		                        <?php echo form_input('post_array['.$prediction['id'].'][away_goals]',$prediction['away_goals'], 'size=2'); ?>
@@ -274,16 +306,17 @@
 	                    </tr>
 	                <?php else : ?>    
 		                <tr>
-                            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamHome']['flag'];?>" alt="" /></td>	            
+                            <td><?php echo $prediction['Match']['match_name']; ?></td>
+                            <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamHome']['flag'];?>" alt="" /></td>	            
 	                        <td>
-	                            <?php echo $prediction['Match']['TeamHome']['name']; ?>
+	                            <?php echo $prediction['TeamHome']['name']; ?>
 		                    </td>
 		                    <td class="td-center">
 		                        <?php echo $prediction['home_goals']; ?>
 	                        </td>
-	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['Match']['TeamAway']['flag'];?>" alt="" /></td>
+	                        <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $prediction['TeamAway']['flag'];?>" alt="" /></td>
 	                        <td>
-		                        <?php echo $prediction['Match']['TeamAway']['name']; ?>
+		                        <?php echo $prediction['TeamAway']['name']; ?>
 		                    </td>
 		                    <td class="td-center">
 		                        <?php echo $prediction['home_goals']; ?>
