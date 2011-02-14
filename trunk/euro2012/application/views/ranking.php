@@ -16,10 +16,7 @@ $this->lang->load('rank', language());
                 <th><?php echo lang('Points_for_away_goals');?></th>
                 <th><?php echo lang('Points_for_Win-Draw-Loss');?></th>
                 <th>Bonus punten</th>
-                <?php if ($settings['use_cards']): ?>
-                <th><?php echo lang('Points_for_yellow_cards');?></th>
-                <th><?php echo lang('Points_for_red_cards');?></th>
-                <?php endif; ?>
+                <th>Punten voor<br />teams</th>
             </tr>
         </thead>
         <tbody>
@@ -49,10 +46,7 @@ $this->lang->load('rank', language());
                 <td class="td-center"><?php echo $ranking['awaygoals']; ?></td>
                 <td class="td-center"><?php echo $ranking['toto']; ?></td>
                 <td class="td-center"><?php echo $ranking['exact']; ?></td>
-                <?php if ($settings['use_cards']): ?>
-                <td class="td-center"><?php echo $ranking['yellow']; ?></td>
-                <td class="td-center"><?php echo $ranking['red']; ?></td>
-                <?php endif; ?>
+                <td class="td-center"><?php echo $ranking['home_team'] + $ranking['away_team']; ?></td>
             </tr>    
         <?php endforeach; ?>
         </tbody>

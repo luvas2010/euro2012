@@ -26,12 +26,12 @@ $this->lang->load('welcome', language() );
         <ul>
             <?php foreach ($topten as $topuser) { ?>
             <?php if ($topuser['id'] == logged_in()) : ?>
-                <li><span class='bold green'><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></span></li>
+            <li><span class='bold green'><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></span></li>
             <?php else: ?>
-                <li><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></li>
+            <li><?php echo $topuser['User']['position'].". ".$topuser['User']['nickname']." (".$topuser['User']['points']." pnt)";?></li>
             <?php endif; ?>
             <?php } ?>
-            <?php echo anchor('ranking', 'Bekijk de hele ranglijst'); ?>   
+            <li><?php echo anchor('ranking', 'Bekijk de hele ranglijst'); ?></li>
         </ul>    
     </div>
     <div class="column_2">
@@ -53,10 +53,10 @@ $this->lang->load('welcome', language() );
             <p>Voordat het toernooi begint, moet je nog teams invullen voor de volgende wedstrijden:</p>
             <ul>
                 <?php foreach ($warning_matches as $match) : ?>
-                    <li><?php echo $match['Match']['match_name']; ?> <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],'Voorspelling'); ?><li>
+                    <li><?php echo $match['Match']['match_name']; ?> <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],'Voorspelling'); ?></li>
                 <?php endforeach; ?>
                 <li><?php echo anchor('user_predictions/edit','Bewerk alle voorspellingen');?></li>
-            <ul>
+            </ul>
             </div>
     <?php endif; ?>         
      </div>

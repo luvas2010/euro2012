@@ -39,10 +39,6 @@ settings:
   setting: view_other_users
   value: 1
   description: view_other_users_description
- set11:
-  setting: use_cards
-  value: 0
-  description: use_cards_description
  set12:
   setting: server_time_offset_utc
   value: 3600

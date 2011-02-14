@@ -15,7 +15,6 @@ $lang['points_for_team_sf'] = "Punten halve finale correct";
 $lang['points_for_team_f'] = "Punten finale correct";
 $lang['points_for_champion'] = "Punten voor Kampioen";
 $lang['view_other_users'] = "Toon andere gebruikers";
-$lang['use_cards'] = "Gebruik kaarten";
 $lang['user_activation'] = "Gebruiker Geactiveerd";
 $lang['server_time_offset_utc'] = "Tijdcorrectie server";
 
@@ -29,7 +28,6 @@ $lang['points_for_team_sf_description'] = "Punten voor elke correct voorspeld te
 $lang['points_for_team_f_description'] = "Punten voor elk correct voorspeld team in de finale.";
 $lang['points_for_champion_description'] = "Punten voor het correct voorspellen van de kampioen.";
 $lang['view_other_users_description'] = "Vul -1- in om de voorspellingen van andere gebruikers te tonen";
-$lang['use_cards_description'] = "Vul -1- in om de voorspellingen van gele en rode kaarten te activeren.";
 $lang['user_activation_description'] = "Vereis activatie van gebruiker";
 $lang['server_time_offset_utc_description'] = "Server tijdcorrectie in seconden (t.o.v. GMT)";
 

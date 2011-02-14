@@ -42,7 +42,7 @@
                         <li><a href="#"><?php echo lang('language');?></a>
                             <ul>
                                 <li><?php echo anchor('user_info/switch_language/english', '<img src="'.base_url().'images/flags/16/uk.png" alt="" /> English', 'title="Switch to English"');?></li>
-                                <li><?php echo anchor('user_info/switch_language/nederlands', '<img src="'.base_url().'images/flags/16/nl.png" a.t="" /> Nederlands', 'title="Nederlands"');?></li>
+                                <li><?php echo anchor('user_info/switch_language/nederlands', '<img src="'.base_url().'images/flags/16/nl.png" alt="" /> Nederlands', 'title="Nederlands"');?></li>
                             </ul>
                         </li>
                     </ul>
@@ -54,7 +54,7 @@
                             <li><a href="#">Berekeningen</a>
                                 <ul>
                                     <li><?php echo anchor('admin_functions/calculate_new', 'Bereken nieuwe uitslagen'); ?></li>
-                                    <li><?php echo anchor('admin_functions/recalculate_all','Bereken alles opnieuw'); ?><li>
+                                    <li><?php echo anchor('admin_functions/recalculate_all','Bereken alles opnieuw'); ?></li>
                                 </ul>    
                             </li>
                             <li><?php echo anchor('user_info/list_all','Gebruikerslijst'); ?></li>

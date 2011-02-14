@@ -9,7 +9,7 @@
     //   [points_for_team_f]
     //   [points_for_champion]
     //   [view_other_users]
-    //   [use_cards]
+
 
 class Calculation_functions {
 
@@ -109,8 +109,6 @@ class Calculation_functions {
                               p.away_goals,
                               p.home_id,
                               p.away_id,
-                              p.yellow_cards,
-                              p.red_cards,
                               p.total_points_curr,
                               p.total_points_prev
                               ')
@@ -162,25 +160,6 @@ class Calculation_functions {
                         } else {
                         $prediction['points_exact'] = 0;
                         }
-
-                    if ($settings['use_cards']) {                    
-                        // Yellow cards    
-                        if (($prediction['Match']['yellow_cards'] == $prediction['yellow_cards']) && ($prediction['Match']['yellow_cards'] != NULL)) {
-                            $prediction['points_yellow_cards'] = $settings['points_for_yellow_cards'];   
-                            } else {
-                            $prediction['points_yellow_cards'] = 0;
-                            }
-                            
-                        // Red cards    
-                        if (($prediction['Match']['red_cards'] == $prediction['red_cards']) && ($prediction['Match']['red_cards'] != NULL)) {
-                            $prediction['points_red_cards'] = $settings['points_for_red_cards'];   
-                            } else {
-                            $prediction['points_red_cards'] = 0;
-                            }
-                        } else {
-                            $prediction['points_yellow_cards'] = 0;
-                            $prediction['points_red_cards'] = 0;
-                        }
                             
                     
                     $prediction['points_home_id'] = 0;
@@ -222,8 +201,6 @@ class Calculation_functions {
                                                             + $prediction['points_away_goals']
                                                             + $prediction['points_toto']
                                                             + $prediction['points_exact']
-                                                            + $prediction['points_yellow_cards']
-                                                            + $prediction['points_red_cards']
                                                             + $prediction['points_home_id']
                                                             + $prediction['points_away_id']);
                     $prediction['calculated'] = 1; //set this one as done

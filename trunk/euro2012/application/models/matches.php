@@ -12,8 +12,6 @@ class Matches extends Doctrine_Record {
         $this->hasColumn('type_id', 'integer', 4);
         $this->hasColumn('home_goals', 'integer', 4,array('notnull' => false));
         $this->hasColumn('away_goals', 'integer', 4,array('notnull' => false));
-        $this->hasColumn('red_cards', 'integer', 4,array('notnull' => false));
-        $this->hasColumn('yellow_cards', 'integer', 4,array('notnull' => false));
         $this->hasColumn('match_group', 'string', 255);
         $this->hasColumn('group_home', 'string', 255);
         $this->hasColumn('group_away', 'string', 255);

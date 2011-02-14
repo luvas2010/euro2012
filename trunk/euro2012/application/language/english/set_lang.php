@@ -15,7 +15,6 @@ $lang['points_for_team_sf'] = "Points for team SF";
 $lang['points_for_team_f'] = "Points for team F";
 $lang['points_for_champion'] = "Points for champion";
 $lang['view_other_users'] = "view other users";
-$lang['use_cards'] = "Use cards";
 $lang['user_activation'] = "User activation";
 $lang['server_time_offset_utc'] = "Server ime offset UTC";
 
@@ -29,7 +28,6 @@ $lang['points_for_team_sf_description'] = "Points awarded for getting a team in 
 $lang['points_for_team_f_description'] = "Points awarded for getting a team in the finals correct";
 $lang['points_for_champion_description'] = "Points awarded for getting the champion correct";
 $lang['view_other_users_description'] = "If set to 1, people can view each others predictions";
-$lang['use_cards_description'] = "If set to 1, you need to predict read and yellow cards";
 $lang['user_activation_description'] = "Activate user";
 $lang['server_time_offset_utc_description'] = "Correct offset time of the server";
 

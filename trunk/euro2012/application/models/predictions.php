@@ -6,16 +6,12 @@ class Predictions extends Doctrine_Record {
         $this->hasColumn('match_number', 'integer',4);
         $this->hasColumn('home_goals', 'integer',4,array('notnull' => false));
         $this->hasColumn('away_goals', 'integer',4,array('notnull' => false));
-        $this->hasColumn('red_cards', 'integer',4,array('notnull' => false));
         $this->hasColumn('home_id', 'integer',4,array('notnull' => false, 'default' => 0));
         $this->hasColumn('away_id', 'integer',4,array('notnull' => false, 'default' => 0));
-        $this->hasColumn('yellow_cards', 'integer',4,array('notnull' => false));
         $this->hasColumn('points_home_goals', 'integer',4,array('notnull' => false));
         $this->hasColumn('points_away_goals', 'integer',4,array('notnull' => false));
         $this->hasColumn('points_toto', 'integer',4,array('notnull' => false));
         $this->hasColumn('points_exact', 'integer',4,array('notnull' => false));
-        $this->hasColumn('points_red_cards', 'integer',4,array('notnull' => false));
-        $this->hasColumn('points_yellow_cards', 'integer',4,array('notnull' => false));
         $this->hasColumn('points_home_id', 'integer',4,array('notnull' => false));
         $this->hasColumn('points_away_id', 'integer',4,array('notnull' => false));
         $this->hasColumn('points_total_this_match', 'integer',4,array('notnull' => false));

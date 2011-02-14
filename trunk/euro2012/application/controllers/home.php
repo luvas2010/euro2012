@@ -25,8 +25,6 @@ class Home extends Controller {
                 ->addSelect('SUM(p.points_away_goals) as awaygoals')
                 ->addSelect('SUM(p.points_toto) as toto')
                 ->addSelect('SUM(p.points_exact) as exact')
-                ->addSelect('SUM(p.points_yellow_cards) as yellow')
-                ->addSelect('SUM(p.points_red_cards) as red')
                 ->addSelect('SUM(p.points_toto) as toto')
                 ->from('Predictions p, p.User u')
                 ->groupBy('p.user_id')

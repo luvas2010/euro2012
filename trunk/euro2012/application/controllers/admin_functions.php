@@ -285,8 +285,6 @@ class Admin_functions extends Controller {
                 foreach ($predictions as $prediction) {
                     $prediction['home_goals'] = NULL;
                     $prediction['away_goals'] = NULL;
-                    $prediction['red_cards'] = NULL;
-                    $prediction['yellow_cards'] = NULL;
                     $prediction['home_id'] = NULL;
                     $prediction['away_id'] = NULL;
                     $prediction['calculated'] = 0;
@@ -294,8 +292,6 @@ class Admin_functions extends Controller {
                     $prediction['points_away_goals'] = 0;
                     $prediction['points_toto'] = 0;
                     $prediction['points_exact'] = 0;
-                    $prediction['points_red_cards'] = 0;
-                    $prediction['points_yellow_cards'] = 0;
                     $prediction['points_home_id'] = 0;
                     $prediction['points_away_id'] = 0;
                     $prediction['points_total_this_match'] = 0;
@@ -333,26 +329,7 @@ class Admin_functions extends Controller {
             foreach($matches as $match) {
                 $match['home_goals'] = NULL;
                 $match['away_goals'] = NULL;
-// the code below proved to be too much for the server. Reset predictions is now a separate function
-//                foreach ($match['Prediction'] as $prediction) {
-//                    $prediction['calculated'] = 0;
-//                    $prediction['points_home_goals'] = 0;
-//                    $prediction['points_away_goals'] = 0;
-//                    $prediction['points_toto'] = 0;
-//                    $prediction['points_exact'] = 0;
-//                    $prediction['points_red_cards'] = 0;
-//                    $prediction['points_yellow_cards'] = 0;
-//                    $prediction['points_home_id'] = 0;
-//                    $prediction['points_away_id'] = 0;
-//                    $prediction['points_total_this_match'] = 0;
-//                  $prediction['position_prev'] = 0;
-//                    $prediction['position_curr'] = 0;
-//                    $prediction['total_points_curr'] = 0;
-//                    $prediction['total_points_prev'] = 0;
-//                    
-//                    $countpred++;
-//                    }
-                    $countmatch++;
+                $countmatch++;
                 }
             $users = Doctrine_Query::create()
                 ->select('u.points,
