@@ -594,6 +594,24 @@ class User_predictions extends Controller {
             $this->load->view('template', $vars);
             }
 	}
+    
+    public function extra_questions() {
+        if ($user_id = logged_in()) {
+            $q = Doctrine_Query::create()
+                ->select('eq.question,
+                          eq.answer,
+                          ea.answer,
+                          eqt.id,
+                          eqt.description')
+                ->from('Extra_answers ea, ea.Question eq, eq.QType eqt')
+                ->where('ea.user_id = ')
+                ->andWhere('eq.active = 1')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+            print_r($q);
+            }
+    
+    }
 	
     private function _submit_single_validate() {
 

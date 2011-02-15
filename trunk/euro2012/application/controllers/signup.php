@@ -43,6 +43,7 @@ class Signup extends Controller {
 		$matches = Doctrine_Query::create()
             ->select('m.match_number')
             ->from('Matches m')
+            ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
             ->execute(); 
 		
 		// Now create a new set of predictions for this user
@@ -52,10 +53,25 @@ class Signup extends Controller {
 		foreach ($matches as $match) {
             $p[$i] = new Predictions();
             $p[$i]->user_id = $u['id'];
-            $p[$i]->match_number = $match->match_number;
+            $p[$i]->match_number = $match['match_number'];
             $p[$i]->calculated = 0;
             $i++;
         }
+        
+        //get the extra questions
+        $questions = Doctrine_Query::create()
+            ->select('q.id')
+            ->from('Extra_questions q')
+            ->execute();
+        
+        $x=1;        
+        foreach($questions as $question) {
+            $a[$x] = new Extra_answers();
+            $a[$x]->user_id = $u['id'];
+            $a[$x]->question_id = $question['id'];
+            $a[$x]->answer = -99;
+            $x++;
+            }
         
         $conn = Doctrine_Manager::connection();
         $conn->flush();    

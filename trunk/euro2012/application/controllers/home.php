@@ -13,7 +13,25 @@ class Home extends Controller {
                 ->orderBy('u.position')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
-                
+            
+            $vars['extra_answers'] = Doctrine_Query::create()
+                ->select('ea.answer,
+                          eq.active')
+                ->from('Extra_answers ea, ea.Question eq')
+                ->where('ea.user_id = '.$user_id)
+                ->andWhere('eq.active = 1')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+
+            $vars['extra_q_warning'] = false;
+            $vars['extra_q_unanswered'] = 0;
+            foreach($vars['extra_answers'] as $answer) {
+                if ($answer['answer'] == -99) {
+                    $vars['extra_q_warning'] = true;
+                    $vars['extra_q_unanswered']++;
+                    }
+                }
+            
             $q = Doctrine_Query::create() 
                 ->select('p.user_id,
                           u.position,

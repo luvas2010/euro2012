@@ -3,15 +3,24 @@
 $this->lang->load('welcome', language() );
 ?>
 <?php if ($user['paid'] == 0 && $settings['payment_required']): ?>
-<div class="home_row">
+<div class="home_warning_row">
     <div class="column_4">
         <p class='error'>
             <strong>Je hebt nog niet betaald!</strong> Betaal zo snel mogelijk het inschrijfgeld van &euro;<?php echo $settings['payment_amount'];?>. Heb je w&eacute;l betaald, maar zie je nog steeds deze melding, neem dan contact op met <?php echo safe_mailto($settings['admin_email'], 'de beheerder'); ?>.
         </p>
     </div>
 </div>
-<?php endif; ?>                    
+<?php endif; ?>
 
+<?php if ($extra_q_warning) : ?>
+<div class="home_warning_row">
+    <div class="column_4">
+        <p class='error'>
+            <strong>Er zijn nog <?php echo $extra_q_unanswered; ?> extra vragen die je moet beantwoorden!</strong> Het lijkt erop dat je dit nog niet hebt gedaan. Dit moet je doen voordat het toernooi begint, anders kun je veel punten mislopen.
+        </p>
+    </div>
+</div>                 
+<?php endif; ?>
 <div class="home_row">
     <div class="column_1">
         <h3 class="user"><?php echo $user['nickname']; ?></h3>

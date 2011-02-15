@@ -100,6 +100,22 @@ class Install extends Controller {
             $p[$i]->calculated = 0;
             $i++;
             }
+            
+        //get the extra questions
+        $questions = Doctrine_Query::create()
+            ->select('q.id')
+            ->from('Extra_questions q')
+            ->execute();
+        
+        $x=1;        
+        foreach($questions as $question) {
+            $a[$x] = new Extra_answers();
+            $a[$x]->user_id = $u['id'];
+            $a[$x]->question_id = $question['id'];
+            $a[$x]->answer = -99;
+            $x++;
+            }
+            
         $conn = Doctrine_Manager::connection();
         $conn->flush();    // Update the database in one big operation
         

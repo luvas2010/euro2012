@@ -57,6 +57,7 @@
                                     <li><?php echo anchor('admin_functions/recalculate_all','Bereken alles opnieuw'); ?></li>
                                 </ul>    
                             </li>
+                            <li><?php echo anchor('admin_functions/extra_questions/edit', 'Extra vragen'); ?></li>
                             <li><?php echo anchor('user_info/list_all','Gebruikerslijst'); ?></li>
                             <li><?php echo anchor('text/view', 'Teksten'); ?></li>
                             <li><?php echo anchor('admin_functions/backup', 'Maak een backup'); ?></li>
