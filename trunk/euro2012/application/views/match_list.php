@@ -70,7 +70,7 @@
                             <ul>
                                 <li><h4><?php echo lang('links_for_this_match');?>:</h4></li>
                                 <?php if ($prediction['calculated']): ?>
-                                    <li><?php echo anchor('matchstats/score/'.$num,'Check other people&rsquo;s score'); ?></li>
+                                    <li><?php echo anchor('matchstats/score/'.$num,'Kijk hoe de anderen het deden'); ?></li>
                                 <?php elseif (!$prediction['calculated'] && !$closed[$num] && $prediction['Match']['home_goals'] == NULL && $prediction['Match']['away_goals'] == NULL) : ?>
                                     <li><?php echo anchor('user_predictions/edit_single/'.$num,lang('edit_prediction')); ?></li>
                                 <?php elseif (($closed[$num] && !$prediction['calculated']) || ($prediction['Match']['home_goals'] != NULL && $prediction['Match']['away_goals'] != NULL && !$prediction['calculated'])): ?>

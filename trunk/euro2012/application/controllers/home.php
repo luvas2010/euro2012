@@ -74,7 +74,6 @@ class Home extends Controller {
 		}
     else {
 	    // No user is logged in
-
 	    $vars['text'] = content('text_welcome_not_logged_in');
         $vars['title'] = "Welcome";
         $vars['content_view'] = "welcome_message";

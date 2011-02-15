@@ -64,7 +64,7 @@ class Signup extends Controller {
             $this->email->from('info@voetbalpool.nl', 'Voetbalpool2012.nl');
             $this->email->to($u->email); 
             $this->email->subject($settings['poolname'].' Activation request');
-            $this->email->message('Hi '.$u->nickname.'. Go here to activate the account: '.base_url().'/user_info/activate/'.$u->activecode);	
+            $this->email->message('Hi '.$u->nickname.'. Go here to activate the account: '.base_url().'user_info/activate/'.$u->activecode);	
             $this->email->send();
             $vars['message'] = "Gefeliciteerd ".$u->nickname.", je bent geregistreerd. Er is een e-mail gestuurd naar ".$u->email." met een bevestigings linkje. totdat je account is geactiveerd via deze link, kun je nog niet inloggen.";
             }   
