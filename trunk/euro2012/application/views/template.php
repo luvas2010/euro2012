@@ -20,10 +20,7 @@
         $(document).ready(function() {
             $("table:not(#home_table) tr:odd").addClass("odd");
             $("table:not(#home_table) tr:even").addClass("even");
-            $("#match-stats-table").tablesorter(
-                {sortList: [[2,1]]});
-            $("#ranking").tablesorter(
-                {sortList: [[1,1]]});
+
             $("#home_table").jExpand();
             $( 'textarea.ckeditor' ).ckeditor();
             $("ul.sf-menu").supersubs({ 
@@ -32,6 +29,12 @@
             extraWidth:  1     // extra width can ensure lines don't sometimes turn over 
                                // due to slight rounding differences and font-family 
         }).superfish();
+            $("#match-stats-table").tablesorter(
+                {sortList: [[2,1]]});
+            $("#ranking").tablesorter(
+                {sortList: [[1,1]],
+                 headers: {1:{sorter:false},2: {sorter:false}}
+                 });
         });
     </script>
     <!--[if !IE 7]>

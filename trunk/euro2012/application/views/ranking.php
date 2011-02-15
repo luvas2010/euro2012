@@ -9,7 +9,8 @@ $this->lang->load('rank', language());
     <table id='ranking' class='tablesorter'>
         <thead>
             <tr>
-                <th class='th-left' colspan="3"><?php echo lang('Rank');?></th>
+                <th class='th-left'><?php echo lang('Rank');?></th>
+                <th></th><th></th>
                 <th class='th-left'><?php echo lang('User');?></th>
                 <th><?php echo lang('Total_points');?></th>
                 <th><?php echo lang('Points_for_home_goals');?></th>

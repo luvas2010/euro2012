@@ -61,8 +61,11 @@ class Install extends Controller {
 			$this->step2();
 			return;
 		}
+        
+        // Set foreign key checks off, so we don't egt any error messages while importing data
 		Doctrine_Manager::connection()->execute('SET FOREIGN_KEY_CHECKS = 0');
 
+        // Load all data from fixture files into database
 		Doctrine::loadData(APPPATH.'/fixtures');
 		
 		$username = $this->input->post('username');
@@ -74,11 +77,13 @@ class Install extends Controller {
 		$u->nickname = $this->input->post('nickname');
 		$u->active = 1;
 		$u->admin = 1;
-
 		$u->save();
-		
 
-		// Get all match numbers
+        // Set the 'admin_email' setting to the first users e-mail address
+		$set = Doctrine::getTable('Settings')->findOneBySetting('admin_email');
+        $set['value'] = $u->email;
+        
+		// Get all match numbers, to create a set of predictions
 		$matches = Doctrine_Query::create()
             ->select('m.match_number')
             ->from('Matches m')
@@ -96,7 +101,7 @@ class Install extends Controller {
             $i++;
             }
         $conn = Doctrine_Manager::connection();
-        $conn->flush();    
+        $conn->flush();    // Update the database in one big operation
         
         $vars['message'] = "Installatie is klaar. Je kunt nu ".anchor('login','inloggen')." als <strong>".$u['username']."</strong>.<br/><span class='red bold'>Vergeet niet om je installatie bestand te verwijderen, want anders kan <u>iedereen</u>, zelfs <u>zonder wachtwoord</u>, je installatie om zeep helpen en gevoelige informatie verkrijgen. Het bestand staat hier: <tt>".base_url()."application/controllers/install.php</tt></span>.";
         $vars['title'] = "Installation complete.";
