@@ -81,6 +81,7 @@ class Admin_functions extends Controller {
                 $replace = false;
                 $arrPost = $this->input->post('post_array');    //get all posted values in one array
                 foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the user table
+                    if (!array_key_exists('active',$value)) { $questions[$id]['active'] = 0;$replace=true; }
                     foreach ($value as $k => $v) {              // $k represents 'street', 'city' etc.  
                         
                         if ($questions[$id][$k]!= $v) { // iterate over all fields, see if one has changed
