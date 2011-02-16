@@ -112,7 +112,7 @@ class Install extends Controller {
             $a[$x] = new Extra_answers();
             $a[$x]->user_id = $u['id'];
             $a[$x]->question_id = $question['id'];
-            $a[$x]->answer = -99;
+            $a[$x]->answer = "-";
             $x++;
             }
             

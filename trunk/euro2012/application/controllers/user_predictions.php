@@ -595,46 +595,54 @@ class User_predictions extends Controller {
             }
 	}
     
-    public function extra_questions() {
+    public function extra_questions($action) {
         if ($user_id = logged_in()) {
-            $vars['answers'] = Doctrine_Query::create()
-                ->select('eq.question,
-                          eq.answer,
-                          ea.answer,
-                          ea.id,
-                          eqt.id,
-                          eqt.description')
-                ->from('Extra_answers ea, ea.Question eq, eq.QType eqt')
-                ->where('ea.user_id = ')
-                ->andWhere('eq.active = 1')
-                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-                ->execute();
-            
-            $vars['title'] = "Extra questions";
-            $vars['content_view'] = "extraquestions";
-            $vars['settings'] = $this->settings_functions->settings();
-            $this->load->view('template', $vars);
+            if ($action == 'edit') {
+                $vars['answers'] = Doctrine_Query::create()
+                    ->select('eq.question,
+                              eq.answer,
+                              eq.active,
+                              eq.points,
+                              ea.answer,
+                              ea.id,
+                              eqt.id,
+                              eqt.description')
+                    ->from('Extra_answers ea INDEXBY ea.id, ea.Question eq, eq.QType eqt')
+                    ->where('ea.user_id = '.$user_id)
+                    ->andWhere('eq.active = 1')
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                    ->execute();
+
+                $vars['title'] = "Extra questions";
+                $vars['content_view'] = "extraquestions";
+                $vars['settings'] = $this->settings_functions->settings();
+                $this->load->view('template', $vars);
+                }
+        
+            if ($action == 'submit') {
+                $extra_answers = Doctrine_query::create()
+                    ->select('ea.*')
+                    ->from('Extra_answers ea INDEXBY ea.id')
+                    ->where('ea.user_id = '.$user_id)
+                    ->execute();
+                
+                $arrAnswers = $this->input->post('post');    //get all posted values in one array
+                foreach ($arrAnswers as $answer) {
+                    $extra_answers[$answer['id']]['answer'] = $answer['answer'];
+                    }
+                $extra_answers->save();
+                $vars['message'] = "Je antwoorden zijn opgeslagen";
+                $vars['title'] = "Saved!";
+                $vars['content_view'] = "success";
+                $vars['settings'] = $this->settings_functions->settings();
+                $this->load->view('template', $vars);                
+                }
             }
-    
     }
     
     public function extra_questions_submit() {
-    
-        $arrPost = $this->input->post('post_array');    //get all posted values in one array
-        foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the answers table
-            
-            
-            
-            foreach ($value as $k => $v) {              // $k represents 'home_goals', 'away_goals' etc.
 
-                    //$predictions[$id][$k]=$v;
-                    // todo
-                    echo $id.": ".$k." = ".$v."<br />";
-                    }
-
-        }
-        
-    
+            
     }
 	
     private function _submit_single_validate() {

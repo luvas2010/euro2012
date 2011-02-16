@@ -295,7 +295,7 @@ button.positive, .buttons a.positive, .buttons input[type="submit"], .buttons_sm
     background:         #dfdfdf url('../images/error.png') 5px 5px no-repeat;
     border:             1px solid #D8000C;
     color:              #D8000C;
-    margin:             10px 0;
+    margin:             5px 0;
     min-height:         30px;
     padding:            10px 10px 10px 50px;
     }
@@ -354,7 +354,13 @@ div.floatleft{
 div.home_row {
     overflow:       hidden;
     border-bottom:  1px solid #ccc;
-    margin:         0px 0px 10px 0px;
+    margin:         0px 0px 5px 0px;
+    padding-bottom: 5px;
+    }
+div.home_warning_row {
+    overflow:       hidden;
+    border:         0px;
+    margin:         0px;
     padding-bottom: 5px;
     }
 div.home_warning_row {

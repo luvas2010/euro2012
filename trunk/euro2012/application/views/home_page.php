@@ -12,11 +12,25 @@ $this->lang->load('welcome', language() );
 </div>
 <?php endif; ?>
 
+<?php if (isset($warning_matches)) : ?>
+<div class="home_warning_row">
+    <div class="column_4">
+        <p class="error">
+            Voordat het toernooi begint, moet je nog teams invullen voor de volgende wedstrijden:<br /> 
+                <?php foreach ($warning_matches as $match) : ?>
+                    <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],$match['Match']['match_name']); ?>&nbsp;
+                <?php endforeach; ?><br />
+                <?php echo anchor('user_predictions/edit','Bewerk alle voorspellingen');?>.
+        </p>
+    </div>
+</div>
+<?php endif; ?>
+
 <?php if ($extra_q_warning) : ?>
 <div class="home_warning_row">
     <div class="column_4">
         <p class='error'>
-            <strong>Er zijn nog <?php echo $extra_q_unanswered; ?> extra vragen die je moet beantwoorden!</strong> Het lijkt erop dat je dit nog niet hebt gedaan. Dit moet je doen voordat het toernooi begint, anders kun je veel punten mislopen.
+            <strong>Er <?php if ($extra_q_unanswered > 1) {echo "zijn";} else {echo "is";} ?> nog <?php echo $extra_q_unanswered; ?> extra <?php if ($extra_q_unanswered > 1) {echo "vragen";} else {echo "vraag";} ?> die je moet beantwoorden!</strong> Het lijkt erop dat je dit nog niet hebt gedaan. Dit moet je doen voordat het toernooi begint, anders kun je veel punten mislopen.&nbsp;<?php echo anchor('user_predictions/extra_questions/edit', 'Ga naar de extra vragen'); ?>
         </p>
     </div>
 </div>                 
@@ -56,18 +70,7 @@ $this->lang->load('welcome', language() );
                 <li><?php echo "<strong>".$day." ".$time."</strong> ".$match['Match']['TeamHome']['name']." - ".$match['Match']['TeamAway']['name']; ?>. <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],'voorspellen');?></li>
             <?php endif; ?>
         <?php endforeach; ?>   
-        </ul>
-    <?php if (isset($warning_matches)) : ?>
-        <div class="error">
-            <p>Voordat het toernooi begint, moet je nog teams invullen voor de volgende wedstrijden:</p>
-            <ul>
-                <?php foreach ($warning_matches as $match) : ?>
-                    <li><?php echo $match['Match']['match_name']; ?> <?php echo anchor('user_predictions/edit_single/'.$match['Match']['match_number'],'Voorspelling'); ?></li>
-                <?php endforeach; ?>
-                <li><?php echo anchor('user_predictions/edit','Bewerk alle voorspellingen');?></li>
-            </ul>
-            </div>
-    <?php endif; ?>         
+        </ul>        
      </div>
 </div>
 <div class="home_row">

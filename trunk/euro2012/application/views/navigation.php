@@ -38,6 +38,7 @@
                     <ul>
                         <li><?php echo anchor('user_predictions/view/'.Current_User::user()->id,lang('see_my_predictions')); ?></li>
                         <li><?php echo anchor('user_predictions/edit/',lang('edit_my_predictions')); ?></li>
+                        <li><?php echo anchor('user_predictions/extra_questions/edit', 'Extra vragen'); ?></li>
                         <li><?php echo anchor('user_info',lang('account_info')); ?></li>
                         <li><a href="#"><?php echo lang('language');?></a>
                             <ul>

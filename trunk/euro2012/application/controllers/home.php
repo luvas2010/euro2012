@@ -26,7 +26,7 @@ class Home extends Controller {
             $vars['extra_q_warning'] = false;
             $vars['extra_q_unanswered'] = 0;
             foreach($vars['extra_answers'] as $answer) {
-                if ($answer['answer'] == -99) {
+                if ($answer['answer'] == "-") {
                     $vars['extra_q_warning'] = true;
                     $vars['extra_q_unanswered']++;
                     }
