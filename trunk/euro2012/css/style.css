@@ -357,6 +357,11 @@ div.home_row {
     margin:         0px 0px 10px 0px;
     padding-bottom: 5px;
     }
+div.home_warning_row {
+    overflow:       hidden;
+    margin:         0px;
+    padding-bottom: 0px;
+    }
 div.home_row ul{
     padding-left:   0px;
     }

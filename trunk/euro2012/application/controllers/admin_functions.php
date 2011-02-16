@@ -56,7 +56,7 @@ class Admin_functions extends Controller {
                     ->execute();
                 $vars['saved'] = $saved;
                 $vars['title'] = "Extra vragen";
-                $vars['content_view'] = "extraquestions";
+                $vars['content_view'] = "extraquestions_admin";
                 $vars['settings'] = $this->settings_functions->settings();
                 $this->load->view('template', $vars);
             }

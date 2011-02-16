@@ -597,10 +597,11 @@ class User_predictions extends Controller {
     
     public function extra_questions() {
         if ($user_id = logged_in()) {
-            $q = Doctrine_Query::create()
+            $vars['answers'] = Doctrine_Query::create()
                 ->select('eq.question,
                           eq.answer,
                           ea.answer,
+                          ea.id,
                           eqt.id,
                           eqt.description')
                 ->from('Extra_answers ea, ea.Question eq, eq.QType eqt')
@@ -608,8 +609,31 @@ class User_predictions extends Controller {
                 ->andWhere('eq.active = 1')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
-            print_r($q);
+            
+            $vars['title'] = "Extra questions";
+            $vars['content_view'] = "extraquestions";
+            $vars['settings'] = $this->settings_functions->settings();
+            $this->load->view('template', $vars);
             }
+    
+    }
+    
+    public function extra_questions_submit() {
+    
+        $arrPost = $this->input->post('post_array');    //get all posted values in one array
+        foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the answers table
+            
+            
+            
+            foreach ($value as $k => $v) {              // $k represents 'home_goals', 'away_goals' etc.
+
+                    //$predictions[$id][$k]=$v;
+                    // todo
+                    echo $id.": ".$k." = ".$v."<br />";
+                    }
+
+        }
+        
     
     }
 	
