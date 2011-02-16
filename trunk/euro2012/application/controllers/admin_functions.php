@@ -168,108 +168,88 @@ class Admin_functions extends Controller {
     }
 
 // Below are testing functions. Do not use in a pool, unless you are testing
-    
     function randomize_predictions() {
-        $start = microtime(true);
-        //$conn = Doctrine_Manager::connection();
-        $q = Doctrine_Query::create()
-            ->select('p.home_goals,
-                      p.away_goals,
-                      p.calculated')
-            ->from('Predictions p')
-            ->where('p.match_number < 30')
-            ->execute();
-            
-        foreach ($q as $prediction) {
-            $prediction->home_goals = mt_rand(0, 4);
-            $prediction->away_goals = mt_rand(0, 4);
-            $prediction->calculated = 0;
-            }
-        $q->save();
-        $q->free();
-        
-        $q = Doctrine_Query::create()
-            ->select('p.home_goals,
-                      p.away_goals,
-                      p.calculated')
-            ->from('Predictions p')
-            ->where('p.match_number > 29')
-            ->andWhere('p.match_number < 50')
-            ->execute();
-            
-        foreach ($q as $prediction) {
-            $prediction->home_goals = mt_rand(0, 4);
-            $prediction->away_goals = mt_rand(0, 4);
-            $prediction->calculated = 0;
-            }
-        $q->save();
-        $q->free();
-    
-        $q = Doctrine_Query::create()
-            ->select('p.home_goals,
-                      p.away_goals,
-                      p.calculated')
-            ->from('Predictions p')
-            ->where('p.match_number > 49')
-            ->execute();
-            
-        foreach ($q as $prediction) {
-            $prediction->home_goals = mt_rand(0, 4);
-            $prediction->away_goals = mt_rand(0, 4);
-            $prediction->calculated = 0;
-            }
-        $q->save();
-        $q->free();
-        
-        //$conn->flush();
-        $duration = microtime(true) - $start;
-        $vars['message'] = 'Randomized all predictions in '.$duration.' seconds.';
-        $vars['title'] = "Randomizing predictions complete";
-        $vars['content_view'] = "success";
-        $vars['settings'] = $this->settings_functions->settings();
-	    $this->load->view('template', $vars);           
-            
+        if (admin()) {
+            $start = microtime(true);
+            $users = Doctrine_Query::create()
+                ->select('u.id')
+                ->from('Users u')
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+            $count = 0;
+                foreach ($users as $user) {
+                    
+                    $p_table = Doctrine::getTable('Predictions');
+                    
+                    $predictions = $p_table->findByUser_id($user['id']);
+                    $groupa = array(1,2,3,4);
+                    $groupb = array(5,6,7,8);
+                    $groupc = array(8,9,10,11);
+                    $groupd = array(12,13,14,15);
+                    foreach ($predictions as $prediction) {
+                        $prediction->home_goals = mt_rand(0, 4);
+                        $prediction->away_goals = mt_rand(0, 4);
+                        if ($prediction->match_number == 51) { //todo: finish this function
+                            $prediction->home_id = mt_rand(1,4);
+                            $prediction->away_id = mt_rand(5,8);
+                        }
+                        $prediction->calculated = 0;
+                        $count++;                    
+                    }
+                        $predictions->save();
+                        $predictions->free();
+                    }
 
+                    $duration = microtime(true) - $start;
+            $vars['message'] = 'Randomized '.$count.' predictions in '.$duration.' seconds.';
+            $vars['title'] = "Randomizing predictions complete";
+            $vars['content_view'] = "success";
+            $vars['settings'] = $this->settings_functions->settings();
+            $this->load->view('template', $vars); 
+        }
     }
+
     
         function create_users() {
-        $conn = Doctrine_Manager::connection();
-        $count = 0;
-        $start = microtime(true);
-        for ($i=151;$i<=200;$i++) {
-            $u[$i] = new Users();
-    		$u[$i]->username = 'user'.$i;
-    		$u[$i]->password = 'user'.$i;
-    		$u[$i]->email = 'user'.$i.'@example.com';
-    		$u[$i]->nickname = 'User '.$i;
-    		$u[$i]->save();
-    		$count++;
-    		
-    		$matches = Doctrine_Query::create()
-                ->select('m.match_number')
-                ->from('Matches m')
-                ->execute(); 
-		
-    		// Now create a new set of predictions for this user
-    		// User gets a prediction record for each match
-    		foreach ($matches as $match) {
-    		    $y=1;
-                $p[$y] = new Predictions();
-                $p[$y]->user_id = $u[$i]['id'];
-                $p[$y]->match_number = $match->match_number;
-                $p[$y]->calculated = 0;
-                //$p[$y]->save();
-                $y++;
-            }
-         }
-        	
-        $conn->flush();
-        $duration = microtime(true) - $start;
-        $vars['message'] = 'Created '.$count.' test users in '.$duration.' seconds.';
-        $vars['title'] = "Creating users complete";
-        $vars['content_view'] = "success";
-        $vars['settings'] = $this->settings_functions->settings();
-	    $this->load->view('template', $vars);       
+        if (admin()) {
+            $conn = Doctrine_Manager::connection();
+            $count = 0;
+            $start = microtime(true);
+            for ($i=151;$i<=200;$i++) {
+                $u[$i] = new Users();
+                $u[$i]->username = 'user'.$i;
+                $u[$i]->password = 'user'.$i;
+                $u[$i]->email = 'user'.$i.'@example.com';
+                $u[$i]->nickname = 'User '.$i;
+                $u[$i]->save();
+                $count++;
+                
+                $matches = Doctrine_Query::create()
+                    ->select('m.match_number')
+                    ->from('Matches m')
+                    ->execute(); 
+            
+                // Now create a new set of predictions for this user
+                // User gets a prediction record for each match
+                foreach ($matches as $match) {
+                    $y=1;
+                    $p[$y] = new Predictions();
+                    $p[$y]->user_id = $u[$i]['id'];
+                    $p[$y]->match_number = $match->match_number;
+                    $p[$y]->calculated = 0;
+                    //$p[$y]->save();
+                    $y++;
+                }
+             }
+                
+            $conn->flush();
+            $duration = microtime(true) - $start;
+            $vars['message'] = 'Created '.$count.' test users in '.$duration.' seconds.';
+            $vars['title'] = "Creating users complete";
+            $vars['content_view'] = "success";
+            $vars['settings'] = $this->settings_functions->settings();
+            $this->load->view('template', $vars);
+            }        
        }
        
        function clear_predictions() {
