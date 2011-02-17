@@ -2,10 +2,9 @@
 
 class Group extends Controller {
 
-	public function overview($group) {
 
-        // Using Doctrine Query like below reduces it to only one query. Cool!
-        
+	public function overview($group) {
+            
         $vars['matches'] = Doctrine_Query::create()
             ->select('m.match_name,
                       m.match_time,
@@ -42,7 +41,7 @@ class Group extends Controller {
              ->where('t.team_group = "'.strtoupper($group).'"')
              ->orderBy('t.points DESC, t.goals_for')
              ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-             ->execute();                
+             ->execute();
 		
         $vars['title'] = "Group ".strtoupper($group)." Overview";
 		$vars['content_view'] = "group";
@@ -101,9 +100,60 @@ class Group extends Controller {
                     $closed[$num] = 1;
                     }
                 }
+
+            // create an array that holds results for each team
+    	    foreach ($vars['predictions'] as $prediction) {
+            $team[$prediction['Match']['TeamHome']['team_id_home']] = array(   'name' => $prediction['Match']['TeamHome']['name'],
+                                                                   'flag' => $prediction['Match']['TeamHome']['flag'],
+                                                                   'id' => $prediction['Match']['TeamHome']['team_id_home'],
+                                                                   'played' => 0,
+                                                                   'won' => 0, 
+                                                                   'tie' => 0,
+                                                                   'lost' => 0,
+                                                                   'goals_for' => 0,
+                                                                   'goals_against' => 0,
+                                                                   'points' => 0);
+            }
+            
+            foreach ($vars['predictions'] as $prediction) {
+                $home = $prediction['Match']['TeamHome']['team_id_home'];
+                $away = $prediction['Match']['TeamAway']['team_id_away'];
+                if ($prediction['home_goals'] !== NULL && $prediction['away_goals'] !== NULL) {
+                    $team[$home]['played'] = $team[$home]['played'] + 1;
+                    $team[$away]['played'] = $team[$away]['played'] + 1;
+                    $team[$home]['goals_for'] = $team[$home]['goals_for'] + $prediction['home_goals'];
+                    $team[$home]['goals_against'] = $team[$home]['goals_against'] + $prediction['away_goals'];
+                    $team[$away]['goals_for'] = $team[$away]['goals_for'] + $prediction['away_goals'];
+                    $team[$away]['goals_against'] = $team[$away]['goals_against'] + $prediction['home_goals'];                    
+                    }
+                    if ($prediction['home_goals'] > $prediction['away_goals']) {
+                        $team[$home]['won'] = $team[$home]['won'] + 1;
+                        $team[$away]['lost'] = $team[$away]['lost'] + 1;
+                        $team[$home]['points'] = $team[$home]['points'] +3;
+                    }
+                    if ($prediction['home_goals'] < $prediction['away_goals']) {
+                        $team[$away]['won'] = $team[$away]['won'] + 1;
+                        $team[$home]['lost'] = $team[$home]['lost'] + 1;
+                        $team[$away]['points'] = $team[$away]['points'] +3;
+                    }                    
+                    if ($prediction['home_goals'] == $prediction['away_goals']) {
+                        $team[$away]['tie'] = $team[$away]['tie'] + 1;
+                        $team[$home]['tie'] = $team[$home]['tie'] + 1;
+                        $team[$home]['points'] = $team[$home]['points'] + 1;
+                        $team[$away]['points'] = $team[$away]['points'] + 1;
+                    }                    
+            }
+            foreach ($team as $key => $row) {
+                $points[$key] = $row['points'];
+                $goals_for[$key] = $row['goals_for'];
+                $goals_against[$key] = $row['goals_against'];
+            }
+            array_multisort($points, SORT_DESC, $goals_for, SORT_DESC, $goals_against, SORT_ASC, $team);
+            
+            $vars['results'] = $team;
             $vars['closed'] = $closed;    
             $vars['title'] = "Voorspellingen Groep ".strtoupper($group);
-            $vars['content_view'] = "user_predictions";		
+            $vars['content_view'] = "user_predictions_group";		
             $vars['settings'] = $settings;
 		$this->load->view('template', $vars);
         }    

@@ -397,17 +397,21 @@ class User_predictions extends Controller {
         $arrPost = $this->input->post('post_array');    //get all posted values in one array
         foreach ($arrPost as $id => $value) {           // $id represents the 'id' column in the predictions table
             
-          if (time() < (mysql_to_unix($predictions[$id]['Match']['time_close']) - $predictions[$id]['Match']['Venue']['time_offset_utc'] + $server_offset['value'])) {  
-            
-            foreach ($value as $k => $v) {              // $k represents 'home_goals', 'away_goals' etc.
-
-                    $predictions[$id][$k]=$v;
+            if (time() < (mysql_to_unix($predictions[$id]['Match']['time_close']) - $predictions[$id]['Match']['Venue']['time_offset_utc'] + $server_offset['value'])) {  
+                
+                foreach ($value as $k => $v) {              // $k represents 'home_goals', 'away_goals' etc.
+                    if ($v != NULL) {
+                        $predictions[$id][$k]=$v;
+                        }
+                    else {
+                        $predictions[$id][$k]=NULL;
+                        }
                     }
-                  }
-                  else {
-                    $vars['time_warning'] = true;
-                    }
+                      }
+            else {
+                $vars['time_warning'] = true;
                 }
+            }
         $predictions->save();
         $vars['title'] = "Predictions Saved";
         $vars['message'] = "All your predictions were saved";

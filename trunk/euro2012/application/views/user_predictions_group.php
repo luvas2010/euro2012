@@ -1,5 +1,5 @@
 <?php $this->lang->load('user', language());?>	
-	<h3><?php echo $predictions[0]['User']['nickname']; ?>&nbsp;-&nbsp;Voorspellingen</h3>
+	<h3><?php echo $predictions[0]['User']['nickname']; ?>&nbsp;-&nbsp;<?php echo $title; ?> </h3>
 	<table class="match_table">
         <thead>
             <tr>
@@ -51,4 +51,36 @@
     <p class='error'>
    <?php echo lang('warning_1').anchor('user_predictions/edit', lang('Edit_my_predictions')); ?>
     </p>
+    <?php endif; ?>
+    <?php if (isset($results)) :?>
+    <h3 class='topline'>Volgens bovenstaande voorspellingen wordt dit de stand in de groep:</h3>
+    <table>
+        <thead>
+			<tr>
+				<th class='th-left' colspan ="2"><?php echo lang('team');?></th>
+				<th><?php echo lang('played');?></th>
+				<th><?php echo lang('won');?></th>
+				<th><?php echo lang('lost');?></th>
+				<th><?php echo lang('tie');?></th>
+				<th><?php echo lang('points');?></th>
+				<th><?php echo lang('goals_for');?></th>
+				<th><?php echo lang('goals_against');?></th>
+			</tr>
+		</thead>
+        <tbody>
+        <?php foreach($results as $result): ?>
+        <tr>
+                <td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $result['flag']; ?>" alt="<?php echo $result['name']; ?>" ></td>				
+				<td><?php echo $result['name']; ?></td>
+				<td class='td-center'><?php echo $result['played']; ?></td>    
+				<td class='td-center'><?php echo $result['won']; ?></td>    
+				<td class='td-center'><?php echo $result['lost']; ?></td>    
+				<td class='td-center'><?php echo $result['tie']; ?></td>    
+				<td class='td-center'><?php echo $result['points']; ?></td>    
+				<td class='td-center'><?php echo $result['goals_for']; ?></td>    
+				<td class='td-center'><?php echo $result['goals_against']; ?></td>
+		</tr>
+		<?php endforeach; ?>
+        </tbody>
+    </table>
     <?php endif; ?>

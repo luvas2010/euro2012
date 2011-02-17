@@ -182,16 +182,60 @@ class Admin_functions extends Controller {
                     $p_table = Doctrine::getTable('Predictions');
                     
                     $predictions = $p_table->findByUser_id($user['id']);
-                    $groupa = array(1,2,3,4);
-                    $groupb = array(5,6,7,8);
-                    $groupc = array(8,9,10,11);
-                    $groupd = array(12,13,14,15);
+                    $group['a'] = array(1,2,3,4);
+                    $group['b'] = array(5,6,7,8);
+                    $group['c'] = array(8,9,10,11);
+                    $group['d'] = array(12,13,14,15);
                     foreach ($predictions as $prediction) {
                         $prediction->home_goals = mt_rand(0, 4);
                         $prediction->away_goals = mt_rand(0, 4);
-                        if ($prediction->match_number == 51) { //todo: finish this function
-                            $prediction->home_id = mt_rand(1,4);
-                            $prediction->away_id = mt_rand(5,8);
+                        
+                        //randomize predictions for teams. maybe this should be based on the score? for now, it's fancy enough.
+                        if ($prediction->match_number > 49 && $prediction->match_number < 60) { //randomize prediction of teams as well, but in a 'possible' way
+                            $g = strtolower($prediction['Match']['group_home']);
+                            $random_key = array_rand($group[$g]);
+                            $prediction->home_id = $group[$g][$random_key];
+                            unset($group[$g][$random_key]); // since we've used this team, do not use it in the other quarterfinals, but do set it as a possible semi final
+                            $g = strtolower($prediction['Match']['group_away']);
+                            $random_key = array_rand($group[$g]);
+                            $prediction->away_id = $group[$g][$random_key];
+                            unset($group[$g][$random_key]); // since we've used this team, do not use it in the other quarterfinals
+                            if ($prediction->match_number == 51) {
+                                $qf1 = array($prediction->home_id, $prediction->away_id);
+                            }
+                            if ($prediction->match_number == 52) {
+                                $qf2 = array($prediction->home_id, $prediction->away_id);
+                            }                            
+                            if ($prediction->match_number == 53) {
+                                $qf3 = array($prediction->home_id, $prediction->away_id);
+                            }
+                            if ($prediction->match_number == 54) {
+                                $qf4 = array($prediction->home_id, $prediction->away_id);
+                            }
+                        }    
+                        if ($prediction->match_number == 61) {
+                            $random_key = array_rand($qf1);
+                            $prediction->home_id = $qf1[$random_key];
+                            unset($qf1[$random_key]);
+                            $random_key = array_rand($qf3);
+                            $prediction->away_id = $qf3[$random_key];
+                            unset($qf3[$random_key]);
+                            $semi[1] = array($prediction->home_id, $prediction->away_id);
+                            }
+                        if ($prediction->match_number == 62) {
+                            $random_key = array_rand($qf2);
+                            $prediction->home_id = $qf2[$random_key];
+                            unset($qf2[$random_key]);
+                            $random_key = array_rand($qf4);
+                            $prediction->away_id = $qf4[$random_key];
+                            unset($qf4[$random_key]);
+                            $semi[2] = array($prediction->home_id, $prediction->away_id);
+                            }                        
+                        if ($prediction->match_number == 99) {
+                            $random_key_2 = array_rand($semi[1]);
+                            $prediction->home_id = $semi[1][$random_key_2];
+                            $random_key_2 = array_rand($semi[2]);
+                            $prediction->away_id = $semi[2][$random_key_2];                            
                         }
                         $prediction->calculated = 0;
                         $count++;                    
