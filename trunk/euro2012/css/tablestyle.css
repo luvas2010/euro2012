@@ -10,7 +10,7 @@ table {
 	font-size: 14px;
 	/*width: 100%;*/
 	margin:10px 0px;
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 }
 table.match_table{width:100%;}
 
@@ -47,8 +47,8 @@ table tbody td {
 
 #home_table tbody tr.odd, #home_table tbody tr.even{cursor:pointer;}
 table tbody tr.odd {
-    border-bottom: 1px solid #ddd;
-    border-top: 1px solid #ddd; 
+   /* border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd; */
     }
 table tbody tr.odd td {
 	background-color:#F0F0F6;
@@ -93,4 +93,13 @@ display: block;
 div.up {background-position: 0px 0px;}
 tr.details {border-top:1px solid #ddd; border-bottom:1px solid #ddd;}
 tr.details td{background-color:#fdfdfd;}
-th.info {padding-bottom:20px;}}
+th.info {padding-bottom:20px;}
+
+/*for nested tables */
+table#brackets td{background-color:#fafafa;}
+td.bracketcell {}
+table table {margin: 5px auto 0;border:1px solid #ccc;padding:0;}
+td.arrowdown {background: #fafafa url('../images/bracket_arrow_down.png') no-repeat;}
+td.arrowup {background: #fafafa url('../images/bracket_arrow_up.png') no-repeat;}
+td.bigarrowdown {background: #fafafa url('../images/bracket_big_arrow_down.png') no-repeat;}
+td.bigarrowup {background: #fafafa url('../images/bracket_big_arrow_up.png') no-repeat;}

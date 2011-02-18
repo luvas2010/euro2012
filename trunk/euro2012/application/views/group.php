@@ -7,14 +7,13 @@
         &nbsp;&nbsp;<?php echo anchor('group/admin/'.$group,lang('group').' '.strtoupper($group).lang('results_administration'), 'class="adminlink"'); ?>
     <?php endif; ?>    
     </h3>
-	<table class='match_table'>
+	<table class='match_table' width='100%'>
         <thead>
 			<tr>
 				<th class='th-left'><?php echo lang('match');?></th>
 				<th class='th-left' colspan="2"><?php echo lang('home');?></th>
 				<th class='th-left' colspan="2"><?php echo lang('away');?></th>
 				<th><?php echo lang('result');?></th>
-				<th class='th-left'><?php echo lang('venue');?></th>
 				<th><?php echo lang('time');?></th>
 				<?php if (admin()): ?>
 				<th><?php echo lang('admin');?></th>
@@ -30,7 +29,6 @@
 				<td><img src="<?php echo base_url(); ?>images/flags/24/<?php echo $match['TeamAway']['flag'];?>" alt="" /></td>
 				<td><?php echo $match['TeamAway']['name']; ?></td>
 				<td class='td-center'><?php echo $match['home_goals']." - ".$match['away_goals']; ?></td>
-				<td><?php echo $match['Venue']['name']; ?><br /><?php echo $match['Venue']['city'];?></td>
 				<td class='td-center'><?php echo mdate("%d %M, %H:%i",mysql_to_unix($match['match_time']) - $match['Venue']['time_offset_utc'] + $settings['server_time_offset_utc']); ?></td>
 				<?php if (admin()): ?>
 				<td class='td-center'><?php echo anchor('match/details/'.$match['match_number'],lang('edit'), 'class="adminlink"'); ?></td>
@@ -41,7 +39,7 @@
     </table>
 
     <h3><?php echo lang('standings');?> <?php echo lang('group');?> <?php echo strtoupper($group); ?></h3>
-    <table>
+    <table width='100%'>
         <thead>
 			<tr>
 				<th class='th-left' colspan="2"><?php echo lang('team');?></th>

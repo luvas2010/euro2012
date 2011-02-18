@@ -20,7 +20,7 @@
         $(document).ready(function() {
             $("table:not(#home_table) tr:odd").addClass("odd");
             $("table:not(#home_table) tr:even").addClass("even");
-
+            $("#brackets tr").removeClass("odd").removeClass("even");
             $("#home_table").jExpand();
             $( 'textarea.ckeditor' ).ckeditor();
             $("ul.sf-menu").supersubs({ 
