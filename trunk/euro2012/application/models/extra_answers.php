@@ -5,6 +5,7 @@ class Extra_answers extends Doctrine_Record {
 		$this->hasColumn('question_id', 'integer',4);
         $this->hasColumn('user_id', 'integer',4);
         $this->hasColumn('answer', 'string', 255);
+        $this->hasColumn('points', 'integer', 4);
     }
     
     public function setUp() {

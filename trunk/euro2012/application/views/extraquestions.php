@@ -10,7 +10,8 @@
         <tr>
             <th class='th-left'>Vraag</th>
             <th class='th-left'>Jouw antwoord</th>
-            <th>Waardering</th>
+            <th>Punten verdiend</th>
+            <th>Max. Punten</th>
             <th class='th-left'>Info</th>
         </tr>    
     </thead>  
@@ -35,7 +36,8 @@
                 <?php endif; ?>
             <?php else: ?>
                 <td><?php echo $answer['answer']; ?>
-            <?php endif; ?>    
+            <?php endif; ?>
+            <td class='td-center'><?php echo $answer['points']; ?> punten</td>   
             <td class='td-center'><?php echo $answer['Question']['points']; ?> punten</td>
             <td>
             <?php switch($answer['Question']['QType']['id']) { 
@@ -53,5 +55,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<?php if (!started()) : ?>
 <p class='buttons'><?php echo form_submit('submit','Opslaan'); ?></p>
+<?php endif; ?>
 <?php echo form_close(); ?>

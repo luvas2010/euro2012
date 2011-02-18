@@ -609,6 +609,7 @@ class User_predictions extends Controller {
                               eq.points,
                               ea.answer,
                               ea.id,
+                              ea.points,
                               eqt.id,
                               eqt.description')
                     ->from('Extra_answers ea INDEXBY ea.id, ea.Question eq, eq.QType eqt')
@@ -624,22 +625,27 @@ class User_predictions extends Controller {
                 }
         
             if ($action == 'submit') {
-                $extra_answers = Doctrine_query::create()
-                    ->select('ea.*')
-                    ->from('Extra_answers ea INDEXBY ea.id')
-                    ->where('ea.user_id = '.$user_id)
-                    ->execute();
-                
-                $arrAnswers = $this->input->post('post');    //get all posted values in one array
-                foreach ($arrAnswers as $answer) {
-                    $extra_answers[$answer['id']]['answer'] = $answer['answer'];
+                if (!started()) {
+                    $extra_answers = Doctrine_query::create()
+                        ->select('ea.*')
+                        ->from('Extra_answers ea INDEXBY ea.id')
+                        ->where('ea.user_id = '.$user_id)
+                        ->execute();
+                    
+                    $arrAnswers = $this->input->post('post');    //get all posted values in one array
+                    foreach ($arrAnswers as $answer) {
+                        $extra_answers[$answer['id']]['answer'] = $answer['answer'];
+                        }
+                    $extra_answers->save();
+                    $vars['message'] = "Je antwoorden zijn opgeslagen";
+                    $vars['title'] = "Saved!";
+                    $vars['content_view'] = "success";
+                    $vars['settings'] = $this->settings_functions->settings();
+                    $this->load->view('template', $vars);                
                     }
-                $extra_answers->save();
-                $vars['message'] = "Je antwoorden zijn opgeslagen";
-                $vars['title'] = "Saved!";
-                $vars['content_view'] = "success";
-                $vars['settings'] = $this->settings_functions->settings();
-                $this->load->view('template', $vars);                
+                else {
+                    //tournament has started, don't save
+                    }    
                 }
             }
     }

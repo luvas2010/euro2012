@@ -86,17 +86,17 @@ class Calculation_functions {
     function calculate_points($settings) { //calculate matches
 
             $total = 0;
-            //$predictionsTable = Doctrine::gettable("Predictions");
-            //Calculations done by user
+
+            //Calculations done per user
             $users = Doctrine_Query::create()
                 ->select('u.id,
                           u.points,
                           u.previouspoints
                           ')
                 ->from('Users u')
-                //->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
-            // get all predictions for this user
+                
+            // get all predictions for each user
             foreach ($users as $user) {
                 $predictions = Doctrine_Query::create()
                     ->select('m.match_number,
@@ -118,7 +118,6 @@ class Calculation_functions {
                     ->andWhere('m.away_goals IS NOT NULL') // match has away goals filled out
                     ->andWhere('p.user_id = '.$user['id'])
                     ->orderBy('p.user_id, m.match_time')
-                    //->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                     ->execute();           
                 
                 $count = 0;
@@ -214,7 +213,68 @@ class Calculation_functions {
                     }
                     $predictions->save();
                 }
+                
+                // if the final has a result, we need to calculate the extra questions too!
+                $matchtable = Doctrine::getTable('Matches');
+                $final = $matchtable->findOneByMatch_number(99);
+                if ($final->home_goals != NULL && $final->away_goals != NULL) { //there is a result
+                    foreach ($users as $user) {
+                        $answers = Doctrine_Query::create()
+                            ->select('ea.answer',
+                                     'ea.points',
+                                     'ea.question_id',
+                                     'eq.id',
+                                     'eq.answer',
+                                     'eq.points',
+                                     'eqt.id')
+                            ->from('Extra_answers ea, ea.Question eq, eq.QType eqt')
+                            ->where('ea.user_id = '.$user['id'])
+                            ->andWhere('eq.active = 1')
+                            ->execute();
+                        foreach ($answers as $answer) {
+                            if ($answer['Question']['QType']['id'] == 1) { //exact answer needed
+                                if (strtolower($answer['answer']) == strtolower($answer['Question']['answer'])) {
+                                    $answer['points'] = $answer['Question']['points'];
+                                    $user['points'] = $user['points'] + $answer['points'];
+                                    }
+                                else {
+                                    $answer['points'] = 0;
+                                    }
+                                }
+                                
+                            if ($answer['Question']['QType']['id'] == 2) { // approximate answer needed
+                                $diff = abs($answer['answer'] - $answer['Question']['answer']);
+                                if ($diff < $answer['Question']['points']) {
+                                    $answer['points'] = $answer['Question']['points'] - $diff;
+                                    $user['points'] = $user['points'] + $answer['points'];
+                                    }
+                                else {
+                                    $answer['points'] = 0;
+                                    }
+                                }
+
+                            if ($answer['Question']['QType']['id'] == 3) { // answer out of the list needed
+                                $answer_list = explode(",", $answer['Question']['answer']);
+                                $answer_lookup = $answer['answer']."+";
+                                if (in_array($answer_lookup,$answer_list)) {
+                                    $answer['points'] = $answer['Question']['points'];
+                                    $user['points'] = $user['points'] + $answer['points'];
+                                    }
+                                else {
+                                    $answer['points'] = 0;
+                                    }
+                                }
+
+
+                            } //end foreach answers
+                            $answers->save();    
+                        } //end foreach users
+                    }             
+                
+                
                 $users->save();
+                
+                
                 
                 //Now update position for each user
                 $users = Doctrine_Query::create()
@@ -226,8 +286,6 @@ class Calculation_functions {
                     ->from('Users u')
                     ->orderBy('u.points DESC')
                     ->execute();
-                    
-                // print_r($users->toArray());
                 
                 $rank = 0;
                 $truerank = 0;
