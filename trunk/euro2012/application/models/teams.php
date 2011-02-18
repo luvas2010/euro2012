@@ -9,13 +9,6 @@ class Teams extends Doctrine_Record {
         $this->hasColumn('shortname','string', 255, array('notnull'=>false));
         $this->hasColumn('flag', 'string', 255, array('notnull'=>false ));
         $this->hasColumn('team_group', 'string', 255, array('notnull'=>false ));
-        $this->hasColumn('played', 'integer',4);
-        $this->hasColumn('won', 'integer',4);
-        $this->hasColumn('tie', 'integer',4);
-        $this->hasColumn('lost', 'integer',4);
-        $this->hasColumn('points', 'integer',4);
-        $this->hasColumn('goals_for', 'integer',4);
-        $this->hasColumn('goals_against', 'integer',4);
         
         $this->index('team_id_home', array(
                 'fields' => array('team_id_home'),

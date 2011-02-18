@@ -1,4 +1,9 @@
 <?php
+// File: /system/application/controllers/group.php
+// Version: 1.1
+// Author: Schop
+// Revisions:
+// 1.1 Standings are no longer kept in database, but calculated 'on the fly'
 
 class Group extends Controller {
 
@@ -13,10 +18,12 @@ class Group extends Controller {
                       m.home_id,
                       m.match_group,
                       m.match_number,
+                      th.team_id_home,
                       th.name,
                       th.flag,
                       ta.name,
                       ta.flag,
+                      ta.team_id_away,
                       v.name,
                       v.city,
                       v.time_offset_utc')
@@ -25,23 +32,57 @@ class Group extends Controller {
             ->orderBy('m.match_time')
             ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
             ->execute();
-        
-        $vars['results'] = Doctrine_Query::create()
-            ->select('t.id,
-                      t.name,
-                      t.flag,
-                      t.played,
-                      t.won,
-                      t.lost,
-                      t.tie,
-                      t.points,
-                      t.goals_for,
-                      t.goals_against')
-             ->from('Teams t')
-             ->where('t.team_group = "'.strtoupper($group).'"')
-             ->orderBy('t.points DESC, t.goals_for')
-             ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-             ->execute();
+            
+            // create an array that holds results for each team
+    	    foreach ($vars['matches'] as $match) {
+            $team[$match['TeamHome']['team_id_home']] = array(   'name' => $match['TeamHome']['name'],
+                                                                   'flag' => $match['TeamHome']['flag'],
+                                                                   'id' => $match['TeamHome']['team_id_home'],
+                                                                   'played' => 0,
+                                                                   'won' => 0, 
+                                                                   'tie' => 0,
+                                                                   'lost' => 0,
+                                                                   'goals_for' => 0,
+                                                                   'goals_against' => 0,
+                                                                   'points' => 0);
+            }
+            
+            foreach ($vars['matches'] as $match) {
+                $home = $match['TeamHome']['team_id_home'];
+                $away = $match['TeamAway']['team_id_away'];
+                if ($match['home_goals'] !== NULL && $match['away_goals'] !== NULL) {
+                    $team[$home]['played'] = $team[$home]['played'] + 1;
+                    $team[$away]['played'] = $team[$away]['played'] + 1;
+                    $team[$home]['goals_for'] = $team[$home]['goals_for'] + $match['home_goals'];
+                    $team[$home]['goals_against'] = $team[$home]['goals_against'] + $match['away_goals'];
+                    $team[$away]['goals_for'] = $team[$away]['goals_for'] + $match['away_goals'];
+                    $team[$away]['goals_against'] = $team[$away]['goals_against'] + $match['home_goals'];                    
+                    
+                    if ($match['home_goals'] > $match['away_goals']) {
+                        $team[$home]['won'] = $team[$home]['won'] + 1;
+                        $team[$away]['lost'] = $team[$away]['lost'] + 1;
+                        $team[$home]['points'] = $team[$home]['points'] +3;
+                        }
+                    if ($match['home_goals'] < $match['away_goals']) {
+                        $team[$away]['won'] = $team[$away]['won'] + 1;
+                        $team[$home]['lost'] = $team[$home]['lost'] + 1;
+                        $team[$away]['points'] = $team[$away]['points'] +3;
+                        }                    
+                    if ($match['home_goals'] == $match['away_goals']) {
+                        $team[$away]['tie'] = $team[$away]['tie'] + 1;
+                        $team[$home]['tie'] = $team[$home]['tie'] + 1;
+                        $team[$home]['points'] = $team[$home]['points'] + 1;
+                        $team[$away]['points'] = $team[$away]['points'] + 1;
+                        }
+                    }                    
+            }
+            foreach ($team as $key => $row) {
+                $points[$key] = $row['points'];
+                $goals_for[$key] = $row['goals_for'];
+                $goals_against[$key] = $row['goals_against'];
+            }
+            array_multisort($points, SORT_DESC, $goals_for, SORT_DESC, $goals_against, SORT_ASC, $team);
+            $vars['results'] = $team;      
 		
         $vars['title'] = "Group ".strtoupper($group)." Overview";
 		$vars['content_view'] = "group";
@@ -125,22 +166,23 @@ class Group extends Controller {
                     $team[$home]['goals_against'] = $team[$home]['goals_against'] + $prediction['away_goals'];
                     $team[$away]['goals_for'] = $team[$away]['goals_for'] + $prediction['away_goals'];
                     $team[$away]['goals_against'] = $team[$away]['goals_against'] + $prediction['home_goals'];                    
-                    }
+                    
                     if ($prediction['home_goals'] > $prediction['away_goals']) {
                         $team[$home]['won'] = $team[$home]['won'] + 1;
                         $team[$away]['lost'] = $team[$away]['lost'] + 1;
                         $team[$home]['points'] = $team[$home]['points'] +3;
-                    }
+                        }
                     if ($prediction['home_goals'] < $prediction['away_goals']) {
                         $team[$away]['won'] = $team[$away]['won'] + 1;
                         $team[$home]['lost'] = $team[$home]['lost'] + 1;
                         $team[$away]['points'] = $team[$away]['points'] +3;
-                    }                    
+                        }                    
                     if ($prediction['home_goals'] == $prediction['away_goals']) {
                         $team[$away]['tie'] = $team[$away]['tie'] + 1;
                         $team[$home]['tie'] = $team[$home]['tie'] + 1;
                         $team[$home]['points'] = $team[$home]['points'] + 1;
                         $team[$away]['points'] = $team[$away]['points'] + 1;
+                        }
                     }                    
             }
             foreach ($team as $key => $row) {
@@ -244,10 +286,8 @@ class Group extends Controller {
                     }
                 $matches->save();    
                 
-                // Now recalculate the standings, and go back to group overview
-                if ($this->groupcalc->groupresults()) {
-                    redirect('/group/overview/'.$group);
-                    }
+                redirect('/group/overview/'.$group);
+
             }
         }
 	}
