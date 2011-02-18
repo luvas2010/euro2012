@@ -6,14 +6,16 @@
 $this->lang->load('set', language() );
 
 ?>
+
         <h3>Extra Vragen</h3>
+
         <?php if ($saved): ?>
             <p class="success">Opgeslagen!</p>
         <?php endif; ?>    
         <?php echo form_open('admin_functions/extra_questions/submit'); ?>
 	    <table>
             <thead>
-                <th>Actief</th>
+                <th>Aktief</th>
                 <th class='th-left'>Type</th>
                 <th class='th-left'>Vraag</th>
                 <th class='th-left'>Antwoord</th>

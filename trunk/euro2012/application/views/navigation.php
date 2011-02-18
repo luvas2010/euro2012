@@ -72,13 +72,27 @@
                             <li><?php echo anchor('admin_functions/clear_results','Wis alle uitslagen en punten'); ?></li>
                             <li><?php echo anchor('admin_functions/clear_predictions','Wis alle voorspellingen'); ?></li>
                         </ul>
-                    </li>      
+                    </li>
+
                 <?php endif; ?>
                 <li><?php echo anchor('logout',lang('logout')); ?></li>
             <?php else: ?>
                 <li><?php echo anchor('login',lang('login')); ?></li>
                 <li><?php echo anchor('signup',lang('create')); ?></li>
             <?php endif; ?>
+                <li><?php $atts = array(
+                  'width'      => '800',
+                  'height'     => '600',
+                  'scrollbars' => 'yes',
+                  'status'     => 'no',
+                  'resizable'  => 'yes',
+                  'screenx'    => '0',
+                  'screeny'    => '0'
+                   );
+                  echo anchor_popup('help/page/'.$content_view, 'Help!', $atts); ?>
+                </li>
         </ul>
         <?php $servertime = time();?>
-        <div class='servertime'>Servertijd: <?php echo mdate("%d %M %Y, %G:%i",$servertime); ?></div>
+        <div class='servertime'>
+            Servertijd: <?php echo mdate("%d %M %Y, %G:%i",$servertime); ?>
+        </div>
