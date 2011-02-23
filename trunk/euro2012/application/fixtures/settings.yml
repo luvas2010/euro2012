@@ -31,10 +31,6 @@ settings:
   setting: points_for_team_f
   value: 13
   description: points_for_team_f_description
- set9:
-  setting: points_for_champion
-  value: 19
-  description: points_for_champion_description
  set10:
   setting: view_other_users
   value: 1

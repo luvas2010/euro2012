@@ -23,7 +23,7 @@
             <?php if (!started()) : ?>
                 <?php if ($answer['Question']['QType']['id'] < 3) : ?>
                 <td><?php echo form_input('post['.$id.'][answer]', $answer['answer']);?></td>
-                <?php else: ?>
+                <?php elseif ($answer['Question']['QType']['id']== 3) : ?>
                 <?php
                     $answerstring = str_replace("+", "",$answer['Question']['answer']); //get possible answers, and remove the '+' that indicates the right one
                     $arrAnswers = explode(",", $answerstring); // make an array out of the comma delimited string
@@ -33,6 +33,8 @@
                         }
                     ?>
                 <td><?php echo form_dropdown('post['.$id.'][answer]', $dropdown[$id], $answer['answer']); ?></td>
+                <?php elseif  ($answer['Question']['QType']['id'] == 4) : ?>
+                <td><?php echo form_dropdown('post['.$id.'][answer]', $teams, $answer['answer'] );?></td>
                 <?php endif; ?>
             <?php else: ?>
                 <td><?php echo $answer['answer']; ?>

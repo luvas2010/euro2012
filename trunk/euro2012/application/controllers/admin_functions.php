@@ -54,6 +54,18 @@ class Admin_functions extends Controller {
                     ->from('Extra_questions q, q.QType qt')
                     ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                     ->execute();
+                $teams = Doctrine_Query::create()
+                    ->select('t.name')
+                    ->from('Teams t INDEXBY t.id')
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                    ->orderBy('t.name')
+                    ->where('t.id < 17')
+                    ->execute();
+                foreach ($teams as $team) {
+                    $vars['teams'][$team['id']] = $team['name'];
+                    }
+                    $vars['teams'][0] = "-";
+                    asort($vars['teams']);                    
                 $vars['saved'] = $saved;
                 $vars['title'] = "Extra vragen";
                 $vars['content_view'] = "extraquestions_admin";

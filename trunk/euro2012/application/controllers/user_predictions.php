@@ -617,7 +617,19 @@ class User_predictions extends Controller {
                     ->andWhere('eq.active = 1')
                     ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                     ->execute();
-
+                    
+                $teams = Doctrine_Query::create()
+                    ->select('t.name')
+                    ->from('Teams t INDEXBY t.id')
+                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                    ->orderBy('t.name')
+                    ->where('t.id < 17')
+                    ->execute();
+                foreach ($teams as $team) {
+                    $vars['teams'][$team['id']] = $team['name'];
+                    }
+                    $vars['teams'][0] = "-";
+                    asort($vars['teams']);
                 $vars['title'] = "Extra questions";
                 $vars['content_view'] = "extraquestions";
                 $vars['settings'] = $this->settings_functions->settings();

@@ -5,7 +5,15 @@ extra_questions_types:
   description: 'benadering'
  ty3:
   description: 'keuze'
+ ty4:
+  description: 'team'
 extra_questions:
+ qu0:
+  question: Wie wordt de Europees Kampioen
+  answer: nog niet bekend
+  points: 35
+  question_type: 4
+  active: 1
  qu1:
     question: Vraag 1
     answer: Antwoord 1

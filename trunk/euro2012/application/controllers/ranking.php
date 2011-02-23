@@ -23,6 +23,7 @@ class Ranking extends Controller {
                 ->from('Predictions p, p.User u')
                 ->groupBy('p.user_id')
                 ->orderBy('u.position')
+                ->where('u.active = 1')
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();
             $vars['rankings'] = $q;

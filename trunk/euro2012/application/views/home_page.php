@@ -82,10 +82,6 @@ $this->lang->load('welcome', language() );
          <?php endif; ?>
     </div>
     <div class="column_2">
-        <h3 class="stats">Statistieken?</h3>
-        <p>
-            <?php if (started()) {echo 'Toernooi is begonnen!<br />';} else {echo 'Toernooi moet nog beginnen<br />';} ?>
-            Dit is nog een test. Hier zou een stukje tekst kunnen komen, of de top tien, of een grafiekje. Uitslagen, wedstirjden, noem maar op.
-        </p>
+        <?php $this->calculation_functions->calc_payout($settings); ?>
     </div>
 </div>

@@ -6,7 +6,6 @@
 $this->lang->load('set', language() );
 
 ?>
-
         <h3>Extra Vragen</h3>
 
         <?php if ($saved): ?>
@@ -27,7 +26,11 @@ $this->lang->load('set', language() );
                     <td><?php echo form_checkbox('post_array['.$question['id'].'][active]',1,$question['active']);?></td>
                     <td><?php echo $question['QType']['description']; ?></td>
                     <td><?php echo form_input('post_array['.$question['id'].'][question]',$question['question'], 'size="50"' );?></td>
+                    <?php if ($question['QType']['id'] != 4) : ?>
                     <td><?php echo form_input('post_array['.$question['id'].'][answer]',$question['answer'], 'size="50"' );?></td>
+                    <?php else : ?>
+                    <td><?php echo form_dropdown('post_array['.$question['id'].'][answer]', $teams, $question['answer'] );?></td>
+                    <?php endif; ?>
                     <td><?php echo form_input('post_array['.$question['id'].'][points]',$question['points'], 'size="4"' );?></td>
                 </tr>
                 <?php endforeach; ?>

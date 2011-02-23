@@ -73,5 +73,18 @@ if ( ! function_exists('started')) {
         return false;
         }
     }
+}
+
+if ( ! function_exists('finished')) {
+    function finished() {
+
+        $prediction = Doctrine::getTable('Predictions')->findOneByMatch_number(99);
+        if ($prediction['calculated'] == 1) { //if the final has been calculated, the tournament must be done
+            return true;
+           }
+        else {
+            return false;
+            }
+    }
 }    
 /* End of file user_helper.php */

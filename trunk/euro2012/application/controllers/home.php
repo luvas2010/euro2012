@@ -47,6 +47,7 @@ class Home extends Controller {
                 ->from('Predictions p, p.User u')
                 ->groupBy('p.user_id')
                 ->orderBy('u.position')
+                ->where('u.active = 1')
                 ->limit(10)
                 ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                 ->execute();

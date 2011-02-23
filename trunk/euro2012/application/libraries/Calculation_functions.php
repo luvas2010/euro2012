@@ -23,6 +23,49 @@ class Calculation_functions {
             return true;
     }
     
+    function calc_payout($settings) {
+    
+    if (finished()) { //only calculate payouts if the tournament is finished
+
+        $user_count = Doctrine_Query::create()
+            ->select('u.id')
+            ->from('Users u')
+            ->where('u.active = 1')
+            ->andWhere('u.paid = 1')
+            ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+            ->execute();
+            
+        $count = count($user_count);
+        $total_payout = $count * $settings['payment_amount'];
+        $payout_key  = explode(";",$settings['payout_key']);
+        $winners_num = count($payout_key);
+        
+        $users = Doctrine_Query::create()
+            ->select('u.points,
+                      u.position,
+                      u.nickname')
+            ->from('Users u INDEXBY u.id')
+            ->where('u.active = 1')
+            ->andWhere('u.paid = 1')
+            ->orderBy('u.points DESC')
+            ->limit($winners_num)
+            ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+            ->execute();
+        $i = 0;
+        // works only if there is a unique result. todo: make function for when there are winners with an equal amount of points
+        echo "De prijzenpot bedraagt &euro;".$total_payout."<br />";
+        foreach ($users as $user) {
+            $prize = ($payout_key[$i]/100) * $total_payout;
+            echo $user['nickname']." krijgt &euro;".$prize."(".$payout_key[$i]."%)<br />";
+            $i++;
+            }
+        
+        
+            
+        }        
+    
+    }
+    
     function matchstats($match_number) {
              
         $max = Doctrine_Query::create()
@@ -94,6 +137,7 @@ class Calculation_functions {
                           u.previouspoints
                           ')
                 ->from('Users u')
+                ->where('u.active = 1')
                 ->execute();
                 
             // get all predictions for each user
@@ -232,7 +276,7 @@ class Calculation_functions {
                             ->andWhere('eq.active = 1')
                             ->execute();
                         foreach ($answers as $answer) {
-                            if ($answer['Question']['QType']['id'] == 1) { //exact answer needed
+                            if ($answer['Question']['QType']['id'] == 1 || ($answer['Question']['QType']['id'] == 4 && $answer['Question']['answer'] != "-")) { //exact answer needed
                                 if (strtolower($answer['answer']) == strtolower($answer['Question']['answer'])) {
                                     $answer['points'] = $answer['Question']['points'];
                                     $user['points'] = $user['points'] + $answer['points'];
