@@ -78,7 +78,7 @@ $this->lang->load('welcome', language() );
         <h3 class="news">Nieuws</h3>
          <?php echo content('text_news'); ?>
          <?php if (admin()) : ?>
-            <?php echo anchor('text/edit/3','Tekst veranderen'); ?>
+            <?php echo anchor('text/edit/3','Tekst veranderen', 'class="adminlink"'); ?>
          <?php endif; ?>
     </div>
     <div class="column_2">

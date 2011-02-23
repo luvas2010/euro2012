@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Signup Form</title>
-	<link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css"
-		type="text/css" media="all">
-</head>
-<body>
-
 <div id="signup_form">
 
 	<p class="heading">New User Signup</p>
@@ -53,7 +43,7 @@
 		<label for="phone">Phone: </label>
 		<?php echo form_input('phone',set_value('phone')); ?>
 	</p>
-	<p>
+	<p class='buttons'>
 		<?php echo form_submit('submit','Create my account'); ?>
 	</p>
 	<?php echo form_close(); ?>
@@ -63,5 +53,3 @@
 
 </div>
 
-</body>
-</html>

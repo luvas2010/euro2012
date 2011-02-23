@@ -10,7 +10,11 @@ class Signup extends Controller {
 	}
 
 	public function index() {
-		$this->load->view('signup_form');
+	    $vars['title'] = "Signup for an account";
+        $vars['content_view'] = "signup_form";		
+        $vars['settings'] = $this->settings_functions->settings();
+        $this->load->view('template', $vars);
+		//$this->load->view('signup_form');
 	}
 
 	public function submit() {

@@ -277,6 +277,7 @@ class Admin_functions extends Controller {
                 $u[$i]->password = 'user'.$i;
                 $u[$i]->email = 'user'.$i.'@example.com';
                 $u[$i]->nickname = 'User '.$i;
+                $u[$i]->active = 1;
                 $u[$i]->save();
                 $count++;
                 
