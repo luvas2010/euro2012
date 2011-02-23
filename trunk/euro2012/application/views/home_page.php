@@ -12,7 +12,7 @@ $this->lang->load('welcome', language() );
 </div>
 <?php endif; ?>
 
-<?php if (isset($warning_matches)) : ?>
+<?php if (count($warning_matches) > 0 && !started()) : ?>
 <div class="home_warning_row">
     <div class="column_4">
         <p class="error">

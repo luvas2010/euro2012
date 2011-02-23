@@ -41,24 +41,32 @@ class Calculation_functions {
         $winners_num = count($payout_key);
         
         $users = Doctrine_Query::create()
-            ->select('u.points,
+            ->select('u.id,
                       u.position,
-                      u.nickname')
-            ->from('Users u INDEXBY u.id')
+                      ')
+            ->from('Users u')
             ->where('u.active = 1')
             ->andWhere('u.paid = 1')
+            ->andWhere('u.position <= '.$winners_num)
             ->orderBy('u.points DESC')
-            ->limit($winners_num)
             ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
             ->execute();
         $i = 0;
         // works only if there is a unique result. todo: make function for when there are winners with an equal amount of points
-        echo "De prijzenpot bedraagt &euro;".$total_payout."<br />";
-        foreach ($users as $user) {
-            $prize = ($payout_key[$i]/100) * $total_payout;
-            echo $user['nickname']." krijgt &euro;".$prize."(".$payout_key[$i]."%)<br />";
-            $i++;
+        
+        foreach ($users as $u) {
+            $user[$u['id']] = $u['position'];
             }
+        print_r($users);
+        $count_positions = array_count_values($user);
+        print_r($count_positions);
+        $pos = 0;
+        
+        // foreach ($users as $user) {
+            // $prize = ($payout_key[$i]/100) * $total_payout;
+            // echo $user['nickname']." krijgt &euro;".$prize."(".$payout_key[$i]."%)<br />";
+            // $i++;
+            // }
         
         
             
