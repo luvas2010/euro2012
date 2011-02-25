@@ -39,37 +39,39 @@ class Calculation_functions {
         $total_payout = $count * $settings['payment_amount'];
         $payout_key  = explode(";",$settings['payout_key']);
         $winners_num = count($payout_key);
-        
-        $users = Doctrine_Query::create()
-            ->select('u.id,
-                      u.position,
-                      ')
-            ->from('Users u')
-            ->where('u.active = 1')
-            ->andWhere('u.paid = 1')
-            ->andWhere('u.position <= '.$winners_num)
-            ->orderBy('u.points DESC')
-            ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-            ->execute();
-        $i = 0;
-        // works only if there is a unique result. todo: make function for when there are winners with an equal amount of points
-        
-        foreach ($users as $u) {
-            $user[$u['id']] = $u['position'];
+        foreach ($payout_key as $k => $v) {
+            $payout[$k+1] = $v;
             }
-        print_r($users);
-        $count_positions = array_count_values($user);
-        print_r($count_positions);
-        $pos = 0;
-        
-        // foreach ($users as $user) {
-            // $prize = ($payout_key[$i]/100) * $total_payout;
-            // echo $user['nickname']." krijgt &euro;".$prize."(".$payout_key[$i]."%)<br />";
-            // $i++;
-            // }
-        
-        
-            
+        print_r($payout);
+        echo "<br/>".$total_payout."<br/>";
+        $i = 1;
+        while($i <= $winners_num) :
+            $winners = Doctrine_Query::create()
+                ->select('u.id,
+                         u.position,
+                         u.points,
+                         u.nickname')
+                ->from('Users u INDEXBY u.id')
+                ->where('u.position = '.$i)
+                ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                ->execute();
+        if (count($winners) > 1) {
+            $pay= 0;
+            for ($offset = 0;$offset <= count($winners)-1;$offset++) {
+                if (($i + $offset) < count($payout)+1) {
+                    $pay = $pay + $payout[$i + $offset];
+                    }
+                }
+            }    
+        else {
+            $pay = $payout[$i];
+            }    
+            foreach($winners as $winner) {
+                echo "<br/>".$winner['nickname']." wins ".($pay/100 * $total_payout)/count($winners)." euro<br/>";
+            }
+            echo "<br /> Nummer ".$i.": ".count($winners)."<br />";
+            $i = $i + count($winners);
+        endwhile;
         }        
     
     }

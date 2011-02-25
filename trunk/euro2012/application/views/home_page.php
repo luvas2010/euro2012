@@ -44,6 +44,7 @@ $this->lang->load('welcome', language() );
             <li>Vorige positie: <?php echo $user['lastposition']; ?></li>
         </ul>            
     </div>
+    <?php  if (!finished()) : ?>
     <div class="column_1">
         <h3 class="top-ten">Top Tien</h3>
         <ul>
@@ -55,8 +56,28 @@ $this->lang->load('welcome', language() );
             <?php endif; ?>
             <?php } ?>
             <li><?php echo anchor('ranking', 'Bekijk de hele ranglijst'); ?></li>
-        </ul>    
+        </ul>
     </div>
+    <?php else : ?>
+    <div class="column_2">
+        <h3 class='final-results'>Prijzenverdeling</h3>
+        <p>De totale prijzenpot is: &euro;<?php echo $total_payout; ?></p>
+        <p>De verdeling van de prijzen:</p>
+        <ul>
+            <?php foreach($payout as $k => $v) : ?>
+                <li>Plaats <?php echo $k;?>: <?php echo $v;?>% (<?php if (isset($win_count[$k])) { echo $win_count[$k]." winnaars";} else { echo "geen winnaar, gaat naar de ".$win_count[$k-1]." winnaars op positie ".($k-1);}?>)</li>
+            <?php endforeach; ?>
+        </ul>
+        <ul>
+        <?php foreach ($winners as $winner) :?>
+            <li><?php echo $winner['nickname']; ?> wint &euro;<?php printf("%01.2f",$winner['pay']); ?></li>
+        <?php endforeach; ?>
+        
+        </ul>
+        <?php echo anchor('ranking', 'Bekijk de hele ranglijst'); ?>
+    </div>    
+    <?php endif; ?>
+    <?php  if (!finished()) : ?>
     <div class="column_2">
         <h3 class="clock">Volgende wedstrijden</h3>
         <ul>
@@ -71,7 +92,12 @@ $this->lang->load('welcome', language() );
             <?php endif; ?>
         <?php endforeach; ?>   
         </ul>        
-     </div>
+    </div>
+    <?php else: ?>
+    <div class='column_1'>
+        <p> het toernooi is afgelopen!</p>
+    </div>
+    <?php endif; ?>
 </div>
 <div class="home_row">
     <div class="column_2">
@@ -82,6 +108,6 @@ $this->lang->load('welcome', language() );
          <?php endif; ?>
     </div>
     <div class="column_2">
-        <?php $this->calculation_functions->calc_payout($settings); ?>
+        
     </div>
 </div>
