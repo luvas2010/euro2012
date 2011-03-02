@@ -84,58 +84,60 @@ class Home extends Controller {
                 }
                 
 
-                $user_count = Doctrine_Query::create()
-                    ->select('u.id')
-                    ->from('Users u')
-                    ->where('u.active = 1')
-                    ->andWhere('u.paid = 1')
-                    ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
-                    ->execute();
-                    
-                $count = count($user_count);
-                $total_payout = $count * $settings['payment_amount'];
-                $vars['total_payout'] = $total_payout;
-                $payout_key  = explode(";",$settings['payout_key']);
-                $winners_num = count($payout_key);
-                foreach ($payout_key as $k => $v) {
-                    $payout[$k+1] = $v;
-                    }
-                $vars['payout'] = $payout;
-                $i = 1;
-                while($i <= $winners_num) :
-                    $winners = Doctrine_Query::create()
-                        ->select('u.id,
-                                 u.position,
-                                 u.points,
-                                 u.nickname')
-                        ->from('Users u INDEXBY u.id')
-                        ->where('u.position = '.$i)
+                if (finished()) {
+                    $user_count = Doctrine_Query::create()
+                        ->select('u.id')
+                        ->from('Users u')
+                        ->where('u.active = 1')
+                        ->andWhere('u.paid = 1')
                         ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
                         ->execute();
                         
-                $win_count[$i] = count($winners);
-                if (count($winners) > 1) {
-                    
-                    $pay= 0;
-                    for ($offset = 0;$offset <= count($winners)-1;$offset++) {
-                        if (($i + $offset) < count($payout)+1) {
-                            $pay = $pay + $payout[$i + $offset];
-                            }
+                    $count = count($user_count);
+                    $total_payout = $count * $settings['payment_amount'];
+                    $vars['total_payout'] = $total_payout;
+                    $payout_key  = explode(";",$settings['payout_key']);
+                    $winners_num = count($payout_key);
+                    foreach ($payout_key as $k => $v) {
+                        $payout[$k+1] = $v;
                         }
-                    }    
-                else {
-                    $pay = $payout[$i];
-                    }    
-                    foreach($winners as $winner) {
-                        $win_user[$winner['id']]['id'] = $winner['id'];
-                        $win_user[$winner['id']]['nickname'] = $winner['nickname'];
-                        $win_user[$winner['id']]['position'] = $winner['position'];
-                        $win_user[$winner['id']]['pay'] = ($pay/100 * $total_payout)/count($winners);
-                    }
-                    $vars['winners'] = $win_user;
-                    $i = $i + count($winners);
-                endwhile;               
-            $vars['win_count'] = $win_count;
+                    $vars['payout'] = $payout;
+                    $i = 1;
+                    while($i <= $winners_num) :
+                        $winners = Doctrine_Query::create()
+                            ->select('u.id,
+                                     u.position,
+                                     u.points,
+                                     u.nickname')
+                            ->from('Users u INDEXBY u.id')
+                            ->where('u.position = '.$i)
+                            ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+                            ->execute();
+                            
+                    $win_count[$i] = count($winners);
+                    if (count($winners) > 1) {
+                        
+                        $pay= 0;
+                        for ($offset = 0;$offset <= count($winners)-1;$offset++) {
+                            if (($i + $offset) < count($payout)+1) {
+                                $pay = $pay + $payout[$i + $offset];
+                                }
+                            }
+                        }    
+                    else {
+                        $pay = $payout[$i];
+                        }    
+                        foreach($winners as $winner) {
+                            $win_user[$winner['id']]['id'] = $winner['id'];
+                            $win_user[$winner['id']]['nickname'] = $winner['nickname'];
+                            $win_user[$winner['id']]['position'] = $winner['position'];
+                            $win_user[$winner['id']]['pay'] = ($pay/100 * $total_payout)/count($winners);
+                        }
+                        $vars['winners'] = $win_user;
+                        $i = $i + count($winners);
+                    endwhile;               
+                $vars['win_count'] = $win_count;
+                }
             $vars['topten'] = $q;
             $vars['settings'] = $settings;
             $vars['title'] = $vars['settings']['poolname'];
