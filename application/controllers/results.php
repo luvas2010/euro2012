@@ -49,8 +49,16 @@ class Results extends CI_Controller {
             $data['content_main'] = "show_results";
             
             $data['share_url']  = base_url().'results/show/'.$match_uid;
-            $data['share_text_twitter'] = sprintf(lang('share_text_twitter'),get_match($match_uid), $results[0]['username'], $results[1]['username'], $results[2]['username']);
-            $data['share_text_facebook'] = sprintf(lang('share_text_facebook'), get_match($match_uid), $results[0]['username'], $results[1]['username'], $results[2]['username']);
+            if (!isset($results[0]['username']) || !isset($results[1]['username']) || !isset($results[2]['username']))
+            {
+                $data['share_text_twitter'] = sprintf(lang('share_text_twitter'),get_match($match_uid), '?', '?', '?');
+                $data['share_text_facebook'] = sprintf(lang('share_text_facebook'), get_match($match_uid), '?', '?', '?');
+            }
+            else
+            {
+                $data['share_text_twitter'] = sprintf(lang('share_text_twitter'),get_match($match_uid), $results[0]['username'], $results[1]['username'], $results[2]['username']);
+                $data['share_text_facebook'] = sprintf(lang('share_text_facebook'), get_match($match_uid), $results[0]['username'], $results[1]['username'], $results[2]['username']);
+            }
             $this->load->view('template/template', $data);
         }
         else

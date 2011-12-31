@@ -11,7 +11,7 @@ $lang['welcometext']    = '<p>Welkom bij de %s.</p>
                            <p>Meedoen met de pool is eenvoudiger dan het lijkt. Hier zijn de instructies:</p>
                            <ul>
                                 <li>Voorspel de uitslag van iedere wedstrijd. Je kunt dit wijzigen tot vlak voor de wedstijd begint.</li>
-                                <li>Voorspel de teams die de kwart finales, halve finales en de final gaan spelen. Dit moet je doen voordat het toernooi begint</li>
+                                <li>Voorspel de teams die de kwart finales, halve finales en de finale gaan spelen. Dit moet je doen voordat het toernooi begint</li>
                                 <li>Voorspel het totaal aantal doelpunten van alle 31 wedstrijden, voordat het toernooi begint</li>
                                 <li>Voorspel wie de Europees Kampioen wordt, voordat het toernooi begint</li>
                             </ul>
@@ -26,6 +26,6 @@ $lang['welcometext']    = '<p>Welkom bij de %s.</p>
                                     <li>Je kunt maximaal %s bonus punten verdienen als je het toaal aantal goals goed hebt. Zit je er dichtbij dan krijg je minder bonuspunten. Zit je er meer dan %s doelpunten naast dan krijg je geen bonuspunten.</li>
                                     <li>Als je de winnaar van Euro2012 goed voorspelt, krijg je nog eens %s bonuspunten</li>
                                 </ul>
-                           </div>';          
+                           </div>';        
 /* End of file welcome_lang.php */
 /* Location: ./application/language/nederlands/welcome_lang.php */
