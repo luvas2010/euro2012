@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|images|css|js|scripts|resource|robots\.txt)
+
+# In the next rule, replace '/euro2012/' with the subdirectory you've installed the pool in.
+# If the pool is in your root, simply remove '/euro2012' from the next line
+RewriteRule ^(.*)$ /euro2012/index.php/$1 [L]
