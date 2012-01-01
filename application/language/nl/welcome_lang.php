@@ -28,4 +28,4 @@ $lang['welcometext']    = '<p>Welkom bij de %s.</p>
                                 </ul>
                            </div>';        
 /* End of file welcome_lang.php */
-/* Location: ./application/language/nederlands/welcome_lang.php */
+/* Location: ./application/language/nl/welcome_lang.php */
