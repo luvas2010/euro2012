@@ -516,7 +516,7 @@ class Predictions extends CI_Controller {
         {
 
             
-            $data['title'] = lang('total_goals_prediction');
+            $data['title'] = lang('nav_extra');
             $data['content_main'] = "prediction_extra";
             
             $this->load->view('template/template', $data);
