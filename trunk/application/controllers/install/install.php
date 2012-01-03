@@ -59,7 +59,7 @@ class Install extends CI_Controller {
         $this->email->initialize($config);
         
         // Send user sign up e-mail
-        $this->email->from($this->config->item('password_reset_email'), 'Install script'); //same account as reset password e-mail
+        $this->email->from($this->config->item('email_from_address'), 'Install script'); //same account as reset password e-mail
         $this->email->to('info@voetbalpool2012.nl');
         $this->email->subject('Voetbalpool geinstalleerd');
 
