@@ -77,8 +77,8 @@
             });
         </script>
         <ul>
-            <li>Average goals per match is <?php echo $average_goals;?> after <?php echo $num_matches;?> matches.</li>
-            <li>With this average, the total in 31 matches will be around <?php echo $total_with_average;?></li>
+            <li><?php echo sprintf(lang('average_goals'), $average_goals, $num_matches);?></li>
+            <li><?php echo sprintf(lang('total_with_average'), $total_with_average);?></li>
         </ul>
     <?php
     }
