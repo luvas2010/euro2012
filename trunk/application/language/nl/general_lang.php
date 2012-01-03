@@ -1,11 +1,11 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+﻿<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
 | General
 |--------------------------------------------------------------------------
 */
-$lang['website_title']                          = 'Euro 2012 Voetbal Pool';
+$lang['website_title']                          = 'Euro 2012 VoetbalPool';
 $lang['website_welcome_username']               = 'Welkom, %s.';
 $lang['website_account']                        = 'Account';
 $lang['website_profile']                        = 'Profiel';
