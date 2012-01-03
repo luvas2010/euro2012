@@ -51,7 +51,7 @@ class Matches extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/matches'));
+            redirect('account/sign_in/?continue='.site_url('matches'));
         }
     }
     
@@ -142,7 +142,7 @@ class Matches extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/matches/result/'.$match_uid));
+            redirect('account/sign_in/?continue='.site_url('matches/result/'.$match_uid));
         }
     }
     
@@ -211,7 +211,7 @@ class Matches extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/matches/edit_prediction/'.$match_uid));
+            redirect('account/sign_in/?continue='.site_url('matches/edit_prediction/'.$match_uid));
         }
     }
     

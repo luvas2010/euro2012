@@ -41,7 +41,7 @@ class Users extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/admin/users'));
+            redirect('account/sign_in/?continue='.site_url('admin/users'));
         }
     }
     
@@ -242,12 +242,12 @@ class Users extends CI_Controller {
             }
             else
             {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/admin/users/unverified'));
+            redirect('account/sign_in/?continue='.site_url('admin/users/unverified'));
             }
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/admin/users/unverified'));
+            redirect('account/sign_in/?continue='.site_url('admin/users/unverified'));
         }
     }
     

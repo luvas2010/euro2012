@@ -48,6 +48,7 @@
                             
                         </ul>
                     </li>
+                    <li><?php echo anchor('admin/check_settings', lang('check_settings'));?></li>
                 </ul>
             </li>
        

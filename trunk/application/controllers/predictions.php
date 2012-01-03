@@ -45,7 +45,7 @@ class Predictions extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/predictions'));
+            redirect('account/sign_in/?continue='.site_url('predictions'));
         }    
     }
     
@@ -71,7 +71,7 @@ class Predictions extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/predictions/edit'));
+            redirect('account/sign_in/?continue='.site_url('predictions/edit'));
         }
         
         if ($this->authentication->is_signed_in() && $action == 'save')
@@ -384,7 +384,7 @@ class Predictions extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/predictions/editgroup/'.$group));
+            redirect('account/sign_in/?continue='.site_url('predictions/editgroup/'.$group));
         }
          
         if ($action == 'save')
@@ -483,7 +483,7 @@ class Predictions extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/predictions/extra'));
+            redirect('account/sign_in/?continue='.site_url('predictions/extra'));
         }
         
         if ($this->authentication->is_signed_in() && $action == 'save')

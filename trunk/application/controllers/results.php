@@ -63,7 +63,7 @@ class Results extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/results/show/'.$match_uid));
+            redirect('account/sign_in/?continue='.site_url('results/show/'.$match_uid));
         }
     } 
 }

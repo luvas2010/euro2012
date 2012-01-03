@@ -143,7 +143,7 @@ class Teams_knockout_edit extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/admin/teams_knockout_edit'));
+            redirect('account/sign_in/?continue='.urlencode(site_url('admin/teams_knockout_edit'));
         }
     }
 
