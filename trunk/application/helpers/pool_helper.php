@@ -252,7 +252,12 @@ if ( ! function_exists('get_missing_teams_list') )
         $missing_team_data = array();
         foreach ($predictions as $prediction)
         {
-            if ($prediction['pred_home_team'] == NULL || $prediction['pred_home_team'] == "" || $prediction['pred_away_team'] == NULL || $prediction['pred_away_team'] == "")
+            if ($prediction['pred_home_team'] == NULL
+                || $prediction['pred_home_team'] == ""
+                || $prediction['pred_home_team'][0] == "W" || $prediction['pred_home_team'][0] == "R"
+                || $prediction['pred_away_team'] == NULL
+                || $prediction['pred_away_team'] == ""
+                || $prediction['pred_away_team'][0] == "W" || $prediction['pred_away_team'][0] == "R")
             //if ($prediction['pred_home_goals']== NULL)
             {
                 $missing_results_data[] = $prediction['match_uid'];
