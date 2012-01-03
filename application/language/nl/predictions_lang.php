@@ -35,7 +35,10 @@ $lang['predict_champion']               = "Voorspel de uiteindelijke Europees Ka
                                           <span class='boldtext'>Let op: je moet dit voorspellen voordat het toernooi begint!</span>";
 $lang['choose_a_team']                  = "Kies een land";
 $lang['explanation']                    = "Uitleg";
-$lang['no_info_yet']                    = "Deze informatie is nog niet beschikbaar.";                                           
+$lang['no_info_yet']                    = "Deze informatie is nog niet beschikbaar.";
+$lang['average_goals']                  = "Het gemiddeld aantal doelpunten is %s na %s wedstrijden.";
+$lang['total_with_average']             = "Met dit gemiddelde wordt het toaal aantal doelpunten na 31 wedstrijden ongeveer %s";
+                                         
 $lang['position']           = "Pos.";
 $lang['team']               = "Team";
 $lang['played']             = "Gesp.";
