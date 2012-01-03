@@ -149,7 +149,7 @@ class Users extends CI_Controller {
                     
                     $message = sprintf(lang('verified_email_message'), $username);
 
-                    $signin_link = base_url().'account/sign_in';
+                    $signin_link = anchor('account/signin',lang('website_sign_in');
                     $message = $message.sprintf(lang('verified_signin_link'), $signin_link);
                     $message = $message.sprintf(lang('verified_email_footer'), lang('website_title'));
                     $this->email->message($message);

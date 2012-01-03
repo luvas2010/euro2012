@@ -92,7 +92,7 @@ class Account_model extends CI_Model {
             $hashed_password = $hasher->HashPassword($password);
         }
         
-        $this->load->helper('date');
+        $this->load->helper('date', 'url');
         
         $data = array(
             'username' => $username, 
@@ -148,7 +148,7 @@ class Account_model extends CI_Model {
                 $message = sprintf(lang('signup_email_message'), $username);
                 if ($this->config->item('verify_users'))
                 {
-                    $verify_link = base_url().'admin/users/unverified';
+                    $verify_link = anchor('admin/users/unverified');
                     $message = $message.sprintf(lang('signup_verify_message'), $verify_link);
                 }
                 $message = $message.sprintf(lang('signup_email_footer'), lang('website_title'));
