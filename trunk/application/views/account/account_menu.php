@@ -8,6 +8,7 @@
                 <?php endif; ?>
                 <li<?php if ($current == 'account_profile') echo ' class="active"'; ?>><?php echo anchor('account/account_profile', lang('website_profile'), "class='button'"); ?></li>
                 <li<?php if ($current == 'account_linked') echo ' class="active"'; ?>><?php echo anchor('account/account_linked', lang('website_linked'), "class='button'"); ?></li>
+                <li<?php if ($current == 'account_linked') echo ' class="active"'; ?>><?php echo anchor('admin/users/delete/'.$account->id, lang('delete_account'), "class='button delete'"); ?></li>
             </ul>
         </div>
         <div class="clear"></div>

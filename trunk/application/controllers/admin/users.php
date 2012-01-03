@@ -90,6 +90,37 @@ class Users extends CI_Controller {
                
                 $this->load->view('template/template', $data);
             }
+            else
+            {
+                $sql_query = "SELECT `username`,`email`
+                              FROM `account`
+                              WHERE `id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $row = $query->row_array();
+                $username = $row['username'];                
+                $sql_query = "DELETE FROM `account` WHERE `account`.`id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $sql_query = "DELETE FROM `account_details` WHERE `account_id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $sql_query = "DELETE FROM `account_facebook` WHERE `account_id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $sql_query = "DELETE FROM `account_openid` WHERE `account_id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $sql_query = "DELETE FROM `account_twitter` WHERE `account_id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $sql_query = "DELETE FROM `prediction` WHERE `account_id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+
+                $sql_query = "SELECT *
+                               FROM `account`
+                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
+                               ORDER BY `account`.`username`";
+                $query = $this->db->query($sql_query);
+                $users = $query->result_array();
+                $this->authentication->sign_out();
+                $this->session->set_flashdata('info', sprintf(lang('account_deleted'),$username));
+                redirect('/');
+            }
         }
     }
     
@@ -108,7 +139,7 @@ class Users extends CI_Controller {
                               SET `is_admin` =  '1'
                               WHERE  `account`.`id` = '$account_id'";
                 $query = $this->db->query($sql_query);
-
+                
                 redirect('/');
             }
         }
