@@ -175,14 +175,19 @@ if ( ! function_exists('get_missing_result_list') )
         $CI =& get_instance();
         $CI->load->helper(array('language', 'date', 'url'));
         $CI->load->language(array('general'));
-        $now = now();
+        
+        $now = now() + $CI->config->item('time_offset');
+        $next_48_hours = $now + 172800;
         $account_id = $CI->session->userdata('account_id');
         $sql_query = "SELECT *
                       FROM `prediction`
                       JOIN `match`
                       ON `prediction`.`pred_match_uid` = `match`.`match_uid`
                       AND `prediction`.`account_id` = '$account_id'
+                      AND `match`.`timestamp` < $next_48_hours
+                      AND `match`.`timestamp` > $now
                       ORDER BY `match`.`timestamp`";
+
         $query = $CI->db->query($sql_query);
         $predictions = $query->result_array();
         
