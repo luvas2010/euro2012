@@ -49,7 +49,8 @@ $lang['edit_teams_knockout_phase'] = 'Teams voor knockout fase invoeren';
 $lang['usermanagement'] = 'Gebruikersbeheer';
 $lang['list_all_users'] = 'Alle gebruikers';
 $lang['show_unverified_users'] = 'Nog niet geverifiëerde gebruikers';
-$lang['admin_unverified_users'] = 'Er zijn %s ongeverifi&eumlerde gebruikers';
+$lang['admin_unverified_users'] = 'Er zijn %s ongeverifiëerde gebruikers';
+$lang['check_settings'] = 'Bekijk instellingen';
 
 $lang['quarter_final']  = 'Kwart Finale';
 $lang['semi_final']     = 'Halve Finale';

@@ -59,7 +59,7 @@ class Group extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/group/show/'.$group));
+            redirect('account/sign_in/?continue='.site_url('group/show/'.$group));
         }    
 	}
 	

@@ -50,6 +50,7 @@ $lang['usermanagement'] = 'User Management';
 $lang['list_all_users'] = 'List all users';
 $lang['show_unverified_users'] = 'Show Unverified Users';
 $lang['admin_unverified_users'] = 'There are %s unverified users';
+$lang['check_settings'] = 'Check Settings';
 
 $lang['quarter_final']  = 'Quarter Finals';
 $lang['semi_final']     = 'Semi Finals';

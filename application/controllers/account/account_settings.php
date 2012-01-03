@@ -34,7 +34,7 @@ class Account_settings extends CI_Controller {
         // Redirect unauthenticated users to signin page
         if ( ! $this->authentication->is_signed_in()) 
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'account/account_settings'));
+            redirect('account/sign_in/?continue='.site_url('account/account_settings'));
         }
         
         // Retrieve sign in user

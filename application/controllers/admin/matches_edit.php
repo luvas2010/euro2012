@@ -101,7 +101,7 @@ class Matches_edit extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/admin/matches_edit'));
+            redirect('account/sign_in/?continue='.site_url('admin/matches_edit'));
         }
     }
     

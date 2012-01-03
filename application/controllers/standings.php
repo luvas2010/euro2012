@@ -79,7 +79,7 @@ class Standings extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/standings'));
+            redirect('account/sign_in/?continue='.site_url('standings'));
         }
     }
     
@@ -113,7 +113,7 @@ class Standings extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(base_url().'/standings'));
+            redirect('account/sign_in/?continue='.site_url('standings'));
         }
     } 
 }
