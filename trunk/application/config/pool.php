@@ -18,15 +18,24 @@ $config['sign_up_email_admin'] = TRUE; // Send the admin account an e-mail when 
 $config['verify_users'] = TRUE; // Admin has to verify users before they can login
 $config['email_from_address'] = 'info@voetbalpool2012.nl';  //e-mail address where emails are sent from. set this to your own (administrator) e-mail address
 
+/* TO DO: Payment config */
+$config['play_for_money'] = FALSE; // TO DO: Implement payout calculations
+$config['payment_per_user'] = '10'; // TO DO: Amount payed per user
+
+/* Set your payout schedule.
+   If set like '50,30,20' the first ranked user will get 50%, second 30%, third 10%.
+   Add as many as you want, for eacmple '30,20,15,10,5' is also possible.
+   Numbers don't have to add up to 100. If you keep 10%, set it to '50, 25, 15', so it adds up to 90%
+   If set like '50,30,20' and two players end first with the same amount of points, they will each get (50+30)/2 = 40%, third will get 20
+*/
+$config['payout_schedule'] = "50,30,20"; // TO DO: paypout schedule
+
 /* Awarded points */
 $config['pred_points_goals'] = '3'; // Points for predicting 'home' or 'away' goals correct
 $config['pred_points_result'] = '2'; // Points for predicting correct who wins the match (or tie)
-
-
 $config['pred_points_qf_team'] = '7'; // Points if predicting a team in the Quarter Finals correct
 $config['pred_points_sf_team'] = '9'; // Points if predicting a team in the Semi Finals correct
 $config['pred_points_f_team'] = '13'; // Points if predicting a team in the final correct
-
 $config['pred_points_bonus'] = '15'; // Maximum Bonus points for total number of goals
 $config['pred_points_champion'] = '20'; // Points for predicting the champion correct
 
