@@ -34,7 +34,7 @@ class Account_password extends CI_Controller {
         // Redirect unauthenticated users to signin page
         if ( ! $this->authentication->is_signed_in()) 
         {
-            redirect('account/sign_in/?continue='.urlencode(site_url('account/account_password'));
+            redirect('account/sign_in/?continue='.urlencode(site_url('account/account_password')));
         }
         
         // Retrieve sign in user
