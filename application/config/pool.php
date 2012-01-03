@@ -16,6 +16,7 @@ $config['public_predictions'] = FALSE; // TO DO: If set to TRUE, people can see 
 
 $config['sign_up_email_admin'] = TRUE; // Send the admin account an e-mail when a new user signs up
 $config['verify_users'] = TRUE; // Admin has to verify users before they can login
+$config['email_from_address'] = 'info@voetbalpool2012.nl';  //e-mail address where emails are sent from. set this to your own (administrator) e-mail address
 
 /* Awarded points */
 $config['pred_points_goals'] = '3'; // Points for predicting 'home' or 'away' goals correct
@@ -89,7 +90,7 @@ $config['pred_points_champion'] = '20'; // Points for predicting the champion co
     */
     $config['password_reset_expiration']            = 1800;
     $config['password_reset_secret']                = 'ED95244060F22EE456022E091CBCE39BCD177E3992FFB61D1E3B455DAA4EF7B7';
-    $config['password_reset_email']                 = 'info@voetbalpool2012.nl';
+
 /* End of account settings */
 
 /*

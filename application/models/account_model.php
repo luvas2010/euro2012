@@ -141,7 +141,7 @@ class Account_model extends CI_Model {
                 $admin_email = $row['email'];
                             
                 // Send user sign up e-mail
-                $this->email->from($this->config->item('password_reset_email'), lang('reset_password_email_sender')); //same account as reset password e-mail
+                $this->email->from($this->config->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
                 $this->email->to($admin_email);
                 $this->email->subject(lang('signup_email_subject'));
                 
