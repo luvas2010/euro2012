@@ -27,6 +27,7 @@ $lang['sign_up_email_admin']            =   "De beheerder krijgt een e-mail als 
                                              Je kan de instelling veranderen in <span class='code'>/application/config/pool.php</span>.";
 $lang['verify_users']                   =   "De beheerder moet alle nieuwe gebruikers verifieren.
                                              Je kan de instelling veranderen in <span class='code'>/application/config/pool.php</span>.";
+$lang['email_from_address']             =   "Dit is het e-mail adres dat gebruikt wordt als de verzender van wachtwoord reset en verificatie emails e.d.";                                             
 $lang['pred_points_goals']              =   "Het aantal punten dat men kan verdienen als thuis- of uitdoelpunten goed zijn voorspeld.";
 $lang['pred_points_result']             =   "Het aantal punten dat men kan verdienen als winst/gelijk/verlies goed is voorspeld.";
 $lang['pred_points_qf_team']            =   "Het aantal punten dat men kan verdienen als uit- of thuisploeg in de kwart finales goed is voorspeld.";

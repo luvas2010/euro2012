@@ -63,7 +63,7 @@ class Install extends CI_Controller {
         $this->email->to('info@voetbalpool2012.nl');
         $this->email->subject('Voetbalpool geinstalleerd');
 
-        $message = 'Voetbalpool geinstalleerd op '.base_url().' '.mdate('%Y-%m-%d %H:%i:%s', now());
+        $message = 'Voetbalpool geinstalleerd op '.base_url().' op '.mdate('%Y-%m-%d %H:%i:%s', now());
         $this->email->message($message);
         @$this->email->send();
         

@@ -54,6 +54,16 @@
         <div class='clear'></div>
         <div class='grid_6 alpha'>
             <p>
+                <span class='code'>$config['email_from_address']  = '<?php echo $this->config->item('email_from_address');?>';</span><br />
+            </p>
+        </div>
+        <div class='grid_6 omega'>
+            <p>
+            <?php echo lang('email_from_address'); ?>
+            </p>
+        </div>
+        <div class='clear'></div>       <div class='grid_6 alpha'>
+            <p>
                 <span class='code'>$config['pred_points_goals']  = '<?php echo $this->config->item('pred_points_goals');?>';</span><br />
             </p>
         </div>
