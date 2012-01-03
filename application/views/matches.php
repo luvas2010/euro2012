@@ -26,7 +26,13 @@
         <tr>
             <td><?php echo $match['match_uid'];?></td>
             <td><?php echo $match['match_group'];?></td>
-            <td><?php echo get_team_name($match['home_team']); ?> - <?php echo get_team_name($match['away_team']);?></td>
+            <td><?php echo get_team_name($match['home_team']); ?> - <?php echo get_team_name($match['away_team']);?>
+                <?php if ($match['match_uid'] >= 25)
+                { ?>
+                <br />
+                <?php echo "(".lang('prediction').": ".get_team_name($match['pred_home_team']); ?> - <?php echo get_team_name($match['pred_away_team']).")";?>
+                <?php } ?>
+            </td>
             <td class='centertext'><?php echo $match['pred_home_goals']." - ".$match['pred_away_goals']; ?></td>
             <td class='centertext'><?php echo $match['home_goals']." - ".$match['away_goals'];?></td>
             <td><?php echo mdate("%d %M %Y %H:%i",$match['timestamp']); ?></td>
