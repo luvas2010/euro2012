@@ -16,9 +16,9 @@
     <table class="stripeMe">
 		<tr>
 			<th><?php echo lang('match_number'); ?></th>
-            <th>Home - Away</th>
-            <th>Prediction<br/>Home Goals</th>
-            <th>Prediction<br/>Away Goals</th>
+            <th>Thuis - Uit</th>
+            <th>Voorspelling<br/>Thuis Doelpunten</th>
+            <th>Voorspelling<br/>Uit Doelpunten</th>
 		</tr>
         
         <?php $pid = $prediction['prediction_uid']; ?>
