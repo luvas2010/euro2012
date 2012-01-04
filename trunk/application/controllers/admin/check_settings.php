@@ -22,7 +22,7 @@ class Check_settings extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings'));
+            redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings')));
         }            
     }
 }
