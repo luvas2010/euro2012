@@ -17,7 +17,7 @@
         <li><?php echo anchor('predictions/editgroup/SF',lang('semi_final'), "class='button'"); ?></li>
         <li><?php echo anchor('predictions/editgroup/F',lang('final'), "class='button'"); ?></li>
         <li><?php echo anchor('predictions/extra',lang('nav_extra'), "class='button'"); ?></li>
-        <li><?php echo anchor('predictions/edit',lang('all_predictions'), "class='button'"); ?></li>
+        <li><?php echo anchor('predictions/editgroup/ALL',lang('all_predictions'), "class='button'"); ?></li>
     </ul>
     <div class='grid_12 alpha omega'>
         <?php 

@@ -18,19 +18,30 @@
         <li><?php echo anchor('predictions/editgroup/SF',lang('semi_final'), "class='button'"); ?></li>
         <li><?php echo anchor('predictions/editgroup/F',lang('final'), "class='button'"); ?></li>
         <li><?php echo anchor('predictions/extra',lang('nav_extra'), "class='button'"); ?></li>
-        <li><?php echo anchor('predictions/edit',lang('all_predictions'), "class='button'"); ?></li>
+        <li><?php echo anchor('predictions/editgroup/ALL',lang('all_predictions'), "class='button'"); ?></li>
     </ul>
+    <div class='clear'></div>
+    <div class='info'>
+        <div class="grid_2 alpha">
+            <div class='buttons'><?php echo anchor('predictions/randomizer/'.$group, 'Randomizer', "class='button flag'"); ?></div>
+        </div>
+        <div class="grid_9 omega">
+            <?php echo lang('randomizer_intro'); ?>
+        </div>
+        <div class='clear'></div>
+    </div>
+    
+
     <div class='grid_12 alpha omega'>
         <?php 
         $attributes = array('id' => 'validateMe');
         echo form_open('predictions/editgroup/'.$group.'/save', $attributes); ?>
-        <table class="stripeMe">
+        <table class="stripeMe" style="width:100%">
             <tr>
                 <th><?php echo lang('match_number'); ?></th>
                 <th><?php echo lang('home'); ?></th>
                 <th><?php echo lang('away'); ?></th>
-                <th><?php echo lang('prediction')."<br/>".lang('home_goals'); ?></th>
-                <th><?php echo lang('prediction')."<br/>".lang('away_goals'); ?></th>
+                <th colspan=2><?php echo lang('prediction');?></th>
                 <th><?php echo lang('result'); ?></th>
                 <th><?php echo lang('points_scored'); ?></th>
                 <th><?php echo lang('match_time'); ?></th>
@@ -42,7 +53,7 @@
                 <td><?php echo $prediction['match_uid'];?></td>
                 <!--<td><?php echo get_team_name($prediction['home_team']); ?></td>-->
                 
-            <?php if (!prediction_closed(1) && !isset($pred_results)) { ?>
+            <?php if (!prediction_closed(1) && $prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 31 ) { ?>
              <td>
                 <?php
                     $options = $home_teams[$prediction['match_uid']];
@@ -50,12 +61,12 @@
                 ?>
              </td>
              <td>
-                <?php
+                <?php 
                     $options = $away_teams[$prediction['match_uid']];
                     echo form_dropdown('pred_away_team['.$i.']', $options, $prediction['pred_away_team']);
                 ?>
              </td>
-             <?php } elseif (!isset($pred_results)) { ?>
+             <?php } elseif (prediction_closed(1) && $prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 31) { ?>
              <td><?php echo lang($prediction['pred_home_team']); ?></td>
              <td><?php echo lang($prediction['pred_away_team']); ?></td>
              <?php }
@@ -138,7 +149,7 @@
     
         <div class='grid_6 alpha'>
         <h3><?php echo sprintf(lang('pred_standings_in_group'), $group); ?></h3> 
-            <table class="stripeMe">
+            <table class="stripeMe" style="width:100%">
                 <tr>
                     <th><?php echo lang('position'); ?></th>
                     <th><?php echo lang('team'); ?></th>
@@ -167,7 +178,7 @@
         </div>
         <div class='grid_6 omega'>
         <h3><?php echo sprintf(lang('standings_in_group'), $group); ?></h3> 
-            <table class="stripeMe">
+            <table class="stripeMe" style="width:100%">
                 <tr>
                     <th><?php echo lang('position'); ?></th>
                     <th><?php echo lang('team'); ?></th>

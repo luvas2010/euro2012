@@ -55,7 +55,7 @@ html {
 p {
     font-size:1.1em;
     line-height:1.5em;
-    margin-bottom: 1.5em;
+    margin-bottom: .5em;
 }
 #home p {
     text-align: justify;

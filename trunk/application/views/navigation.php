@@ -21,7 +21,7 @@
                     <li><?php echo anchor('predictions/editgroup/SF',lang('semi_final')); ?></li>
                     <li><?php echo anchor('predictions/editgroup/F',lang('final')); ?></li>
                     <li><?php echo anchor('predictions/extra',lang('nav_extra')); ?></li>
-                    <li><?php echo anchor('predictions/edit',lang('all_predictions')); ?></li>
+                    <li><?php echo anchor('predictions/editgroup/ALL',lang('all_predictions')); ?></li>
                 </ul>
             </li>
             <li><?php echo anchor('standings', lang('nav_standings')); ?></li>

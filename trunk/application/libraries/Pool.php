@@ -253,7 +253,7 @@ class Pool {
         }
             
         array_multisort($points, SORT_DESC, $goals_for, SORT_DESC, $goals_against, SORT_ASC, $team);
-   
+
         return $team;
         
     }

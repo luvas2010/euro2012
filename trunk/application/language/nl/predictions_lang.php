@@ -1,7 +1,7 @@
 <?php
 $lang['username']                       = "Gebruiker";
 $lang['match']                          = "Wedstrijd";
-$lang['match_number']                   = "Wedstrijd #";
+$lang['match_number']                   = "#";
 $lang['group']                          = "Groep";
 $lang['home']                           = "Thuis";
 $lang['away']                           = "Uit";
@@ -35,7 +35,10 @@ $lang['predict_champion']               = "Voorspel de uiteindelijke Europees Ka
                                           <span class='boldtext'>Let op: je moet dit voorspellen voordat het toernooi begint!</span>";
 $lang['choose_a_team']                  = "Kies een land";
 $lang['explanation']                    = "Uitleg";
-$lang['no_info_yet']                    = "Deze informatie is nog niet beschikbaar.";                                           
+$lang['no_info_yet']                    = "Deze informatie is nog niet beschikbaar.";
+$lang['randomizer_intro']               = "<p>Als je geen zin hebt om alles in te vullen, kun je op de `Randomizer` knop klikken,
+                                           dan worden alle voorspellingen alvast voor je ingevuld. Hierna kun je ze nog wel wijzigen.<br/>
+                                           <span class='boldtext'>Pas op: al je bestaande voorspellingen worden overschreven</span></p>";
 $lang['position']           = "Pos.";
 $lang['team']               = "Team";
 $lang['played']             = "Gesp.";
