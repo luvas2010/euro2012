@@ -35,7 +35,10 @@ $lang['predict_champion']               = "You can earn %s extra points if you p
                                             <span class='boldtext'>Pay attention: you have to make this prediction before the tournament starts!</span>";                                           
 $lang['choose_a_team']                  = "Pick a team";
 $lang['explanation']                    = "Explanation"; 
-$lang['no_info_yet']                    = "This information is not available yet.";                                        
+$lang['no_info_yet']                    = "This information is not available yet.";
+$lang['randomizer_intro']               = "<p>If you don't feel like filling everything out yourself, you can click the `Randomizer` button.
+                                           All predictions will be filled for you, and you can change them afterwards.<br/>
+                                           <span class='boldtext'>Attention: all existing predictions will be overwritten if you do this!</span></p>";                                      
 $lang['position']           = "Pos.";
 $lang['team']               = "Team";
 $lang['played']             = "P";

@@ -184,7 +184,7 @@ class Predictions extends CI_Controller {
             $data['predictions'] = $query->result_array();
             $data['num'] = $query->num_rows();
                           
-            if (($group == 'QF' || $group == 'SF' || $group == 'F'))
+            if (($group == 'QF' || $group == 'SF' || $group == 'F' || $group =='ALL'))
             {
                 
                 $home_teams = array(
@@ -524,7 +524,212 @@ class Predictions extends CI_Controller {
        
         
     }
-     
+
+    function randomizer($group) {
+        
+        if ($this->authentication->is_signed_in())
+        {    
+            $account_id = $this->session->userdata('account_id');
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_home_goals` = floor(rand() * 3),
+                              `pred_away_goals` = floor(rand() * 3)
+                          WHERE `prediction`.`account_id` = '$account_id'
+                          AND `prediction`.`pred_calculated` = 0";
+            $query = $this->db->query($sql_query);
+            $this->load->library('pool');
+            $pred_results = $this->pool->calculate_pred_group('A');
+            $top2 = array_keys(array_slice($pred_results, 0, 2));
+            $winnerA = $top2[0];
+            $runnerupA = $top2[1];
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_home_team` = '$winnerA'
+                          WHERE `pred_match_uid` = '25'";
+            $query = $this->db->query($sql_query);
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_away_team` = '$runnerupA'
+                          WHERE `pred_match_uid` = '26'";
+            $query = $this->db->query($sql_query);
+            
+            $pred_results = $this->pool->calculate_pred_group('B');
+            $top2 = array_keys(array_slice($pred_results, 0, 2));
+            $winnerB = $top2[0];
+            $runnerupB = $top2[1];
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_home_team` = '$winnerB'
+                          WHERE `pred_match_uid` = '26'";
+            $query = $this->db->query($sql_query);
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_away_team` = '$runnerupB'
+                          WHERE `pred_match_uid` = '25'";
+            $query = $this->db->query($sql_query);
+            
+                        $pred_results = $this->pool->calculate_pred_group('C');
+            $top2 = array_keys(array_slice($pred_results, 0, 2));
+            $winnerC = $top2[0];
+            $runnerupC = $top2[1];
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_home_team` = '$winnerC'
+                          WHERE `pred_match_uid` = '27'";
+            $query = $this->db->query($sql_query);
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_away_team` = '$runnerupC'
+                          WHERE `pred_match_uid` = '28'";
+            $query = $this->db->query($sql_query);
+            
+            $pred_results = $this->pool->calculate_pred_group('D');
+            $top2 = array_keys(array_slice($pred_results, 0, 2));
+            $winnerD = $top2[0];
+            $runnerupD = $top2[1];
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_home_team` = '$winnerD'
+                          WHERE `pred_match_uid` = '28'";
+            $query = $this->db->query($sql_query);
+            
+            $sql_query = "UPDATE `prediction`
+                          SET `pred_away_team` = '$runnerupD'
+                          WHERE `pred_match_uid` = '27'";
+            $query = $this->db->query($sql_query);
+            
+            $sql_query = "SELECT *
+                          FROM `prediction`
+                          WHERE `prediction`.`pred_match_uid` >= 25
+                          AND `prediction`.`pred_match_uid` <= 28";
+            $query = $this->db->query($sql_query);
+            $pred_qf = $query->result_array();
+            
+            foreach ($pred_qf as $qf)
+            {
+                $pred_home_team = $qf['pred_home_team'];
+                $pred_away_team = $qf['pred_away_team'];
+                
+                if ($qf['pred_away_goals'] > $qf['pred_home_goals'])
+                {
+                    if ($qf['pred_match_uid'] == 25)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_home_team` = '$pred_away_team'
+                                      WHERE `pred_match_uid` = 29";
+                        $query= $this->db->query($sql_query);
+                    }
+                    if ($qf['pred_match_uid'] == 26)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_home_team` = '$pred_away_team'
+                                      WHERE `pred_match_uid` = 30";
+                        $query= $this->db->query($sql_query);
+                    }
+                    if ($qf['pred_match_uid'] == 27)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_away_team` = '$pred_away_team'
+                                      WHERE `pred_match_uid` = 29";
+                        $query= $this->db->query($sql_query);
+                    }
+                    if ($qf['pred_match_uid'] == 28)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_away_team` = '$pred_away_team'
+                                      WHERE `pred_match_uid` = 30";
+                        $query= $this->db->query($sql_query);
+                    }
+                }
+                else
+                {
+                    if ($qf['pred_match_uid'] == 25)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_home_team` = '$pred_home_team'
+                                      WHERE `pred_match_uid` = 29";
+                        $query= $this->db->query($sql_query);
+                    }
+                    if ($qf['pred_match_uid'] == 26)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_home_team` = '$pred_home_team'
+                                      WHERE `pred_match_uid` = 30";
+                        $query= $this->db->query($sql_query);
+                    }
+                    if ($qf['pred_match_uid'] == 27)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_away_team` = '$pred_home_team'
+                                      WHERE `pred_match_uid` = 29";
+                        $query= $this->db->query($sql_query);
+                    }
+                    if ($qf['pred_match_uid'] == 28)
+                    {
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_away_team` = '$pred_home_team'
+                                      WHERE `pred_match_uid` = 30";
+                        $query= $this->db->query($sql_query);
+                    }
+                }
+            }
+
+            $sql_query = "SELECT * FROM `prediction` WHERE `pred_match_uid` >= 29 AND `pred_match_uid` <= 30";
+            $query = $this->db->query($sql_query);
+            $pred_sf = $query->result_array();
+            
+                foreach ($pred_sf as $sf)
+                {
+                    $pred_home_team = $sf['pred_home_team'];
+                    $pred_away_team = $sf['pred_away_team'];
+                    
+                    if ($sf['pred_away_goals'] > $sf['pred_home_goals'])
+                    {
+                        if ($sf['pred_match_uid'] == 29)
+                        {
+                            $sql_query = "UPDATE `prediction`
+                                          SET `pred_home_team` = '$pred_away_team'
+                                          WHERE `pred_match_uid` = 31";
+                            $query= $this->db->query($sql_query);
+                        }
+                        if ($sf['pred_match_uid'] == 30)
+                        {
+                            $sql_query = "UPDATE `prediction`
+                                          SET `pred_away_team` = '$pred_away_team'
+                                          WHERE `pred_match_uid` = 31";
+                            $query= $this->db->query($sql_query);
+                        }
+                    }    
+                    else
+                    {
+                        if ($sf['pred_match_uid'] == 29)
+                        {
+                            $sql_query = "UPDATE `prediction`
+                                          SET `pred_home_team` = '$pred_home_team'
+                                          WHERE `pred_match_uid` = 31";
+                            $query= $this->db->query($sql_query);
+                        }
+                        if ($sf['pred_match_uid'] == 30)
+                        {
+                            $sql_query = "UPDATE `prediction`
+                                          SET `pred_away_team` = '$pred_home_team'
+                                          WHERE `pred_match_uid` = 31";
+                            $query= $this->db->query($sql_query);
+                        }
+                    }
+                }
+            //foreach ($pred_results as $pred)
+            //{
+             //   $sql_query = "UPDATE `prediction`
+              //                SET `pred_home_team` = 
+            redirect('predictions/editgroup/'.$group);
+                            
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('predictions/editgroup/'.$group));
+        }
+        
+    }
       
 }
 ?>
