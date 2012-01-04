@@ -1,11 +1,11 @@
-﻿<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
 | General
 |--------------------------------------------------------------------------
 */
-$lang['website_title']                          = 'Euro 2012 VoetbalPool';
+$lang['website_title']                          = 'Euro 2012 Voetbal Pool';
 $lang['website_welcome_username']               = 'Welkom, %s.';
 $lang['website_account']                        = 'Account';
 $lang['website_profile']                        = 'Profiel';
@@ -49,9 +49,9 @@ $lang['edit_teams_knockout_phase'] = 'Teams voor knockout fase invoeren';
 $lang['usermanagement'] = 'Gebruikersbeheer';
 $lang['list_all_users'] = 'Alle gebruikers';
 $lang['show_unverified_users'] = 'Nog niet geverifiëerde gebruikers';
-$lang['admin_unverified_users'] = 'Er zijn %s ongeverifiëerde gebruikers';
-$lang['check_settings'] = 'Bekijk instellingen';
-
+$lang['admin_unverified_users'] = 'Er zijn %s ongeverifi&eumlerde gebruikers';
+$lang['check_settings']			= 'Bekijk instellingen';
+$lang['delete_account']			= 'Account Verwijderen';
 
 $lang['quarter_final']  = 'Kwart Finale';
 $lang['semi_final']     = 'Halve Finale';

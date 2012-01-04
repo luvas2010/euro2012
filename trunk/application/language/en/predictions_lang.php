@@ -35,9 +35,7 @@ $lang['predict_champion']               = "You can earn %s extra points if you p
                                             <span class='boldtext'>Pay attention: you have to make this prediction before the tournament starts!</span>";                                           
 $lang['choose_a_team']                  = "Pick a team";
 $lang['explanation']                    = "Explanation"; 
-$lang['no_info_yet']                    = "This information is not available yet.";  
-$lang['average_goals']                  = "Average goals per match is %s after %s matches.";
-$lang['total_with_average']             = "With this average, the total in 31 matches will be around %s";
+$lang['no_info_yet']                    = "This information is not available yet.";                                        
 $lang['position']           = "Pos.";
 $lang['team']               = "Team";
 $lang['played']             = "P";
@@ -47,4 +45,4 @@ $lang['lost']               = "L";
 $lang['points']             = "Points";
 $lang['goals']              = "Goals";
 /* End of file predicitions_lang.php */
-/* Location: ./application/language/en/predictions_lang.php */
+/* Location: ./application/language/english/predictions_lang.php */
