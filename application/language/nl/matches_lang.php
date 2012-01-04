@@ -1,7 +1,7 @@
 <?php
 $lang['matches']            = "Wedstrijden";
 $lang['overview_matches']   = "Overzicht van alle wedstrijden";
-$lang['match_number']       = "#";
+$lang['match_number']       = "Wedstrijd #";
 $lang['group']              = "Groep";
 $lang['home']               = "Thuis";
 $lang['away']               = "Uit";
