@@ -2,7 +2,7 @@
 
     <table class='stripeMe'>
         <tr>
-
+            <th><?php echo lang('username'); ?></th>
         </tr>
         <?php foreach($users as $user) { ?>
         <tr>

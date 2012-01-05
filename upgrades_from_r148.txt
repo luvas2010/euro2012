@@ -1,0 +1,1 @@
+ALTER TABLE `prediction` ADD `pred_points_total` INT NULL DEFAULT '0' AFTER `pred_points_away_team` 

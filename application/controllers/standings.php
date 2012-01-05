@@ -24,14 +24,13 @@ class Standings extends CI_Controller {
         {       
             $account_id = $this->session->userdata('account_id');
             
-            $sql_query = "SELECT *,
-                            ( pred_points_home_goals + pred_points_away_goals + pred_points_result + pred_points_home_team + pred_points_away_team +pred_points_bonus) AS total_points
+            $sql_query = "SELECT *
                             FROM `prediction`
                             JOIN `account`
                             ON  `account`.`id` = `prediction`.`account_id`
                             JOIN `match`
                             ON `match`.`match_uid` = `prediction`.`pred_match_uid`
-                            AND `pred_calculated` = 1
+                            AND `account`.`verifiedon` IS NOT NULL
                             GROUP BY `pred_match_uid`,`account_id`";
             
             $query = $this->db->query($sql_query);
@@ -48,8 +47,8 @@ class Standings extends CI_Controller {
                 }
                 foreach($results as $result)
                 {
-                    $points[$result['account_id']]['total_points'] = $points[$result['account_id']]['total_points'] + $result['total_points'];
-                    $points[$result['account_id']]['matches'][$result['match_group']] = $points[$result['account_id']]['matches'][$result['match_group']] + $result['total_points'];
+                    $points[$result['account_id']]['total_points'] = $points[$result['account_id']]['total_points'] + $result['pred_points_total'];
+                    $points[$result['account_id']]['matches'][$result['match_group']] = $points[$result['account_id']]['matches'][$result['match_group']] + $result['pred_points_total'];
                 }
                 
                 // Sort on total points
@@ -94,12 +93,12 @@ class Standings extends CI_Controller {
                           ON `match`.`match_uid` = `prediction`.`pred_match_uid`
                           AND `match`.`match_group` = '$group'
                           AND `prediction`.`account_id` = '$view_account_id'
-                          AND `prediction`.`pred_calculated` = 1
+
                           ORDER BY `prediction`.`pred_match_uid`";
             $query = $this->db->query($sql_query);
             $predictions = $query->result_array();
             $view_account = $this->account_model->get_by_id($view_account_id);
-            //echo "<pre>";print_r($predictions);echo "</pre>";
+
             $data = array(
                         'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
                         'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),

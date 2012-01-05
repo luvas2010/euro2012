@@ -1,3 +1,4 @@
+<!-- <?php print_r($points); ?> -->
     <h2><?php echo lang('standings'); ?></h2>
     <?php if ($num > 0) { ?>
     <div class='buttons'><a href='#me' class='button'><?php echo lang('find_yourself'); ?></a><?php echo anchor('charts/top/10',lang('see_top_ten'), 'class="button"'); ?></div>

@@ -190,8 +190,9 @@ class Calculations extends CI_Controller {
                                   `pred_points_away_goals`= $away_goals_points,
                                   `pred_points_result`= $result_points,
                                   `pred_points_bonus`= $bonus_points,
-                                  `pred_points_home_team`= $points_home_team,
-                                  `pred_points_away_team`= $points_away_team,
+                                  `pred_points_home_team` = $points_home_team,
+                                  `pred_points_away_team` = $points_away_team,
+                                  `pred_points_total` = ($home_goals_points + $away_goals_points + $result_points + $bonus_points + $points_home_team + $points_away_team),
                                   `pred_calculated`= 1
                               WHERE `prediction_uid` = $prediction_uid";
                 $query = $this->db->query($sql_query);
@@ -208,7 +209,7 @@ class Calculations extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(site_url('admin/matches_edit'));
+            redirect('account/sign_in/?continue='.urlencode(site_url('admin/matches_edit')));
         }
     }
     
