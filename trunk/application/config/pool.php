@@ -4,7 +4,7 @@
 | General pool configuration
 |--------------------------------------------------------------------------
 */
-$config['version'] = '1.0';
+$config['version'] = '1.1'; // rev 150
 
 $config['pool_name'] = 'Euro 2012 Voetbalpool';
 // Time offset
