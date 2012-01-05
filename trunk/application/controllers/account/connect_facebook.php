@@ -33,8 +33,20 @@ class Connect_facebook extends CI_Controller {
                 // Check if user is not signed in on a3m
                 if ( ! $this->authentication->is_signed_in())
                 {
-                    // Run sign in routine
-                    $this->authentication->sign_in($user->account_id);
+
+                    if ( ! $this->authentication->is_signed_in())
+                    {
+                            $vuser = $this->account_model->get_by_id($user->account_id);
+                            if ($this->config->item('verify_users') && !isset($vuser->verifiedon)) {
+                                $this->session->set_flashdata('info',lang('sign_in_verification_required'));
+                                redirect('account/sign_in');
+                            }
+                            else
+                            {
+                                // Run sign in routine
+                                $this->authentication->sign_in($user->account_id);
+                            }
+                    }
                 }
                 
                 $user->account_id === $this->session->userdata('account_id') ?

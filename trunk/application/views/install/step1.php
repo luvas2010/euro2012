@@ -135,6 +135,7 @@
                           `pred_points_bonus` int(11) NOT NULL DEFAULT '0',
                           `pred_points_home_team` int(11) NOT NULL DEFAULT '0',
                           `pred_points_away_team` int(11) NOT NULL DEFAULT '0',
+                          `pred_points_total` int(11) NULL DEFAULT '0',
                           `pred_calculated` tinyint(4) NOT NULL DEFAULT '0',
                           PRIMARY KEY (`prediction_uid`)
                         )";

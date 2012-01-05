@@ -35,13 +35,7 @@
                 <?php if ($prediction['match_uid'] == 31) { echo "<br />".lang('bonus').": ".$prediction['pred_points_bonus'];} ?>
             </td>
             <td class='bigtext'>
-                <?php echo $prediction['pred_points_home_goals']
-                           + $prediction['pred_points_away_goals']
-                           + $prediction['pred_points_result']
-                           + $prediction['pred_points_bonus']
-                           + $prediction['pred_points_home_team']
-                           + $prediction['pred_points_away_team']
-                           ; ?>
+                <?php echo $prediction['pred_points_total']; ?>
             </td>
             <td><?php echo unix_to_human($prediction['timestamp'],FALSE,'eu'); ?></td>
             <td><?php echo anchor('matches/edit_prediction/'.$prediction['match_uid'],lang('prediction'), 'class="button small"'); ?></td>
