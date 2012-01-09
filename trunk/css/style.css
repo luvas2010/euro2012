@@ -29,7 +29,7 @@ body {
     line-height: 1;
 }
 ol, ul {
-    list-style: none inside;
+    list-style: none outside;
 }
 blockquote, q {
     quotes: none;
@@ -53,8 +53,8 @@ html {
 
 
 p {
-    font-size:1.1em;
-    line-height:1.5em;
+    font-size:1em;
+    line-height:1.2em;
     margin-bottom: .5em;
 }
 #home p {
@@ -62,11 +62,20 @@ p {
 }
 
 #home ul {
-    font-size:1.1em;
-    line-height:1.5em;
+    font-size:1em;
+    line-height:1.2em;
+    margin-bottom: 1.2em;
+	margin-left:15px;
+list-style-type: disc;
+	}
+
+#rules ul {
+    font-size:1em;
+    line-height:1.2em;
     margin-bottom: 1.5em;
     list-style-type: disc;
 }
+
 
 ul.list li {
     line-height: 1.5em;
@@ -99,7 +108,7 @@ h2 a:hover {
 h3 {
     font-size:1.1667em;
     line-height: 1.286em;
-    margin:1em 0 1em 0;
+    /*margin:1em 0 1em 0;*/
     font-weight:normal;
 } 
 
@@ -209,13 +218,14 @@ tr.alt td {
 }
 
 /*messages*/
-.error, .field_error, .form_error{
+.error, .field_error, .form_error, .errorstay{
     display: block;
-    margin: 20px;
-    padding:20px;
+    margin: 12px;
+    padding:12px;
     color: #CB2026;
     background: #F6CBCA;
     border: 2px solid #CB2026;
+	line-height:1.2em;
 }
 span.smalltext {
     font-size: .6em;
@@ -238,13 +248,21 @@ label.invalid {
     color: #CB2026;
 }
 
-.info, .flashinfo {
+.info, .flashinfo, .infostay {
     display: block;
     margin: 20px;
     padding:8px 20px 8px 20px;
     background: #ECF6FC;
     border: 2px solid #95BCE2;
 }
+.info p, .flashinfo p, .infostay p, .info ul, .flashinfo ul , .infostay ul{
+	font-size:1em;
+	line-height:1.2em;
+	list-style-type: disc;
+}
+.info ul, .flashinfo ul , .infostay ul{
+	margin-left:15px;
+	}
 
 .success, .form_info {
     display: block;

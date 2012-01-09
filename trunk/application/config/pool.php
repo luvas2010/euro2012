@@ -4,7 +4,7 @@
 | General pool configuration
 |--------------------------------------------------------------------------
 */
-$config['version'] = '1.1'; // rev 150
+
 
 $config['pool_name'] = 'Euro 2012 Voetbalpool';
 // Time offset
@@ -19,8 +19,9 @@ $config['verify_users'] = TRUE; // Admin has to verify users before they can log
 $config['email_from_address'] = 'info@voetbalpool2012.nl';  //e-mail address where emails are sent from. set this to your own (administrator) e-mail address
 
 /* TO DO: Payment config */
-$config['play_for_money'] = FALSE; // TO DO: Implement payout calculations
+$config['play_for_money'] = TRUE; // TO DO: Implement payout calculations
 $config['payment_per_user'] = '10'; // TO DO: Amount payed per user
+$config['currency'] = '€';
 
 /* Set your payout schedule.
    If set like '50,30,20' the first ranked user will get 50%, second 30%, third 10%.

@@ -28,6 +28,10 @@ $lang['welcometext']    = '<p>Welcome to %s.</p>
                                     <li>You can get a maximum of %s bonus points for predicting the total amount of goals correct. If you&rsquo;re close, you will still get some bonus points. If you&rsquo;re more than %s goals off, you will not get any bonus points.</li>
                                     <li>If you predict the winner of Euro2012 correct, you earn another %s bonuspoints</li>
                               </ul>
-                          </div>';          
+                          </div>';
+$lang['top_10']	= "Top 10";
+$lang['points'] = "points";
+$lang['see_top_ten'] = "See a chart";
+$lang['not_payed_yet'] = "You have not payed yet. Please do this as soon as possible";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/english/welcome_lang.php */

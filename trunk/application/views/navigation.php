@@ -1,15 +1,5 @@
         <ul class="sf-menu">
             <li><?php echo anchor('/',lang('navhome')); ?></li>
-            <!--
-            <li><a href="#"><?php echo lang('groups'); ?></a>
-                <ul>
-                    <li><?php echo anchor('group/show/A',lang('group').' A'); ?></li>
-                    <li><?php echo anchor('group/show/B',lang('group').' B'); ?></li>
-                    <li><?php echo anchor('group/show/C',lang('group').' C'); ?></li>
-                    <li><?php echo anchor('group/show/D',lang('group').' D'); ?></li>
-                </ul>
-            </li>
-            -->
             <li><?php echo anchor('matches',lang('nav_matches')); ?></li>
             <li><a href="#"><?php echo lang('predictions'); ?></a>
                 <ul>
@@ -24,6 +14,7 @@
                     <li><?php echo anchor('predictions/editgroup/ALL',lang('all_predictions')); ?></li>
                 </ul>
             </li>
+			<li><?php echo anchor('rules', lang('nav_rules')); ?></li>
             <li><?php echo anchor('standings', lang('nav_standings')); ?></li>
             <li><a href"#"><?php echo lang('statistics'); ?> </a>
                 <ul>
@@ -43,9 +34,12 @@
 
                     <li><?php echo anchor('#',lang('usermanagement')); ?>
                         <ul>
-                            <li><?php echo anchor('admin/users',lang('list_all_users')); ?>
-                            <li><?php echo anchor('admin/users/unverified',lang('show_unverified_users')); ?>
-                            
+                            <li><?php echo anchor('admin/users',lang('list_all_users')); ?></li>
+                            <li><?php echo anchor('admin/users/unverified',lang('show_unverified_users')); ?></li>
+                            <?php if ($this->config->item('play_for_money'))
+							{ ?>
+							<li><?php echo anchor('admin/users/unpayed',lang('show_unpayed_users')); ?></li>
+							<?php } ?>
                         </ul>
                     </li>
                     <li><?php echo anchor('admin/check_settings', lang('check_settings'));?></li>

@@ -9,6 +9,7 @@
                 $unix_time =  now() - $time_offset;
                 echo $local_time."</p>";
             ?>
+			<?php echo "<p>".lang('number_of_users').": ".$this->db->count_all('account')."</p>"; ?>
         </div>
     </div> <!-- end wrapper -->
 

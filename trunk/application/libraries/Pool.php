@@ -7,8 +7,7 @@ class Pool {
     {
         
         $CI =& get_instance();
-        $sql_query = "SELECT *,
-                ( pred_points_home_goals + pred_points_away_goals + pred_points_result + pred_points_home_team + pred_points_away_team +pred_points_bonus) AS total_points
+        $sql_query = "SELECT *
                 FROM `prediction`
                 JOIN `account`
                 ON  `account`.`id` = `prediction`.`account_id`
@@ -22,13 +21,12 @@ class Pool {
         if ($query->num_rows() > 0)
         {
             foreach ($results as $key => $row) {
-                        $total_points[$key]  = $row['total_points'];
+                        $total_points[$key]  = $row['pred_points_total'];
                     }
                     
             // Sort the data with total_points descending
                     array_multisort($total_points, SORT_DESC, $results);          
-            
-            //print_r($results);
+
             $i = 0;
             foreach ($results as $t)
             {
@@ -50,13 +48,15 @@ class Pool {
                 foreach ($user_pred as $pred)
                 {
                     
-                    $user[$pred['account_id']]['match'][$pred['pred_match_uid']] = $pred['pred_points_home_goals'] + $pred['pred_points_away_goals'] + $pred['pred_points_result'] + $pred['pred_points_home_team'] + $pred['pred_points_away_team'] +$pred['pred_points_bonus'];
-                    $user[$pred['account_id']]['aggregate'][$pred['pred_match_uid']] = $old + $pred['pred_points_home_goals'] + $pred['pred_points_away_goals'] + $pred['pred_points_result'] + $pred['pred_points_home_team'] + $pred['pred_points_away_team'] +$pred['pred_points_bonus'];
+                    $user[$pred['account_id']]['match'][$pred['pred_match_uid']] = $pred['pred_points_total'];
+                    $user[$pred['account_id']]['aggregate'][$pred['pred_match_uid']] = $old + $pred['pred_points_total'];
                     $user[$pred['account_id']]['username'] = $pred['username'];
                     $user[$pred['account_id']]['group'][$pred['pred_match_uid']] = $pred['match_group'];
                     $user[$pred['account_id']]['userid'] = $pred['account_id'];
-                    $old = $old + $pred['pred_points_home_goals'] + $pred['pred_points_away_goals'] + $pred['pred_points_result'] + $pred['pred_points_home_team'] + $pred['pred_points_away_team'] +$pred['pred_points_bonus']; 
+                    $old = $old + $pred['pred_points_total'];
+					$user[$pred['account_id']]['points_total'] = $old;
                 }
+				
                 $i++;
                 
             }
