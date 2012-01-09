@@ -61,6 +61,8 @@ p {
     text-align: justify;
 }
 
+ul { line-height: 1.2em; }
+
 #home ul {
     font-size:1em;
     line-height:1.2em;
