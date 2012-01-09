@@ -26,6 +26,10 @@ $lang['welcometext']    = '<p>Welkom bij de %s.</p>
                                     <li>Je kunt maximaal %s bonus punten verdienen als je het toaal aantal goals goed hebt. Zit je er dichtbij dan krijg je minder bonuspunten. Zit je er meer dan %s doelpunten naast dan krijg je geen bonuspunten.</li>
                                     <li>Als je de winnaar van Euro2012 goed voorspelt, krijg je nog eens %s bonuspunten</li>
                                 </ul>
-                           </div>';        
+                           </div>';
+$lang['top_10']	= "Top 10";
+$lang['points'] = "punten";
+$lang['see_top_ten'] = "Bekijk een grafiek";
+$lang['not_payed_yet'] = "Je hebt nog niet betaald. Doe dit zo snel mogelijk!";					   
 /* End of file welcome_lang.php */
 /* Location: ./application/language/nl/welcome_lang.php */

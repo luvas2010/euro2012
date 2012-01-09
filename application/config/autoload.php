@@ -80,7 +80,7 @@ $autoload['helper'] = array('pool');
 |
 */
 
-$autoload['config'] = array('pool');
+$autoload['config'] = array('pool','other');
 
 
 /*

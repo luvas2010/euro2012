@@ -152,7 +152,7 @@ if ( ! function_exists('get_next_matches') )
         {
             $string = str_replace('%home%', get_team_name($match['home_team']), $format);
             $string = str_replace('%away%', get_team_name($match['away_team']), $string);
-            $string = str_replace('%matchtime%', mdate("%d-%m-%Y %H:%i",$match['timestamp']), $string);
+            $string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
             $string = str_replace('%prediction%', anchor('predictions/editgroup/'.$match['match_group'], lang('prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
             $string = str_replace('%group%', lang($match['match_group']), $string);
             
@@ -274,7 +274,7 @@ if ( ! function_exists('get_missing_teams_list') )
                 $sql_query = "SELECT `match_group` FROM `match` WHERE `match_uid` = $value";
                 $query = $CI->db->query($sql_query);
                 $row = $query->row_array();
-                $html .= str_replace('%matchlink%', get_match($value)." (".anchor('predictions/editgroup/'.$row['match_group'],lang($row['match_group'])).")", $listitem);
+                $html .= str_replace('%matchlink%', "#".$value." (".anchor('predictions/editgroup/'.$row['match_group'],lang($row['match_group'])).")", $listitem);
                 
             }
             $html .= $post;
@@ -289,13 +289,7 @@ if ( ! function_exists('get_user_points') )
     function get_user_points($account_id)
     {
         $CI =& get_instance();
-        $sql_query = "SELECT 
-                        (pred_points_home_goals
-                         + pred_points_away_goals
-                         + pred_points_result
-                         + pred_points_bonus
-                         + pred_points_home_team
-                         + pred_points_away_team) AS `total_points`
+        $sql_query = "SELECT `pred_points_total`
                       FROM `prediction`
                       WHERE `account_id` = '$account_id'
                       AND `pred_calculated` = 1";
@@ -303,7 +297,7 @@ if ( ! function_exists('get_user_points') )
         $predictions = $query->result_array();
         $points = 0;
         foreach ($predictions as $prediction) {
-            $points = $points + $prediction['total_points'];
+            $points = $points + $prediction['pred_points_total'];
         }
         return $points;
     }

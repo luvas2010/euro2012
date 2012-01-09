@@ -35,6 +35,7 @@ $lang['navhome']           = 'Home';
 $lang['groups']         = 'Groups';
 $lang['group']          = 'Group';
 $lang['nav_matches']        = 'Matches';
+$lang['nav_rules']		= 'Rules of Play';
 $lang['nav_standings']  =   'Standings';
 $lang['nav_extra']    = 'Extra questions';
 $lang['statistics']     = "Statistics";
@@ -49,10 +50,11 @@ $lang['edit_teams_knockout_phase'] = 'Edit teams for knockout phase';
 $lang['usermanagement'] = 'User Management';
 $lang['list_all_users'] = 'List all users';
 $lang['show_unverified_users'] = 'Show Unverified Users';
+$lang['show_unpayed_users'] = 'Show users that haven&rsquo;t payed yet';
 $lang['admin_unverified_users'] = 'There are %s unverified users';
 $lang['check_settings']			= 'Check Settings';
 $lang['delete_account']			= 'Delete Account';
-
+$lang['number_of_users']		= 'Number of users';
 
 $lang['quarter_final']  = 'Quarter Finals';
 $lang['semi_final']     = 'Semi Finals';

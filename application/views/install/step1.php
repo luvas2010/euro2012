@@ -15,6 +15,7 @@
                           `resetsenton` datetime DEFAULT NULL,
                           `deletedon` datetime DEFAULT NULL,
                           `suspendedon` datetime DEFAULT NULL,
+						  `payed` tinyint(4) NOT NULL DEFAULT '0'
                           PRIMARY KEY (`id`),
                           UNIQUE KEY `username` (`username`),
                           UNIQUE KEY `email` (`email`)

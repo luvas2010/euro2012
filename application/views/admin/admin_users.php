@@ -41,6 +41,14 @@
                                 {    
                                     echo anchor('admin/users/verify_user/'.$user['id'], lang('verify_user'), 'class="button add"');
                                 }
+						   $play_for_money = $this->config->item('play_for_money');
+						   if ($play_for_money == 1)
+						   {
+								if($user['payed'] == 0)
+								{
+									echo anchor('admin/users/user_payed/'.$user['id'], lang('mark_payed'), 'class="button add"');
+								}
+							}
                     ?>
                 </td>
 

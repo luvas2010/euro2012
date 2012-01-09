@@ -211,7 +211,73 @@ class Users extends CI_Controller {
             }
         }
     }                              
-                            
+
+    function user_payed($account_id)
+    {
+        if ($this->authentication->is_signed_in())
+        {
+            if (is_admin())
+            {
+                $sql_query = "UPDATE `account`
+                              SET `payed` = 1
+                              WHERE `account`.`id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                
+                // Send e-mail to let user know the account was payed for
+                // Load email library
+                $this->load->library('email');
+                $config['mailtype'] = 'html';
+
+                $this->email->initialize($config);
+                $sql_query = "SELECT `username`,`email`
+                              FROM `account`
+                              WHERE `id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $row = $query->row_array();
+                $username = $row['username'];
+                if (isset($row['email']))
+                {
+                    $user_email = $row['email'];
+                                
+                    // Send user sign up e-mail
+                    $this->email->from($this->config->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
+                    $this->email->to($user_email);
+                    $this->email->subject(lang('payed_email_subject'));
+                    
+                    $message = sprintf(lang('payed_email_message'), $username);
+
+                    $signin_link = anchor('account/sign_in',lang('website_sign_in'));
+                    $message = $message.sprintf(lang('payed_signin_link'), $signin_link);
+                    $message = $message.sprintf(lang('payed_email_footer'), lang('website_title'));
+                    $this->email->message($message);
+                    
+                    @$this->email->send();
+                }                
+                
+
+                $sql_query = "SELECT *
+                               FROM `account`
+                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
+                               ORDER BY `account`.`username`";
+                $query = $this->db->query($sql_query);
+                $users = $query->result_array();
+               
+                $data = array(
+                            'users'   => $users,
+                            'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                            'content_main' => 'admin/admin_users',
+                            'title' => lang('usermanagement'),
+                            'info' => sprintf(lang('account_payed'),$username, $user_email)
+                            );
+               
+                $this->load->view('template/template', $data);
+            }
+        }
+    }                              
+
+
+	
     function unverified()
     {
         
@@ -248,6 +314,45 @@ class Users extends CI_Controller {
         else
         {
             redirect('account/sign_in/?continue='.site_url('admin/users/unverified'));
+        }
+    }
+
+    function unpayed()
+    {
+        
+
+        if ($this->authentication->is_signed_in())
+        {
+            if (is_admin())
+            {
+                $sql_query = "SELECT *
+                               FROM `account`
+                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
+                               AND `account`.`payed` = 0
+                               ORDER BY `account`.`username`";
+                $query = $this->db->query($sql_query);
+                $users = $query->result_array();
+
+                $this->load->library('pool');
+               
+                $data = array(
+                            'users'   => $users,
+                            'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                            'content_main' => 'admin/admin_users',
+                            'title' => lang('unpayed_users')
+                            );
+               
+                $this->load->view('template/template', $data);
+            }
+            else
+            {
+            redirect('account/sign_in/?continue='.site_url('admin/users/unpayed'));
+            }
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('admin/users/unpayed'));
         }
     }
     
