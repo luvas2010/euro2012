@@ -30,6 +30,11 @@ $lang['welcometext']    = '<p>Welkom bij de %s.</p>
 $lang['top_10']	= "Top 10";
 $lang['points'] = "punten";
 $lang['see_top_ten'] = "Bekijk een grafiek";
-$lang['not_payed_yet'] = "Je hebt nog niet betaald. Doe dit zo snel mogelijk!";					   
+$lang['not_payed_yet'] = "Je hebt nog niet betaald. Doe dit zo snel mogelijk!";
+$lang['total_money'] = "Er zijn nu %s gebruikers aangemeld. Als ze allemaal %s betalen, zit er dus %s &lsquo;in de pot&rsquo;.";
+$lang['money_payed_out'] = "Hiervan wordt %s%% uitbetaald (dat is %s)";
+$lang['money_distribution'] = "De verdeling";
+$lang['winner'] =  "Winnaar";
+$lang['number'] = "Nummer";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/nl/welcome_lang.php */

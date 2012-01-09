@@ -29,6 +29,7 @@ $lang['check_user_pos']                         = 'Check where you stand';
 $lang['user_points']                            = 'You have %s points.';
 $lang['total_goals_missing']                    = 'You didn&rsquo;t predict all the extra questions yet';
 $lang['goals']                                  = 'Goals';
+$lang['tie']                                    = 'Tie';
 /* navigation */
 
 $lang['navhome']           = 'Home';

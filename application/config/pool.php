@@ -19,9 +19,9 @@ $config['verify_users'] = TRUE; // Admin has to verify users before they can log
 $config['email_from_address'] = 'info@voetbalpool2012.nl';  //e-mail address where emails are sent from. set this to your own (administrator) e-mail address
 
 /* TO DO: Payment config */
-$config['play_for_money'] = TRUE; // TO DO: Implement payout calculations
-$config['payment_per_user'] = '10'; // TO DO: Amount payed per user
-$config['currency'] = '€';
+$config['play_for_money'] = TRUE; // Implement payout calculations
+$config['payment_per_user'] = '10'; // Amount payed per user
+$config['currency'] = '&euro;'; // Set this to the HTML code for your currency
 
 /* Set your payout schedule.
    If set like '50,30,20' the first ranked user will get 50%, second 30%, third 10%.
@@ -29,7 +29,7 @@ $config['currency'] = '€';
    Numbers don't have to add up to 100. If you keep 10%, set it to '50, 25, 15', so it adds up to 90%
    If set like '50,30,20' and two players end first with the same amount of points, they will each get (50+30)/2 = 40%, third will get 20
 */
-$config['payout_schedule'] = "50,30,20"; // TO DO: paypout schedule
+$config['payout_schedule'] = "50,30,20";
 
 /* Awarded points */
 $config['pred_points_goals'] = '3'; // Points for predicting 'home' or 'away' goals correct
