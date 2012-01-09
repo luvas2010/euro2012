@@ -28,7 +28,6 @@ class Home extends CI_Controller {
             $data['account_details'] = $this->account_details_model->get_by_account_id($this->session->userdata('account_id'));
         }
         
-        //$this->load->view('home', isset($data) ? $data : NULL);
         $data['title'] = lang('website_title');
         $data['content_main'] = "home";
         

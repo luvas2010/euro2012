@@ -106,11 +106,13 @@ h2 a:hover {
 }
 
 h3 {
+    border-bottom: 1px solid #ccc;
     font-size:1.1667em;
-    line-height: 1.286em;
-    /*margin:1em 0 1em 0;*/
     font-weight:normal;
-} 
+    line-height: 1.286em;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+    } 
 
 a {
     color: #009;
@@ -131,6 +133,7 @@ a.adminlink {
     float:left;
 }
 
+    
 #top_menu {
     padding: 0;
     margin: 0 0 .5em 0;
@@ -250,8 +253,8 @@ label.invalid {
 
 .info, .flashinfo, .infostay {
     display: block;
-    margin: 20px;
-    padding:8px 20px 8px 20px;
+    margin: 12px;
+    padding:12px;
     background: #ECF6FC;
     border: 2px solid #95BCE2;
 }
@@ -266,8 +269,8 @@ label.invalid {
 
 .success, .form_info {
     display: block;
-    margin: 20px;
-    padding:20px;
+    margin: 12px;
+    padding:12px;
     color: #8FAD3D;
     background: #EEF4D4;
     border: 2px solid #8FAD3D;

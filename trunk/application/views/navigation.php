@@ -16,7 +16,7 @@
             </li>
 			<li><?php echo anchor('rules', lang('nav_rules')); ?></li>
             <li><?php echo anchor('standings', lang('nav_standings')); ?></li>
-            <li><a href"#"><?php echo lang('statistics'); ?> </a>
+            <li><a href="#"><?php echo lang('statistics'); ?> </a>
                 <ul>
                     <li><?php echo anchor('charts/champion', lang('nav_champ_graph'));?></li>
                     <li><?php echo anchor('charts/totalgoals', lang('nav_totalgoals_graph'));?></li>

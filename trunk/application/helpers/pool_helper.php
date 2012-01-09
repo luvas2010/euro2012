@@ -60,6 +60,43 @@ if ( ! function_exists('get_match'))
     }
 }
 
+if ( ! function_exists('get_match_stats'))
+{
+    function get_match_stats($match_uid)
+    {
+        $CI =& get_instance();
+        $CI->load->helper(array('language'));
+        $CI->load->language(array('general'));
+        
+        $sql_query = "SELECT * FROM `prediction`
+                      JOIN `match`
+                      ON   `match`.`match_uid` = `prediction`.`pred_match_uid`
+                      AND `match`.`match_uid` = '$match_uid'";
+        $query = $CI->db->query($sql_query);
+        $predictions = $query->result_array();
+        $home = get_team_name($predictions[0]['home_team']);
+        $away = get_team_name($predictions[0]['away_team']);
+        $tie  = lang('tie');
+        $stats = array( $home => 0, $tie => 0, $away => 0);
+        foreach ($predictions as $prediction)
+        {
+            if ($prediction['pred_home_goals'] > $prediction['pred_away_goals'])
+            {
+                $stats[$home] = $stats[$home] + 1;
+            }
+            elseif ($prediction['pred_home_goals'] < $prediction['pred_away_goals'])
+            {
+                $stats[$away] = $stats[$away] + 1;
+            }
+            else
+            {   
+                $stats[$tie] = $stats[$tie] + 1;
+            }
+        }
+        return $stats;
+    }
+}
+
 if ( ! function_exists('prediction_closed'))
 {
     function prediction_closed($match_uid)
@@ -148,6 +185,9 @@ if ( ! function_exists('get_next_matches') )
         $matches = $query->result_array();
         
         $html = "";
+        
+        
+        
         foreach ($matches as $match)
         {
             $string = str_replace('%home%', get_team_name($match['home_team']), $format);
@@ -155,6 +195,96 @@ if ( ! function_exists('get_next_matches') )
             $string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
             $string = str_replace('%prediction%', anchor('predictions/editgroup/'.$match['match_group'], lang('prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
             $string = str_replace('%group%', lang($match['match_group']), $string);
+            
+            
+            $stats = get_match_stats($match['match_uid']);
+            $statschart = "<div id='chart".$match['match_uid']."'></div>";
+                if (is_array($stats))
+                {
+                    //first make categories string
+
+                    $categories = "";
+                    $data = "";
+                    foreach ($stats as $key => $value) {
+                        if ($categories == "")
+                        {
+                            $categories = "['".$key."'";
+                        }
+                        else
+                        {
+                            $categories .= ",'".$key."'";
+                        }
+                        if ($data == "")
+                        {
+                            $data = "[".$value;
+                        }
+                        else
+                        {
+                            $data .= ", ".$value;
+                        }    
+                    }
+                    $categories .=  "]";
+                    $data .= "]";
+                    $pred_text = lang('predictions');
+                    $statschart .= "<script>
+                                    var chart;
+                                    $(document).ready(function() {
+                                       chart = new Highcharts.Chart({
+                                          chart: {
+                                             renderTo: 'chart".$match['match_uid']."',
+                                             defaultSeriesType: 'bar',
+                                             height: 90
+                                          },
+                                          colors: ['#FF0000', '#008C48', '#EE2E2F', '#185AA9', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+                                          title: {
+                                             text: null
+                                          },
+                                            credits: {
+                                                enabled: false
+                                             },      
+                                          xAxis: {
+                                             tickmarkPlacement: 'on',
+                                             categories: $categories,
+                                             labels: {
+                                                align: 'right',
+                                                style: {
+                                                    font: 'normal 13px Verdana, sans-serif'
+                                                }
+                                             }
+                                          },
+                                          yAxis: {
+                                             allowDecimals: false,
+                                             min: 0,
+                                             title: {
+                                                text: null
+                                                }
+                                          },
+                                          plotOptions : {
+                                            bar: {
+                                                pointPadding: 0,
+                                                groupPadding: 0,
+                                                pointWidth: 10,
+                                                colorByPoint: true
+                                                }
+                                          },      
+                                          legend: {
+                                             enabled: false
+                                          },
+                                          tooltip: {
+                                             formatter: function() {
+                                                return '<b>'+ this.x +'</b><br/>'+
+                                                    this.y + ' $pred_text';
+                                             }
+                                          },
+                                          series: [{
+                                             name: '',
+                                             data: $data,        
+                                          }]
+                                       });
+                                    });
+                                </script>";
+                    $string = str_replace('%chart%', $statschart, $string);
+                }
             
             $html .= $string;
         }
@@ -325,6 +455,7 @@ if ( ! function_exists('get_total_goals') )
         }
     }
 }
+
 
 function cleanString($in,$offset=null)
 {

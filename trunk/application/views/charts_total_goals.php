@@ -1,6 +1,6 @@
     <h2><?php echo $title; ?></h2>
     <div id="chart"></div>
-    
+
     <?php
     if (is_array($pred_goals))
     {
