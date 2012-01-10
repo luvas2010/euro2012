@@ -18,8 +18,18 @@
             <td><?php echo $prediction['match_uid']; ?></td>
             <td><?php echo $prediction['match_group'];?></td>
             <td><?php echo get_team_name($prediction['home_team']); ?> - <?php echo get_team_name($prediction['away_team']);?></td>
+			<?php if ($this->config->item('public_predictions') || prediction_closed($prediction['pred_match_uid']) || ($prediction['account_id'] == $account->id))
+			{
+			?>
             <td class='centertext'><?php echo $prediction['pred_home_goals']; ?> - <?php echo $prediction['pred_away_goals']; ?></td>
-            <td class='centertext'><?php echo $prediction['home_goals']." - ".$prediction['away_goals']; ?></td>
+            <?php
+			} 
+			else
+			{
+			?>
+			<td class='centertext'><?php echo lang('hidden'); ?></td>
+			<?php } ?>
+			<td class='centertext'><?php echo $prediction['home_goals']." - ".$prediction['away_goals']; ?></td>
             <td class='smalltext'>
                 <?php echo lang('home_goals').": ".$prediction['pred_points_home_goals']; ?><br/>
                 <?php echo lang('away_goals').": ".$prediction['pred_points_away_goals']; ?><br/>

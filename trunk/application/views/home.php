@@ -74,12 +74,19 @@
 			<h3><?php echo lang('top_10');?></h3>
 			<?php $this->load->library('pool');
 				  $topusers = $this->pool->get_top_ranking(10);
-                  echo "<ul>";
-				  foreach ($topusers as $user)
+				  if (is_array($topusers))
 				  {
-						echo "<li><span class='boldtext'>".$user['username'].": </span>".$user['points_total']." ".lang('points')."</li>";
+					echo "<ul>";
+					foreach ($topusers as $user)
+					  {
+							echo "<li><span class='boldtext'>".$user['username'].": </span>".$user['points_total']." ".lang('points')."</li>";
+					  }
+					  echo "</ul><br/>".anchor('charts/top/10',lang('see_top_ten'), 'class="button"');;
 				  }
-				  echo "</ul><br/>".anchor('charts/top/10',lang('see_top_ten'), 'class="button"');;
+				  else
+				  {
+					echo "<div class='infostay'>".lang('no_info_yet')."</div>";
+				  }
 			?>
 			
 		</div>
@@ -104,7 +111,7 @@
                             reset($champions);
                             foreach ($champions as $champion)
                             {
-                                $chartdata[get_team_name($champion['pred_champion'])] = $champion['number']/$total * 100;
+                                $chartdata[get_team_name($champion['pred_champion'])] = number_format($champion['number']/$total * 100, 1);
                             }    
                             
                             echo "<div id='champchart'></div>";
@@ -195,6 +202,10 @@
                                 </script>";
                                 echo $champchart;
                         }
+						else
+						{
+							echo "<div class='infostay'>".lang('no_info_yet')."</div>";
+						}
                            
                 ?>
 		</div>

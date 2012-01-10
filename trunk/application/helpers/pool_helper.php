@@ -88,7 +88,7 @@ if ( ! function_exists('get_match_stats'))
             {
                 $stats[$away] = $stats[$away] + 1;
             }
-            else
+            elseif ($prediction['pred_home_goals'] != NULL && $prediction['pred_away_goals'] != NULL)
             {   
                 $stats[$tie] = $stats[$tie] + 1;
             }
