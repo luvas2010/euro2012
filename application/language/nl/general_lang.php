@@ -31,6 +31,8 @@ $lang['total_goals_missing']                    = 'Je hebt nog niet alle extra v
 $lang['goals']                                  = 'Doelpunten';
 $lang['tie']                                    = 'Gelijkspel';
 $lang['hidden']									= 'geheim';
+$lang['view_stats']                             = 'Statistieken';
+$lang['your_prediction']                        = 'jouw voorspelling';
 /* navigation */
 
 $lang['navhome']        = 'Home';

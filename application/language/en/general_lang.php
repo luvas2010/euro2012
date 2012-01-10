@@ -31,6 +31,8 @@ $lang['total_goals_missing']                    = 'You didn&rsquo;t predict all 
 $lang['goals']                                  = 'Goals';
 $lang['tie']                                    = 'Tie';
 $lang['hidden']									= 'secret';
+$lang['view_stats']                             = 'Stats';
+$lang['your_prediction']                        = 'your prediction';
 /* navigation */
 
 $lang['navhome']           = 'Home';
