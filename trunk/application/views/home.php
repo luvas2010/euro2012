@@ -130,6 +130,7 @@
                             }
                             $categories .=  "]";
                             $data .= "]";
+							if ($num == 1) { $num++; }
                             $champchart = "<script>
                                     var chart;
                                     $(document).ready(function() {
@@ -137,7 +138,7 @@
                                           chart: {
                                              renderTo: 'champchart',
                                              defaultSeriesType: 'bar',
-                                             height: ".$num*30 ."
+                                             height: ".$num*40 ."
                                           },
                                           colors: ['#FF0000', '#EE7F01', '#EE2E2F', '#185AA9', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
                                           title: {
