@@ -36,5 +36,6 @@ $lang['money_payed_out'] = "Hiervan wordt %s%% uitbetaald (dat is %s)";
 $lang['money_distribution'] = "De verdeling";
 $lang['winner'] =  "Winnaar";
 $lang['number'] = "Nummer";
+$lang['no_info_yet'] = "Informatie nog niet beschikbaar";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/nl/welcome_lang.php */

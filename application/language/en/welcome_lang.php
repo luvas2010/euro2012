@@ -38,6 +38,6 @@ $lang['money_payed_out'] = "Of this, %s%% will be payed out (that is %s)";
 $lang['money_distribution'] = "The payout";
 $lang['winner'] =  "Winner";
 $lang['number'] = "Number";
-
+$lang['no_info_yet'] = "No data yet";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/english/welcome_lang.php */

@@ -30,6 +30,7 @@ $lang['user_points']                            = 'Je hebt %s punten.';
 $lang['total_goals_missing']                    = 'Je hebt nog niet alle extra vragen beantwoord!';
 $lang['goals']                                  = 'Doelpunten';
 $lang['tie']                                    = 'Gelijkspel';
+$lang['hidden']									= 'geheim';
 /* navigation */
 
 $lang['navhome']        = 'Home';

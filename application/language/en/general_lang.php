@@ -30,6 +30,7 @@ $lang['user_points']                            = 'You have %s points.';
 $lang['total_goals_missing']                    = 'You didn&rsquo;t predict all the extra questions yet';
 $lang['goals']                                  = 'Goals';
 $lang['tie']                                    = 'Tie';
+$lang['hidden']									= 'secret';
 /* navigation */
 
 $lang['navhome']           = 'Home';
