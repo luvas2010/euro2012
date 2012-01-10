@@ -219,7 +219,11 @@
                                         'post'      => "</ul>",
                                         'listitem'  => "<li>%matchlink%</li>")
                                         ); ?>
-        <?php } ?>
+        <?php }
+		else
+		{
+			redirect('account/sign_in/?continue='.site_url(''));
+		}?>
     </div><!-- end column2 -->
 	<div class="clear"></div>
 </div>
