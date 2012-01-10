@@ -66,7 +66,7 @@
     		<h3><?php echo lang('next_matches'); ?></h3>
             <?php
             // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
-            echo get_next_matches(2,"<span class='centertext'><h4>%group%</h4><h4>%matchtime%</h4></span><p class='centertext'><span class='boldtext'>%home% - %away%</span><br/>(%prediction%)</p>%chart%");
+            echo get_next_matches(2,"<p class=' centertext boldtext'>%group%<br/>%matchtime%</p><p class='centertext boldtext'>%home% - %away%</p><p class='centertext'>(%prediction%)</p><p class='centertext'>%chart%</p>");
             ?>
     </div>
      <div id="column2" class="grid_6 omega">
@@ -81,7 +81,7 @@
 					  {
 							echo "<li><span class='boldtext'>".$user['username'].": </span>".$user['points_total']." ".lang('points')."</li>";
 					  }
-					  echo "</ul><br/>".anchor('charts/top/10',lang('see_top_ten'), 'class="button"');;
+					  echo "</ul><br/>".anchor('charts/top/10',lang('see_top_ten'), 'class="button chart-line"');;
 				  }
 				  else
 				  {

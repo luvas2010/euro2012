@@ -190,101 +190,22 @@ if ( ! function_exists('get_next_matches') )
         
         foreach ($matches as $match)
         {
-            $string = str_replace('%home%', get_team_name($match['home_team']), $format);
-            $string = str_replace('%away%', get_team_name($match['away_team']), $string);
+            
+            $homestring = "<span class='teamflag ".$match['home_team']."'>".anchor('stats/view_team/'.$match['home_team'],get_team_name($match['home_team']))."</span>";
+            $awaystring = "<span class='teamflag ".$match['away_team']."'>".anchor('stats/view_team/'.$match['away_team'],get_team_name($match['away_team']))."</span>";
+            $string = str_replace('%home%', $homestring, $format);
+            $string = str_replace('%away%', $awaystring, $string);
             $string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
-            $string = str_replace('%prediction%', anchor('predictions/editgroup/'.$match['match_group'], lang('prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
+            $string = str_replace('%prediction%', anchor('predictions/editgroup/'.$match['match_group'], lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
             $string = str_replace('%group%', lang($match['match_group']), $string);
             
             
-            $stats = get_match_stats($match['match_uid']);
-            $statschart = "<div id='chart".$match['match_uid']."'></div>";
-                if (is_array($stats))
-                {
-                    //first make categories string
+            //$stats = get_match_stats($match['match_uid']);
 
-                    $categories = "";
-                    $data = "";
-                    foreach ($stats as $key => $value) {
-                        if ($categories == "")
-                        {
-                            $categories = "['".$key."'";
-                        }
-                        else
-                        {
-                            $categories .= ",'".$key."'";
-                        }
-                        if ($data == "")
-                        {
-                            $data = "[".$value;
-                        }
-                        else
-                        {
-                            $data .= ", ".$value;
-                        }    
-                    }
-                    $categories .=  "]";
-                    $data .= "]";
-                    $pred_text = lang('predictions');
-                    $statschart .= "<script>
-                                    var chart;
-                                    $(document).ready(function() {
-                                       chart = new Highcharts.Chart({
-                                          chart: {
-                                             renderTo: 'chart".$match['match_uid']."',
-                                             defaultSeriesType: 'bar',
-                                             height: 90
-                                          },
-                                          colors: ['#FF0000', '#008C48', '#EE2E2F', '#185AA9', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
-                                          title: {
-                                             text: null
-                                          },
-                                            credits: {
-                                                enabled: false
-                                             },      
-                                          xAxis: {
-                                             tickmarkPlacement: 'on',
-                                             categories: $categories,
-                                             labels: {
-                                                align: 'right',
-                                                style: {
-                                                    font: 'normal 13px Verdana, sans-serif'
-                                                }
-                                             }
-                                          },
-                                          yAxis: {
-                                             allowDecimals: false,
-                                             min: 0,
-                                             title: {
-                                                text: null
-                                                }
-                                          },
-                                          plotOptions : {
-                                            bar: {
-                                                pointPadding: 0,
-                                                groupPadding: 0,
-                                                pointWidth: 10,
-                                                colorByPoint: true
-                                                }
-                                          },      
-                                          legend: {
-                                             enabled: false
-                                          },
-                                          tooltip: {
-                                             formatter: function() {
-                                                return '<b>'+ this.x +'</b><br/>'+
-                                                    this.y + ' $pred_text';
-                                             }
-                                          },
-                                          series: [{
-                                             name: '',
-                                             data: $data,        
-                                          }]
-                                       });
-                                    });
-                                </script>";
-                    $string = str_replace('%chart%', $statschart, $string);
-                }
+            //$string = str_replace('%chart%', $statschart, $string);
+            $statsbutton = anchor('stats/view_match/'.$match['pred_match_uid'],lang('view_stats'), "class='button chart-bar'");
+            $string = str_replace('%chart%', $statsbutton, $string);
+                
             
             $html .= $string;
         }

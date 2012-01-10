@@ -78,6 +78,11 @@ list-style-type: disc;
     list-style-type: disc;
 }
 
+.hasbullets li {
+    list-style-type: disc;
+}
+ 
+ 
 
 ul.list li {
     line-height: 1.5em;
@@ -593,9 +598,24 @@ a.supersize {
     padding: 15px 20px;
 }
 a.save, input.save, button.save {
-    background: url(sprite.png) 10px 7px no-repeat #f3f3f3;
+    /*background: url(sprite.png) 10px 7px no-repeat #f3f3f3;*/
+    background: url(icons/accept.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
 }
+
+a.chart-line, input.chart-line, button.chart-line {
+    background: url(icons/chart_line.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.chart-bar, input.chart-bar, button.chart-bar {
+background: url(icons/chart_bar.png) 7px 7px no-repeat #f3f3f3;
+padding-left: 30px;
+}
+a.wand, input.wand, button.wand {
+    background: url(icons/wand.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+    
 a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;
@@ -605,8 +625,8 @@ a.delete , input.delete, button.delete {
     padding-left: 30px;
 }
 a.flag {
-    background: url(sprite.png)  10px -96px no-repeat #f3f3f3;
-    padding-left: 30px;
+    /*background: url(sprite.png)  10px -96px no-repeat #f3f3f3;
+    padding-left: 30px;*/
 }
 a.up {
     background: url(sprite.png)  13px -133px no-repeat #f3f3f3;
@@ -659,7 +679,113 @@ a.down-big {
     height: 0;
 }
 
-/* installation styles */
+/* flags */
+
+h2.teamflag {
+    padding-left:40px;
+    height: 32px;
+    }
+span.teamflag {
+    padding-left:20px;
+    }
+    
+h2.A1 {
+    background: url(flags/A1.png) 0 -4px no-repeat;
+    }
+span.A1 {
+    background: url(flags/A1_16.png) 0 3px no-repeat;
+    }
+h2.A2 {
+    background: url(flags/A2.png) 0 -4px no-repeat;
+    }
+span.A2 {
+    background: url(flags/A2_16.png) 0 3px no-repeat;
+    }
+h2.A3 {
+    background: url(flags/A3.png) 0 -4px no-repeat;
+    }
+span.A3 {
+    background: url(flags/A3_16.png) 0 3px no-repeat;
+    }
+h2.A4 {
+    background: url(flags/A4.png) 0 -4px no-repeat;
+    }
+span.A4 {
+    background: url(flags/A4_16.png) 0 3px no-repeat;
+    }
+h2.B1 {
+    background: url(flags/B1.png) 0 -4px no-repeat;
+    }
+span.B1 {
+    background: url(flags/B1_16.png) 0 3px no-repeat;
+    }
+h2.B2 {
+    background: url(flags/B2.png) 0 -4px no-repeat;
+    }
+span.B2 {
+    background: url(flags/B2_16.png) 0 3px no-repeat;
+    }
+h2.B3 {
+    background: url(flags/B3.png) 0 -4px no-repeat;
+    }
+span.B3 {
+    background: url(flags/B3_16.png) 0 3px no-repeat;
+    }
+h2.B4 {
+    background: url(flags/B4.png) 0 -4px no-repeat;
+    }
+span.B4 {
+    background: url(flags/B4_16.png) 0 3px no-repeat;
+    }
+h2.C1 {
+    background: url(flags/C1.png) 0 -4px no-repeat;
+    }
+span.C1 {
+    background: url(flags/C1_16.png) 0 3px no-repeat;
+    }
+h2.C2 {
+    background: url(flags/C2.png) 0 -4px no-repeat;
+    }
+span.C2 {
+    background: url(flags/C2_16.png) 0 3px no-repeat;
+    }
+h2.C3 {
+    background: url(flags/C3.png) 0 -4px no-repeat;
+    }
+span.C3 {
+    background: url(flags/C3_16.png) 0 3px no-repeat;
+    }
+h2.C4 {
+    background: url(flags/C4.png) 0 -4px no-repeat;
+    }
+span.C4 {
+    background: url(flags/C4_16.png) 0 3px no-repeat;
+    }
+h2.D1 {
+    background: url(flags/D1.png) 0 -4px no-repeat;
+    }
+span.D1 {
+    background: url(flags/D1_16.png) 0 3px no-repeat;
+    }
+h2.D2 {
+    background: url(flags/D2.png) 0 -4px no-repeat;
+    }
+span.D2 {
+    background: url(flags/D2_16.png) 0 3px no-repeat;
+    }
+h2.D3 {
+    background: url(flags/D3.png) 0 -4px no-repeat;
+    }
+span.D3 {
+    background: url(flags/D3_16.png) 0 3px no-repeat;
+    }
+h2.D4 {
+    background: url(flags/D4.png) 0 -4px no-repeat;
+    }
+span.D4 {
+    background: url(flags/D4_16.png) 0 3px no-repeat;
+    }
+    /* installation styles */
 #installheader h1 {
     font-size:24px;
     color: #fff;

@@ -23,7 +23,7 @@
     <div class='clear'></div>
     <div class='info'>
         <div class="grid_2 alpha">
-            <div class='buttons'><?php echo anchor('predictions/randomizer/'.$group, 'Randomizer', "class='button flag'"); ?></div>
+            <div class='buttons'><?php echo anchor('predictions/randomizer/'.$group, 'Randomizer', "class='button flag wand'"); ?></div>
         </div>
         <div class="grid_9 omega">
             <?php echo lang('randomizer_intro'); ?>
@@ -51,7 +51,6 @@
             <?php $pid = $prediction['prediction_uid']; ?>
             <tr>
                 <td><?php echo $prediction['match_uid'];?></td>
-                <!--<td><?php echo get_team_name($prediction['home_team']); ?></td>-->
                 
             <?php if (!prediction_closed(1) && $prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 31 ) { ?>
              <td>
@@ -72,8 +71,8 @@
              <?php }
                    else
                    { ?>
-                       <td><?php echo lang($prediction['home_team']); ?></td>
-                       <td><?php echo lang($prediction['away_team']); ?></td>
+                       <td><span class="teamflag <?php echo $prediction['home_team'];?>"><?php echo anchor('stats/view_team/'.$prediction['home_team'],get_team_name($prediction['home_team']));?></span></td>
+                       <td><span class="teamflag <?php echo $prediction['away_team'];?>"><?php echo anchor('stats/view_team/'.$prediction['away_team'],get_team_name($prediction['away_team']));?></span></td>
                    <?php } ?>    
                 
                 <?php
@@ -145,7 +144,7 @@
     <div class='clear'></div>
     
 
-    <?php if (isset($pred_results)) { // User selected group A, B, C or D?> 
+    <?php if (isset($pred_results)) { // User selected group A, B, C or D ?> 
     
         <div class='grid_6 alpha'>
         <h3><?php echo sprintf(lang('pred_standings_in_group'), $group); ?></h3> 

@@ -18,7 +18,7 @@
             <td><?php echo $prediction['match_uid']; ?></td>
             <td><?php echo $prediction['match_group'];?></td>
             <td><?php echo get_team_name($prediction['home_team']); ?> - <?php echo get_team_name($prediction['away_team']);?></td>
-			<?php if ($this->config->item('public_predictions') || prediction_closed($prediction['pred_match_uid']) || ($prediction['account_id'] == $account->id))
+			<?php if ($this->config->item('public_predictions') || prediction_closed($prediction['pred_match_uid']) || ($prediction['account_id'] == $account->id) || $prediction['pred_calculated'] == 1)
 			{
 			?>
             <td class='centertext'><?php echo $prediction['pred_home_goals']; ?> - <?php echo $prediction['pred_away_goals']; ?></td>
