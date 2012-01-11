@@ -38,6 +38,7 @@ $lang['share_text_facebook']            = "The results for %s are in. Top three:
 $lang['share_my_score_twitter']         = "I was number %s with %s points for match %s.";
 $lang['no_results_yet']                 = "Results have not been calculated yet.";
 $lang['see_top_ten']                    = "See how the top ten did";
+$lang['why_am_i_not_here_payed']        = "You are not listed in the rankings, because you have not payed yet. Please do this as soon as possible.";
 
 /* End of file standings_lang.php */
 /* Location: ./application/language/english/standings_lang.php */

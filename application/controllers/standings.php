@@ -24,6 +24,20 @@ class Standings extends CI_Controller {
         {       
             $account_id = $this->session->userdata('account_id');
             
+            if ($this->config->item('play_for_money'))
+            {
+            $sql_query = "SELECT *
+                            FROM `prediction`
+                            JOIN `account`
+                            ON  `account`.`id` = `prediction`.`account_id`
+                            JOIN `match`
+                            ON `match`.`match_uid` = `prediction`.`pred_match_uid`
+                            AND `account`.`verifiedon` IS NOT NULL
+                            AND `account`.`payed` = 1
+                            GROUP BY `pred_match_uid`,`account_id`";
+            }
+            else
+            {
             $sql_query = "SELECT *
                             FROM `prediction`
                             JOIN `account`
@@ -32,7 +46,7 @@ class Standings extends CI_Controller {
                             ON `match`.`match_uid` = `prediction`.`pred_match_uid`
                             AND `account`.`verifiedon` IS NOT NULL
                             GROUP BY `pred_match_uid`,`account_id`";
-            
+            }
             $query = $this->db->query($sql_query);
             $results = $query->result_array();
             $num = $query->num_rows();
@@ -71,6 +85,7 @@ class Standings extends CI_Controller {
                         'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
                         'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id'))
                         );
+
             $data['content_main'] = "standings";
             $data['title'] = lang('standings');
     

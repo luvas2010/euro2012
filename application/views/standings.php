@@ -1,5 +1,9 @@
 <!-- <?php print_r($points); ?> -->
     <h2><?php echo lang('standings'); ?></h2>
+    <?php if ($account->payed == 0 && $this->config->item('play_for_money') == 1)
+          {?>
+        <div class='error'><?php echo lang('why_am_i_not_here_payed');?></div>
+    <?php } ?>
     <?php if ($num > 0) { ?>
     <div class='buttons'><a href='#me' class='button'><?php echo lang('find_yourself'); ?></a><?php echo anchor('charts/top/10',lang('see_top_ten'), 'class="button"'); ?></div>
     <div class='clear'></div>
