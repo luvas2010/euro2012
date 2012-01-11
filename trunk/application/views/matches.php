@@ -14,7 +14,8 @@
         <tr>
             <th><?php echo lang('match_number'); ?></th>
             <th><?php echo lang('group'); ?></th>
-            <th><?php echo lang('home'); ?> - <?php echo lang('away'); ?></th>
+            <th><?php echo lang('home'); ?><br/>(<?php echo lang('prediction');?>)</th>
+			<th><?php echo lang('away'); ?><br/>(<?php echo lang('prediction');?>)</th>
             <th><?php echo lang('predicted'); ?></th>
             <th><?php echo lang('result'); ?></th>
             <th><?php echo lang('match_time'); ?></th>
@@ -29,25 +30,34 @@
             <?php if($match['home_team'][0] != 'W' && $match['home_team'][0] != 'R' && $match['away_team'][0] != 'W' && $match['away_team'][0] != 'R')
                 { ?>
             <td><span class="teamflag <?php echo $match['home_team'];?>"><?php echo anchor('stats/view_team/'.$match['home_team'],get_team_name($match['home_team']));?></span>
-                -
-                <span class="teamflag <?php echo $match['away_team'];?>"><?php echo anchor('stats/view_team/'.$match['away_team'],get_team_name($match['away_team']));?></span>
+			<?php if ($match['match_uid'] >= 25)
+                { ?>
+                <br />
+                <?php echo "(".get_team_name($match['pred_home_team']).")"; } ?>
+			</td>
+            <td><span class="teamflag <?php echo $match['away_team'];?>"><?php echo anchor('stats/view_team/'.$match['away_team'],get_team_name($match['away_team']));?></span>
                 <?php if ($match['match_uid'] >= 25)
                 { ?>
                 <br />
-                <?php echo "(".lang('prediction').": ".get_team_name($match['pred_home_team']); ?> - <?php echo get_team_name($match['pred_away_team']).")";?>
+                <?php echo "(".get_team_name($match['pred_away_team']).")";?>
                 <?php } ?>
             </td>
             <?php } else { ?>
             <td><?php echo get_team_name($match['home_team']);?>
-                -
-                <?php echo get_team_name($match['away_team']);?>
+			<?php if ($match['match_uid'] >= 25)
+                { ?>
+                <br />
+                <?php echo "(".get_team_name($match['pred_home_team']).")"; ?>
+                <?php } ?>
+            </td>
+            <td><?php echo get_team_name($match['away_team']);?>
                 <?php if ($match['match_uid'] >= 25)
                 { ?>
                 <br />
-                <?php echo "(".lang('prediction').": ".get_team_name($match['pred_home_team']); ?> - <?php echo get_team_name($match['pred_away_team']).")";?>
+                <?php echo "(".get_team_name($match['pred_away_team']).")";?>
                 <?php } ?>
             </td>
-            <?php } ?>
+			<?php } ?>
             <td class='centertext'><?php echo $match['pred_home_goals']." - ".$match['pred_away_goals']; ?></td>
             <td class='centertext'><?php echo $match['home_goals']." - ".$match['away_goals'];?></td>
             <td><?php echo mdate("%d %M %Y %H:%i",$match['timestamp']); ?></td>
