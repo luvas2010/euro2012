@@ -257,7 +257,212 @@ class Pool {
         return $team;
         
     }
-    
+
+    public function calculate_match($match_uid)
+    {
+        $CI =& get_instance();
+        
+            $pred_points_goals = $CI->config->item('pred_points_goals');
+            $pred_points_result = $CI->config->item('pred_points_result');
+            $pred_points_bonus = $CI->config->item('pred_points_bonus');
+            
+            
+            $sql_query = "SELECT *
+                          FROM `prediction`
+                          WHERE `prediction`.`pred_match_uid` = $match_uid";
+
+            $query = $CI->db->query($sql_query);
+            $predictions = $query->result_array();
+            
+            $sql_query = "SELECT *
+                          FROM `match`
+                          WHERE `match_uid` = $match_uid";
+            $query = $CI->db->query($sql_query);
+            $match = $query->row_array();
+            $i = 0;
+            foreach ($predictions as $prediction)
+            {
+                $bonus_points = 0; // check this on the last match
+                $current_account = $prediction['account_id'];
+                if (($prediction['pred_home_goals'] == $match['home_goals']) && $prediction['pred_home_goals'] != NULL)
+                {
+                    $home_goals_points = $pred_points_goals;
+                }
+                else
+                {
+                    $home_goals_points = 0;
+                }                    
+                if (($prediction['pred_away_goals'] == $match['away_goals']) && $prediction['pred_away_goals'] != NULL)
+                {
+                    $away_goals_points = $pred_points_goals;
+                }
+                else
+                {
+                    $away_goals_points = 0;
+                }                 
+                if (
+                    (($prediction['pred_home_goals'] > $prediction['pred_away_goals']) && ($match['home_goals'] > $match['away_goals']))
+                    ||
+                    (($prediction['pred_home_goals'] < $prediction['pred_away_goals']) && ($match['home_goals'] < $match['away_goals']))
+                    ||
+                    (($prediction['pred_home_goals'] == $prediction['pred_away_goals']) && ($match['home_goals'] == $match['away_goals']))
+                    &&
+                    ($match['home_goals'] != NULL && $match['away_goals'] != NULL)
+                    &&
+                    ($prediction['pred_home_goals'] != NULL && $prediction['pred_away_goals'] != NULL)
+                    )
+                {
+                    $result_points = $pred_points_result;
+                }
+                else
+                {
+                    $result_points = 0;
+                }  
+
+                if ($prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 28)
+                {
+                    if ($prediction['pred_home_team'] == $match['home_team'])
+                    {
+                        $points_home_team = $CI->config->item('pred_points_qf_team');
+                    }
+                    else
+                    {
+                        $points_home_team = 0;
+                    }
+                    if ($prediction['pred_away_team'] == $match['away_team'])
+                    {
+                        $points_away_team = $CI->config->item('pred_points_qf_team');
+                    }
+                    else
+                    {
+                        $points_away_team = 0;
+                    }
+                }
+                elseif ($prediction['pred_match_uid'] >= 29 && $prediction['pred_match_uid'] <= 30)
+                {
+                    if ($prediction['pred_home_team'] == $match['home_team'])
+                    {
+                        $points_home_team = $CI->config->item('pred_points_sf_team');
+                    }
+                    else
+                    {
+                        $points_home_team = 0;
+                    }
+                    if ($prediction['pred_away_team'] == $match['away_team'])
+                    {
+                        $points_away_team = $CI->config->item('pred_points_sf_team');
+                    }
+                    else
+                    {
+                        $points_away_team = 0;
+                    }
+                }
+                elseif ($prediction['pred_match_uid'] == 31)
+                {                  
+                    if ($prediction['pred_home_team'] == $match['home_team'])
+                    {
+                        $points_home_team = $CI->config->item('pred_points_f_team');
+                    }
+                    else
+                    {
+                        $points_home_team = 0;
+                    }
+                    if ($prediction['pred_away_team'] == $match['away_team'])
+                    {
+                        $points_away_team = $CI->config->item('pred_points_f_team');
+                    }
+                    else
+                    {
+                        $points_away_team = 0;
+                    }
+                    $sql_query = "SELECT SUM(home_goals) AS sum_home_goals, SUM(away_goals) as sum_away_goals
+                                  FROM `match`
+                                  WHERE 1";
+                    $query = $CI->db->query($sql_query);
+                    $totals = $query->row_array();
+                    $totalgoals_tournament = $totals['sum_home_goals'] + $totals['sum_away_goals'];
+                    $sql_query = "SELECT `pred_total_goals`, `pred_champion`
+                                  FROM `account_details`
+                                  WHERE `account_id` = '$current_account'";
+                    $query = $CI->db->query($sql_query);
+                    $pred = $query->row_array();
+                    
+                    $diff = abs($pred['pred_total_goals'] - $totalgoals_tournament);
+                    $max_bonus = $CI->config->item('pred_points_bonus');
+                    if ($diff < $max_bonus && $pred['pred_total_goals'] > 0)
+                    {
+                        //echo "yes, diff: ".$diff."<br>";
+                        $bonus_points =  $max_bonus - $diff;
+                        //echo "bonus: ".$bonus_points;
+                    }
+                    else
+                    {
+                        $bonus_points = 0;
+                    }
+                    
+                    $sql_query = "SELECT `winning_team`
+                                  FROM `match`
+                                  WHERE `match_uid` = 31";
+                    $query = $CI->db->query($sql_query);
+                    $champion = $query->row_array();
+                    
+                    if ($pred['pred_champion'] == $champion['winning_team'])
+                    {
+                        $bonus_points = $bonus_points + $CI->config->item('pred_points_champion');
+                    }
+                    
+                }
+                else
+                {
+                    $points_home_team = 0;
+                    $points_away_team = 0;
+                }
+                
+                $prediction_uid = $prediction['prediction_uid'];
+                
+                $sql_query = "UPDATE `prediction`
+                              SET `pred_points_home_goals`= $home_goals_points,
+                                  `pred_points_away_goals`= $away_goals_points,
+                                  `pred_points_result`= $result_points,
+                                  `pred_points_bonus`= $bonus_points,
+                                  `pred_points_home_team` = $points_home_team,
+                                  `pred_points_away_team` = $points_away_team,
+                                  `pred_points_total` = ($home_goals_points + $away_goals_points + $result_points + $bonus_points + $points_home_team + $points_away_team),
+                                  `pred_calculated`= 1
+                              WHERE `prediction_uid` = $prediction_uid";
+                $query = $CI->db->query($sql_query);
+                $i++;
+            }    
+            $sql_query = "UPDATE `match`
+                          SET `match_calculated` = 1
+                          WHERE `match_uid` = $match_uid";
+            $query = $CI->db->query($sql_query);
+
+            return $i;
+    }
+
+    public function delete_calc($match_uid)
+    {
+        $CI =& get_instance();
+        $sql_query = "UPDATE `prediction`
+                      SET 
+                        `pred_points_home_goals` = '0',
+                        `pred_points_away_goals` = '0',
+                        `pred_points_result` = '0',
+                        `pred_points_bonus` = '0',
+                        `pred_points_home_team` ='0',
+                        `pred_points_away_team` ='0',
+                        `pred_points_total` = '0',
+                        `pred_calculated` = '0' WHERE `prediction`.`pred_match_uid` = '$match_uid'";
+        $query = $CI->db->query($sql_query);
+        $sql_query = "UPDATE `match`
+                      SET
+                        `home_goals` = NULL,
+                        `away_goals` = NULL,
+                        `match_calculated` = '0'
+                      WHERE `match_uid` = '$match_uid'";
+        $query = $CI->db->query($sql_query);
+    }
 }
 
 /* End of file Someclass.php */

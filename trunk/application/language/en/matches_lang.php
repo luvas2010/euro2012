@@ -1,7 +1,7 @@
 <?php
 $lang['matches']            = "Matches";
 $lang['overview_matches']   = "Overview of all matches";
-$lang['match_number']       = "Match #";
+$lang['match_number']       = "#";
 $lang['group']              = "Group";
 $lang['home']               = "Home";
 $lang['away']               = "Away";

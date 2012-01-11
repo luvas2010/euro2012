@@ -1,6 +1,6 @@
 <?php
 $lang['group_name_overview'] = "Group %s Overview";
-$lang['match_number']       = "Match #";
+$lang['match_number']       = "#";
 $lang['group']              = "Group";
 $lang['home']               = "Home";
 $lang['away']               = "Away";
