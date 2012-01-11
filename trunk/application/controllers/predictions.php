@@ -544,12 +544,14 @@ class Predictions extends CI_Controller {
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_home_team` = '$winnerA'
-                          WHERE `pred_match_uid` = '25'";
+                          WHERE `pred_match_uid` = '25'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_away_team` = '$runnerupA'
-                          WHERE `pred_match_uid` = '26'";
+                          WHERE `pred_match_uid` = '26'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
             $pred_results = $this->pool->calculate_pred_group('B');
@@ -559,12 +561,14 @@ class Predictions extends CI_Controller {
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_home_team` = '$winnerB'
-                          WHERE `pred_match_uid` = '26'";
+                          WHERE `pred_match_uid` = '26'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_away_team` = '$runnerupB'
-                          WHERE `pred_match_uid` = '25'";
+                          WHERE `pred_match_uid` = '25'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
                         $pred_results = $this->pool->calculate_pred_group('C');
@@ -574,12 +578,14 @@ class Predictions extends CI_Controller {
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_home_team` = '$winnerC'
-                          WHERE `pred_match_uid` = '27'";
+                          WHERE `pred_match_uid` = '27'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_away_team` = '$runnerupC'
-                          WHERE `pred_match_uid` = '28'";
+                          WHERE `pred_match_uid` = '28'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
             $pred_results = $this->pool->calculate_pred_group('D');
@@ -589,18 +595,21 @@ class Predictions extends CI_Controller {
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_home_team` = '$winnerD'
-                          WHERE `pred_match_uid` = '28'";
+                          WHERE `pred_match_uid` = '28'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
             $sql_query = "UPDATE `prediction`
                           SET `pred_away_team` = '$runnerupD'
-                          WHERE `pred_match_uid` = '27'";
+                          WHERE `pred_match_uid` = '27'
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             
             $sql_query = "SELECT *
                           FROM `prediction`
                           WHERE `prediction`.`pred_match_uid` >= 25
-                          AND `prediction`.`pred_match_uid` <= 28";
+                          AND `prediction`.`pred_match_uid` <= 28
+						  AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             $pred_qf = $query->result_array();
             
@@ -615,28 +624,32 @@ class Predictions extends CI_Controller {
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_home_team` = '$pred_away_team'
-                                      WHERE `pred_match_uid` = 29";
+                                      WHERE `pred_match_uid` = 29
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                     if ($qf['pred_match_uid'] == 26)
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_home_team` = '$pred_away_team'
-                                      WHERE `pred_match_uid` = 30";
+                                      WHERE `pred_match_uid` = 30
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                     if ($qf['pred_match_uid'] == 27)
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_away_team` = '$pred_away_team'
-                                      WHERE `pred_match_uid` = 29";
+                                      WHERE `pred_match_uid` = 29
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                     if ($qf['pred_match_uid'] == 28)
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_away_team` = '$pred_away_team'
-                                      WHERE `pred_match_uid` = 30";
+                                      WHERE `pred_match_uid` = 30
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                 }
@@ -646,34 +659,38 @@ class Predictions extends CI_Controller {
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_home_team` = '$pred_home_team'
-                                      WHERE `pred_match_uid` = 29";
+                                      WHERE `pred_match_uid` = 29
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                     if ($qf['pred_match_uid'] == 26)
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_home_team` = '$pred_home_team'
-                                      WHERE `pred_match_uid` = 30";
+                                      WHERE `pred_match_uid` = 30
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                     if ($qf['pred_match_uid'] == 27)
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_away_team` = '$pred_home_team'
-                                      WHERE `pred_match_uid` = 29";
+                                      WHERE `pred_match_uid` = 29
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                     if ($qf['pred_match_uid'] == 28)
                     {
                         $sql_query = "UPDATE `prediction`
                                       SET `pred_away_team` = '$pred_home_team'
-                                      WHERE `pred_match_uid` = 30";
+                                      WHERE `pred_match_uid` = 30
+									  AND `account_id` = '$account_id'";
                         $query= $this->db->query($sql_query);
                     }
                 }
             }
 
-            $sql_query = "SELECT * FROM `prediction` WHERE `pred_match_uid` >= 29 AND `pred_match_uid` <= 30";
+            $sql_query = "SELECT * FROM `prediction` WHERE `pred_match_uid` >= 29 AND `pred_match_uid` <= 30 AND `account_id` = '$account_id'";
             $query = $this->db->query($sql_query);
             $pred_sf = $query->result_array();
             
@@ -688,14 +705,16 @@ class Predictions extends CI_Controller {
                         {
                             $sql_query = "UPDATE `prediction`
                                           SET `pred_home_team` = '$pred_away_team'
-                                          WHERE `pred_match_uid` = 31";
+                                          WHERE `pred_match_uid` = 31
+									  AND `account_id` = '$account_id'";
                             $query= $this->db->query($sql_query);
                         }
                         if ($sf['pred_match_uid'] == 30)
                         {
                             $sql_query = "UPDATE `prediction`
                                           SET `pred_away_team` = '$pred_away_team'
-                                          WHERE `pred_match_uid` = 31";
+                                          WHERE `pred_match_uid` = 31
+									  AND `account_id` = '$account_id'";
                             $query= $this->db->query($sql_query);
                         }
                     }    
@@ -705,14 +724,16 @@ class Predictions extends CI_Controller {
                         {
                             $sql_query = "UPDATE `prediction`
                                           SET `pred_home_team` = '$pred_home_team'
-                                          WHERE `pred_match_uid` = 31";
+                                          WHERE `pred_match_uid` = 31
+									  AND `account_id` = '$account_id'";
                             $query= $this->db->query($sql_query);
                         }
                         if ($sf['pred_match_uid'] == 30)
                         {
                             $sql_query = "UPDATE `prediction`
                                           SET `pred_away_team` = '$pred_home_team'
-                                          WHERE `pred_match_uid` = 31";
+                                          WHERE `pred_match_uid` = 31
+									  AND `account_id` = '$account_id'";
                             $query= $this->db->query($sql_query);
                         }
                     }
