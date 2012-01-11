@@ -25,7 +25,7 @@ $(document).ready(function (){
         var answer = confirm('Are you sure?');
         return answer; // answer is a boolean
     });
-    $('#footer').append('<p>Voetbalpool software is belangeloos gemaakt door <a href="https://twitter.com/#!/johnschop">John Schop</a>, &copy;2011. Liefhebbers kunnen <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YTT9NSRN2LB54">doneren</a>.</p>'); 
+   $('#footer').pinFooter();
 });
 
 
@@ -34,10 +34,10 @@ $(document).ready(function (){
 $(window).load(function() {
     
 });
-
+*/
 $(window).resize(function() {
-    
+   $('#footer').pinFooter(); 
 });
 
-*/
+
               

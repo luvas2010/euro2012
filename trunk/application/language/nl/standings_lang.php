@@ -38,6 +38,7 @@ $lang['share_text_facebook']             = "De resultaten voor %s zijn binnen. T
 $lang['share_my_score_twitter']         = "Ik was nummer %s met %s punten voor de wedstrijd %s.";
 $lang['no_results_yet']                 = "Er zijn nog geen wedstijden berekend.";
 $lang['see_top_ten']                    = "Bekijk een grafiek van de top tien";
+$lang['why_am_i_not_here_payed']        = "Je staat nog niet in de ranglijst omdat je nog niet betaald hebt. Doe dit alsjeblieft zo snel mogelijk.";
 
 
 /* End of file standings_lang.php */

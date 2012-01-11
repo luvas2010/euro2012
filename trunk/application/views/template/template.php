@@ -15,6 +15,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/superfish.js"></script> 
     <script type="text/javascript" src="<?php echo base_url(); ?>js/supersubs.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/highcharts.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/pinfooter.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -45,5 +46,5 @@
             <?php $this->load->view($content_main); ?> 
         </div>
         <div class='clear'></div>
-        
+    </div>    
             <?php $this->load->view('footer'); ?>
