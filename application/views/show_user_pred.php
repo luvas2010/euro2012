@@ -4,8 +4,8 @@
     <table class='stripeMe'>
         <tr>
             <th><?php echo lang('match_number'); ?></th>
-            <th><?php echo lang('group'); ?></th>
-            <th><?php echo lang('home'); ?> - <?php echo lang('away'); ?></th>
+            <th><?php echo lang('home'); ?></th>
+            <th><?php echo lang('away'); ?></th>
             <th><?php echo lang('prediction'); ?></th>
             <th><?php echo lang('result'); ?></th>
             <th><?php echo lang('points_scored'); ?></th>
@@ -16,8 +16,8 @@
         <?php foreach($predictions as $prediction) { ?>
         <tr>
             <td><?php echo $prediction['match_uid']; ?></td>
-            <td><?php echo $prediction['match_group'];?></td>
-            <td><?php echo get_team_name($prediction['home_team']); ?> - <?php echo get_team_name($prediction['away_team']);?></td>
+            <td><span class="teamflag <?php echo $prediction['home_team'];?>"><?php echo get_team_name($prediction['home_team']);?></span></td>
+            <td><span class="teamflag <?php echo $prediction['away_team'];?>"><?php echo get_team_name($prediction['away_team']);?></span></td>
 			<?php if ($this->config->item('public_predictions') || prediction_closed($prediction['pred_match_uid']) || ($prediction['account_id'] == $account->id) || $prediction['pred_calculated'] == 1)
 			{
 			?>

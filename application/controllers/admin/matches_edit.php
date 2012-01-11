@@ -27,6 +27,8 @@ class Matches_edit extends CI_Controller {
             $matches = $query->result_array();
             $num = $query->num_rows();
             
+            $post_array = $this->input->post();
+            
             if ($action == NULL)
             {
                 $data = array(
@@ -39,12 +41,20 @@ class Matches_edit extends CI_Controller {
                
                 $this->load->view('template/template', $data);
             }
-            
+
+                        
             if ($action == 'save')
             {
-                $post_array = $this->input->post();
-                
-                
+            
+            foreach ($post_array['delete'] as $match_uid => $value)
+            {
+                $this->load->library('pool');
+                $this->pool->delete_calc($match_uid);
+            }
+            
+            foreach ($post_array['save'] as $match_uid => $value)
+            {
+
                 for ($i=0;$i<$num;$i++)
                 {
                     $match_uid = $post_array['match_uid'][$i];
@@ -82,21 +92,42 @@ class Matches_edit extends CI_Controller {
                     }
                     
                 }
-                $sql_query = "SELECT *
-                              FROM `match`
-                              ORDER BY `match`.`timestamp`";
-                $query = $this->db->query($sql_query);
-                $matches = $query->result_array();
-                $data = array(
-                            'matches'   => $matches,
-                            'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
-                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
-                            'content_main' => 'admin/admin_matches_edit',
-                            'info' => lang('data_saved'),
-                            'title' => lang('edit_match_results')
-                            );
+                $this->load->library('pool');
+                foreach ($post_array['save'] as $key => $value)
+                {
+                    if ($key >= 1  and $key <= 31)
+                    {
+                        $num_calc = $this->pool->calculate_match($key);
+                        $this->session->set_flashdata('info', sprintf(lang('data_saved_and_calculated'), $num_calc));
+                    }
+                    elseif ($key == 99)
+                    {
+                        $this->session->set_flashdata('info', lang('data_saved'));
+                    }
+                    else
+                    {
+                        $this->session->set_flashdata('info', 'WTF?');
+                    }
+                }
+            }
+            
+            redirect('admin/matches_edit');
+            
+            // $sql_query = "SELECT *
+                              // FROM `match`
+                              // ORDER BY `match`.`timestamp`";
+                // $query = $this->db->query($sql_query);
+                // $matches = $query->result_array();
+                // $data = array(
+                            // 'matches'   => $matches,
+                            // 'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                            // 'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                            // 'content_main' => 'admin/admin_matches_edit',
+                            // 'info' => lang('data_saved'),
+                            // 'title' => lang('edit_match_results')
+                            // );
                
-                $this->load->view('template/template', $data);
+                // $this->load->view('template/template', $data);
             }
         }
         else

@@ -5,7 +5,7 @@ $lang['position']                    = 'Pos';
 $lang['username']                    = 'Gebruiker';
 $lang['points']                      = 'Punten';
 
-$lang['match_number']                   = 'Wedstrijd #';
+$lang['match_number']                   = '#';
 $lang['group']                          = 'Groep';
 $lang['home']                           = 'Thuis';
 $lang['away']                           = 'Uit';

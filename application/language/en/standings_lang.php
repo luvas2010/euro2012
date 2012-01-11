@@ -5,7 +5,7 @@ $lang['position']                    = 'Pos';
 $lang['username']                    = 'Username';
 $lang['points']                      = 'Points';
 
-$lang['match_number']                   = "Match #";
+$lang['match_number']                   = "#";
 $lang['group']                          = "Group";
 $lang['home']                           = "Home";
 $lang['away']                           = "Away";

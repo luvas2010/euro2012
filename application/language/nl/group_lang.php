@@ -1,6 +1,6 @@
 <?php
 $lang['group_name_overview'] = "Groep %s Overzicht";
-$lang['match_number']       = "Wedstrijd #";
+$lang['match_number']       = "#";
 $lang['group']              = "Groep";
 $lang['home']               = "Thuis";
 $lang['away']               = "Uit";
