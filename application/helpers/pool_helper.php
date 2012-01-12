@@ -41,6 +41,41 @@ if ( ! function_exists('get_team_name'))
     }
 }
 
+if ( ! function_exists('get_away_shirt'))
+{
+    function get_away_shirt($team_uid, $link = FALSE)
+    {
+        $CI =& get_instance();
+        $CI->load->helper(array('language'));
+        $CI->load->language(array('general'));
+        if ($link)
+        {
+            return anchor('stats/view_team/'.$team_uid,"<img src='".base_url('css/flags')."/".$team_uid."_shirt_2.png' alt='".get_team_name($team_uid)." ".lang('away')."'/>", "title='".get_team_name($team_uid)."'");
+        }
+        else
+        {
+            return "<img src='".base_url('css/flags')."/".$team_uid."_shirt_2.png' title='".get_team_name($team_uid)." ".lang('away')."' alt='".get_team_name($team_uid)." ".lang('away')."' />";
+        }
+    }
+}
+if ( ! function_exists('get_home_shirt'))
+{
+    function get_home_shirt($team_uid, $link = FALSE)
+    {
+        $CI =& get_instance();
+        $CI->load->helper(array('language'));
+        $CI->load->language(array('general'));
+        if ($link)
+        {
+            return anchor('stats/view_team/'.$team_uid,"<img src='".base_url('css/flags')."/".$team_uid."_shirt_1.png' alt='".get_team_name($team_uid)." ".lang('home')."' />", "title='".get_team_name($team_uid)."'");
+        }
+        else
+        {
+            return "<img src='".base_url('css/flags')."/".$team_uid."_shirt_1.png' title='".get_team_name($team_uid)." ".lang('home')."' alt='".get_team_name($team_uid)." ".lang('home')."' />";
+        }        
+    }
+}
+
 if ( ! function_exists('get_match'))
 {
     function get_match($match_uid)
@@ -199,7 +234,11 @@ if ( ! function_exists('get_next_matches') )
             $string = str_replace('%prediction%', anchor('predictions/editgroup/'.$match['match_group'], lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
             $string = str_replace('%group%', lang($match['match_group']), $string);
             
+            $homeshirtstring = get_home_shirt($match['home_team'], 1);
+            $awayshirtstring = get_away_shirt($match['away_team'], 1);
             
+            $string = str_replace('%homeshirt%', $homeshirtstring, $string);
+            $string = str_replace('%awayshirt%', $awayshirtstring, $string);
             //$stats = get_match_stats($match['match_uid']);
 
             //$string = str_replace('%chart%', $statschart, $string);

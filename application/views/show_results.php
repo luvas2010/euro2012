@@ -1,4 +1,25 @@
-    <h2><?php echo $title; ?></h2>
+<div class='container_12'>
+    <h3 class='centertext'><?php echo $title; ?></h3>
+    <div class='grid_10 alpha omega prefix_1 suffix_1'>
+        <div class='grid_3 alpha centertext'>
+            <p class='bigtext'><?php echo lang($results[0]['home_team']); ?></p>
+            <?php echo get_home_shirt($results[0]['home_team'], TRUE); ?>
+            
+        </div>
+        <div class='grid_1 superbigtext centertext'>
+            <?php echo $results[0]['home_goals']; ?>
+        </div> 
+        <div class='grid_2 superbigtext centertext'>
+            -
+        </div> 
+        <div class='grid_1 superbigtext centertext'>
+            <?php echo $results[0]['away_goals']; ?>
+        </div>
+        <div class='grid_3 omega centertext'>
+            <p class='bigtext'><?php echo lang($results[0]['away_team']); ?></p>
+            <?php echo get_away_shirt($results[0]['away_team'], TRUE); ?>
+        </div>
+    </div>    
     <h3><a href='#me'><?php echo lang('find_yourself'); ?></a></h3>
     <div class='clear'></div>
     
@@ -113,4 +134,4 @@
     //$twitterObj = new EpiTwitter($consumer_key, $consumer_secret, $token, $secret);
     //$status = $twitterObj->post('/statuses/update.json', array('status' => 'This a simple test from twitter-async at ' . date('m-d-Y h:i:s')));
     ?>
-
+</div>

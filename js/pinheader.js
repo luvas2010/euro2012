@@ -1,28 +1,19 @@
 (function($) {
 // plugin definition
-$.fn.pinFooter = function(options) {
+$.fn.pinHeader = function(options) {
 // Get the height of the footer and window + window width
 var wH = $(window).height();
 var wW = getWindowWidth();
-var fH = $(this).outerHeight(true);
 var bH = $("body").outerHeight(true);
-var mB = parseInt($("body").css("margin-bottom"));
+var mT = parseInt($("body").css("margin-top"));
 
-// Pinned option
+ // Pinned option
 // Set CSS attributes for positioning footer
 $(this).css("position","fixed");
 $(this).css("width",wW + "px");
-$(this).css("top",wH - fH + "px");
-$("body").css("height",(bH + mB) + "px");
+$(this).css("top","0px");
+$("body").css("height",(bH + mT) + "px");
 
-};
-
-// private function for debugging
-function debug($obj) {
-if (window.console && window.console.log) {
-window.console.log('Window Width: ' + $(window).width());
-window.console.log('Window Height: ' + $(window).height());
-}
 };
 
 // Dependable function to get Window Height

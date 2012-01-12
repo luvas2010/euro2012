@@ -118,12 +118,18 @@ h3 {
     font-weight:normal;
     line-height: 1.286em;
     padding-bottom: 3px;
-    margin-bottom: 3px;
+    margin: 10px 0 3px;
     } 
 
 a {
     color: #009;
+    outline: none;
+    text-decoration:none;
 }
+
+a:hover {
+    text-decoration: underline;
+    }
 
 a.adminlink {
     color: #f00;
@@ -131,7 +137,7 @@ a.adminlink {
 
 #wrapper {
     width: 1000px;
-    margin: 0 auto;
+    margin: 50px auto 0;
     /*padding-top: .5em;*/
 }
     
@@ -167,7 +173,7 @@ a.adminlink {
 font-size:.8em;
  margin-top: 20px;
  background: #ccc;
- border-top:1px solid #333;
+ border-top:1px solid #999;
  color: #333;
  text-shadow: 0px 1px 1px #fff;
  padding: 5px;
@@ -182,7 +188,7 @@ font-size:.8em;
 }
 
 table {
-    /*margin-top: 1.5em;*/
+    margin-top: 1em;
     font-size: .875em;
     margin-bottom: 1em;
 }
@@ -213,9 +219,15 @@ tr td.bigtext {
     font-size: 2em;
     text-align: center;
 }
+.bigtext { font-size: 2em; }
+.superbigtext {font-size: 4em;}
 .boldtext {
     font-weight: bold;
 }
+.greentext {
+    color: #008C48;
+    }
+    
 .smalltext {
     font-size: .8em;
 }
@@ -296,11 +308,17 @@ label {
 /*navigation*/
 #navigation {
     background:         #333333;
-    float:              left;
+    /*float:              left;*/
+    z-index:            99;
     margin-bottom:      28px;
     width:              100%;
     }
+.nav_container {
 
+    margin: 0 auto;
+    width: 1000px;
+    }
+    
 #userchecks {
     /*font-size: .8em;*/
     }
@@ -427,7 +445,7 @@ ul.sf-menu li li li.sfHover ul {
     /*margin-bottom:    1em;*/
 }
 .sf-menu a {
-    border-left:    1px solid #fff;
+    /*border-left:    1px solid #fff;*/
     padding:        .75em 1em;
     text-decoration:none;
 }
@@ -618,7 +636,18 @@ a.wand, input.wand, button.wand {
     background: url(icons/wand.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
     }
-    
+a.calculator, input.calculator, button.calculator {
+    background: url(icons/calculator.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.calculator_add, input.calculator_add, button.calculator_add {
+    background: url(icons/calculator_add.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.calculator_delete, input.calculator_delete, button.calculator_delete {
+    background: url(icons/calculator_delete.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
 a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;
@@ -788,6 +817,15 @@ h2.D4 {
 span.D4 {
     background: url(flags/D4_16.png) 0 3px no-repeat;
     }
+    
+h2.WA, h2.WB, h2.WC, h2.WD, h2.RA, h2.RB, h2.RC, h2.RD, h2.W25, h2.W26, h2.W27, h2.W28, h2.W29, h2.W30 {
+    background: url(flags/WA.png) 0 -4px no-repeat;
+    }
+    
+span.WA, span.WB, span.WC, span.WD, span.RA, span.RB, span.RC, span.RD, span.W25, span.W26, span.W27, span.W28, span.W29, span.W30 {
+    background: url(flags/WA_16.png) 0 3px no-repeat;
+    }
+
     /* installation styles */
 #installheader h1 {
     font-size:24px;
@@ -804,4 +842,9 @@ margin-bottom:10px;
 em {
 font-style: italic;
 }
+
+#manual, #manual iframe {
+    min-height: 99999px;
+    width:100%;
+    }
 

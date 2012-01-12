@@ -16,6 +16,9 @@ $lang['pred_freq_f']                        = '%s people think they will reach t
 $lang['pred_freq_champ']                    = 'In the extra questions %s was mentioned %s as the champion.';
 $lang['match_avg_goals']                    = 'On average people predict %s goals for %s, and %s goals for %s in this match';
 $lang['match_max_goals']                    = 'The highest number of goals predicted for %s is %s';
+$lang['your_predictions_for_group_stage']   = 'Your predictions for %s in the group stage';
+$lang['your_predictions_for_knockout_stage']= 'Your predictions for %s in the knockout stage';
+$lang['no_knockout_predictions']            = 'In your predictions %s does not make it past the group stage';
 
 /* End of file stats_lang.php */
 /* Location: ./application/language/en/stats_lang.php */

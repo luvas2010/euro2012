@@ -45,7 +45,7 @@ class Results extends CI_Controller {
             $data['results'] = $results;
             $data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
             $data['account_details'] = $this->account_details_model->get_by_account_id($this->session->userdata('account_id'));
-            $data['title'] = sprintf(lang('results_for_match'), get_match($match_uid))." (".$results[0]['home_goals']." - ".$results[0]['away_goals'].")";
+            $data['title'] = lang('results_for_match');
             $data['content_main'] = "show_results";
             
             $data['share_url']  = base_url().'results/show/'.$match_uid;
