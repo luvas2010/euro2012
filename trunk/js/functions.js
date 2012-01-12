@@ -26,6 +26,7 @@ $(document).ready(function (){
         return answer; // answer is a boolean
     });
    $('#footer').pinFooter();
+   $('#navigation').pinHeader();
 });
 
 
@@ -37,6 +38,7 @@ $(window).load(function() {
 */
 $(window).resize(function() {
    $('#footer').pinFooter(); 
+   $('#navigation').pinHeader();
 });
 
 

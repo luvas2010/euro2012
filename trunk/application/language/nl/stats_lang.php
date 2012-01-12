@@ -16,5 +16,8 @@ $lang['pred_freq_f']                        = '%s mensen denken dat ze de finale
 $lang['pred_freq_champ']                    = 'Bij de extra vragen wordt %s %s keer genoemd als kampioen.';
 $lang['match_avg_goals']                    = 'Gemiddeld voorspelt men %s doelpunten voor %s, en %s doelpunten voor %s in deze wedstrijd';
 $lang['match_max_goals']                    = 'Het hoogste aantal doelpunten voorspeld voor %s is %s';
+$lang['your_predictions_for_group_stage']   = 'Jouw voorspellingen voor %s in de groepsfase';
+$lang['your_predictions_for_knockout_stage']   = 'Jouw voorspellingen voor %s in de knockoutfase';
+$lang['no_knockout_predictions']            = 'Volgens jouw voorspellingen ligt %s eruit na de groepsfase';
 /* End of file stats_lang.php */
 /* Location: ./application/language/nl/stats_lang.php */

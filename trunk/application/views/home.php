@@ -62,15 +62,15 @@
         </div>
         <?php } ?>
     </div> <!-- end column1 -->
-    <div id="" class='grid_3'>
+    <div class='grid_4'>
     		<h3><?php echo lang('next_matches'); ?></h3>
             <?php
             // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
-            echo get_next_matches(2,"<p class=' centertext boldtext'>%group%<br/>%matchtime%</p><p class='centertext boldtext'>%home% - %away%</p><p class='centertext'>(%prediction%)</p><p class='centertext'>%chart%</p>");
+            echo get_next_matches(2,"<p class='centertext boldtext'>%group%<br/>%matchtime%</p><p class='grid_2 alpha centertext boldtext'>%homeshirt% %home%</p><p class='grid_2 omega centertext boldtext'>%awayshirt% %away%</p><p class='grid_4 alpha omega centertext'>( %prediction% )</p><p class='centertext'>%chart%</p>");
             ?>
     </div>
-     <div id="column2" class="grid_6 omega">
-		<div class="grid_3 alpha">
+     <div id="column2" class="grid_5 omega">
+		<div class="grid_5 alpha omega">
 			<h3><?php echo lang('top_10');?></h3>
 			<?php $this->load->library('pool');
 				  $topusers = $this->pool->get_top_ranking(10);
@@ -90,7 +90,8 @@
 			?>
 			
 		</div>
-		<div class="grid_3 omega">
+        <br/>
+		<div class="grid_5 alpha omega">
             <h3><?php echo lang('nav_champ_graph');?></h3>
             
                 <?php $sql_query = "SELECT `pred_champion`, COUNT(`account_id`) as `number`
@@ -138,7 +139,7 @@
                             $categories .=  "]";
                             $data .= "]";
 							if ($num == 1) { $num++; }
-                            $champchart = "<script>
+                            $champchart = "<script type='text/javascript'>
                                     var chart;
                                     $(document).ready(function() {
                                        chart = new Highcharts.Chart({
@@ -189,7 +190,7 @@
                                           },
                                           tooltip: {
                                              formatter: function() {
-                                                return '<b>'+ this.x +'</b><br/>'+
+                                                return this.x + ': ' +
                                                     this.y + '%';
                                              }
                                           },

@@ -43,14 +43,14 @@
                 <?php } ?>
             </td>
             <?php } else { ?>
-            <td><?php echo get_team_name($match['home_team']);?>
+            <td><span class="teamflag <?php echo $match['home_team'];?>"><?php echo get_team_name($match['home_team']);?></span>
 			<?php if ($match['match_uid'] >= 25)
                 { ?>
                 <br />
                 <?php echo "(".get_team_name($match['pred_home_team']).")"; ?>
                 <?php } ?>
             </td>
-            <td><?php echo get_team_name($match['away_team']);?>
+            <td><span class="teamflag <?php echo $match['away_team'];?>"><?php echo get_team_name($match['away_team']);?></span>
                 <?php if ($match['match_uid'] >= 25)
                 { ?>
                 <br />

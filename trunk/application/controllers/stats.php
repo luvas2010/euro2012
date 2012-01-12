@@ -149,11 +149,33 @@ class Stats extends CI_Controller {
             $query = $this->db->query($sql_query);
             $num_champ = $query->num_rows();
             
+            $sql_query = "SELECT *
+                          FROM `prediction`
+                          JOIN `match`
+                          ON `match`.`match_uid` = `prediction`.`pred_match_uid`
+                          AND (`match`.`home_team` = '$team_uid' OR `match`.`away_team` = '$team_uid')
+                          AND `match`.`match_uid` < 25
+                          AND   `account_id` = '$account_id'";
+            $query = $this->db->query($sql_query);
+            $user_team_pred_group_stage = $query->result_array();
+
+            $sql_query = "SELECT *
+                          FROM `prediction`
+                          JOIN `match`
+                          ON `match`.`match_uid` = `prediction`.`pred_match_uid`
+                          AND (`prediction`.`pred_home_team` = '$team_uid' OR `prediction`.`pred_away_team` = '$team_uid')
+                          AND `match`.`match_uid` >= 25
+                          AND   `account_id` = '$account_id'";
+            $query = $this->db->query($sql_query);
+            $user_team_pred_knockout_stage = $query->result_array();            
+            
             $data = array(
                         'group_stage'       => $group_stage,
                         'knockout_stage'    => $knockout_stage,
                         'num'               => $num,
                         'num_champ'         => $num_champ,
+                        'user_team_pred_group_stage'    => $user_team_pred_group_stage,
+                        'user_team_pred_knockout_stage' => $user_team_pred_knockout_stage,
                         'avg_goals_for'     => number_format($total_goals_for/$num,2),
                         'avg_goals_against' => number_format($total_goals_against/$num,2),
                         'team_uid'          => $team_uid,

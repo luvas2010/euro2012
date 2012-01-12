@@ -24,7 +24,7 @@
                 <?php echo "<p>".lang('number_of_users').": ".$this->db->count_all('account')."</p>"; ?>
                 </div>
                 <div class='grid_6 omega'>
-                    <p>Voetbalpool software is belangeloos gemaakt door <a href="https://twitter.com/#!/johnschop">John Schop</a>, &copy;2011. Liefhebbers kunnen <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YTT9NSRN2LB54">doneren</a>.</p>
+                    <p>Voetbalpool software is belangeloos gemaakt door <a href="https://twitter.com/#!/johnschop">John Schop</a>, &copy;2011. Liefhebbers kunnen <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=YTT9NSRN2LB54">doneren</a>.</p>
                 </div>
             </div>
             <div class='clear'></div>

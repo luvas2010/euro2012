@@ -21,6 +21,20 @@
                     <li><?php echo anchor('charts/champion', lang('nav_champ_graph'));?></li>
                     <li><?php echo anchor('charts/totalgoals', lang('nav_totalgoals_graph'));?></li>
                     <li><?php echo anchor('charts/top/10', lang('nav_top_ten'));?></li>
+                    <?php $sql_query = "SELECT `team_uid`
+                                        FROM `team`
+                                        WHERE `team_group` = 'A' OR `team_group` = 'B' OR `team_group` = 'C' OR `team_group` = 'D'";
+                          $query = $this->db->query($sql_query);
+                          $teams = $query->result_array();?>
+                          
+                    <li><a>Teams</a>
+                        <ul>
+                            <?php foreach($teams as $team) { ?>
+                            <li><?php echo anchor('stats/view_team/'.$team['team_uid'], '<span class="teamflag '.$team['team_uid'].'">'.lang($team['team_uid']).'</span>');?></li>
+                            <?php } ?>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </li>
             <?php if ($this->authentication->is_signed_in()) { ?>

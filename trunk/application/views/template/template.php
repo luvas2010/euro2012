@@ -16,14 +16,18 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/supersubs.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/highcharts.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/pinfooter.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/pinheader.js"></script>
 </head>
 <body>
+        <div id="navigation">
+            <div class="nav_container">
+                <?php $this->load->view('navigation'); ?> 
+            </div>    
+        </div>
     <div id="wrapper">
         <div id="header">
         </div>
-        <div id="navigation">
-            <?php $this->load->view('navigation'); ?> 
-        </div>
+
         <div class='clear'></div>
         
         <div id="main">
