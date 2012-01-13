@@ -19,6 +19,6 @@ $lang['match_max_goals']                    = 'The highest number of goals predi
 $lang['your_predictions_for_group_stage']   = 'Your predictions for %s in the group stage';
 $lang['your_predictions_for_knockout_stage']= 'Your predictions for %s in the knockout stage';
 $lang['no_knockout_predictions']            = 'In your predictions %s does not make it past the group stage';
-
+$lang['no_stats_for_that_team']             = 'No statistics for that team';
 /* End of file stats_lang.php */
 /* Location: ./application/language/en/stats_lang.php */

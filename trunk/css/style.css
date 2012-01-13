@@ -220,6 +220,7 @@ tr td.bigtext {
     font-size: 2em;
     text-align: center;
 }
+.mediumtext { font-size: 1.1em; }
 .bigtext { font-size: 2em; }
 .superbigtext {font-size: 4em;}
 .boldtext {
@@ -239,6 +240,20 @@ tr td.bigtext {
     text-align: center;
 }
 
+.align_right {
+    text-align: right;
+    }
+.align_left {
+    text-align: left;
+    }
+.marginbottom_20 {
+    margin-bottom: 20px;
+    }
+    
+.margintop_20 {
+    margin-top: 20px;
+}
+        
 tr.alt td {
     background:    #ecf6fc;
 }
@@ -653,7 +668,15 @@ a.calculator_delete, input.calculator_delete, button.calculator_delete {
 a.information, input.information, button.information {
     background: url(icons/information.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
-    }	
+    }
+a.arrow_left, input.arrow_left, button.arrow_left {
+    background: url(icons/arrow_left.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.arrow_right, input.arrow_right, button.arrow_right {
+    background: url(icons/arrow_right.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }    
 a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;

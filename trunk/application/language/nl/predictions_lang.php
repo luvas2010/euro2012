@@ -13,6 +13,11 @@ $lang['edit_all_predictions']           = "Voorspellingen wijzigen";
 $lang['prediction']                     = "Voorspelling";
 $lang['points_scored']                  = "Gescoorde punten";
 $lang['total_points']                   = "Punten Totaal";
+$lang['total_points_awarded']           = "Je krijgt voor deze wedstrijd <span class='boldtext'>%s punten</span>.";
+$lang['goals_correct']             = "Je had het aantal doelpunten voor %s goed, dat is <span class='boldtext'>%s punten</span>.";
+$lang['goals_wrong']               = "Het aantal doelpunten voor %s had je niet goed voorspeld.";
+$lang['result_right_win']               = "Zoals je had voorspeld won %s de wedstrijd van %s. Dat levert <span class='boldtext'>%s punten</span> op.";
+$lang['result_right_tie']               = "%s en %s speelden gelijk, en dat had je voorspeld. Dat levert <span class='boldtext'>%s punten</span> op.";
 $lang['match_time']                     = "Aftrap";
 $lang['predictions_for_group']          = "Voorspellingen voor groep %s";
 $lang['pred_standings_in_group']        = "Voorspelde Stand in groep %s";
@@ -23,8 +28,11 @@ $lang['match_result']                   = "Uitslag";
 $lang['saved_predictions']              = "Voorspellingen opgeslagen";
 $lang['match_has_started']              = "Wedstrijd %s is al begonnen";
 $lang['number_of_times_predicted']      = "Aantal keer voorspeld";
-$lang['make_prediction_for']			= "Voorspelling voor wedstrijd no. %s";
-
+$lang['make_prediction_for']			= "Voorspelling voor wedstrijd %s";
+$lang['results_for_match']              = "Uitslag &amp; resultaten van wedstrijd %s";
+$lang['statistics_prediction_help']     = "Er zijn %s voorspellingen gemaakt voor deze wedstrijd. Hieronder kun je zien wat de andere deelnemers denken.";
+$lang['prediction_closed']              = "De tijdslimiet voor deze wedstrijd is verstreken. Je kunt je voorspelling niet meer wijzigen!";
+$lang['tournament_started']             = "Het toernooi is begonnen, je kunt de teams niet meer veranderen";
 $lang['predict_teams_knockout_phase']   = "<p>Voor de Kwart finales, Halve Finales en de Finale moet je ook de teams voorspellen.
                                            Dit levert extra punten op als je het goed voorspelt.<br />
                                            <span class='boldtext redtext'>Deze voorspellingen moeten worden gemaakt voordat het toernooi begint, om valsspelen te voorkomen.</strong></p>";
@@ -41,12 +49,12 @@ $lang['randomizer_intro']               = "<p>Als je geen zin hebt om alles in t
                                            dan worden alle voorspellingen alvast voor je ingevuld. Hierna kun je ze nog wel wijzigen.<br/>
                                            <span class='boldtext'>Pas op: al je bestaande voorspellingen worden overschreven</span></p>";
 $lang['position']           = "Pos.";
-$lang['team']               = "Team";
+$lang['team']               = "Land";
 $lang['played']             = "Gesp.";
 $lang['won']                = "W";
 $lang['tie']                = "G";
 $lang['lost']               = "V";
 $lang['points']             = "Punten";
-$lang['goals']              = "Goals";
+$lang['goals']              = "Doelpunten";
 /* End of file predicitions_lang.php */
 /* Location: ./application/language/nl/predictions_lang.php */

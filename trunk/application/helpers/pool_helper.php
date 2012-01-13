@@ -48,7 +48,11 @@ if ( ! function_exists('get_away_shirt'))
         $CI =& get_instance();
         $CI->load->helper(array('language'));
         $CI->load->language(array('general'));
-        if ($link)
+        if ($team_uid[0] == 'W' or $team_uid[0] == 'R')
+        {
+            $team_uid = 'WA';
+        }
+        if ($link && !($team_uid == 'WA'))
         {
             return anchor('stats/view_team/'.$team_uid,"<img src='".base_url('css/flags')."/".$team_uid."_shirt_2.png' alt='".get_team_name($team_uid)." ".lang('away')."'/>", "title='".get_team_name($team_uid)."'");
         }
@@ -65,7 +69,11 @@ if ( ! function_exists('get_home_shirt'))
         $CI =& get_instance();
         $CI->load->helper(array('language'));
         $CI->load->language(array('general'));
-        if ($link)
+        if ($team_uid[0] == 'W' or $team_uid[0] == 'R')
+        {
+            $team_uid = 'WA';
+        }
+        if ($link && !($team_uid == 'WA'))
         {
             return anchor('stats/view_team/'.$team_uid,"<img src='".base_url('css/flags')."/".$team_uid."_shirt_1.png' alt='".get_team_name($team_uid)." ".lang('home')."' />", "title='".get_team_name($team_uid)."'");
         }
@@ -168,7 +176,6 @@ if ( ! function_exists('prediction_closed'))
         }
         else
         {
-
             return TRUE;
         }
             
@@ -231,7 +238,7 @@ if ( ! function_exists('get_next_matches') )
             $string = str_replace('%home%', $homestring, $format);
             $string = str_replace('%away%', $awaystring, $string);
             $string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
-            $string = str_replace('%prediction%', anchor('predictions/editgroup/'.$match['match_group'], lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
+            $string = str_replace('%prediction%', anchor('predictions/edit_match/'.$match['match_uid'], lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
             $string = str_replace('%group%', lang($match['match_group']), $string);
             
             $homeshirtstring = get_home_shirt($match['home_team'], 1);
@@ -239,9 +246,7 @@ if ( ! function_exists('get_next_matches') )
             
             $string = str_replace('%homeshirt%', $homeshirtstring, $string);
             $string = str_replace('%awayshirt%', $awayshirtstring, $string);
-            //$stats = get_match_stats($match['match_uid']);
 
-            //$string = str_replace('%chart%', $statschart, $string);
             $statsbutton = anchor('stats/view_match/'.$match['pred_match_uid'],lang('view_stats'), "class='button chart-bar'");
             $string = str_replace('%chart%', $statsbutton, $string);
                 

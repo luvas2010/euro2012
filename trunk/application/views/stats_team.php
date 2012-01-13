@@ -1,5 +1,5 @@
-<!-- <?php print_r($predictions); ?> -->
 <div class='container_12'>
+    <?php if($team_uid[0] != 'W' && $team_uid[0] != 'R') { ?>
     <div class="grid_9 alpha">
     <h2 class="teamflag <?php echo $team_uid;?>"><?php echo $title ?></h2>
     </div>
@@ -184,5 +184,8 @@
             <h3><?php echo sprintf(lang('no_knockout_predictions'), get_team_name($team_uid)); ?></h3>
             <?php } ?>
         </div>
-    </div>    
+    </div>
+    <?php } else { ?>
+    No
+    <?php } ?>
 </div> <!-- end container_12 -->

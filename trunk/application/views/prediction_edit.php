@@ -1,5 +1,30 @@
 <div class="container_12">
-	<h2><?php echo sprintf(lang('edit_prediction_for'),get_match($prediction['pred_match_uid'])); ?></h2>
+	<div class='grid_3 alpha suffix_6'>
+        <?php
+            if($prediction['pred_match_uid'] > 1)
+            { 
+                $prev_match = $prediction['pred_match_uid'] -1;
+                echo anchor('predictions/edit_match/'.$prev_match, lang('match')." ".$prev_match, "class='button  arrow_left'");
+            }
+            else
+            {
+            echo "&nbsp;";
+            }
+        ?>    
+    </div>
+    <div class='grid_3 omega align_right'>
+            <?php
+            if($prediction['pred_match_uid'] < 31)
+            { 
+                $next_match = $prediction['pred_match_uid'] +1;
+                echo anchor('predictions/edit_match/'.$next_match, lang('match')." ".$next_match, "class='button  arrow_right'");
+            }
+            else
+            {
+            echo "&nbsp;";
+            }
+            ?>  
+    </div>
     <?php 
         if (validation_errors())
         {
@@ -13,51 +38,231 @@
     echo form_open("predictions/edit_match/".$prediction['pred_match_uid']."/save", $attributes); ?>
     
     <div class='clear'></div>
-	<div class="grid_12 alpha omega">
-		<h2 class='centertext'><?php echo sprintf(lang('make_prediction_for'), $prediction['pred_match_uid']);?></h2>
-		<div class="grid_4 alpha prefix_2 centertext">
-			<?php echo get_home_shirt($prediction['home_team']); ?><br/>
-			<h2><?php echo lang($prediction['home_team'])?></h2>
-			<?php 
-            $data = array(
-              'name'        => 'pred_home_goals',
-              'value'       => $prediction['pred_home_goals'],
-              'size'        => 5,
-              'class'       => 'digits bigtext centertext'
-            );
-            ?>
-            <?php echo form_input($data);?>
+	<div class="grid_8 alpha">
+		
+        <h3 class='centertext'><?php echo sprintf(lang('make_prediction_for'), $prediction['pred_match_uid']);?></h3>
+		<div class="grid_4 alpha mediumtext centertext">
+			<?php echo get_home_shirt($prediction['home_team'], TRUE); ?><br/>
+            <?php if ($prediction['home_team'][0] != 'W' && $prediction['home_team'][0] != 'R') { ?>
+			<h2><?php echo anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team']))?></h2>
+            <?php } else { ?>
+            <h2><?php echo lang($prediction['home_team'])?></h2>
+            <?php } ?>
+            <?php if($prediction['pred_match_uid'] >= 25)
+            {
+             ?>
+                    <div class='grid_2 alpha'>
+                        <?php echo lang('team'); ?>
+                    </div>
+                    <div class='grid_2 omega align_left'>            
+                     <?php if ((!prediction_closed(1) && $prediction['pred_calculated'] == 0) && $prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 31 )
+                           {
+                               $options = $home_teams[$prediction['match_uid']];
+                               echo form_dropdown('pred_home_team['.$match_uid.']', $options, $prediction['pred_home_team'])."<br/><br/>";
+                           }
+                           else
+                           {
+                               echo lang($prediction['pred_home_team'])."<br/><br/>";
+                           }
+                     ?>     
+                    </div>
+                    <div class='grid_2 alpha'>
+                        <?php echo lang('goals'); ?>
+                    </div>
+                    <div class='grid_2 omega align_left'>            
+                    <?php if(!prediction_closed($prediction['pred_match_uid']) && $prediction['pred_calculated'] == 0)
+                        { ?>
+                        <?php 
+                        $data = array(
+                          'name'        => 'pred_home_goals',
+                          'value'       => $prediction['pred_home_goals'],
+                          'size'        => 5,
+                          'class'       => 'digits centertext'
+                        );
+                        ?>
+                        <?php echo form_input($data);?>
+                        <?php } else { ?>
+                        <?php echo $prediction['pred_home_goals']; ?>
+                        <?php } ?>
+                    </div>
+            <?php } else { ?>
+            <?php if(!prediction_closed($prediction['pred_match_uid']) && $prediction['pred_calculated'] == 0)
+                        { ?>
+                        <?php 
+                        $data = array(
+                          'name'        => 'pred_home_goals',
+                          'value'       => $prediction['pred_home_goals'],
+                          'size'        => 5,
+                          'class'       => 'digits mediumtext centertext'
+                        );
+                        ?>
+                        <?php echo form_input($data);?>
+                        <?php } else { ?>
+                        <span class='bigtext'><?php echo $prediction['pred_home_goals']; ?></span>
+                        <?php } ?>
+            <?php } ?>
 		</div>
-		<div class="grid_4 omega suffix_2 centertext">
-			<?php echo get_away_shirt($prediction['away_team']); ?>
-			<h2><?php echo lang($prediction['away_team'])?></h2>
-			<?php 
-            $data = array(
-              'name'        => 'pred_away_goals',
-              'value'       => $prediction['pred_away_goals'],
-              'size'        => 5,
-              'class'       => 'digits bigtext centertext'
-            );
-            ?>            
-            <?php echo form_input($data);?>
+		<div class="grid_4 omega mediumtext centertext">
+			<?php echo get_away_shirt($prediction['away_team'], TRUE); ?>
+            <?php if ($prediction['away_team'][0] != 'W' && $prediction['away_team'][0] != 'R') { ?>
+			<h2><?php echo anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team']))?></h2>
+            <?php } else { ?>
+            <h2><?php echo lang($prediction['away_team']);?></h2>
+            <?php } ?>
+            <?php if($prediction['pred_match_uid'] >= 25)
+            {
+             ?>
+                    <div class='grid_2 alpha'>
+                        <?php echo lang('team'); ?>
+                    </div>
+                    <div class='grid_2 omega align_left'>            
+                     <?php if (!prediction_closed(1) && $prediction['pred_calculated'] == 0 && $prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 31 )
+                           {
+                               $options = $away_teams[$prediction['match_uid']];
+                               echo form_dropdown('pred_away_team['.$match_uid.']', $options, $prediction['pred_away_team'])."<br/><br/>";
+                           }
+                           else
+                           {
+                               echo lang($prediction['pred_away_team'])."<br/><br/>";
+                           }
+                     ?>     
+                    </div>
+                    <div class='grid_2 alpha'>
+                        <?php echo lang('goals'); ?>
+                    </div>
+                    <div class='grid_2 omega align_left'>            
+                    <?php if(!prediction_closed($prediction['pred_match_uid']))
+                        { ?>
+                        <?php 
+                        $data = array(
+                          'name'        => 'pred_away_goals',
+                          'value'       => $prediction['pred_away_goals'],
+                          'size'        => 5,
+                          'class'       => 'digits centertext'
+                        );
+                        ?>
+                        <?php echo form_input($data);?>
+                        <?php } else { ?>
+                        <?php echo $prediction['pred_away_goals']; ?>
+                        <?php } ?>
+                    </div>
+            <?php } else { ?>
+            <?php if(!prediction_closed($prediction['pred_match_uid']) && $prediction['pred_calculated'] == 0)
+                        { ?>
+                        <?php 
+                        $data = array(
+                          'name'        => 'pred_away_goals',
+                          'value'       => $prediction['pred_away_goals'],
+                          'size'        => 5,
+                          'class'       => 'digits mediumtext centertext'
+                        );
+                        ?>
+                        <?php echo form_input($data);?>
+                        <?php } else { ?>
+                        <span class='bigtext'><?php echo $prediction['pred_away_goals']; ?></span>
+                        <?php } ?>
+            <?php } ?>
+            </div>
+        <?php if(!prediction_closed($prediction['pred_match_uid']) && $prediction['pred_calculated'] == 0)
+            { ?>
+		<div class='grid_2 prefix_3 suffix_3 centertext'>
+			<br/><br/><input type='submit' value='<?php echo lang('save');?>' class='button save' />
 		</div>
-		<div class='grid_2 prefix_5 suffix_5 centertext'>
-			<input type='submit' value='<?php echo lang('save');?>' class='button save big' />
-		</div>	
-	</div>	
-
+        <?php } ?>
         <?php echo form_hidden('prediction_uid',$prediction['prediction_uid']); ?>
         <?php echo form_hidden('pred_match_uid',$prediction['pred_match_uid']);?>
 		<?php echo form_hidden('pred_match_group',$prediction['match_group']);?>
+        <?php echo form_close(); ?>
+        <?php if(prediction_closed(1) && $prediction['pred_match_uid'] >= 25)
+        { ?>
+        <div class='clear'></div>
+        <div class='infostay'><?php echo lang('tournament_started'); ?></div>
+        <?php } ?>
+        
+        <?php if($prediction['pred_calculated']) { ?>
+        <div class="grid_8 alpha margintop_20">
+        <h3 class='centertext'><?php echo sprintf(lang('results_for_match'), $match_uid); ?></h3>
+            <div class='grid_4 alpha centertext'>
+                <span class='bigtext'><?php echo $prediction['home_goals']; ?></span>
+            </div>    
+            <div class='grid_4 omega centertext'>
+                <span class='bigtext'><?php echo $prediction['away_goals']; ?></span>
+            </div>
+            <div class='grid_8 alpha margintop_20'>
+                <p><?php echo sprintf(lang('total_points_awarded'), $prediction['pred_points_total']); ?></p>
+                <ul>
+                <?php if ($prediction['pred_home_goals'] == $prediction['home_goals']) { ?>
+                <li><?php echo sprintf(lang('goals_correct'), get_team_name($prediction['home_team']), $this->config->item('pred_points_goals')); ?></li>
+                <?php } else { ?>
+                <li><?php echo sprintf(lang('goals_wrong'), get_team_name($prediction['home_team'])); ?></li>
+                <?php } ?>
+                <?php if ($prediction['pred_away_goals'] == $prediction['away_goals']) { ?>
+                <li><?php echo sprintf(lang('goals_correct'), get_team_name($prediction['away_team']), $this->config->item('pred_points_goals')); ?></li>
+                <?php } else { ?>
+                <li><?php echo sprintf(lang('goals_wrong'), get_team_name($prediction['away_team'])); ?></li>
+                <?php } ?>
+                <?php if($prediction['pred_home_goals'] > $prediction['pred_away_goals'] && $prediction['home_goals'] > $prediction['away_goals'])
+                       { ?>
+                <li><?php echo sprintf(lang('result_right_win'), get_team_name($prediction['home_team']), get_team_name($prediction['away_team']), $this->config->item('pred_points_result')); ?></li>
+                <?php  }  ?>                       
+                <?php if($prediction['pred_home_goals'] < $prediction['pred_away_goals'] && $prediction['home_goals'] < $prediction['away_goals'])
+                       { ?>
+                <li><?php echo sprintf(lang('result_right_win'), get_team_name($prediction['away_team']), get_team_name($prediction['home_team']), $this->config->item('pred_points_result')); ?></li>
+                <?php  }  ?>                            
+                <?php if($prediction['pred_home_goals'] == $prediction['pred_away_goals'] && $prediction['home_goals'] == $prediction['away_goals'])
+                       { ?>
+                <li><?php echo sprintf(lang('result_right_tie'), get_team_name($prediction['away_team']), get_team_name($prediction['home_team']), $this->config->item('pred_points_result')); ?></li>
+                <?php  }  ?>                            
+                </ul>          
+            </div>
 
-    <div class='clear'></div>
-    <?php echo form_close(); ?>
-
-	<div class='grid_12 alpha omega'>
-	<h3>Er zijn al <?php echo $num; ?> voorspellingen gemaakt voor deze wedstrijd. Hieronder kun je zien wat de andere deelnemers denken dan er gaat gebeuren.</h3>
-	</div>
-
-        <div class='grid_5 alpha'>
+            
+            <?php
+                $home_goals_correct = 0;
+                $away_goals_correct = 0;
+                $result_correct     = 0;
+                $everything_correct = 0;
+             
+                foreach ($predictions as $p)
+                {
+                    if ($p['home_goals'] == $p['pred_home_goals'])
+                    {
+                        $home_goals_correct++;
+                    }
+                    if ($p['away_goals'] == $p['pred_away_goals'])
+                    {
+                        $away_goals_correct++;
+                    }
+                    if ($p['away_goals'] == $p['pred_away_goals'] && $p['home_goals'] == $p['pred_home_goals'])
+                    {
+                        $everything_correct++;
+                    }
+                    if (
+                            ($p['away_goals'] > $p['home_goals'] && $p['pred_away_goals'] > $p['pred_home_goals'])
+                            ||
+                            ($p['away_goals'] < $p['home_goals'] && $p['pred_away_goals'] < $p['pred_home_goals'])
+                            ||
+                            ($p['away_goals'] == $p['home_goals'] && $p['pred_away_goals'] == $p['pred_home_goals'])
+                        )
+                    {
+                        $result_correct++;
+                    }  
+                }
+            ?>                
+            <p>Totaal <?php echo $num; ?> voorspellingen.<br/>
+            Home goals correct: <?php echo $home_goals_correct; ?><br/>
+            Away goals correct: <?php echo $away_goals_correct; ?><br/>
+            Result correct: <?php echo $result_correct; ?><br/>
+            Everything correct: <?php echo $everything_correct; ?></p>
+            
+        </div>
+        <?php } ?>
+        
+	</div>	
+	<div class='grid_4 omega'>
+    <h3 class='centertext'><?php echo lang('statistics'); ?></h3>
+	<p><?php echo sprintf(lang('statistics_prediction_help'), $num); ?></p>
+        <div class='grid_4 alpha omega'>
         <?php echo sprintf(lang('who_will_win_stat'), anchor('stats/view_team/'.$predictions[0]['home_team'],lang($predictions[0]['home_team'])),anchor('stats/view_team/'.$predictions[0]['away_team'],lang($predictions[0]['away_team']))); ?>
         <?php
             $stats = get_match_stats($match_uid);    
@@ -150,7 +355,7 @@
             }
             ?>
         </div>
-        <div class='grid_7 omega'>
+        <div class='grid_4 alpha omega'>
         <h3>Meer statistieken</h3>
             <ul class='hasbullets'>
             <?php   $home_goals_total = 0;
@@ -179,4 +384,5 @@
                     ?>
             </ul>        
         </div>
+    </div>    
 </div>
