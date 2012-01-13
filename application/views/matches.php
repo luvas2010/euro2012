@@ -19,14 +19,14 @@
             <th><?php echo lang('predicted'); ?></th>
             <th><?php echo lang('result'); ?></th>
             <th><?php echo lang('match_time'); ?></th>
-            <th><?php echo lang('prediction'); ?></th>
+            <th><?php echo lang('statistics'); ?></th>
             <th><?php echo lang('scores_for_match'); ?></th>
 
         </tr>
         <?php foreach($matches as $match) { ?>
         <tr>
             <td><?php echo $match['match_uid'];?></td>
-            <td><?php echo $match['match_group'];?></td>
+            <td><?php echo anchor('predictions/editgroup/'.$match['match_group'],$match['match_group']);?></td>
             <?php if($match['home_team'][0] != 'W' && $match['home_team'][0] != 'R' && $match['away_team'][0] != 'W' && $match['away_team'][0] != 'R')
                 { ?>
             <td><span class="teamflag <?php echo $match['home_team'];?>"><?php echo anchor('stats/view_team/'.$match['home_team'],get_team_name($match['home_team']));?></span>
@@ -58,13 +58,14 @@
                 <?php } ?>
             </td>
 			<?php } ?>
-            <td class='centertext'><?php echo $match['pred_home_goals']." - ".$match['pred_away_goals']; ?></td>
+			<td class='centertext'><?php echo anchor('predictions/edit_match/'.$match['match_uid'],$match['pred_home_goals']." - ".$match['pred_away_goals']); ?></td>
+            <!-- <td class='centertext'><?php echo $match['pred_home_goals']." - ".$match['pred_away_goals']; ?></td> -->
             <td class='centertext'><?php echo $match['home_goals']." - ".$match['away_goals'];?></td>
             <td><?php echo mdate("%d %M %Y %H:%i",$match['timestamp']); ?></td>
-            <td><?php echo anchor('predictions/editgroup/'.$match['match_group'],lang($match['match_group']), 'class="button small"'); ?></td>
+            <td><?php echo anchor('stats/view_match/'.$match['match_uid'],lang('statistics'), 'class="button chart-bar"'); ?></td>
             <?php if($match['match_calculated'] == 1)
                   { ?>
-                  <td><?php echo anchor('results/show/'.$match['match_uid'],lang('show_scores_for_match'), 'class="button small"'); ?></td>
+                  <td><?php echo anchor('results/show/'.$match['match_uid'],lang('show_scores_for_match'), 'class="button information"'); ?></td>
             <?php }
                   else
                   { ?>

@@ -23,6 +23,7 @@ $lang['match_result']                   = "Match Result";
 $lang['saved_predictions']              = "Predictions saved";
 $lang['match_has_started']              = "Match %s has already started";
 $lang['number_of_times_predicted']      = "Number of times predicted";
+$lang['make_prediction_for']			= "Prediction for match no. %s";
 
 $lang['predict_teams_knockout_phase']   = "<p>For Quarter Finals, Semi Finals and the Final Match, you will also have to predict which teams will be playing.
                                            You will earn extra points if you have the teams correct.<br />

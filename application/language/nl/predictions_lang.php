@@ -23,6 +23,7 @@ $lang['match_result']                   = "Uitslag";
 $lang['saved_predictions']              = "Voorspellingen opgeslagen";
 $lang['match_has_started']              = "Wedstrijd %s is al begonnen";
 $lang['number_of_times_predicted']      = "Aantal keer voorspeld";
+$lang['make_prediction_for']			= "Voorspelling voor wedstrijd no. %s";
 
 $lang['predict_teams_knockout_phase']   = "<p>Voor de Kwart finales, Halve Finales en de Finale moet je ook de teams voorspellen.
                                            Dit levert extra punten op als je het goed voorspelt.<br />
