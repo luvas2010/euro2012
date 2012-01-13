@@ -784,16 +784,205 @@ class Predictions extends CI_Controller {
 				$predictions = $query->result_array();
 				$num = $query->num_rows();
 				$this->lang->load('stats');
-				
+                $home_teams= 0;
+                $away_teams= 0;
+                if ($match_uid >= 25 && $match_uid <=31)
+                {
+                    $home_teams = array(
+                                    '25' => array('WA' => get_team_name('WA')),
+                                    '26' => array('WB' => get_team_name('WB')),
+                                    '27' => array('WC' => get_team_name('WC')),
+                                    '28' => array('WD' => get_team_name('WD')),
+                                    '29' => array('W25' => get_team_name('W25')),
+                                    '30' => array('W26' => get_team_name('W26')),
+                                    '31' => array('W29' => get_team_name('W29'))
+                                    );
+                    $away_teams = array(
+                                    '25' => array('RB' => get_team_name('RB')),
+                                    '26' => array('RA' => get_team_name('RA')),
+                                    '27' => array('RD' => get_team_name('RD')),
+                                    '28' => array('RC' => get_team_name('RC')),
+                                    '29' => array('W27' => get_team_name('W27')),
+                                    '30' => array('W28' => get_team_name('W28')),
+                                    '31' => array('W30' => get_team_name('W30'))
+                                    );
+                    
+                    if ($match_uid >= 25 && $match_uid <= 28)
+                    {
+                    $groups_home = explode(',', $prediction['match_group_home_team']);
+                    $groups_away = explode(',', $prediction['match_group_away_team']);
+                    
+                        foreach($groups_home as $group_home)
+                        {
+                            if(!isset($whereclause))
+                            {
+                                $whereclause = "`team`.`team_group` = '$group_home'";
+                            }
+                            else
+                            {
+                                $whereclause .= " OR `team`.`team_group` = '$group_home'";
+                            }
+                        }
+                        
+                        $sql_query = "SELECT `team_uid`
+                                      FROM `team`
+                                      WHERE $whereclause";
+                        unset($whereclause);
+                        $query = $this->db->query($sql_query);
+                        $teams = $query->result_array();
+                        //echo $sql_query."<br/>";
+                        foreach($teams as $team)
+                        {
+                            $home_teams[$prediction['match_uid']][$team['team_uid']] = get_team_name($team['team_uid']);
+                        }
+                        
+                        foreach($groups_away as $group_away)
+                        {
+                            if(!isset($whereclause))
+                            {
+                                $whereclause = "`team`.`team_group` = '$group_away'";
+                            }
+                            else
+                            {
+                                $whereclause .= " OR `team`.`team_group` = '$group_away'";
+                            }
+                        }
+                        
+                        $sql_query = "SELECT `team_uid`
+                                      FROM `team`
+                                      WHERE $whereclause";
+                        unset($whereclause);
+                        $query = $this->db->query($sql_query);
+                        $teams = $query->result_array();
+                        foreach($teams as $team)
+                        {
+                            $away_teams[$prediction['match_uid']][$team['team_uid']] = get_team_name($team['team_uid']);
+                        }
+                    }
+                        
+                        if ($prediction['match_uid'] == 29)
+                        {
+                            $sql_query = "SELECT `pred_home_team`, `pred_away_team`
+                                          FROM `prediction`
+                                          WHERE `pred_match_uid` = '25'
+                                          AND `account_id` = '$account_id'";
+                            $query = $this->db->query($sql_query);
+                            $pos_teams = $query->result_array();
+                            foreach ($pos_teams as $pos_team)
+                            {
+                                if ($pos_team['pred_home_team'][0] != NULL && $pos_team['pred_home_team'][0] != 'W' )
+                                {
+                                    $home_teams[29][$pos_team['pred_home_team']] = get_team_name($pos_team['pred_home_team']);
+                                }
+                                if ($pos_team['pred_away_team'][0] != NULL && $pos_team['pred_away_team'][0] != 'R')
+                                {
+                                    $home_teams[29][$pos_team['pred_away_team']] = get_team_name($pos_team['pred_away_team']);
+                                }
+                            }
+                            $sql_query = "SELECT `pred_home_team`, `pred_away_team`
+                                          FROM `prediction`
+                                          WHERE `pred_match_uid` = '27'
+                                          AND `account_id` = '$account_id'";
+                            $query = $this->db->query($sql_query);
+                            $pos_teams = $query->result_array();
+                            foreach ($pos_teams as $pos_team)
+                            {
+                                if ($pos_team['pred_home_team'][0] != NULL && $pos_team['pred_home_team'][0] != 'W')
+                                {
+                                    $away_teams[29][$pos_team['pred_home_team']] = get_team_name($pos_team['pred_home_team']);
+                                }
+                                if ($pos_team['pred_away_team'][0] != NULL && $pos_team['pred_away_team'][0] != 'R')
+                                {
+                                    $away_teams[29][$pos_team['pred_away_team']] = get_team_name($pos_team['pred_away_team']);
+                                }
+                            }
+                        }
+                        if ($prediction['match_uid'] == 30)
+                        {
+                            $sql_query = "SELECT `pred_home_team`, `pred_away_team`
+                                          FROM `prediction`
+                                          WHERE `pred_match_uid` = '26'
+                                          AND `account_id` = '$account_id'";
+                            $query = $this->db->query($sql_query);
+                            $pos_teams = $query->result_array();
+                            foreach ($pos_teams as $pos_team)
+                            {
+                                if ($pos_team['pred_home_team'][0] != NULL && $pos_team['pred_home_team'][0] != 'W')
+                                {
+                                    $home_teams[30][$pos_team['pred_home_team']] = get_team_name($pos_team['pred_home_team']);
+                                }
+                                if ($pos_team['pred_away_team'][0] != NULL && $pos_team['pred_away_team'][0] != 'R')
+                                {
+                                    $home_teams[30][$pos_team['pred_away_team']] = get_team_name($pos_team['pred_away_team']);
+                                }                        }
+                            $sql_query = "SELECT `pred_home_team`, `pred_away_team`
+                                          FROM `prediction`
+                                          WHERE `pred_match_uid` = '28'
+                                          AND `account_id` = '$account_id'";
+                            $query = $this->db->query($sql_query);
+                            $pos_teams = $query->result_array();
+                            foreach ($pos_teams as $pos_team)
+                            {
+                                if ($pos_team['pred_home_team'][0] != NULL && $pos_team['pred_home_team'][0] != 'W')
+                                {
+                                    $away_teams[30][$pos_team['pred_home_team']] = get_team_name($pos_team['pred_home_team']);
+                                }
+                                if ($pos_team['pred_away_team'][0] != NULL && $pos_team['pred_away_team'][0] != 'R')
+                                {
+                                    $away_teams[30][$pos_team['pred_away_team']] = get_team_name($pos_team['pred_away_team']);
+                                }                         
+                            }
+                    }
+                    if ($prediction['match_uid'] == 31)
+                    {
+                        $sql_query = "SELECT `pred_home_team`, `pred_away_team`
+                                      FROM `prediction`
+                                      WHERE `pred_match_uid` = '29'
+                                      AND `account_id` = '$account_id'";
+                        $query = $this->db->query($sql_query);
+                        $pos_teams = $query->result_array();
+                        foreach ($pos_teams as $pos_team)
+                        {
+                            if ($pos_team['pred_home_team'][0] != NULL && $pos_team['pred_home_team'][0] != 'W')
+                            {
+                                $home_teams[31][$pos_team['pred_home_team']] = get_team_name($pos_team['pred_home_team']);
+                            }
+                            if ($pos_team['pred_away_team'][0] != NULL && $pos_team['pred_away_team'][0] != 'W')
+                            {
+                                $home_teams[31][$pos_team['pred_away_team']] = get_team_name($pos_team['pred_away_team']);
+                            }                         }
+                        $sql_query = "SELECT `pred_home_team`, `pred_away_team`
+                                      FROM `prediction`
+                                      WHERE `pred_match_uid` = '30'
+                                      AND `account_id` = '$account_id'";
+                        $query = $this->db->query($sql_query);
+                        $pos_teams = $query->result_array();
+                        foreach ($pos_teams as $pos_team)
+                        {
+                            if ($pos_team['pred_home_team'][0] != NULL && $pos_team['pred_home_team'][0] != 'W')
+                            {
+                                $away_teams[31][$pos_team['pred_home_team']] = get_team_name($pos_team['pred_home_team']);
+                            }
+                            if ($pos_team['pred_away_team'][0] != NULL && $pos_team['pred_away_team'][0] != 'W')
+                            {
+                                $away_teams[31][$pos_team['pred_away_team']] = get_team_name($pos_team['pred_away_team']);
+                            }
+                        }
+                    }
+                        
+                }
+                
                 $data = array(
 								'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
 								'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
-								'title'             => sprintf(lang('edit_prediction_for'),get_match($match_uid)),
+								'title'             => sprintf(lang('make_prediction_for'),get_match($match_uid)),
 								'content_main'      => "prediction_edit",
 								'prediction'        => $prediction,
 								'predictions'		=> $predictions,
 								'match_uid'			=> $match_uid,
-								'num'				=> $num
+								'num'				=> $num,
+                                'home_teams'        => $home_teams,
+                                'away_teams'        => $away_teams
 							  );
 
             $this->load->view('template/template', $data);
@@ -801,16 +990,59 @@ class Predictions extends CI_Controller {
             else
             {
                 //save data
-                $pred_home_goals = $this->input->post('pred_home_goals');
-                $pred_away_goals = $this->input->post('pred_away_goals');
-                $prediction_uid = $this->input->post('prediction_uid');
-                $sql_query = "UPDATE `prediction`
-                              SET `pred_home_goals` = '$pred_home_goals',
-                                  `pred_away_goals` = '$pred_away_goals'
-                              WHERE `prediction_uid` = '$prediction_uid'";
-                $query = $this->db->query($sql_query);
+                if(!prediction_closed($this->input->post('pred_match_uid')))
+                {
+                    $pred_home_goals = $this->input->post('pred_home_goals');
+                    $pred_away_goals = $this->input->post('pred_away_goals');
+                    if ($this->input->post('pred_home_goals') == "")
+                    {
+                        $home_goals_string = "`pred_home_goals` = NULL";
+                    }
+                    else
+                    {
+                        $home_goals_string = "`pred_home_goals` = '$pred_home_goals'";
+                    }
+                    if ($this->input->post('pred_away_goals') == "")
+                    {
+                        $away_goals_string = "`pred_away_goals` = NULL";
+                    }
+                    else
+                    {
+                        $away_goals_string = "`pred_away_goals` = '$pred_away_goals'";
+                    }
+                    $post_array = $this->input->post();
+                    $match_uid = $this->input->post('pred_match_uid');
+                    $prediction_uid = $this->input->post('prediction_uid');
+                    if($match_uid >= 25)
+                    {
+                        if(!prediction_closed(1))
+                        {
+                            $pred_home_team = $post_array['pred_home_team'][$match_uid];
+                            $pred_away_team = $post_array['pred_away_team'][$match_uid];
+                            
+                            $home_team_string = "`pred_home_team` = '$pred_home_team'";
+                            $away_team_string = "`pred_away_team` = '$pred_away_team'";
+                            
+                            $sql_query = "UPDATE `prediction`
+                                          SET $home_team_string,
+                                              $away_team_string
+                                          WHERE `prediction_uid` = '$prediction_uid'";
+                            $query = $this->db->query($sql_query);              
+                        }
+                    }        
+                    
+                    $sql_query = "UPDATE `prediction`
+                                  SET $home_goals_string,
+                                      $away_goals_string
+                                  WHERE `prediction_uid` = '$prediction_uid'";
+                    $query = $this->db->query($sql_query);
+                    $this->session->set_flashdata('info',lang('data_saved'));
+                }
+                else
+                {
+                    $this->session->set_flashdata('error',lang('prediction_closed'));
+                }
                 
-				$this->session->set_flashdata('info',lang('data_saved'));
 				redirect('predictions/edit_match/'.$match_uid);
             }
                               

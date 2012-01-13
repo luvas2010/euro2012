@@ -45,6 +45,11 @@
                 {
                     echo "<div class='flashinfo'><p>".$flashinfo."</p><span class='smalltext'>".lang('click_to_hide')."</span></div>";
                 }
+                $flasherror = $this->session->flashdata('error'); 
+                if ($flasherror != '')
+                {
+                    echo "<div class='error'><p>".$flasherror."</p><span class='smalltext'>".lang('click_to_hide')."</span></div>";
+                }
                       
             ?>                 
             <?php $this->load->view($content_main); ?> 

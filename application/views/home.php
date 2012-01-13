@@ -66,7 +66,7 @@
     		<h3><?php echo lang('next_matches'); ?></h3>
             <?php
             // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
-            echo get_next_matches(2,"<p class='centertext boldtext'>%group%<br/>%matchtime%</p><p class='grid_2 alpha centertext boldtext'>%homeshirt%<br/>%home%</p><p class='grid_2 omega centertext boldtext'>%awayshirt%<br/>%away%</p><p class='grid_4 alpha omega centertext'>( %prediction% )</p><p class='centertext'>%chart%</p>");
+            echo get_next_matches(2,"<p class='centertext boldtext'>%group%<br/>%matchtime%</p><p class='grid_2 alpha centertext boldtext'>%homeshirt%<br/>%home%</p><p class='grid_2 omega centertext boldtext'>%awayshirt%<br/>%away%</p><p class='grid_4 alpha omega centertext'>( %prediction% )</p><p class=' grid_4 alpha omega centertext'>%chart%</p>");
             ?>
     </div>
      <div id="column2" class="grid_5 omega">

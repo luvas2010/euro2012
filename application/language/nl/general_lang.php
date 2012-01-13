@@ -87,21 +87,21 @@ $lang['D2']    = 'Zweden';
 $lang['D3']    = 'Frankrijk';
 $lang['D4']    = 'Engeland';
 
-$lang['WA']    = 'Winnaar&nbsp;Groep&nbsp;A';
-$lang['RA']    = 'Tweede&nbsp;Groep&nbsp;A';
-$lang['WB']    = 'Winnaar&nbsp;Groep&nbsp;B';
-$lang['RB']    = 'Tweede&nbsp;Groep&nbsp;B';
-$lang['WC']    = 'Winnaar&nbsp;Groep&nbsp;C';
-$lang['RC']    = 'Tweede&nbsp;Groep&nbsp;C';
-$lang['WD']    = 'Winnaar&nbsp;Groep&nbsp;D';
-$lang['RD']    = 'Tweede&nbsp;Groep&nbsp;D';
+$lang['WA']    = 'Winnaar Groep A';
+$lang['RA']    = 'Tweede Groep A';
+$lang['WB']    = 'Winnaar Groep B';
+$lang['RB']    = 'Tweede Groep B';
+$lang['WC']    = 'Winnaar Groep C';
+$lang['RC']    = 'Tweede Groep C';
+$lang['WD']    = 'Winnaar Groep D';
+$lang['RD']    = 'Tweede Groep D';
 
-$lang['W25']    = 'Winnaar&nbsp;#25';
-$lang['W26']    = 'Winnaar&nbsp;#26';
-$lang['W27']    = 'Winnaar&nbsp;#27';
-$lang['W28']    = 'Winnaar&nbsp;#28';
-$lang['W29']    = 'Winnaar&nbsp;#29';
-$lang['W30']    = 'Winnaar&nbsp;#30';
+$lang['W25']    = 'Winnaar #25';
+$lang['W26']    = 'Winnaar #26';
+$lang['W27']    = 'Winnaar #27';
+$lang['W28']    = 'Winnaar #28';
+$lang['W29']    = 'Winnaar #29';
+$lang['W30']    = 'Winnaar #30';
 
 $lang['A']      = 'Groep A';
 $lang['B']      = 'Groep B';

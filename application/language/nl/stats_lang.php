@@ -19,5 +19,6 @@ $lang['match_max_goals']                    = 'Het hoogste aantal doelpunten voo
 $lang['your_predictions_for_group_stage']   = 'Jouw voorspellingen voor %s in de groepsfase';
 $lang['your_predictions_for_knockout_stage']   = 'Jouw voorspellingen voor %s in de knockoutfase';
 $lang['no_knockout_predictions']            = 'Volgens jouw voorspellingen ligt %s eruit na de groepsfase';
+$lang['no_stats_for_that_team']             = 'Voor dat team zijn er geen statistieken';
 /* End of file stats_lang.php */
 /* Location: ./application/language/nl/stats_lang.php */
