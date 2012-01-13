@@ -776,7 +776,9 @@ class Predictions extends CI_Controller {
 								ON `match`.`match_uid` = `prediction`.`pred_match_uid`
 								JOIN `account`
 								ON `account`.`id` = `prediction`.`account_id`
-								AND `prediction`.`pred_match_uid` = $match_uid";
+								AND `prediction`.`pred_match_uid` = $match_uid
+								AND `prediction`.`pred_home_goals` IS NOT NULL
+								AND `prediction`.`pred_away_goals` IS NOT NULL";
 				
 				$query = $this->db->query($sql_query);
 				$predictions = $query->result_array();
