@@ -751,6 +751,74 @@ class Predictions extends CI_Controller {
         }
         
     }
-      
+ 
+    function edit_match($match_uid, $action = NULL)
+    {
+        maintain_ssl();
+        
+        if ($this->authentication->is_signed_in())
+        {
+            if ($action != 'save')
+            {
+                $account_id = $this->session->userdata('account_id');
+                $sql_query = "SELECT *
+                              FROM `prediction`
+							  JOIN `match`
+							  ON `prediction`.`pred_match_uid` = `match`.`match_uid`
+                              AND `prediction`.`pred_match_uid` = '$match_uid'
+                              AND   `prediction`.`account_id` = '$account_id'";
+                $query = $this->db->query($sql_query);
+                $prediction = $query->row_array();
+				
+				$sql_query = "SELECT *
+								FROM `prediction`
+								JOIN `match`
+								ON `match`.`match_uid` = `prediction`.`pred_match_uid`
+								JOIN `account`
+								ON `account`.`id` = `prediction`.`account_id`
+								AND `prediction`.`pred_match_uid` = $match_uid";
+				
+				$query = $this->db->query($sql_query);
+				$predictions = $query->result_array();
+				$num = $query->num_rows();
+				$this->lang->load('stats');
+				
+                $data = array(
+								'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
+								'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+								'title'             => sprintf(lang('edit_prediction_for'),get_match($match_uid)),
+								'content_main'      => "prediction_edit",
+								'prediction'        => $prediction,
+								'predictions'		=> $predictions,
+								'match_uid'			=> $match_uid,
+								'num'				=> $num
+							  );
+
+            $this->load->view('template/template', $data);
+            }
+            else
+            {
+                //save data
+                $pred_home_goals = $this->input->post('pred_home_goals');
+                $pred_away_goals = $this->input->post('pred_away_goals');
+                $prediction_uid = $this->input->post('prediction_uid');
+                $sql_query = "UPDATE `prediction`
+                              SET `pred_home_goals` = '$pred_home_goals',
+                                  `pred_away_goals` = '$pred_away_goals'
+                              WHERE `prediction_uid` = '$prediction_uid'";
+                $query = $this->db->query($sql_query);
+                
+				$this->session->set_flashdata('info',lang('data_saved'));
+				redirect('predictions/edit_match/'.$match_uid);
+            }
+                              
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('predictions/edit_edit_match/'.$match_uid));
+        }
+    }
+
+ 
 }
 ?>

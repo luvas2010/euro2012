@@ -181,6 +181,7 @@ font-size:.8em;
  
 #footer a {
  color: #333;
+ text-decoration:underline;
 }
  
 #footer p {
@@ -564,6 +565,7 @@ a.button, input.button, button.button {
     -moz-border-radius: 2px;
     margin-right: 10px;
     margin-bottom: 3px;
+	outline: none;
 }
 a.button:hover, input.button:hover, button.button:hover {
     color: #333;
@@ -610,11 +612,11 @@ a.small {
     padding: 7px 10px;
 }
 
-a.big {
+a.big, input.big {
     font-size: 16px;
     padding: 10px 15px;
 }
-a.supersize {
+a.supersize, input.supersize {
     font-size: 20px;
     padding: 15px 20px;
 }
@@ -648,6 +650,10 @@ a.calculator_delete, input.calculator_delete, button.calculator_delete {
     background: url(icons/calculator_delete.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
     }
+a.information, input.information, button.information {
+    background: url(icons/information.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }	
 a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;

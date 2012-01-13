@@ -96,12 +96,12 @@ $lang['RC']    = 'Tweede&nbsp;Groep&nbsp;C';
 $lang['WD']    = 'Winnaar&nbsp;Groep&nbsp;D';
 $lang['RD']    = 'Tweede&nbsp;Groep&nbsp;D';
 
-$lang['W25']    = 'Winnaar&nbsp;Wedstrijd&nbsp;25';
-$lang['W26']    = 'Winnaar&nbsp;Wedstrijd&nbsp;26';
-$lang['W27']    = 'Winnaar&nbsp;Wedstrijd&nbsp;27';
-$lang['W28']    = 'Winnaar&nbsp;Wedstrijd&nbsp;28';
-$lang['W29']    = 'Winnaar&nbsp;Wedstrijd&nbsp;29';
-$lang['W30']    = 'Winnaar&nbsp;Wedstrijd&nbsp;30';
+$lang['W25']    = 'Winnaar&nbsp;#25';
+$lang['W26']    = 'Winnaar&nbsp;#26';
+$lang['W27']    = 'Winnaar&nbsp;#27';
+$lang['W28']    = 'Winnaar&nbsp;#28';
+$lang['W29']    = 'Winnaar&nbsp;#29';
+$lang['W30']    = 'Winnaar&nbsp;#30';
 
 $lang['A']      = 'Groep A';
 $lang['B']      = 'Groep B';
