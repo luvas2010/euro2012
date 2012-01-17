@@ -36,10 +36,28 @@ $(document).ready(function (){
         p.animate({opacity: 0.0}, 500, 'linear')
          .animate({opacity: 1}, 800, 'linear');
       }
-    }); 
+    });
+
+    $('#shout_submit').click(function() {
+        var shouttxt = $('#shout').val();
+        alert(shouttxt);
+        $.post("index.php/shoutbox/add", { 'shouttxt' : shouttxt },
+                function(data) {
+                    //console.log(data);
+                    $('#shoutlist').empty().append(data);
+                    }
+            );
+    });
+    
+    $.ajax({
+            url: "index.php/shoutbox/getshouts/5",
+            success: function(data) { $('#shoutlist').empty().append(data);}
+            });
+    
 });
 
 
+    
 /* optional triggers
 
 $(window).load(function() {

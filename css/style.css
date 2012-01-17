@@ -700,6 +700,10 @@ a.arrow_left, input.arrow_left, button.arrow_left {
 a.arrow_right, input.arrow_right, button.arrow_right {
     background: url(icons/arrow_right.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
+    }
+a.user_comment, input.user_comment, button.user_comment {
+    background: url(icons/user_comment.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
     }    
 a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;

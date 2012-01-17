@@ -43,6 +43,13 @@
             ?>
         </div>
         <?php } ?>
+        <div id="shoutbox">
+            <h3>Shoutout</h3>
+            <input type="text" id="shout" name="shout" />
+            <input type="submit" id="shout_submit" value="Shout!" class="button user_comment" />
+            <div id="shoutlist">
+            </div>
+        </div>
     </div> <!-- end column1 -->
     <div class='grid_4'>
             
