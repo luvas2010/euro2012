@@ -47,8 +47,8 @@ $lang['choose_a_team']                  = "Pick a team";
 $lang['explanation']                    = "Explanation"; 
 $lang['no_info_yet']                    = "This information is not available yet.";
 $lang['randomizer_intro']               = "<p>If you don't feel like filling everything out yourself, you can click the `Randomizer` button.
-                                           All predictions will be filled for you, and you can change them afterwards.<br/>
-                                           <span class='boldtext'>Attention: all existing predictions will be overwritten if you do this!</span></p>";                                      
+                                           Predictions will then be automatically made for you, unless you have already done so yourself.<br/>
+                                           Existing result and team predictions will <span class='boldtext'>not be overwritten</span>. You may change the predictions afterwards.</p>";                                      
 $lang['position']           = "Pos.";
 $lang['team']               = "Team";
 $lang['played']             = "P";

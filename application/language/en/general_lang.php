@@ -36,6 +36,8 @@ $lang['tie']                                    = 'Tie';
 $lang['hidden']									= 'secret';
 $lang['view_stats']                             = 'Stats';
 $lang['your_prediction']                        = 'your prediction';
+$lang['warnings']                               = 'Click here to read some warnings for you';
+$lang['not_payed_yet'] = "You have not payed yet. Please do this as soon as possible!";
 /* navigation */
 
 $lang['navhome']           = 'Home';
