@@ -738,10 +738,7 @@ class Predictions extends CI_Controller {
                         }
                     }
                 }
-            //foreach ($pred_results as $pred)
-            //{
-             //   $sql_query = "UPDATE `prediction`
-              //                SET `pred_home_team` = 
+
             redirect('predictions/editgroup/'.$group);
                             
         }
