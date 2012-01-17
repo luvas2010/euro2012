@@ -63,14 +63,22 @@
         <?php } ?>
     </div> <!-- end column1 -->
     <div class='grid_4'>
-    		<h3><?php echo lang('next_matches'); ?></h3>
+
+			<h3><?php echo lang('next_matches'); ?></h3>
             <?php
             // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
             echo get_next_matches(2,"<p class='centertext boldtext'>%group%<br/>%matchtime%</p><p class='grid_2 alpha centertext boldtext'>%homeshirt%<br/>%home%</p><p class='grid_2 omega centertext boldtext'>%awayshirt%<br/>%away%</p><p class='grid_4 alpha omega centertext'>( %prediction% )</p><p class=' grid_4 alpha omega centertext'>%chart%</p>");
             ?>
     </div>
      <div id="column2" class="grid_5 omega">
-		<div class="grid_5 alpha omega">
+		<div class="grid_5 alpha omega">	
+		    <h3><?php echo lang('played_matches'); ?></h3>
+			<p class='grid_3 alpha'><?php echo lang('match'); ?></p><p class='grid_1 centertext'><?php echo lang('result'); ?></p><p class='grid_1 centertext omega'><?php echo ucfirst(lang('points')); ?></p>
+            <?php
+            // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
+            echo                       get_last_matches(2,"<p class='grid_3 alpha'>%home% - %away%</p><p class='grid_1 centertext'>%result%</p><p class='grid_1 centertext omega'>%total_points%</p><div class='clear'></div>");
+            ?>
+			
 			<h3><?php echo lang('top_10');?></h3>
 			<?php $this->load->library('pool');
 				  $topusers = $this->pool->get_top_ranking(10);

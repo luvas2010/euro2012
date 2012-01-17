@@ -30,6 +30,21 @@ if ( ! function_exists('is_admin'))
     }
 }
 
+	function get_top_ranking_for_match($match_uid)
+	{
+		$CI =& get_instance();
+		$sql_query = "SELECT *
+					  FROM `prediction`
+					  JOIN `account`
+					  ON `prediction`.`account_id` = `account`.`id`
+					  AND `prediction`.`pred_match_uid` = $match_uid
+					  ORDER BY `prediction`.`pred_points_total` DESC
+					  LIMIT 3";
+		$query = $CI->db->query($sql_query);
+		return $query->result_array();
+	}	
+	
+
 if ( ! function_exists('get_team_name'))
 {
     function get_team_name($team_uid)
@@ -204,6 +219,65 @@ if ( ! function_exists('admin_check_unverified') )
         }
     }
 }
+if ( ! function_exists('get_last_matches') )
+{
+    function get_last_matches($num, $format="<li>%matchtime%: %home% - %away% (%result%)</li>")
+    {
+        
+        $CI =& get_instance();
+        $CI->load->helper(array('language', 'date'));
+        $CI->load->language(array('general'));
+        $now = now();
+        $account_id = $CI->session->userdata('account_id');
+        $sql_query = "SELECT *
+                      FROM `prediction`
+                      JOIN `match`
+                      ON `prediction`.`pred_match_uid` = `match`.`match_uid`
+                      AND `match`.`timestamp` > $now
+                      AND `prediction`.`account_id` = '$account_id'
+					  AND `match`.`match_calculated` = 1
+                      ORDER BY `match`.`timestamp` ASC
+                      LIMIT $num";
+        $query = $CI->db->query($sql_query);
+        $matches = $query->result_array();
+        
+        $html = "";
+        
+        
+        
+        foreach ($matches as $match)
+        {
+            
+            $homestring = "<span class='teamflag ".$match['home_team']."'>".anchor('stats/view_team/'.$match['home_team'],get_team_name($match['home_team']))."</span>";
+            $awaystring = "<span class='teamflag ".$match['away_team']."'>".anchor('stats/view_team/'.$match['away_team'],get_team_name($match['away_team']))."</span>";
+			$resultstring = anchor('predictions/edit_match/'.$match['match_uid'], $match['home_goals']." - ".$match['away_goals'], "title='".lang('match')." ".$match['match_uid']."'");
+            $string = str_replace('%home%', $homestring, $format);
+            $string = str_replace('%away%', $awaystring, $string);
+			$string = str_replace('%homegoals%', $match['home_goals'], $string);
+			$string = str_replace('%awaygoals%', $match['away_goals'], $string);
+			$string = str_replace('%result%', $resultstring, $string);
+			
+			$string = str_replace('%total_points%', $match['pred_points_total'], $string);
+            $string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
+            $string = str_replace('%result%', anchor('predictions/edit_match/'.$match['match_uid'], lang('result').": ".$match['home_goals']." - ".$match['away_goals']), $string);
+            $string = str_replace('%group%', lang($match['match_group']), $string);
+            
+            $homeshirtstring = get_home_shirt($match['home_team'], 1);
+            $awayshirtstring = get_away_shirt($match['away_team'], 1);
+            
+            $string = str_replace('%homeshirt%', $homeshirtstring, $string);
+            $string = str_replace('%awayshirt%', $awayshirtstring, $string);
+
+            $statsbutton = anchor('stats/view_match/'.$match['pred_match_uid'],lang('view_stats'), "class='button chart-bar'");
+            $string = str_replace('%chart%', $statsbutton, $string);
+                
+            
+            $html .= $string;
+        }
+             
+        return ($html);
+    }
+}
 
 if ( ! function_exists('get_next_matches') )
 {
@@ -221,6 +295,7 @@ if ( ! function_exists('get_next_matches') )
                       ON `prediction`.`pred_match_uid` = `match`.`match_uid`
                       AND `match`.`timestamp` > $now
                       AND `prediction`.`account_id` = '$account_id'
+					  AND `match`.`match_calculated` = 0
                       ORDER BY `match`.`timestamp`
                       LIMIT $num";
         $query = $CI->db->query($sql_query);

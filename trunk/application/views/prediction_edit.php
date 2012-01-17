@@ -254,7 +254,19 @@
             Away goals correct: <?php echo $away_goals_correct; ?><br/>
             Result correct: <?php echo $result_correct; ?><br/>
             Everything correct: <?php echo $everything_correct; ?></p>
-            
+            <?php   $this->load->library('pool');
+					$top_3 = get_top_ranking_for_match($match_uid);
+					if (is_array($top_3))
+					{
+						echo "<h3>Top 3</h3>";
+						echo "<ul>";
+						foreach($top_3 as $user)
+						{
+							echo "<li><span class='boldtext'>".$user['username'].": </span>".$user['pred_points_total']."</li>";
+						}
+						echo "</ul>";
+					}	
+			?>		
         </div>
         <?php } ?>
         
