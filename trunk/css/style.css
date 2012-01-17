@@ -268,6 +268,27 @@ tr.alt td {
     border: 2px solid #CB2026;
 	line-height:1.2em;
 }
+.warning {
+    display:none;
+    }
+div.warnings {
+    margin-top:33px;
+    background: #CB2026;
+    }
+    
+.warnings h5 {
+    background: #CB2026;
+    color: white;
+    font-size:13px;
+    font-weight:normal;
+    text-align: center;
+    padding: 5px 0 7px 20px;
+    cursor: pointer;
+    width:1000px;
+    margin: 0 auto;
+    }
+
+
 span.smalltext {
     font-size: .6em;
 }
@@ -326,7 +347,7 @@ label {
     background:         #333333;
     /*float:              left;*/
     z-index:            99;
-    margin-bottom:      28px;
+    /*margin-bottom:      28px;*/
     width:              100%;
     }
 .nav_container {
@@ -334,7 +355,10 @@ label {
     margin: 0 auto;
     width: 1000px;
     }
-    
+.match_nav {
+        margin-top:8px;
+        }
+        
 #userchecks {
     /*font-size: .8em;*/
     }

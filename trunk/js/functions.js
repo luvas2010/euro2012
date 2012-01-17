@@ -27,6 +27,16 @@ $(document).ready(function (){
     });
    $('#footer').pinFooter();
    $('#navigation').pinHeader();
+   $('.warnings h5').click(function() {
+    $('.warning').slideToggle("slow");
+    });
+   $(function() {
+      var p = $(".warnings h5");
+      for(var i=0; i<4; i++) {
+        p.animate({opacity: 0.0}, 500, 'linear')
+         .animate({opacity: 1}, 800, 'linear');
+      }
+    }); 
 });
 
 

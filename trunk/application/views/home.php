@@ -3,24 +3,6 @@
         <?php if ($this->authentication->is_signed_in()) { ?>
             <h3><?php echo sprintf(lang('website_welcome_username'), '<strong>'.$account_details->firstname.'</strong>'); ?></h3>
             <p><?php echo sprintf(lang('user_points'), get_user_points($account->id)); ?></p><p><?php echo anchor('standings#me',lang('check_user_pos')); ?></p>
-			<?php if ($account->payed == 0 && $this->config->item('play_for_money') == 1)
-			  {?>
-			<div class='error'><?php echo lang('not_payed_yet');?></div>
-				<?php } ?>
-			<?php
-            if (!get_total_goals($account->id)) {
-            ?>
-            <div class='error'><?php echo lang('total_goals_missing'); ?><br/>
-			<?php echo anchor('predictions/extra',lang('nav_extra')); ?> 
-			</div>
-            <?php } ?>
-			<?php echo get_missing_teams_list(array(
-							'heading'   => "<div class='error'><p>%heading%</p>",
-							'pre'       => "<ul class='matchlist'>",
-							'post'      => "</ul></div>",
-							'listitem'  => "<li>%matchlink%</li>")
-							); ?>
-                            
         <?php if($this->config->item('play_for_money'))
               { ?>
         <div class="infostay">
@@ -63,7 +45,7 @@
         <?php } ?>
     </div> <!-- end column1 -->
     <div class='grid_4'>
-
+            
 			<h3><?php echo lang('next_matches'); ?></h3>
             <?php
             // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
@@ -71,14 +53,18 @@
             ?>
     </div>
      <div id="column2" class="grid_5 omega">
-		<div class="grid_5 alpha omega">	
+		<div class="grid_5 alpha omega">
+
 		    <h3><?php echo lang('played_matches'); ?></h3>
+            <?php if($played = get_last_matches(2,"<p class='grid_3 alpha'>%home% - %away%</p><p class='grid_1 centertext'>%result%</p><p class='grid_1 centertext omega'>%total_points%</p><div class='clear'></div>"))
+            { ?>
 			<p class='grid_3 alpha'><?php echo lang('match'); ?></p><p class='grid_1 centertext'><?php echo lang('result'); ?></p><p class='grid_1 centertext omega'><?php echo ucfirst(lang('points')); ?></p>
             <?php
             // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
-            echo                       get_last_matches(2,"<p class='grid_3 alpha'>%home% - %away%</p><p class='grid_1 centertext'>%result%</p><p class='grid_1 centertext omega'>%total_points%</p><div class='clear'></div>");
-            ?>
-			
+            echo $played;
+            } else {
+            echo "<div class='infostay'>".lang('no_info_yet')."</div>";
+            } ?>
 			<h3><?php echo lang('top_10');?></h3>
 			<?php $this->load->library('pool');
 				  $topusers = $this->pool->get_top_ranking(10);

@@ -1,29 +1,32 @@
 <div class="container_12">
-	<div class='grid_3 alpha suffix_6'>
-        <?php
-            if($prediction['pred_match_uid'] > 1)
-            { 
-                $prev_match = $prediction['pred_match_uid'] -1;
-                echo anchor('predictions/edit_match/'.$prev_match, lang('match')." ".$prev_match, "class='button  arrow_left'");
-            }
-            else
-            {
-            echo "&nbsp;";
-            }
-        ?>    
-    </div>
-    <div class='grid_3 omega align_right'>
+	<div class="match_nav">
+        <div class='grid_3 alpha suffix_6'>
             <?php
-            if($prediction['pred_match_uid'] < 31)
-            { 
-                $next_match = $prediction['pred_match_uid'] +1;
-                echo anchor('predictions/edit_match/'.$next_match, lang('match')." ".$next_match, "class='button  arrow_right'");
-            }
-            else
-            {
-            echo "&nbsp;";
-            }
-            ?>  
+                if($prediction['pred_match_uid'] > 1)
+                { 
+                    $prev_match = $prediction['pred_match_uid'] -1;
+                    echo anchor('predictions/edit_match/'.$prev_match, lang('match')." ".$prev_match, "class='button  arrow_left'");
+                }
+                else
+                {
+                echo "&nbsp;";
+                }
+            ?>    
+        </div>
+        <div class='grid_3 omega align_right'>
+                <?php
+                if($prediction['pred_match_uid'] < 31)
+                { 
+                    $next_match = $prediction['pred_match_uid'] +1;
+                    echo anchor('predictions/edit_match/'.$next_match, lang('match')." ".$next_match, "class='button  arrow_right'");
+                }
+                else
+                {
+                echo "&nbsp;";
+                }
+                ?>  
+        </div>
+        <div class='clear'></div>
     </div>
     <?php 
         if (validation_errors())

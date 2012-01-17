@@ -32,7 +32,7 @@ $lang['welcometext']    = '<p>Welcome to %s.</p>
 $lang['top_10']	= "Top 10";
 $lang['points'] = "points";
 $lang['see_top_ten'] = "See a chart";
-$lang['not_payed_yet'] = "You have not payed yet. Please do this as soon as possible!";
+
 $lang['total_money'] = "%s users have signed up. If they all pay %s, there will be %s in the bank.";
 $lang['money_payed_out'] = "Of this, %s%% will be payed out (that is %s)";
 $lang['money_distribution'] = "The payout";

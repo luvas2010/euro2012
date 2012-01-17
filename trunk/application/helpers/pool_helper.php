@@ -313,7 +313,7 @@ if ( ! function_exists('get_next_matches') )
             $string = str_replace('%home%', $homestring, $format);
             $string = str_replace('%away%', $awaystring, $string);
             $string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
-            $string = str_replace('%prediction%', anchor('predictions/edit_match/'.$match['match_uid'], lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals']), $string);
+            $string = str_replace('%prediction%', lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals'], $string);
             $string = str_replace('%group%', lang($match['match_group']), $string);
             
             $homeshirtstring = get_home_shirt($match['home_team'], 1);
@@ -322,7 +322,7 @@ if ( ! function_exists('get_next_matches') )
             $string = str_replace('%homeshirt%', $homeshirtstring, $string);
             $string = str_replace('%awayshirt%', $awayshirtstring, $string);
 
-            $statsbutton = anchor('stats/view_match/'.$match['pred_match_uid'],lang('view_stats'), "class='button chart-bar'");
+            $statsbutton = anchor('predictions/edit_match/'.$match['pred_match_uid'],lang('view_stats')." &amp; ".lang('prediction'), "class='button chart-bar'");
             $string = str_replace('%chart%', $statsbutton, $string);
                 
             
@@ -354,8 +354,7 @@ if ( ! function_exists('get_missing_result_list') )
                       JOIN `match`
                       ON `prediction`.`pred_match_uid` = `match`.`match_uid`
                       AND `prediction`.`account_id` = '$account_id'
-                      AND `match`.`timestamp` < $next_48_hours
-                      AND `match`.`timestamp` > $now
+                      AND `prediction`.`pred_calculated` = 0
                       ORDER BY `match`.`timestamp`";
 
         $query = $CI->db->query($sql_query);
@@ -383,7 +382,7 @@ if ( ! function_exists('get_missing_result_list') )
                 $sql_query = "SELECT `match_group` FROM `match` WHERE `match_uid` = $value";
                 $query = $CI->db->query($sql_query);
                 $row = $query->row_array();
-                $html .= str_replace('%matchlink%', get_match($value)." (".anchor('predictions/editgroup/'.$row['match_group'],lang($row['match_group'])).")", $listitem);
+                $html .= str_replace('%matchlink%', anchor('predictions/edit_match/'.$value, get_match($value))." (".anchor('predictions/editgroup/'.$row['match_group'],lang($row['match_group'])).")", $listitem);
                 
             }
             $html .= $post;
@@ -444,7 +443,7 @@ if ( ! function_exists('get_missing_teams_list') )
                 $sql_query = "SELECT `match_group` FROM `match` WHERE `match_uid` = $value";
                 $query = $CI->db->query($sql_query);
                 $row = $query->row_array();
-                $html .= str_replace('%matchlink%', "#".$value." (".anchor('predictions/editgroup/'.$row['match_group'],lang($row['match_group'])).")", $listitem);
+                $html .= str_replace('%matchlink%', anchor('predictions/edit_match/'.$value, '#'.$value)." (".anchor('predictions/editgroup/'.$row['match_group'],lang($row['match_group'])).")", $listitem);
                 
             }
             $html .= $post;

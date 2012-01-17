@@ -6,6 +6,7 @@ var wH = $(window).height();
 var wW = getWindowWidth();
 var bH = $("body").outerHeight(true);
 var mT = parseInt($("body").css("margin-top"));
+var hNav = $("#navigation").height() + 20;
 
  // Pinned option
 // Set CSS attributes for positioning footer
@@ -13,7 +14,7 @@ $(this).css("position","fixed");
 $(this).css("width",wW + "px");
 $(this).css("top","0px");
 $("body").css("height",(bH + mT) + "px");
-
+$("#wrapper").css('margin-top',(hNav) + "px");
 };
 
 // Dependable function to get Window Height

@@ -36,6 +36,8 @@ $lang['tie']                                    = 'Gelijkspel';
 $lang['hidden']									= 'geheim';
 $lang['view_stats']                             = 'Statistieken';
 $lang['your_prediction']                        = 'jouw voorspelling';
+$lang['warnings']                               = 'Je hebt waarschuwingen. Klik hier om ze te zien!';
+$lang['not_payed_yet'] = "Je hebt nog niet betaald. Doe dit zo snel mogelijk!";
 /* navigation */
 
 $lang['navhome']        = 'Home';

@@ -22,14 +22,70 @@
         <div id="navigation">
             <div class="nav_container">
                 <?php $this->load->view('navigation'); ?> 
-            </div>    
+            </div>
+        
+        <?php 
+        if ($this->authentication->is_signed_in())
+        {
+            if (
+                    ($not_payed = $account->payed == 0 && $this->config->item('play_for_money')) ||
+                    (!get_total_goals($account->id)) ||
+                    ($missing_teams =  get_missing_teams_list(array(
+                            'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                            'pre'       => "<ul class='matchlist'>",
+                            'post'      => "</ul></div>",
+                            'listitem'  => "<li>%matchlink%</li>")
+                            )) ||
+                    ($missing_results = get_missing_result_list(array(
+                                'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                                'pre'       => "<ul class='matchlist'>",
+                                'post'      => "</ul></div>",
+                                'listitem'  => "<li>%matchlink%</li>")
+                                ))
+                 )
+            { ?>
+            <div class='warnings'>
+                <h5><?php echo lang('warnings');?></h5>
+
+            </div><?php }
+        }
+        ?>
+            <div class='clear'></div>
         </div>
     <div id="wrapper">
         <div id="header">
+
         </div>
 
         <div class='clear'></div>
-        
+        <?php if ($this->authentication->is_signed_in())
+        {
+            if ($not_payed)
+                {?>
+                <div class='errorstay warning'><?php echo lang('not_payed_yet');?></div>
+				<?php } ?>
+                
+            <?php
+            if (!get_total_goals($account->id)) {
+            ?>
+                
+                <div class='errorstay warning'><?php echo lang('total_goals_missing'); ?><br/>
+                <?php echo anchor('predictions/extra',lang('nav_extra')); ?> 
+                </div>
+            <?php } ?>
+            <?php echo get_missing_teams_list(array(
+                                'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                                'pre'       => "<ul class='matchlist'>",
+                                'post'      => "</ul></div>",
+                                'listitem'  => "<li>%matchlink%</li>")
+                                );
+                  echo get_missing_result_list(array(
+                                'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                                'pre'       => "<ul class='matchlist'>",
+                                'post'      => "</ul></div>",
+                                'listitem'  => "<li>%matchlink%</li>")
+                                );
+        } ?>
         <div id="main">
             <?php
                 if (isset($error))

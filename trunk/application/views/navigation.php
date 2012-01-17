@@ -65,9 +65,9 @@
             <?php } ?>
             <?php if ($this->authentication->is_signed_in()) { ?>
                 <li><?php echo anchor('account/account_settings', lang('website_account')); ?></li>
-                <li class="adminmenu"><?php echo anchor('account/sign_out', lang('website_sign_out')); ?></li>
+                <li class=""><?php echo anchor('account/sign_out', lang('website_sign_out')); ?></li>
             <?php } else {?>
-                <li class="adminmenu"><?php echo anchor('account/sign_up', lang('website_sign_up')); ?></li>
-                <li class="adminmenu"><?php echo anchor('account/sign_in', lang('website_sign_in')); ?></li>
+                <li class=""><?php echo anchor('account/sign_up', lang('website_sign_up')); ?></li>
+                <li class=""><?php echo anchor('account/sign_in', lang('website_sign_in')); ?></li>
             <?php } ?>
         </ul>
