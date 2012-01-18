@@ -1,1 +1,10 @@
 ALTER TABLE `account` ADD `payed` TINYINT NOT NULL DEFAULT '0'
+
+CREATE TABLE IF NOT EXISTS `shoutbox` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` bigint(20) NOT NULL,
+  `username` varchar(24) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `postedon` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+)

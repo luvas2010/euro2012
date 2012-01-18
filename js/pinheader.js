@@ -2,7 +2,7 @@
 // plugin definition
 $.fn.pinHeader = function(options) {
 // Get the height of the footer and window + window width
-var wH = $(window).height();
+var wH = getWindowHeight();
 var wW = getWindowWidth();
 var bH = $("body").outerHeight(true);
 var mT = parseInt($("body").css("margin-top"));

@@ -38,32 +38,18 @@ $(document).ready(function (){
       }
     });
 
-    $('#shout_submit').click(function() {
-        var shouttxt = $('#shout').val();
-        alert(shouttxt);
-        $.post("index.php/shoutbox/add", { 'shouttxt' : shouttxt },
-                function(data) {
-                    //console.log(data);
-                    $('#shoutlist').empty().append(data);
-                    }
-            );
-    });
-    
-    $.ajax({
-            url: "index.php/shoutbox/getshouts/5",
-            success: function(data) { $('#shoutlist').empty().append(data);}
-            });
+
     
 });
 
 
     
-/* optional triggers
+
 
 $(window).load(function() {
-    
+
 });
-*/
+
 $(window).resize(function() {
    $('#footer').pinFooter(); 
    $('#navigation').pinHeader();
