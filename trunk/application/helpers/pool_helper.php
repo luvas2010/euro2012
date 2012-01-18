@@ -30,7 +30,7 @@ if ( ! function_exists('is_admin'))
     }
 }
 
-	function get_top_ranking_for_match($match_uid)
+	function get_top_ranking_for_match($match_uid, $top = 10)
 	{
 		$CI =& get_instance();
 		$sql_query = "SELECT *
@@ -39,7 +39,7 @@ if ( ! function_exists('is_admin'))
 					  ON `prediction`.`account_id` = `account`.`id`
 					  AND `prediction`.`pred_match_uid` = $match_uid
 					  ORDER BY `prediction`.`pred_points_total` DESC
-					  LIMIT 3";
+					  LIMIT $top";
 		$query = $CI->db->query($sql_query);
 		return $query->result_array();
 	}	

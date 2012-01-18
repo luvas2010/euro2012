@@ -46,7 +46,7 @@
         <div id="shoutbox">
             <h3><?php echo lang('user_messages');?></h3>
             
-			<input type="text" id="shout" name="shout" maxlength="255" value="<?php echo lang('type_message_here');?>" />
+			<input type="text" id="shout" name="shout" maxlength="255" value="<?php echo lang('type_message_here');?>" class='text' />
             <input type="submit" id="shout_submit" value="<?php echo lang('post_message'); ?>" class="button user_comment" />
 			
             <div id="shoutlist">
@@ -54,6 +54,7 @@
 			
 			<script type='text/javascript'>
 		$(document).ready(function (){
+        $("#shout").val('<?php echo lang('type_message_here'); ?>');
 		$("#shout").focus(function(){
 			// Check for the change
 			if(this.value == this.defaultValue){

@@ -96,38 +96,4 @@ class Standings extends CI_Controller {
             redirect('account/sign_in/?continue='.site_url('standings'));
         }
     }
-    
-    function show($view_account_id, $group)
-    {
-
-        if ($this->authentication->is_signed_in())
-        {       
-            $sql_query = "SELECT *
-                          FROM `prediction`
-                          JOIN `match`
-                          ON `match`.`match_uid` = `prediction`.`pred_match_uid`
-                          AND `match`.`match_group` = '$group'
-                          AND `prediction`.`account_id` = '$view_account_id'
-
-                          ORDER BY `prediction`.`pred_match_uid`";
-            $query = $this->db->query($sql_query);
-            $predictions = $query->result_array();
-            $view_account = $this->account_model->get_by_id($view_account_id);
-
-            $data = array(
-                        'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
-                        'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
-                        'predictions'       => $predictions,
-                        'content_main'      => "show_user_pred",
-                        'title'             => sprintf(lang('overview_of_points_for'), $view_account->username, lang($group)),
-                        'view_account'       => $view_account
-                        );
-    
-            $this->load->view('template/template', $data);
-        }
-        else
-        {
-            redirect('account/sign_in/?continue='.site_url('standings'));
-        }
-    } 
 }

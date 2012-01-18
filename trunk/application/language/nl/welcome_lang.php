@@ -41,5 +41,6 @@ $lang['user_messages'] = "Berichten";
 $lang['post_message'] = "Plaats bericht";
 $lang['not_so_fast'] = "Je kunt niet zo snel achter elkaar berichten plaatsen";
 $lang['type_message_here'] = "Typ je bericht hier";
+$lang['shout_deleted']  = "Je bericht is verwijderd";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/nl/welcome_lang.php */

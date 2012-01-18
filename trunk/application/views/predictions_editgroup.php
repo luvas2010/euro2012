@@ -41,7 +41,7 @@
                 <th><?php echo lang('match_number'); ?></th>
                 <th><?php echo lang('home'); ?></th>
                 <th><?php echo lang('away'); ?></th>
-                <th colspan=2><?php echo lang('prediction');?></th>
+                <th colspan='2'><?php echo lang('prediction');?></th>
                 <th><?php echo lang('result'); ?></th>
                 <th><?php echo lang('points_scored'); ?></th>
                 <th><?php echo lang('match_time'); ?></th>
@@ -82,7 +82,7 @@
                       'name'        => 'pred_home_goals['.$i.']',
                       'value'       => $prediction['pred_home_goals'],
                       'size'        => 5,
-                      'class'       => 'digits'
+                      'class'       => 'digits text'
                     );
                     ?>
                     <td class='centertext'><?php echo form_input($data);?></td>
@@ -92,7 +92,7 @@
                       'name'        => 'pred_away_goals['.$i.']',
                       'value'       => $prediction['pred_away_goals'],
                       'size'        => 5,
-                      'class'       => 'digits'
+                      'class'       => 'digits text'
                     );
                     ?>            
                     <td class='centertext'><?php echo form_input($data);?></td>
@@ -132,14 +132,16 @@
                         }
                     ?>
                 </td>
-                <td><?php echo mdate("%d %M %Y %H:%i",$prediction['timestamp']); ?></td>
+                <td><?php echo mdate("%d %M %Y %H:%i",$prediction['timestamp']); ?>
+                    <?php echo form_hidden('prediction_uid['.$i.']',$pid); ?>
+                    <?php echo form_hidden('pred_match_uid['.$i.']',$prediction['pred_match_uid']);?>
+                </td>
             </tr>
-            <?php echo form_hidden('prediction_uid['.$i.']',$pid); ?>
-            <?php echo form_hidden('pred_match_uid['.$i.']',$prediction['pred_match_uid']);?>
+            
             <?php $i++; } ?>    
         </table>
         <div class="buttons"><input type='submit' value='<?php echo lang('save'); ?>' class='button save' /></div>
-       
+        <?php echo form_close(); ?>
     </div>    
     <div class='clear'></div>
     
@@ -204,7 +206,7 @@
                 <?php $pos++; } ?>  
             </table>
         </div>
-        
+    <div class='clear'></div>    
     <?php
     }
     ?>

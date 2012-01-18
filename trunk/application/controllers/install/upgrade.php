@@ -15,15 +15,36 @@ class Upgrade extends CI_Controller {
     public function index()
     {
         //$sql_query = "ALTER TABLE `prediction` ADD `pred_points_total` INT NULL DEFAULT '0' AFTER `pred_points_away_team`";
-        $sql_query = "ALTER TABLE `account` ADD `payed` TINYINT NOT NULL DEFAULT '0'"; //to version 1.2
-		if ($query = $this->db->query($sql_query))
+        if(!$this->db->field_exists('payed','account'))
         {
-            echo "Upgrade succesvol";
+            $sql_query[] = "ALTER TABLE `account` ADD `payed` TINYINT NOT NULL DEFAULT '0'"; //to version 1.2
         }
-        else
+        $sql_query[] = "CREATE TABLE IF NOT EXISTS `shoutbox` (
+                          `id` int(11) NOT NULL AUTO_INCREMENT,
+                          `account_id` bigint(20) NOT NULL,
+                          `username` varchar(24) NOT NULL,
+                          `message` varchar(255) NOT NULL,
+                          `postedon` int(11) NOT NULL,
+                          PRIMARY KEY (`id`)
+                        )";
+        $timestamp = now();                
+        $sql_query[] = "REPLACE INTO `shoutbox` (
+                        `id` ,
+                        `account_id` ,
+                        `username` ,
+                        `message` ,
+                        `postedon`
+                        )
+                        VALUES (
+                        NULL , '0', 'Schop', 'Installatie Versie 1.2 succesvol!', '$timestamp'
+                        )";
+        
+        foreach ($sql_query as $query)
         {
-            echo "Upgrade niet succesvol";
+            $q = $this->db->query($query);
         }
+        
+        echo "Upgraded to version 1.2";
     }
 }
 

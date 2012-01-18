@@ -6,10 +6,10 @@
             <?php echo $this->load->view('account/account_menu', array('current' => 'account_settings')); ?>
         </div>
         <div class="clear"></div>
-        <div class="grid_10">
+        <div class="grid_12">
             <p><?php echo sprintf(lang('settings_privacy_statement'), anchor('page/privacy-policy', lang('settings_privacy_policy'))); ?></p><br />
         </div>
-        <div class="grid_10">
+        <div class="grid_12">
             <?php
             $attributes = array('id' => 'validateMe');
             echo form_open(uri_string(), $attributes); ?>
@@ -21,10 +21,10 @@
             <div class="clear"></div>
             <?php endif; ?>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_email'), 'settings_email'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php echo form_input(array(
                         'name' => 'settings_email',
                         'id' => 'settings_email',
@@ -38,62 +38,73 @@
                 <?php endif; ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_fullname'), 'settings_fullname'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php echo form_input(array(
                         'name' => 'settings_fullname',
                         'id' => 'settings_fullname',
                         'value' => set_value('settings_fullname') ? set_value('settings_fullname') : (isset($account_details->fullname) ? $account_details->fullname : ''),
-                        'maxlength' => 160
+                        'maxlength' => 160,
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('settings_fullname'); ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_firstname'), 'settings_firstname'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php echo form_input(array(
                         'name' => 'settings_firstname',
                         'id' => 'settings_firstname',
                         'value' => set_value('settings_firstname') ? set_value('settings_firstname') : (isset($account_details->firstname) ? $account_details->firstname : ''),
-                        'maxlength' => 80
+                        'maxlength' => 80,
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('settings_firstname'); ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_lastname'), 'settings_lastname'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php echo form_input(array(
                         'name' => 'settings_lastname',
                         'id' => 'settings_lastname',
                         'value' => set_value('settings_lastname') ? set_value('settings_lastname') : (isset($account_details->lastname) ? $account_details->lastname : ''),
-                        'maxlength' => 80
+                        'maxlength' => 80,
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('settings_lastname'); ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_company'), 'settings_company'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php echo form_input(array(
                         'name' => 'settings_company',
                         'id' => 'settings_company',
                         'value' => set_value('settings_company') ? set_value('settings_company') : (isset($account_details->company) ? $account_details->company : ''),
-                        'maxlength' => 80
+                        'maxlength' => 80,
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('settings_company'); ?>
             </div>
             <div class="clear"></div>            
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_dateofbirth')); ?>
             </div>
-            <div class="grid_6 omega">    
+            <div class="grid_8 omega">    
+                <?php $d = $this->input->post('settings_dob_day') ? $this->input->post('settings_dob_day') : (isset($account_details->dob_day) ? $account_details->dob_day : ''); ?>
+                <select name="settings_dob_day">
+                    <option value="" selected="selected"><?php echo lang('dateofbirth_day'); ?></option>
+                    <?php for ($i=1; $i<32; $i++) : ?>
+                    <option value="<?php echo $i; ?>"<?php if ($d == $i) echo ' selected="selected"'; ?>><?php echo $i; ?></option>
+                    <?php endfor; ?>
+                </select>
                 <?php $m = $this->input->post('settings_dob_month') ? $this->input->post('settings_dob_month') : (isset($account_details->dob_month) ? $account_details->dob_month : ''); ?>
                 <select name="settings_dob_month">
                     <option value=""><?php echo lang('dateofbirth_month'); ?></option>
@@ -110,13 +121,7 @@
                     <option value="11"<?php if ($m == 11) echo ' selected="selected"'; ?>><?php echo lang('month_nov'); ?></option>
                     <option value="12"<?php if ($m == 12) echo ' selected="selected"'; ?>><?php echo lang('month_dec'); ?></option>
                 </select>
-                <?php $d = $this->input->post('settings_dob_day') ? $this->input->post('settings_dob_day') : (isset($account_details->dob_day) ? $account_details->dob_day : ''); ?>
-                <select name="settings_dob_day">
-                    <option value="" selected="selected"><?php echo lang('dateofbirth_day'); ?></option>
-                    <?php for ($i=1; $i<32; $i++) : ?>
-                    <option value="<?php echo $i; ?>"<?php if ($d == $i) echo ' selected="selected"'; ?>><?php echo $i; ?></option>
-                    <?php endfor; ?>
-                </select>
+
                 <?php $y = $this->input->post('settings_dob_year') ? $this->input->post('settings_dob_year') : (isset($account_details->dob_year) ? $account_details->dob_year : ''); ?>
                 <select name="settings_dob_year">
                     <option value=""><?php echo lang('dateofbirth_year'); ?></option>
@@ -129,10 +134,10 @@
                 <?php endif; ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_gender')); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php $s = ($this->input->post('settings_gender') ? $this->input->post('settings_gender') : (isset($account_details->gender) ? $account_details->gender : '')); ?>
                 <select name="settings_gender">
                     <option value=""><?php echo lang('settings_select'); ?></option>
@@ -141,23 +146,24 @@
                 </select>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_postalcode'), 'settings_postalcode'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php echo form_input(array(
                         'name' => 'settings_postalcode',
                         'id' => 'settings_postalcode',
                         'value' => set_value('settings_postalcode') ? set_value('settings_postalcode') : (isset($account_details->postalcode) ? $account_details->postalcode : ''),
-                        'maxlength' => 40
+                        'maxlength' => 40,
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('settings_postalcode'); ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_country'), 'settings_country'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php $account_country = ($this->input->post('settings_country') ? $this->input->post('settings_country') : (isset($account_details->country) ? $account_details->country : '')); ?>
                 <select id="settings_country" name="settings_country" class="select">
                     <option value=""><?php echo lang('settings_select'); ?></option>
@@ -169,10 +175,10 @@
                 </select>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_language'), 'settings_language'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php $account_language = ($this->input->post('settings_language') ? $this->input->post('settings_language') : (isset($account_details->language) ? $account_details->language : '')); ?>
                 <select id="settings_language" name="settings_language" class="select">
                     <option value=""><?php echo lang('settings_select'); ?></option>
@@ -184,10 +190,10 @@
                 </select>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('settings_timezone'), 'settings_timezone'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php $account_timezone = ($this->input->post('settings_timezone') ? $this->input->post('settings_timezone') : (isset($account_details->timezone) ? $account_details->timezone : '')); ?>
                 <select id="settings_timezone" name="settings_timezone" class="select">
                     <option value=""><?php echo lang('settings_select'); ?></option>
@@ -199,7 +205,7 @@
                 </select>
             </div>
             <div class="clear"></div>
-            <div class="prefix_4 grid_6 alpha omega">
+            <div class="prefix_2 grid_6 alpha omega">
                 <?php echo form_button(array(
                         'type' => 'submit',
                         'class' => 'button save',

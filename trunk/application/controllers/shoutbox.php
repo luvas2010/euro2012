@@ -23,16 +23,6 @@ class Shoutbox extends CI_Controller {
 
     }
     
-    function loadshouts()
-    {
-        $action = $_POST['shout'];
-        $sql_query = "SELECT * FROM `shoutbox`";
-        $query = $this->db->query($sql_query);
-        $data['shouts'] = $query->result_array();
-        //return $shouts;
-        $this->load->view('shoutbox_view', $data);
-    }
-    
     function add()
     {
         $this->load->library('session');
@@ -102,12 +92,28 @@ class Shoutbox extends CI_Controller {
 			{
                     $imgstring = "<img src='".base_url()."resource/img/default-picture.gif' alt='' width='50px' height='50px'  style='float:left;'/>";
             }
-            $html .= "<p><span class='boldtext'>".$shout['username'].", ".mdate("%d %M %Y %H:%i",$shout['postedon'])."</span></p>".$imgstring."<p>".$shout['message']."</p><hr/>";
+            $html .= "<p><span class='boldtext'>".$shout['username'].", ".mdate("%d %M %Y %H:%i",$shout['postedon'])."</span></p>".$imgstring."<p>".$shout['message']."</p>";
+            if ($shout['account_id'] == $this->session->userdata('account_id'))
+            {
+                $html .= "<a href='".site_url('shoutbox/delete')."/".$shout['id']."'>Delete</a><hr/>";
+            }
+            else
+            {
+                $html .= "<hr/>";
+            }    
         }    
         
         echo $html;
 
-    }    
+    }
+
+    function delete($shout_id)
+    {
+        $sql_query = "DELETE FROM `shoutbox` WHERE `id` = $shout_id";
+        $query = $this->db->query($sql_query);
+        $this->session->set_flashdata('info', lang('shout_deleted'));
+        redirect('/');
+    }
 }
 
 

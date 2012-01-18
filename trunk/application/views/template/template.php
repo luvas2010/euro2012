@@ -17,6 +17,8 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/highcharts.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/pinfooter.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/pinheader.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.uniform.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/uniform.default.css" type="text/css" media="screen" charset="utf-8" />
 </head>
 <body>
         <div id="navigation">

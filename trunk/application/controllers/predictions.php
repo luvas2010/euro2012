@@ -429,24 +429,25 @@ class Predictions extends CI_Controller {
                         $this->session->set_flashdata('info', sprintf(lang('match_has_started'), $post_array['pred_match_uid'][$i]));
                     }
                 }
-                if (!prediction_closed(1) && ($group == 'QF' || $group == 'SF' || $group == 'F'))
+                if (!prediction_closed(1) && ($group == 'QF' || $group == 'SF' || $group == 'F' || $group== 'ALL'))
                 {
 
-                            $pred_home_team = $post_array['pred_home_team'][$i];
-                            $prediction_uid = $post_array['prediction_uid'][$i];
-                            $sql_query = "UPDATE `prediction`
-                                          SET `pred_home_team` = '$pred_home_team'
-                                          WHERE `prediction_uid` = '$prediction_uid'";
-                            $query = $this->db->query($sql_query);
+                    if($post_array['pred_match_uid'][$i] >= 25)
+                    {
+                        $pred_home_team = $post_array['pred_home_team'][$i];
+                        $prediction_uid = $post_array['prediction_uid'][$i];
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_home_team` = '$pred_home_team'
+                                      WHERE `prediction_uid` = '$prediction_uid'";
+                        $query = $this->db->query($sql_query);
 
-                            $pred_away_team = $post_array['pred_away_team'][$i];
-                            $prediction_uid = $post_array['prediction_uid'][$i];
-                            $sql_query = "UPDATE `prediction`
-                                          SET `pred_away_team` = '$pred_away_team'
-                                          WHERE `prediction_uid` = '$prediction_uid'";
-                            $query = $this->db->query($sql_query);
-
-                        //echo $sql_query."<br/>";
+                        $pred_away_team = $post_array['pred_away_team'][$i];
+                        $prediction_uid = $post_array['prediction_uid'][$i];
+                        $sql_query = "UPDATE `prediction`
+                                      SET `pred_away_team` = '$pred_away_team'
+                                      WHERE `prediction_uid` = '$prediction_uid'";
+                        $query = $this->db->query($sql_query);
+                    }
                 }
             }
             $this->session->set_flashdata('info', lang('data_saved'));
@@ -508,8 +509,9 @@ class Predictions extends CI_Controller {
                           SET $sql_extra
                           WHERE `account_id` = $account_id";
             $query = $this->db->query($sql_query);
-        
-            redirect('/');
+            
+            $this->session->set_flashdata('info', lang('data_saved'));
+            redirect('predictions/extra');
         }    
         
         if ($this->authentication->is_signed_in() && $action == NULL)
@@ -1070,7 +1072,40 @@ class Predictions extends CI_Controller {
             redirect('account/sign_in/?continue='.site_url('predictions/edit_edit_match/'.$match_uid));
         }
     }
+    
+    function show($view_account_id, $group)
+    {
 
+        if ($this->authentication->is_signed_in())
+        {       
+            $sql_query = "SELECT *
+                          FROM `prediction`
+                          JOIN `match`
+                          ON `match`.`match_uid` = `prediction`.`pred_match_uid`
+                          AND `match`.`match_group` = '$group'
+                          AND `prediction`.`account_id` = '$view_account_id'
+
+                          ORDER BY `prediction`.`pred_match_uid`";
+            $query = $this->db->query($sql_query);
+            $predictions = $query->result_array();
+            $view_account = $this->account_model->get_by_id($view_account_id);
+
+            $data = array(
+                        'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                        'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                        'predictions'       => $predictions,
+                        'content_main'      => "show_user_pred",
+                        'title'             => sprintf(lang('overview_of_points_for'), $view_account->username, lang($group)),
+                        'view_account'       => $view_account
+                        );
+    
+            $this->load->view('template/template', $data);
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('predictions/show').'/'.$account_id.'/'.$group);
+        }
+    } 
  
 }
 ?>

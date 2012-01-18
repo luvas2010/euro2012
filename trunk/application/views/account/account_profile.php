@@ -6,7 +6,8 @@
         </div>
         <div class="clear"></div>
         <div class="grid_10">
-            <?php echo form_open_multipart(uri_string()); ?>
+        <?php $attributes = array('id' => 'validateMe'); ?>
+            <?php echo form_open_multipart(uri_string(), $attributes); ?>
             <?php echo form_fieldset(); ?>
             <?php if (isset($profile_info)) : ?>
             <div class="grid_10 alpha omega">
@@ -14,16 +15,17 @@
             </div>
             <div class="clear"></div>
             <?php endif; ?>
-            <p><?php echo lang('profile_instructions'); ?></p>
-            <div class="grid_4 alpha">
+            <p class='errorstay'><?php echo lang('profile_instructions'); ?></p>
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('profile_username'), 'profile_username'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <?php echo form_input(array(
                         'name' => 'profile_username',
                         'id' => 'profile_username',
                         'value' => set_value('profile_username') ? set_value('profile_username') : (isset($account->username) ? $account->username : ''),
-                        'maxlength' => '24'
+                        'maxlength' => '24',
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('profile_username'); ?>
                 <?php if (isset($profile_username_error)) : ?>
@@ -31,13 +33,13 @@
                 <?php endif; ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_4 alpha">
+            <div class="grid_2 alpha">
                 <?php echo form_label(lang('profile_picture'), 'profile_picture'); ?>
             </div>
-            <div class="grid_6 omega">
+            <div class="grid_8 omega">
                 <p>
                     <?php if (isset($account_details->picture)) : ?>
-                    <img src="<?php echo base_url(); ?>resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>" alt="" /><div class="clear"></div><?php echo anchor('account/account_profile/index/delete', lang('profile_delete_picture'), 'class="button delete"'); ?>
+                    <img src="<?php echo base_url(); ?>resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>" alt="" /><div class="clear"></div><?php echo anchor('account/account_profile/index/delete', lang('profile_delete_picture'), 'class="button picture_delete"'); ?>
                     <?php else : ?>
                     <img src="<?php echo base_url(); ?>resource/img/default-picture.gif" alt="" />
                     <?php endif; ?>
@@ -53,7 +55,7 @@
                 <?php endif; ?>
             </div>
             <div class="clear"></div>
-            <div class="prefix_4 grid_6 alpha omega">
+            <div class="prefix_2 grid_8 alpha omega">
                 <?php echo form_button(array(
                         'type' => 'submit',
                         'class' => 'button save',
