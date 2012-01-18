@@ -6,7 +6,8 @@
         </div>
         <div class="clear"></div>
         <div class="grid_10">
-            <?php echo form_open(uri_string()); ?>
+            <?php $attributes = array('id' => 'validateMe'); ?>
+            <?php echo form_open(uri_string(), $attributes); ?>
             <?php echo form_fieldset(); ?>
             <?php if ($this->session->flashdata('password_info')) : ?>
             <div class="grid_10 alpha omega">
@@ -23,7 +24,9 @@
                         'name' => 'password_new_password',
                         'id' => 'password_new_password',
                         'value' => set_value('password_new_password'),
-                        'autocomplete' => 'off'
+                        'autocomplete' => 'off',
+                        'class' => 'text required',
+                        'minlength' => '6'
                     )); ?>
                 <?php echo form_error('password_new_password'); ?>
             </div>
@@ -36,7 +39,10 @@
                         'name' => 'password_retype_new_password',
                         'id' => 'password_retype_new_password',
                         'value' => set_value('password_retype_new_password'),
-                        'autocomplete' => 'off'
+                        'autocomplete' => 'off',
+                        'class' => 'text required',
+                        'minlength' => '6',
+                        'equalTo' => '#password_new_password'
                     )); ?>
                 <?php echo form_error('password_retype_new_password'); ?>
             </div>

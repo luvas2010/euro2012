@@ -11,7 +11,7 @@
                 echo form_open(uri_string(), $attributes); ?>
             <?php echo form_fieldset(); ?>
             <h3><?php echo lang('sign_up_heading'); ?></h3>
-            <div class="grid_2 alpha">
+            <div class="grid_2 alpha align_right">
                 <?php echo form_label(lang('sign_up_username'), 'sign_up_username'); ?>
             </div>
             <div class="grid_6 omega">
@@ -21,7 +21,7 @@
                         'value' => set_value('sign_up_username'),
                         'minlength' => '2',
                         'maxlength' => '24',
-                        'class' => 'required'
+                        'class' => 'required text'
                     )); ?>
                 <?php echo form_error('sign_up_username'); ?>
                 <?php if (isset($sign_up_username_error)) : ?>
@@ -30,7 +30,7 @@
             </div>
             <div class="clear"></div>
             
-            <div class="grid_2 alpha">
+            <div class="grid_2 alpha align_right">
                 <?php echo form_label(lang('sign_up_firstname'), 'sign_up_firstname'); ?>
             </div>
             <div class="grid_6 omega">
@@ -39,7 +39,8 @@
                         'id' => 'sign_up_firstname',
                         'value' => set_value('sign_up_firstname'),
                         'minlength' => '2',
-                        'maxlength' => '24'
+                        'maxlength' => '24',
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('sign_up_firstname'); ?>
                 <?php if (isset($sign_up_firstname_error)) : ?>
@@ -48,7 +49,7 @@
             </div>
             <div class="clear"></div>
             
-            <div class="grid_2 alpha">
+            <div class="grid_2 alpha align_right">
                 <?php echo form_label(lang('sign_up_lastname'), 'sign_up_lastname'); ?>
             </div>
             <div class="grid_6 omega">
@@ -57,7 +58,8 @@
                         'id' => 'sign_up_lastname',
                         'value' => set_value('sign_up_lastname'),
                         'minlength' => '2',
-                        'maxlength' => '24'
+                        'maxlength' => '24',
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('sign_up_lastname'); ?>
                 <?php if (isset($sign_up_lastname_error)) : ?>
@@ -66,7 +68,7 @@
             </div>
             <div class="clear"></div>
             
-            <div class="grid_2 alpha">
+            <div class="grid_2 alpha align_right">
                 <?php echo form_label(lang('sign_up_password'), 'sign_up_password'); ?>
             </div>
             <div class="grid_6 omega">
@@ -74,12 +76,13 @@
                         'name' => 'sign_up_password',
                         'id' => 'sign_up_password',
                         'value' => set_value('sign_up_password'),
-                        'minlength' => '6'
+                        'minlength' => '6',
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('sign_up_password'); ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_2 alpha">
+            <div class="grid_2 alpha align_right">
                 <?php echo form_label(lang('sign_up_email'), 'sign_up_email'); ?>
             </div>
             <div class="grid_6 omega">

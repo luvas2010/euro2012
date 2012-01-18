@@ -2671,6 +2671,26 @@
                             ('W29', 'F'),
                             ('W30', 'F')";
         
+        $sql_query[] = "CREATE TABLE IF NOT EXISTS `shoutbox` (
+                          `id` int(11) NOT NULL AUTO_INCREMENT,
+                          `account_id` bigint(20) NOT NULL,
+                          `username` varchar(24) NOT NULL,
+                          `message` varchar(255) NOT NULL,
+                          `postedon` int(11) NOT NULL,
+                          PRIMARY KEY (`id`)
+                        )";
+        $timestamp = now();                
+        $sql_query[] = "REPLACE INTO `shoutbox` (
+                        `id` ,
+                        `account_id` ,
+                        `username` ,
+                        `message` ,
+                        `postedon`
+                        )
+                        VALUES (
+                        NULL , '0', 'Schop', 'Installatie Versie 1.2 succesvol!', '$timestamp'
+                        )";
+        
         foreach ($sql_query as $query)
         {
             $q = $this->db->query($query);

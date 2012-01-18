@@ -6,7 +6,8 @@
         </div>
         <div class="clear"></div>
         <div class="grid_8">
-            <?php echo form_open(uri_string().($this->input->get('continue')?'/?continue='.urlencode($this->input->get('continue')):'')); ?>
+        <?php $attributes = array('id' => 'validateMe'); ?>
+            <?php echo form_open(uri_string().($this->input->get('continue')?'/?continue='.urlencode($this->input->get('continue')):''), $attributes); ?>
             <?php echo form_fieldset(); ?>
             <h3><?php echo lang('sign_in_heading'); ?></h3>
             <?php if (isset($sign_in_error)) : ?>
@@ -22,7 +23,7 @@
             <div class="clear"></div>
             <?php endif; ?>
             
-            <div class="grid_3 alpha">
+            <div class="grid_3 alpha align_right">
                 <?php echo form_label(lang('sign_in_username_email'), 'sign_in_username_email'); ?>
             </div>
             <div class="grid_5 omega">
@@ -30,7 +31,8 @@
                         'name' => 'sign_in_username_email',
                         'id' => 'sign_in_username_email',
                         'value' => set_value('sign_in_username_email'),
-                        'maxlength' => '24'
+                        'maxlength' => '24',
+                        'class' => 'text required'
                     )); ?>
                 <?php echo form_error('sign_in_username_email'); ?>
                 <?php if (isset($sign_in_username_email_error)) : ?>
@@ -38,14 +40,15 @@
                 <?php endif; ?>
             </div>
             <div class="clear"></div>
-            <div class="grid_3 alpha">
+            <div class="grid_3 alpha align_right">
                 <?php echo form_label(lang('sign_in_password'), 'sign_in_password'); ?>
             </div>
             <div class="grid_5 omega">
                 <?php echo form_password(array(
                         'name' => 'sign_in_password',
                         'id' => 'sign_in_password',
-                        'value' => set_value('sign_in_password')
+                        'value' => set_value('sign_in_password'),
+                        'class' => 'text'
                     )); ?>
                 <?php echo form_error('sign_in_password'); ?>
             </div>

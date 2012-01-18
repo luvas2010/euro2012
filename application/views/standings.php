@@ -45,7 +45,7 @@
             <?php foreach($point['matches'] as $key =>$value)
             {
             ?>
-            <td class='centertext'><?php echo anchor('standings/show/'.$point['account_id'].'/'.$key, $value) ;?></td>
+            <td class='centertext'><?php echo anchor('predictions/show/'.$point['account_id'].'/'.$key, $value) ;?></td>
             <?php } ?>
 
         </tr>

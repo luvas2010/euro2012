@@ -1,5 +1,6 @@
 <?php
 $lang['username']                       = "Gebruiker";
+$lang['overview_of_points_for']         = 'Overzicht van gescoorde punten door %s in %s';
 $lang['match']                          = "Wedstrijd";
 $lang['match_number']                   = "#";
 $lang['group']                          = "Groep";
@@ -18,6 +19,11 @@ $lang['goals_correct']             = "Je had het aantal doelpunten voor %s goed,
 $lang['goals_wrong']               = "Het aantal doelpunten voor %s had je niet goed voorspeld.";
 $lang['result_right_win']               = "Zoals je had voorspeld won %s de wedstrijd van %s. Dat levert <span class='boldtext'>%s punten</span> op.";
 $lang['result_right_tie']               = "%s en %s speelden gelijk, en dat had je voorspeld. Dat levert <span class='boldtext'>%s punten</span> op.";
+$lang['team_correct']                   = "Je had %s goed voorspeld, en daar krijg je <span class='boldtext'>%s punten</span> voor.";
+$lang['total_number_of_predictions']    = "Voor deze wedstrijd zijn %s voorspellingen berekend.";
+$lang['pred_goals_correct_number'] = "Het aantal doelpunten voor %s is %s keer goed voorspeld.";
+$lang['pred_everything_correct_number'] = "%s keer is het aantal doelpunten voor beide landen goed voorspeld.";
+$lang['team_correct_number']                   = "Dat %s in deze wedstijd speelde is %s keer voorspeld.";
 $lang['match_time']                     = "Aftrap";
 $lang['predictions_for_group']          = "Voorspellingen voor groep %s";
 $lang['pred_standings_in_group']        = "Voorspelde Stand in groep %s";
@@ -25,6 +31,9 @@ $lang['standings_in_group']             = "Actuele Stand in groep %s";
 $lang['home_goals']                     = "Thuis Doelpunten";
 $lang['away_goals']                     = "Uit Doelpunten";
 $lang['match_result']                   = "Uitslag";
+$lang['bonus']                          = "Bonus";
+$lang['team_home']                      = "Thuis team";
+$lang['team_away']                      = "Uit team";
 $lang['saved_predictions']              = "Voorspellingen opgeslagen";
 $lang['match_has_started']              = "Wedstrijd %s is al begonnen";
 $lang['number_of_times_predicted']      = "Aantal keer voorspeld";
@@ -46,7 +55,7 @@ $lang['choose_a_team']                  = "Kies een land";
 $lang['explanation']                    = "Uitleg";
 $lang['no_info_yet']                    = "Deze informatie is nog niet beschikbaar.";
 $lang['randomizer_intro']               = "<p>Als je geen zin hebt om alles in te vullen, kun je op de `Randomizer` knop klikken.
-                                           Voorspellingen die je nog niet hebt ingevuld worden dan automatisch voor je gemaakt.<p/>
+                                           Voorspellingen die je nog niet hebt ingevuld worden dan automatisch voor je gemaakt.</p>
                                            <p>Heb je al uitslagen of landen ingevuld, dan worden die <span class='boldtext'>niet overschreven</span>.
                                            <br/>Je kunt later overigens alles nog wijzigen.</p>";
 $lang['position']           = "Pos.";

@@ -54,7 +54,7 @@
             <?php if($prediction['pred_match_uid'] >= 25)
             {
              ?>
-                    <div class='grid_2 alpha'>
+                    <div class='grid_2 alpha align_right'>
                         <?php echo lang('team'); ?>
                     </div>
                     <div class='grid_2 omega align_left'>            
@@ -69,7 +69,7 @@
                            }
                      ?>     
                     </div>
-                    <div class='grid_2 alpha'>
+                    <div class='grid_2 alpha align_right'>
                         <?php echo lang('goals'); ?>
                     </div>
                     <div class='grid_2 omega align_left'>            
@@ -80,7 +80,7 @@
                           'name'        => 'pred_home_goals',
                           'value'       => $prediction['pred_home_goals'],
                           'size'        => 5,
-                          'class'       => 'digits centertext'
+                          'class'       => 'digits centertext text'
                         );
                         ?>
                         <?php echo form_input($data);?>
@@ -96,7 +96,7 @@
                           'name'        => 'pred_home_goals',
                           'value'       => $prediction['pred_home_goals'],
                           'size'        => 5,
-                          'class'       => 'digits mediumtext centertext'
+                          'class'       => 'digits mediumtext centertext text'
                         );
                         ?>
                         <?php echo form_input($data);?>
@@ -115,7 +115,7 @@
             <?php if($prediction['pred_match_uid'] >= 25)
             {
              ?>
-                    <div class='grid_2 alpha'>
+                    <div class='grid_2 alpha align_right'>
                         <?php echo lang('team'); ?>
                     </div>
                     <div class='grid_2 omega align_left'>            
@@ -130,18 +130,18 @@
                            }
                      ?>     
                     </div>
-                    <div class='grid_2 alpha'>
+                    <div class='grid_2 alpha align_right'>
                         <?php echo lang('goals'); ?>
                     </div>
                     <div class='grid_2 omega align_left'>            
-                    <?php if(!prediction_closed($prediction['pred_match_uid']))
+                    <?php if(!prediction_closed($prediction['pred_match_uid']) && $prediction['pred_calculated'] == 0)
                         { ?>
                         <?php 
                         $data = array(
                           'name'        => 'pred_away_goals',
                           'value'       => $prediction['pred_away_goals'],
                           'size'        => 5,
-                          'class'       => 'digits centertext'
+                          'class'       => 'digits centertext text'
                         );
                         ?>
                         <?php echo form_input($data);?>
@@ -157,7 +157,7 @@
                           'name'        => 'pred_away_goals',
                           'value'       => $prediction['pred_away_goals'],
                           'size'        => 5,
-                          'class'       => 'digits mediumtext centertext'
+                          'class'       => 'digits mediumtext centertext text'
                         );
                         ?>
                         <?php echo form_input($data);?>
@@ -193,30 +193,56 @@
             </div>
             <div class='grid_8 alpha margintop_20'>
                 <p><?php echo sprintf(lang('total_points_awarded'), $prediction['pred_points_total']); ?></p>
-                <ul>
+                
                 <?php if ($prediction['pred_home_goals'] == $prediction['home_goals']) { ?>
-                <li><?php echo sprintf(lang('goals_correct'), get_team_name($prediction['home_team']), $this->config->item('pred_points_goals')); ?></li>
+                <p><?php echo sprintf(lang('goals_correct'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->config->item('pred_points_goals')); ?></p>
                 <?php } else { ?>
-                <li><?php echo sprintf(lang('goals_wrong'), get_team_name($prediction['home_team'])); ?></li>
+                <p><?php echo sprintf(lang('goals_wrong'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team']))); ?></p>
                 <?php } ?>
                 <?php if ($prediction['pred_away_goals'] == $prediction['away_goals']) { ?>
-                <li><?php echo sprintf(lang('goals_correct'), get_team_name($prediction['away_team']), $this->config->item('pred_points_goals')); ?></li>
+                <p><?php echo sprintf(lang('goals_correct'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $this->config->item('pred_points_goals')); ?></p>
                 <?php } else { ?>
-                <li><?php echo sprintf(lang('goals_wrong'), get_team_name($prediction['away_team'])); ?></li>
+                <p><?php echo sprintf(lang('goals_wrong'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team']))); ?></p>
                 <?php } ?>
                 <?php if($prediction['pred_home_goals'] > $prediction['pred_away_goals'] && $prediction['home_goals'] > $prediction['away_goals'])
                        { ?>
-                <li><?php echo sprintf(lang('result_right_win'), get_team_name($prediction['home_team']), get_team_name($prediction['away_team']), $this->config->item('pred_points_result')); ?></li>
+                <p><?php echo sprintf(lang('result_right_win'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $this->config->item('pred_points_result')); ?></p>
                 <?php  }  ?>                       
                 <?php if($prediction['pred_home_goals'] < $prediction['pred_away_goals'] && $prediction['home_goals'] < $prediction['away_goals'])
                        { ?>
-                <li><?php echo sprintf(lang('result_right_win'), get_team_name($prediction['away_team']), get_team_name($prediction['home_team']), $this->config->item('pred_points_result')); ?></li>
+                <p><?php echo sprintf(lang('result_right_win'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->config->item('pred_points_result')); ?></p>
                 <?php  }  ?>                            
                 <?php if($prediction['pred_home_goals'] == $prediction['pred_away_goals'] && $prediction['home_goals'] == $prediction['away_goals'])
                        { ?>
-                <li><?php echo sprintf(lang('result_right_tie'), get_team_name($prediction['away_team']), get_team_name($prediction['home_team']), $this->config->item('pred_points_result')); ?></li>
-                <?php  }  ?>                            
-                </ul>          
+                <p><?php echo sprintf(lang('result_right_tie'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->config->item('pred_points_result')); ?></p>
+                <?php  }  ?> 
+
+                <?php
+                if ($prediction['pred_match_uid'] >= 25)
+                { 
+                    if($prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 28)
+                    {
+                        $points_for_team = $this->config->item('pred_points_qf_team');
+                    }
+                    elseif ($prediction['pred_match_uid'] >= 29 && $prediction['pred_match_uid'] <= 30 )
+                    {
+                        $points_for_team = $this->config->item('pred_points_sf_team');
+                    }
+                    elseif ($prediction['pred_match_uid'] == 31)
+                    {
+                        $points_for_team = $this->config->item('pred_points_f_team');
+                    }                      
+                ?>
+                    <?php if($prediction['pred_home_team'] == $prediction['home_team'])
+                            { ?>
+                                <p><?php echo sprintf(lang('team_correct'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $points_for_team); ?> </p>
+                            <?php } ?>
+                    <?php if($prediction['pred_away_team'] == $prediction['away_team'])
+                            { ?>
+                                <p><?php echo sprintf(lang('team_correct'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $points_for_team); ?> </p>
+                            <?php } ?>
+                    <?php } ?>        
+                         
             </div>
 
             
@@ -225,7 +251,9 @@
                 $away_goals_correct = 0;
                 $result_correct     = 0;
                 $everything_correct = 0;
-             
+                $home_team_correct = 0;
+                $away_team_correct = 0;
+                $both_teams_correct = 0;
                 foreach ($predictions as $p)
                 {
                     if ($p['home_goals'] == $p['pred_home_goals'])
@@ -249,23 +277,41 @@
                         )
                     {
                         $result_correct++;
-                    }  
+                    }
+                    if ($p['pred_match_uid'] >= 25 && $p['pred_home_team'] == $p['home_team'])
+                    {
+                        $home_team_correct++;
+                    }
+                    if ($p['pred_match_uid'] >= 25 && $p['pred_away_team'] == $p['away_team'])
+                    {
+                        $away_team_correct++;
+                    }
+                    if ($p['pred_match_uid'] >= 25 && $p['pred_away_team'] == $p['away_team'] && $p['pred_home_team'] == $p['home_team'])
+                    {
+                        $both_teams_correct++;
+                    }
                 }
-            ?>                
-            <p>Totaal <?php echo $num; ?> voorspellingen.<br/>
-            Home goals correct: <?php echo $home_goals_correct; ?><br/>
-            Away goals correct: <?php echo $away_goals_correct; ?><br/>
-            Result correct: <?php echo $result_correct; ?><br/>
-            Everything correct: <?php echo $everything_correct; ?></p>
+            ?>
+            <h3><?php echo lang('statistics');?></h3>
+            <p><?php echo sprintf(lang('total_number_of_predictions'),$num); ?></p>
+            <p><?php echo sprintf(lang('pred_goals_correct_number'),anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])),$home_goals_correct); ?></p>
+            <p><?php echo sprintf(lang('pred_goals_correct_number'),anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])),$away_goals_correct); ?></p>
+            <p><?php echo sprintf(lang('pred_everything_correct_number'),$everything_correct); ?></p>
+            <?php if ($prediction['pred_match_uid'] >= 25)
+            {?>
+            <p><?php echo sprintf(lang('team_correct_number'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $home_team_correct);?></p>
+            <p><?php echo sprintf(lang('team_correct_number'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $away_team_correct);?></p>
+            <?php } ?>
+
             <?php   $this->load->library('pool');
-					$top_3 = get_top_ranking_for_match($match_uid);
-					if (is_array($top_3))
+					$top_10 = get_top_ranking_for_match($match_uid, 10);
+					if (is_array($top_10))
 					{
-						echo "<h3>Top 3</h3>";
+						echo "<h3>Top 10</h3>";
 						echo "<ul>";
-						foreach($top_3 as $user)
+						foreach($top_10 as $user)
 						{
-							echo "<li><span class='boldtext'>".$user['username'].": </span>".$user['pred_points_total']."</li>";
+							echo "<li><span class='boldtext'>".$user['username'].": </span>".$user['pred_points_total']." ".lang('points')."</li>";
 						}
 						echo "</ul>";
 					}	

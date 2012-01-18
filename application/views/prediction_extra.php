@@ -36,7 +36,7 @@
                   'name'        => 'totalgoals',
                   'value'       => $prediction['pred_total_goals'],
                   'size'        => 5,
-                  'class'       => 'digits'
+                  'class'       => 'digits text'
                 );
                 ?>
                 <td class='centertext'><?php echo form_input($data);?></td>

@@ -21,7 +21,7 @@ $(document).ready(function (){
       $(this).hide("slow");
       });
     
-    $('.delete, .flag').click(function(){ // to confirm deleting users
+    $('.delete, .flag, .user_delete').click(function(){ // to confirm deleting users
         var answer = confirm('Are you sure?');
         return answer; // answer is a boolean
     });
@@ -38,6 +38,7 @@ $(document).ready(function (){
       }
     });
 
+    $("select, input:checkbox, input:radio, input:file").uniform();
 
     
 });
