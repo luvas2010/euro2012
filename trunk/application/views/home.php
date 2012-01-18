@@ -44,11 +44,41 @@
         </div>
         <?php } ?>
         <div id="shoutbox">
-            <h3>Shoutout</h3>
-            <input type="text" id="shout" name="shout" />
-            <input type="submit" id="shout_submit" value="Shout!" class="button user_comment" />
+            <h3><?php echo lang('user_messages');?></h3>
+            
+			<input type="text" id="shout" name="shout" maxlength="255" value="<?php echo lang('type_message_here');?>" />
+            <input type="submit" id="shout_submit" value="<?php echo lang('post_message'); ?>" class="button user_comment" />
+			
             <div id="shoutlist">
             </div>
+			
+			<script type='text/javascript'>
+		$(document).ready(function (){
+		$("#shout").focus(function(){
+			// Check for the change
+			if(this.value == this.defaultValue){
+				$('#shout').val('');
+			}
+		});		
+
+		$('#shout_submit').click(function() {
+			var shouttxt = $('#shout').val();
+			// alert(shouttxt);
+			$.post("<?php echo site_url('shoutbox/add'); ?>", { 'shouttxt' : shouttxt },
+					function(data) {
+						//console.log(data);
+						$('#shoutlist').empty().append(data);
+						$('#shout').val('');
+						}
+				);
+		});
+    
+    $.ajax({
+            url: "<?php echo site_url('shoutbox/getshouts/5'); ?>",
+            success: function(data) { $('#shoutlist').empty().append(data);}
+            });
+			});
+			</script>
         </div>
     </div> <!-- end column1 -->
     <div class='grid_4'>

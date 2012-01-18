@@ -2,7 +2,7 @@
 // plugin definition
 $.fn.pinFooter = function(options) {
 // Get the height of the footer and window + window width
-var wH = $(window).height();
+var wH = getWindowHeight();
 var wW = getWindowWidth();
 var fH = $(this).outerHeight(true);
 var bH = $("body").outerHeight(true);
@@ -14,7 +14,8 @@ $(this).css("position","fixed");
 $(this).css("width",wW + "px");
 $(this).css("top",wH - fH + "px");
 $("body").css("height",(bH + mB) + "px");
-
+$('#wrapper').css('margin-bottom', fH + "px");
+$('#wrapper').css('padding-bottom', fH + "px");
 };
 
 // private function for debugging

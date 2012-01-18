@@ -39,5 +39,9 @@ $lang['money_distribution'] = "The payout";
 $lang['winner'] =  "Winner";
 $lang['number'] = "Number";
 $lang['no_info_yet'] = "No data yet";
+$lang['user_messages'] = "User Messages";
+$lang['post_message'] = "Post Message";
+$lang['not_so_fast'] = "You are posting too many messages after each other";
+$lang['type_message_here'] = "Type your message here";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/english/welcome_lang.php */
