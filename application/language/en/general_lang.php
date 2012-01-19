@@ -38,6 +38,7 @@ $lang['view_stats']                             = 'Stats';
 $lang['your_prediction']                        = 'your prediction';
 $lang['warnings']                               = 'Click here to read some warnings for you';
 $lang['not_payed_yet'] = "You have not payed yet. Please do this as soon as possible!";
+$lang['no_more_matches']						= 'All matches have been played';
 /* navigation */
 
 $lang['navhome']           = 'Home';
@@ -64,7 +65,8 @@ $lang['admin_unverified_users'] = 'There are %s unverified users';
 $lang['check_settings']			= 'Check Settings';
 $lang['delete_account']			= 'Delete Account';
 $lang['number_of_users']		= 'Number of users';
-
+$lang['unverified_users_link']		= 'Admin: There are %s unverified users. %s';
+$lang['unpayed_users_link']		    = 'Admin: There are %s users that have not payed yet. %s';
 $lang['quarter_final']  = 'Quarter Finals';
 $lang['semi_final']     = 'Semi Finals';
 $lang['final']          = 'Final';

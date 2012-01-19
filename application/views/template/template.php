@@ -29,21 +29,50 @@
         <?php 
         if ($this->authentication->is_signed_in())
         {
-            if (
+            $admin_warning = 0;
+			if (is_admin())
+			{
+				if ($this->config->item('verify_users'))
+				{
+					$sql_query = "SELECT * FROM `account` WHERE `verifiedon` IS NULL";
+					$query = $this->db->query($sql_query);
+					$num_unverified = $query->num_rows();
+					if($num_unverified > 0)
+					{
+						$admin_warning = 1;
+					}
+				}
+				if ($this->config->item('play_for_money'))
+				{
+					$sql_query = "SELECT * FROM `account` WHERE `payed` = 0";
+					$query = $this->db->query($sql_query);
+					$num_unpayed = $query->num_rows();
+					if ($num_unpayed > 0)
+					{
+						$admin_warning = 1;
+					}
+				}	
+				
+			}	
+				
+			if (
                     ($not_payed = $account->payed == 0 && $this->config->item('play_for_money')) ||
                     (!get_total_goals($account->id)) ||
                     ($missing_teams =  get_missing_teams_list(array(
-                            'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                            'heading'   => "<div class='error warning'><p>%heading%</p>",
                             'pre'       => "<ul class='matchlist'>",
                             'post'      => "</ul></div>",
                             'listitem'  => "<li>%matchlink%</li>")
                             )) ||
                     ($missing_results = get_missing_result_list(array(
-                                'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                                'heading'   => "<div class='error warning'><p>%heading%</p>",
                                 'pre'       => "<ul class='matchlist'>",
                                 'post'      => "</ul></div>",
                                 'listitem'  => "<li>%matchlink%</li>")
                                 ))
+					||
+					$admin_warning == 1
+					 
                  )
             { ?>
             <div class='warnings'>
@@ -64,25 +93,38 @@
         {
             if ($not_payed)
                 {?>
-                <div class='errorstay warning'><?php echo lang('not_payed_yet');?></div>
+                <div class='error warning'><?php echo lang('not_payed_yet');?></div>
 				<?php } ?>
-                
+            <?php
+			if ($admin_warning == 1)
+			{
+				if ($num_unverified > 0)
+				{ ?>
+					<div class='error warning'><?php echo sprintf(lang('unverified_users_link'), $num_unverified, anchor('admin/users/unverified', lang('show_unverified_users')));?></div>
+				<?php
+				}	
+				if ($num_unpayed > 0)
+				{ ?>
+					<div class='error warning'><?php echo sprintf(lang('unpayed_users_link'), $num_unpayed, anchor('admin/users/unpayed', lang('show_unpayed_users')));?></div>
+				<?php 
+				}
+			} ?>	
             <?php
             if (!get_total_goals($account->id)) {
             ?>
                 
-                <div class='errorstay warning'><?php echo lang('total_goals_missing'); ?><br/>
+                <div class='error warning'><?php echo lang('total_goals_missing'); ?><br/>
                 <?php echo anchor('predictions/extra',lang('nav_extra')); ?> 
                 </div>
             <?php } ?>
             <?php echo get_missing_teams_list(array(
-                                'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                                'heading'   => "<div class='error warning'><p>%heading%</p>",
                                 'pre'       => "<ul class='matchlist'>",
                                 'post'      => "</ul></div>",
                                 'listitem'  => "<li>%matchlink%</li>")
                                 );
                   echo get_missing_result_list(array(
-                                'heading'   => "<div class='errorstay warning'><p>%heading%</p>",
+                                'heading'   => "<div class='error warning'><p>%heading%</p>",
                                 'pre'       => "<ul class='matchlist'>",
                                 'post'      => "</ul></div>",
                                 'listitem'  => "<li>%matchlink%</li>")

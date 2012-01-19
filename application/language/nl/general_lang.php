@@ -38,6 +38,7 @@ $lang['view_stats']                             = 'Statistieken';
 $lang['your_prediction']                        = 'jouw voorspelling';
 $lang['warnings']                               = 'Je hebt waarschuwingen. Klik hier om ze te zien!';
 $lang['not_payed_yet'] = "Je hebt nog niet betaald. Doe dit zo snel mogelijk!";
+$lang['no_more_matches']						= 'Alle wedstrijden zijn op dit moment gespeeld';
 /* navigation */
 
 $lang['navhome']        = 'Home';
@@ -64,6 +65,8 @@ $lang['admin_unverified_users'] = 'Er zijn %s niet geverifi&eumlerde gebruikers'
 $lang['check_settings']			= 'Bekijk instellingen';
 $lang['delete_account']			= 'Account Verwijderen';
 $lang['number_of_users']		= 'Aantal gebruikers';
+$lang['unverified_users_link']		= 'Beheer: Er zijn %s ongeverifiëerde gebruikers. %s';
+$lang['unpayed_users_link']		    = 'Beheer: Er zijn %s gebruikers die nog niet betaald hebben. %s';
 
 $lang['quarter_final']  = 'Kwart Finale';
 $lang['semi_final']     = 'Halve Finale';

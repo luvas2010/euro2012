@@ -29,5 +29,11 @@ $lang['points_awarded'] = '<div class="infostay">
 $lang['total_goals_pred'] = "totaal aantal doelpunten";
 $lang['champion_pred'] = "Europees Kampioen";
 $lang['result_rules'] = "Voor de uitslag van een wedstrijd wordt de uitslag na eventuele verlenging genomen. Als een wedstrijd wordt beslist met penalties, tellen deze niet mee.";
+
+$lang['total_money'] = "Er zijn nu %s gebruikers aangemeld. Als ze allemaal %s betalen, zit er dus %s &lsquo;in de pot&rsquo;.";
+$lang['money_payed_out'] = "Hiervan wordt %s%% uitbetaald (dat is %s)";
+$lang['money_distribution'] = "De verdeling";
+$lang['winner'] =  "Winnaar";
+$lang['number'] = "Nummer";
 /* End of file rules_lang.php */
 /* Location: ./application/language/nl/rules_lang.php */

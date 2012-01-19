@@ -15,7 +15,7 @@
                           `resetsenton` datetime DEFAULT NULL,
                           `deletedon` datetime DEFAULT NULL,
                           `suspendedon` datetime DEFAULT NULL,
-						  `payed` tinyint(4) NOT NULL DEFAULT '0'
+						  `payed` tinyint(4) NOT NULL DEFAULT '0',
                           PRIMARY KEY (`id`),
                           UNIQUE KEY `username` (`username`),
                           UNIQUE KEY `email` (`email`)
@@ -2716,19 +2716,19 @@
     echo "<div class='grid_7 omega'>".form_input(array('name' => 'username',
                                                        'id' => 'username', 'minlength' => '2',
                                                        'maxlength' => '24',
-                                                       'class' => 'required'))."</div>";
+                                                       'class' => 'required text'))."</div>";
     echo "<div class='clear'></div>";
     echo "<div style='text-align: right' class='grid_3 alpha'>".lang('first_name')."</div>";
     echo "<div class='grid_7 omega'>".form_input(array('name' => 'first_name',
                                                        'id' => 'first_name', 'minlength' => '2',
                                                        'maxlength' => '24',
-                                                       'class' => 'required'))."</div>";
+                                                       'class' => 'required text'))."</div>";
     echo "<div class='clear'></div>";
     echo "<div style='text-align: right' class='grid_3 alpha'>".lang('last_name')."</div>";
     echo "<div class='grid_7 omega'>".form_input(array('name' => 'last_name',
                                                        'id' => 'last_name', 'minlength' => '2',
                                                        'maxlength' => '24',
-                                                       'class' => 'required'))."</div>";
+                                                       'class' => 'required text'))."</div>";
     echo "<div class='clear'></div>"; 
     echo "<div style='text-align: right' class='grid_3 alpha'>".lang('email')."</div>";
     echo "<div class='grid_7 omega'>".form_input('email', set_value('email'),"class='email required'")."</div>";
@@ -2737,7 +2737,7 @@
     echo "<div class='grid_7 omega'>".form_password(array('name' => 'password',
                                                           'id' => 'password',
                                                           'minlength' => '6',
-                                                          'class' => 'required'))."</div>";
+                                                          'class' => 'required text'))."</div>";
     echo "<div class='clear'></div><br/>";
     echo "<div class='grid_7 omega prefix_3'>".form_submit('create',lang('create_admin_account'),'class="button save"')."</div>";
     ?>

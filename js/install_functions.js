@@ -13,6 +13,7 @@ $(document).ready(function (){
     $("div.info, div.error, div.form_info, div.flashinfo").click(function () {
       $(this).hide("slow");
       });
+	$("select, input:checkbox, input:radio, input:file").uniform();
     
 });
 

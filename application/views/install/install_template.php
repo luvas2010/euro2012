@@ -11,6 +11,8 @@
     <link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>css/style.css" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+	    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.uniform.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/uniform.default.css" type="text/css" media="screen" charset="utf-8" />
 
 </head>
 <body>

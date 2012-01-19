@@ -15,7 +15,7 @@ class Shoutbox extends CI_Controller {
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
         if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);        
-        $this->lang->load(array('general', 'welcome'));
+        $this->lang->load(array('general', 'welcome', 'shouts'));
     }
     
     function index()
@@ -26,10 +26,15 @@ class Shoutbox extends CI_Controller {
     function add()
     {
         $this->load->library('session');
-        $this->load->helper('date');
+        $this->load->helper(array('language','date'));
         $this->load->model(array('account_model', 'account_details_model'));
         $user = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		$user_details = $this->account_details_model->get_by_account_id($this->session->userdata('account_id'));
+		$this->db->select('language');
+        $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
+        $lang = $query->row_array();
+        if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);        
+        $this->lang->load(array('general', 'welcome'));
         $shout = addslashes(strip_tags(trim($this->input->post('shouttxt'))));
         $account_id = $user->id;
         $username = $user->username;
@@ -57,15 +62,15 @@ class Shoutbox extends CI_Controller {
 		elseif ($doublepost >0)
 		{
 			
-			echo "<p class='error centertext'>you already said that</p>";
+			echo "<div class='error centertext'>".lang('you_already_said_that')."</div>";
 		}
 		elseif ($freqpost >0)
         {
-			echo "<p class='error centertext'>Not so fast</p>";
+			echo "<div class='error centertext'>".lang('not_so_fast')."</div>";
 		}
 		elseif (strlen($shout > 255))
 		{
-			echo "<p class='error centertext'>Too long!</p>";
+			echo "<div class='error centertext'>".lang('message_too_long')."</div>";
 		}
 		echo $this->getshouts(5);
 		
@@ -93,7 +98,7 @@ class Shoutbox extends CI_Controller {
                     $imgstring = "<img src='".base_url()."resource/img/default-picture.gif' alt='' width='50px' height='50px'  style='float:left;'/>";
             }
             $html .= "<p><span class='boldtext'>".$shout['username'].", ".mdate("%d %M %Y %H:%i",$shout['postedon'])."</span></p>".$imgstring."<p>".$shout['message']."</p>";
-            if ($shout['account_id'] == $this->session->userdata('account_id'))
+            if ($shout['account_id'] == $this->session->userdata('account_id') || is_admin())
             {
                 $html .= "<a href='".site_url('shoutbox/delete')."/".$shout['id']."'>Delete</a><hr/>";
             }
@@ -114,6 +119,32 @@ class Shoutbox extends CI_Controller {
         $this->session->set_flashdata('info', lang('shout_deleted'));
         redirect('/');
     }
+	
+	function showall()
+	{
+		if ($this->authentication->is_signed_in())
+        {
+			setlocale(LC_TIME, 'nl_NL');
+			$sql_query = "SELECT * FROM `shoutbox` ORDER BY `postedon` DESC";
+			$query = $this->db->query($sql_query);
+			$shouts = $query->result_array();
+			
+		$data = array(
+			'shouts'           => $shouts,
+			'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
+			'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+			'title'				=> lang('all_shouts'),
+			'content_main'		=> 'shoutbox'
+			);
+        
+        $this->load->view('template/template', $data);
+
+		}
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('shoutbox/showall'));
+        }
+	}
 }
 
 

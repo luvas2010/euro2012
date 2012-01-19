@@ -31,6 +31,13 @@ $lang['points_awarded'] = '<div class="info">
                           </div>';
 $lang['total_goals_pred'] = "total number of goals";
 $lang['champion_pred'] = "Euro2012 Champion";
-$lang['result_rules'] = "The result of a match is considered the result after possible extra time. If a match is decided through a penalty-shootout, goals scored in the shootou do not count.";						  
+$lang['result_rules'] = "The result of a match is considered the result after possible extra time. If a match is decided through a penalty-shootout, goals scored in the shootou do not count.";
+
+
+$lang['total_money'] = "%s users have signed up. If they all pay %s, there will be %s in the bank.";
+$lang['money_payed_out'] = "Of this, %s%% will be payed out (that is %s)";
+$lang['money_distribution'] = "The payout";
+$lang['winner'] =  "Winner";
+$lang['number'] = "Number";					  
 /* End of file rules_lang.php */
 /* Location: ./application/language/en/rules_lang.php */

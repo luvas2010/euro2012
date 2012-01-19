@@ -96,8 +96,8 @@ class Sign_up extends CI_Controller {
                     //user has to be verified first
                     $data['title'] = lang('website_title');
                     $data['content_main'] = "home";
-                    $data['error'] = lang('verify_before_signin');
-                    $this->load->view('template/template', $data);
+                    $this->session->set_flashdata('info',lang('verify_before_signin'));
+					$this->load->view('template/template', $data);
                     $skip = 1;
                 }
             }

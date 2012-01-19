@@ -44,9 +44,8 @@
         </div>
         <?php } ?>
         <div id="shoutbox">
-            <h3><?php echo lang('user_messages');?></h3>
-            
-			<input type="text" id="shout" name="shout" maxlength="255" value="<?php echo lang('type_message_here');?>" class='text' />
+            <h3><?php echo anchor('shoutbox/showall',lang('user_messages'),"title='".lang('show_all_shouts')."'");?></h3>
+            <input type="text" id="shout" name="shout" maxlength="255" value="<?php echo lang('type_message_here');?>" class='text' />
             <input type="submit" id="shout_submit" value="<?php echo lang('post_message'); ?>" class="button user_comment" />
 			
             <div id="shoutlist">
@@ -83,12 +82,20 @@
         </div>
     </div> <!-- end column1 -->
     <div class='grid_4'>
-            
+            <?php if(!tournament_done())
+			{ ?>
 			<h3><?php echo lang('next_matches'); ?></h3>
             <?php
             // get_next_matches( number_of_matches, format = "<li>%matchtime%: %home% - %away% (%prediction%)</li>"
             echo get_next_matches(2,"<p class='centertext boldtext'>%group%<br/>%matchtime%</p><p class='grid_2 alpha centertext boldtext'>%homeshirt%<br/>%home%</p><p class='grid_2 omega centertext boldtext'>%awayshirt%<br/>%away%</p><p class='grid_4 alpha omega centertext'>( %prediction% )</p><p class=' grid_4 alpha omega centertext'>%chart%</p>");
             ?>
+			<?php 
+			}
+			else
+			{
+			?>
+			Match 31 has been calculated. Game over.
+			<?php } ?>
     </div>
      <div id="column2" class="grid_5 omega">
 		<div class="grid_5 alpha omega">
@@ -242,16 +249,7 @@
                            
                 ?>
 		</div>
-        <div class="clear"></div>
-		<div class="grid_3 alpha">
-
-        </div>        
-            <?php echo get_missing_result_list(array(
-                                        'heading'   => "<h4 class='to_do'>%heading%</h4>",
-                                        'pre'       => "<ul class='matchlist'>",
-                                        'post'      => "</ul>",
-                                        'listitem'  => "<li>%matchlink%</li>")
-                                        ); ?>
+        <div class="clear"></div>       
         <?php }
 		else
 		{
