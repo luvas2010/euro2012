@@ -1,4 +1,4 @@
-<div class='container_12'>
+<div id='shoutbox' class='container_12'>
 <?php
 
 foreach ($shouts as $shout)

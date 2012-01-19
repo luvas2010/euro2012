@@ -697,6 +697,10 @@ a.coins_add, input.coins_add, button.coins_add {
 a.user_go, input.user_go, button.user_go {
     background: url(icons/user_go.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
+    }
+a.comment_delete, input.comment_delete, button.comment_delete {
+    background: url(icons/comment_delete.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
     } 	
     a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
@@ -912,4 +916,22 @@ input#shout {
 
 #recaptcha_widget_div {
     margin: 5px 0 10px;
+    }
+
+/* Shoutbox styles */    
+
+#shoutbox h6 {
+    font-weight: bold;
+    font-size: 1.1em;
+    border-bottom: 1px solid #ccc;
+    margin-bottom:6px;
+    padding-bottom:3px;
+    }
+    
+#shoutbox img {
+    margin: 0 6px 3px 0;
+    }
+
+.shoutwrapper {
+    margin-bottom:10px;
     }

@@ -6,7 +6,7 @@ class Shoutbox extends CI_Controller {
     {
         parent::__construct();
         
-        // Load the necessary stuff...
+        //Load the necessary stuff...
         $this->load->helper(array('language', 'url', 'form', 'ssl'));
         $this->load->library(array('authentication'));
         $this->load->model(array('account_model'));
@@ -23,7 +23,7 @@ class Shoutbox extends CI_Controller {
 
     }
     
-    function add()
+    function addshout()
     {
         $this->load->library('session');
         $this->load->helper(array('language','date'));
@@ -34,7 +34,7 @@ class Shoutbox extends CI_Controller {
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
         if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);        
-        $this->lang->load(array('general', 'welcome'));
+        $this->lang->load(array('general', 'welcome', 'shouts'));
         $shout = addslashes(strip_tags(trim($this->input->post('shouttxt'))));
         $account_id = $user->id;
         $username = $user->username;
@@ -49,9 +49,9 @@ class Shoutbox extends CI_Controller {
 		if($doublepost == 0 && $freqpost == 0 && strlen($shout) <= 255 && strlen($shout) > 2)
 		{
 			$sql_query = "INSERT INTO `shoutbox` (
-							`account_id` ,
-							`username` ,
-							`message` ,
+							`account_id`,
+							`username`,
+							`message`,
 							`postedon`
 							)
 							VALUES (
@@ -73,6 +73,7 @@ class Shoutbox extends CI_Controller {
 			echo "<div class='error centertext'>".lang('message_too_long')."</div>";
 		}
 		echo $this->getshouts(5);
+
 		
     }
 
