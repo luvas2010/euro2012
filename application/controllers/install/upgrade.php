@@ -15,6 +15,12 @@ class Upgrade extends CI_Controller {
     public function index()
     {
         //$sql_query = "ALTER TABLE `prediction` ADD `pred_points_total` INT NULL DEFAULT '0' AFTER `pred_points_away_team`";
+        
+        if(!$this->db->field_exists('pred_points_total', 'prediction'))
+        {
+            $sql_query[] = "ALTER TABLE `prediction` ADD `pred_points_total` INT NULL DEFAULT '0' AFTER `pred_points_away_team`"; //to version 1.1
+        }
+        
         if(!$this->db->field_exists('payed','account'))
         {
             $sql_query[] = "ALTER TABLE `account` ADD `payed` TINYINT NOT NULL DEFAULT '0'"; //to version 1.2

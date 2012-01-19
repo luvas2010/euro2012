@@ -47,7 +47,7 @@
             <td class='bigtext'>
                 <?php echo $prediction['pred_points_total']; ?>
             </td>
-            <td><?php echo unix_to_human($prediction['timestamp'],FALSE,'eu'); ?></td>
+            <td><?php echo mdate("%d %M %Y %H:%i",$prediction['timestamp']); ?></td>
             <td><?php echo anchor('predictions/edit_match/'.$prediction['match_uid'],lang('prediction'), 'class="button small"'); ?></td>
         </tr>
         <?php } ?>  

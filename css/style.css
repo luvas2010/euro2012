@@ -279,7 +279,7 @@ tr.alt td {
     display:none;
     }
 div.warnings {
-    margin-top:33px;
+    /*margin-top:33px;*/
     background: #CB2026;
     }
     
@@ -358,7 +358,7 @@ label {
     width:              100%;
     }
 .nav_container {
-
+    /*overflow:hidden;*/
     margin: 0 auto;
     width: 1000px;
     }
@@ -921,7 +921,7 @@ input#shout {
 /* Shoutbox styles */    
 
 #shoutbox h6 {
-    font-weight: bold;
+    
     font-size: 1.1em;
     border-bottom: 1px solid #ccc;
     margin-bottom:6px;
@@ -934,4 +934,5 @@ input#shout {
 
 .shoutwrapper {
     margin-bottom:10px;
+    overflow:hidden;
     }

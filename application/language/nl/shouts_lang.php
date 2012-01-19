@@ -2,4 +2,4 @@
 
 $lang['shout_header']           = "Geplaatst door %s op %s om %s uur";
 $lang['all_shouts']             = "Alle berichten";
-$lang['delete_shout']           = "Bericht verwijderen";
+$lang['delete_shout']           = "Verwijderen";
