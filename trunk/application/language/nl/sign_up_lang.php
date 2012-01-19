@@ -25,7 +25,7 @@ $lang['sign_up_username_taken']                 = 'Deze gebruikersnaam is al in 
 $lang['sign_up_email_exist']                    = 'Dit e-mail adres is al voor een andere gebruiker geregistreerd.';
 $lang['sign_up_forgot_your_password']           = 'Wachtwoord vergeten?';
 
-$lang['verify_before_signin']                   = 'Er is een email gestuurd naar de beheerder om je account te activeren. Je krijgt een email zodra je account geactiveerd is.';
+$lang['verify_before_signin']                   = 'Er is een email gestuurd naar de beheerder om je account te activeren. Je krijgt een email zodra je account geactiveerd is, daarna kun je inloggen.';
 
 $lang['signup_email_subject']                   = 'Nieuwe gebruiker aangemeld';
 $lang['signup_email_message']                   = 'Een nieuwe gebruiker is aangemeld met gebruikersnaam: %s<br/><br/>';

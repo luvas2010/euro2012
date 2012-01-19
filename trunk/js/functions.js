@@ -17,7 +17,7 @@ $(document).ready(function (){
                                // due to slight rounding differences and font-family 
         }).superfish();
 
-    $("div.info, div.error, div.form_info, div.flashinfo").click(function () {
+    $("div.info, div.error, p.error, div.form_info, div.flashinfo").click(function () {
       $(this).hide("slow");
       });
     
@@ -29,6 +29,7 @@ $(document).ready(function (){
    $('#navigation').pinHeader();
    $('.warnings h5').click(function() {
     $('.warning').slideToggle("slow");
+	
     });
    $(function() {
       var p = $(".warnings h5");

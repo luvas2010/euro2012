@@ -19,7 +19,7 @@ $config['verify_users'] = TRUE; // Admin has to verify users before they can log
 $config['email_from_address'] = 'info@voetbalpool2012.nl';  //e-mail address where emails are sent from. set this to your own (administrator) e-mail address
 
 /* TO DO: Payment config */
-$config['play_for_money'] = false; // Implement payout calculations
+$config['play_for_money'] = true; // Implement payout calculations
 $config['payment_per_user'] = '10'; // Amount payed per user
 $config['currency'] = '&euro;'; // Set this to the HTML code for your currency
 

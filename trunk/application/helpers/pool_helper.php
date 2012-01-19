@@ -1,5 +1,25 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+if ( ! function_exists('tournament_done'))
+{
+	function tournament_done()
+	{
+		$CI =& get_instance();
+		$sql_query = "SELECT * FROM `match` WHERE `match`.`match_uid` = 31";
+		$query = $CI->db->query($sql_query);
+		$row = $query->row_array();
+		
+		if ($row['match_calculated'] == 1)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+}
+
 if ( ! function_exists('is_admin'))
 {
     function is_admin()
@@ -287,7 +307,7 @@ if ( ! function_exists('get_next_matches') )
         $CI =& get_instance();
         $CI->load->helper(array('language', 'date'));
         $CI->load->language(array('general'));
-        $now = now();
+        $now = now() + $CI->config->item('time_offset');
         $account_id = $CI->session->userdata('account_id');
         $sql_query = "SELECT *
                       FROM `prediction`
@@ -304,31 +324,36 @@ if ( ! function_exists('get_next_matches') )
         $html = "";
         
         
-        
-        foreach ($matches as $match)
-        {
-            
-            $homestring = "<span class='teamflag ".$match['home_team']."'>".anchor('stats/view_team/'.$match['home_team'],get_team_name($match['home_team']))."</span>";
-            $awaystring = "<span class='teamflag ".$match['away_team']."'>".anchor('stats/view_team/'.$match['away_team'],get_team_name($match['away_team']))."</span>";
-            $string = str_replace('%home%', $homestring, $format);
-            $string = str_replace('%away%', $awaystring, $string);
-            $string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
-            $string = str_replace('%prediction%', lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals'], $string);
-            $string = str_replace('%group%', lang($match['match_group']), $string);
-            
-            $homeshirtstring = get_home_shirt($match['home_team'], 1);
-            $awayshirtstring = get_away_shirt($match['away_team'], 1);
-            
-            $string = str_replace('%homeshirt%', $homeshirtstring, $string);
-            $string = str_replace('%awayshirt%', $awayshirtstring, $string);
+        if ($query->num_rows() > 0)
+		{
+			foreach ($matches as $match)
+			{
+				
+				$homestring = "<span class='teamflag ".$match['home_team']."'>".anchor('stats/view_team/'.$match['home_team'],get_team_name($match['home_team']))."</span>";
+				$awaystring = "<span class='teamflag ".$match['away_team']."'>".anchor('stats/view_team/'.$match['away_team'],get_team_name($match['away_team']))."</span>";
+				$string = str_replace('%home%', $homestring, $format);
+				$string = str_replace('%away%', $awaystring, $string);
+				$string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
+				$string = str_replace('%prediction%', lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals'], $string);
+				$string = str_replace('%group%', lang($match['match_group']), $string);
+				
+				$homeshirtstring = get_home_shirt($match['home_team'], 1);
+				$awayshirtstring = get_away_shirt($match['away_team'], 1);
+				
+				$string = str_replace('%homeshirt%', $homeshirtstring, $string);
+				$string = str_replace('%awayshirt%', $awayshirtstring, $string);
 
-            $statsbutton = anchor('predictions/edit_match/'.$match['pred_match_uid'],lang('view_stats')." &amp; ".lang('prediction'), "class='button chart-bar'");
-            $string = str_replace('%chart%', $statsbutton, $string);
-                
-            
-            $html .= $string;
+				$statsbutton = anchor('predictions/edit_match/'.$match['pred_match_uid'],lang('view_stats')." &amp; ".lang('prediction'), "class='button chart-bar'");
+				$string = str_replace('%chart%', $statsbutton, $string);
+					
+				
+				$html .= $string;
+			}
         }
-             
+		else
+		{
+			$html = "<p>".lang('no_more_matches')."</p>";
+		}	
         return ($html);
     }
 }

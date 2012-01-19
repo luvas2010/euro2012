@@ -690,7 +690,14 @@ a.picture_delete, input.picture_delete, button.picture_delete {
     background: url(icons/picture_delete.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
     }
-    
+a.coins_add, input.coins_add, button.coins_add {
+    background: url(icons/coins_add.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.user_go, input.user_go, button.user_go {
+    background: url(icons/user_go.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    } 	
     a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;

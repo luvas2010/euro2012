@@ -25,7 +25,7 @@ $lang['sign_up_username_taken']                 = 'This Username is already take
 $lang['sign_up_email_exist']                    = 'This Email is already registered.';
 $lang['sign_up_forgot_your_password']           = 'Forgot your password?';
 
-$lang['verify_before_signin']                   = 'An email has been sent to the adminstrator to verify your account. You will be notified by email when your account has been verified.';
+$lang['verify_before_signin']                   = 'An email has been sent to the adminstrator to verify your account. You will be notified by email when your account has been verified. After verification you will be able to login.';
 
 $lang['signup_email_subject']                   = 'A new user registered';
 $lang['signup_email_message']                   = 'A new user has just registered with username: %s<br /><br />';

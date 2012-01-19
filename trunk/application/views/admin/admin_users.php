@@ -34,19 +34,19 @@
                 <td>
                     <?php if(!$user['is_admin'])
                             {
-                                echo anchor('admin/users/delete/'.$user['id'], lang('delete_user'), 'class="button delete"')."<br />";
+                                echo anchor('admin/users/delete/'.$user['id'], lang('delete_user'), 'class="button user_delete"')."<br />";
                                 //echo "<br />".anchor('admin/users/make_admin/'.$user['id'], 'Make Admin', 'class="button flag"');
                              }
                            if (!isset($user['verifiedon']))
                                 {    
-                                    echo anchor('admin/users/verify_user/'.$user['id'], lang('verify_user'), 'class="button add"');
+                                    echo anchor('admin/users/verify_user/'.$user['id'], lang('verify_user'), 'class="button user_go"');
                                 }
 						   $play_for_money = $this->config->item('play_for_money');
 						   if ($play_for_money == 1)
 						   {
 								if($user['payed'] == 0)
 								{
-									echo anchor('admin/users/user_payed/'.$user['id'], lang('mark_payed'), 'class="button add"');
+									echo anchor('admin/users/user_payed/'.$user['id'], lang('mark_payed'), 'class="button coins_add"');
 								}
 							}
                     ?>

@@ -42,7 +42,10 @@ $lang['no_info_yet'] = "No data yet";
 $lang['user_messages'] = "User Messages";
 $lang['post_message'] = "Post Message";
 $lang['not_so_fast'] = "You are posting too many messages after each other";
+$lang['message_too_long'] = "Your message is too long";
+$lang['you_already_said_that'] = "You already said that!";
 $lang['type_message_here'] = "Type your message here(max 255 characters)";
 $lang['shout_deleted']  = "Your message has been deleted";
+$lang['show_all_shouts'] = "Show all messages";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/english/welcome_lang.php */

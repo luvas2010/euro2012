@@ -40,7 +40,10 @@ $lang['no_info_yet'] = "Informatie nog niet beschikbaar";
 $lang['user_messages'] = "Berichten";
 $lang['post_message'] = "Plaats bericht";
 $lang['not_so_fast'] = "Je kunt niet zo snel achter elkaar berichten plaatsen";
+$lang['message_too_long'] = "Je berichtje is te lang";
+$lang['you_already_said_that'] = "Dat zei je net ook al!";
 $lang['type_message_here'] = "Typ je bericht hier";
 $lang['shout_deleted']  = "Je bericht is verwijderd";
+$lang['show_all_shouts'] = "Laat alle berichten zien";
 /* End of file welcome_lang.php */
 /* Location: ./application/language/nl/welcome_lang.php */
