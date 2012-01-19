@@ -64,7 +64,7 @@
 		$('#shout_submit').click(function() {
 			var shouttxt = $('#shout').val();
 			// alert(shouttxt);
-			$.post("<?php echo site_url('shoutbox/add'); ?>", { 'shouttxt' : shouttxt },
+			$.post("<?php echo site_url('shoutbox/addshout'); ?>", { 'shouttxt' : shouttxt },
 					function(data) {
 						//console.log(data);
 						$('#shoutlist').empty().append(data);
