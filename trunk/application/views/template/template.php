@@ -25,6 +25,7 @@
             <div class="nav_container">
                 <?php $this->load->view('navigation'); ?> 
             </div>
+            <div class='clear'></div>
         
         <?php 
         if ($this->authentication->is_signed_in())

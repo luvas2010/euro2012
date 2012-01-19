@@ -171,6 +171,17 @@ class Stats extends CI_Controller {
                 $query = $this->db->query($sql_query);
                 $user_team_pred_knockout_stage = $query->result_array();            
 
+                if ($num > 0)
+                {
+                    $avg_goals_for = number_format($total_goals_for/$num,2);
+                    $avg_goals_against = number_format($total_goals_against/$num,2);
+                }
+                else
+                {
+                    $avg_goals_for = 0;
+                    $avg_goals_against = 0;
+                }
+                
                 $data = array(
                             'group_stage'       => $group_stage,
                             'knockout_stage'    => $knockout_stage,
@@ -178,8 +189,8 @@ class Stats extends CI_Controller {
                             'num_champ'         => $num_champ,
                             'user_team_pred_group_stage'    => $user_team_pred_group_stage,
                             'user_team_pred_knockout_stage' => $user_team_pred_knockout_stage,
-                            'avg_goals_for'     => number_format($total_goals_for/$num,2),
-                            'avg_goals_against' => number_format($total_goals_against/$num,2),
+                            'avg_goals_for'     => $avg_goals_for,
+                            'avg_goals_against' => $avg_goals_against,
                             'team_uid'          => $team_uid,
                             'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
                             'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id'))

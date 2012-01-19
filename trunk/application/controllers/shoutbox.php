@@ -79,7 +79,7 @@ class Shoutbox extends CI_Controller {
 
     function getshouts($num)
     {
-        $this->load->helper(array('date', 'url'));
+        $this->load->helper(array('date', 'url', 'text'));
 		$this->load->model(array('account_model', 'account_details_model'));
 		$user = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		
@@ -98,10 +98,12 @@ class Shoutbox extends CI_Controller {
 			{
                     $imgstring = "<img src='".base_url()."resource/img/default-picture.gif' alt='' width='50px' height='50px'  style='float:left;'/>";
             }
-            $html .= "<p><span class='boldtext'>".$shout['username'].", ".mdate("%d %M %Y %H:%i",$shout['postedon'])."</span></p>".$imgstring."<p>".$shout['message']."</p>";
+            $shoutlink = anchor('shoutbox/showall#shout'.$shout['id'],character_limiter($shout['message'], 50));
+            $html .= "<p><span class='boldtext'>".$shout['username'].", ".mdate("%d %M %Y %H:%i",$shout['postedon'])."</span></p>".$imgstring."<p>".$shoutlink."</p>";
             if ($shout['account_id'] == $this->session->userdata('account_id') || is_admin())
             {
-                $html .= "<a href='".site_url('shoutbox/delete')."/".$shout['id']."'>Delete</a><hr/>";
+                //$html .= "<div class='clear'></div><a href='".site_url('shoutbox/delete')."/".$shout['id']."' class='button comment_delete'>".lang('delete_shout')." </a><hr/>";
+                $html .= "<hr/>";
             }
             else
             {
@@ -113,12 +115,18 @@ class Shoutbox extends CI_Controller {
 
     }
 
-    function delete($shout_id)
+    function delete($shout_id, $return = "")
     {
         $sql_query = "DELETE FROM `shoutbox` WHERE `id` = $shout_id";
         $query = $this->db->query($sql_query);
         $this->session->set_flashdata('info', lang('shout_deleted'));
-        redirect('/');
+        if ($return='box')
+        {
+        }
+        else
+        {
+            redirect('/');
+        }
     }
 	
 	function showall()
