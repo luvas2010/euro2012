@@ -1,5 +1,8 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['shout_header']           = "Posted by %s on %s at %s";
-$lang['all_shouts']             = "All messages";
-$lang['delete_shout']           = "Delete this message";
+$lang['all_shouts']								= 'All messages';
+$lang['shout_header']							= "%s said on %s at %s:";
+$lang['delete_shout']							= 'Delete';
+
+/* End of file sign_in_lang.php */
+/* Location: ./application/language/en/shouts_lang.php */
