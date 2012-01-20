@@ -125,8 +125,8 @@ $config['recaptcha_theme']              = "clean";
 | Twitter Applications - http://dev.twitter.com/apps
 | You will have to get your own set of keys if you want people to be able to sign in and sign up with Twitter
 */
-$config['twitter_consumer_key']         = "";
-$config['twitter_consumer_secret']      = "";
+$config['twitter_consumer_key']         = "cC4Mmpb1Tejs309SCDhaRg";
+$config['twitter_consumer_secret']      = "1EnYhmQbLc1YpNQseOQie7PjbQbmfE9eOip4YpcZ1q8";
 
 /*
 |--------------------------------------------------------------------------

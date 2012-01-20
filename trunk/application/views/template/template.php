@@ -30,7 +30,9 @@
         <?php 
         if ($this->authentication->is_signed_in())
         {
-            $admin_warning = 0;
+            $num_unpayed = 0;
+			$num_unverified = 0;
+			$admin_warning = 0;
 			if (is_admin())
 			{
 				if ($this->config->item('verify_users'))

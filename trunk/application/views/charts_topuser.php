@@ -90,7 +90,7 @@
                 <?php foreach ($topuser['match'] as $key => $match) {
                     $group = $topuser['group'][$key];
                     ?>
-                <td><?php echo anchor('standings/show/'.$topuser['userid'].'/'.$group,$match); $totalp = $totalp + $match; ?></td>
+                <td><?php echo anchor('predictions/show/'.$topuser['userid'].'/'.$group,$match); $totalp = $totalp + $match; ?></td>
                 <?php } ?>
                 <td class='centertext'><?php echo $totalp; ?></td>
             </tr>
