@@ -19,6 +19,17 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>js/pinheader.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.uniform.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>css/uniform.default.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-1632660-5']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
 </head>
 <body>
         <div id="navigation">
@@ -30,9 +41,7 @@
         <?php 
         if ($this->authentication->is_signed_in())
         {
-            $num_unpayed = 0;
-			$num_unverified = 0;
-			$admin_warning = 0;
+            $admin_warning = 0;
 			if (is_admin())
 			{
 				if ($this->config->item('verify_users'))
