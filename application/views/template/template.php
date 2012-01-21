@@ -41,6 +41,8 @@
         <?php 
         if ($this->authentication->is_signed_in())
         {
+			$num_unverified = 0;
+			$num_unpayed = 0;
             $admin_warning = 0;
 			if (is_admin())
 			{
