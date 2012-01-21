@@ -1,5 +1,4 @@
     <h2><?php echo $title; ?></h2>
-<?php echo $twitter_accounts[1]['screen_name']; ?>
     <table class='stripeMe'>
         <tr>
             <th>id</th>
@@ -29,7 +28,9 @@
 			if(isset($twitter_accounts[$user['id']]['screen_name']))
 			{
 				$screen_name = $twitter_accounts[$user['id']]['screen_name'];
-				echo $screen_name;
+				//echo $screen_name;
+                echo anchor('http://twitter.com/'.$screen_name, $screen_name, array('target' => '_blank', 'title' => $screen_name));
+                
             }
 			?>			
 			</td>
