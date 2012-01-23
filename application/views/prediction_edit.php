@@ -321,6 +321,10 @@
         
 	</div>	
 	<div class='grid_4 omega'>
+	<?php if (isset($predictions[0]))
+	{
+	
+	?>
     <h3 class='centertext'><?php echo lang('statistics'); ?></h3>
 	<p><?php echo sprintf(lang('statistics_prediction_help'), $num); ?></p>
         <div class='grid_4 alpha omega'>
@@ -445,5 +449,14 @@
                     ?>
             </ul>        
         </div>
+		<?php
+		}
+		else
+		{
+		?>
+			<div class='infostay'>
+				<?php echo lang('no_info_yet'); ?>
+			</div>
+		<?php } ?>
     </div>    
 </div>
