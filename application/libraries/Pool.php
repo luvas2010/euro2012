@@ -2,73 +2,84 @@
 
 class Pool {
 
-    // get_top_ranking(n) will return an array of the top n players
-    public function get_top_ranking($num)
-    {
-        
-        $CI =& get_instance();
-        $sql_query = "SELECT *
+	/* function get_top_ranking(number)
+	   Returns: a multidimensional array of the 'number' top ranked payers:
+	        [match] => Array
+                (
+                    [1] => points for this match_uid
+                    [..] => 
+                    
+                )
+
+            [aggregate] => Array
+                (
+                    [1] => total points after this match
+                    [..] =>
+                )
+
+            [username] => username
+            [group] => Array
+                (
+                    [1] => group for this match_uid
+                    [..] =>
+                )
+
+            [userid] => user's id
+            [points_total] => total points after all calculated matches
+	*/
+	public function get_top_ranking($num)
+	{
+	
+		$CI =& get_instance();
+		$sql_query = "SELECT *, SUM(`prediction`.`pred_points_total`) AS points_total
                 FROM `prediction`
                 JOIN `account`
                 ON  `account`.`id` = `prediction`.`account_id`
                 JOIN `match`
                 ON `match`.`match_uid` = `prediction`.`pred_match_uid`
                 AND `pred_calculated` = 1
-                GROUP BY `prediction`.`pred_match_uid`,`account_id`";
+                GROUP BY `account_id`
+				ORDER BY points_total DESC
+				LIMIT $num";
         
         $query = $CI->db->query($sql_query);
-        $results = $query->result_array();
-        if ($query->num_rows() > 0)
-        {
-            foreach ($results as $key => $row) {
-                        $total_points[$key]  = $row['pred_points_total'];
-                    }
-                    
-            // Sort the data with total_points descending
-                    array_multisort($total_points, SORT_DESC, $results);          
-
-            $i = 0;
-            foreach ($results as $t)
-            {
-                //if ($i >= $num) { break;}
-                $account_id = $t['account_id'];
-                $sql_query = "SELECT *
-                              FROM `prediction`
-                              JOIN `account`
-                              ON `account`.`id` = `prediction`.`account_id`
-                              AND `prediction`.`account_id` = $account_id
-                              AND `prediction`.`pred_calculated` = 1
-                              JOIN `match`
-                              ON `match`.`match_uid` = `prediction`.`pred_match_uid`
-                              ORDER BY `prediction`.`pred_match_uid`";
-                              
-                $query = $CI->db->query($sql_query);
-                $user_pred = $query->result_array();
-                $old = 0;
-                foreach ($user_pred as $pred)
-                {
-                    
-                    $user[$pred['account_id']]['match'][$pred['pred_match_uid']] = $pred['pred_points_total'];
-                    $user[$pred['account_id']]['aggregate'][$pred['pred_match_uid']] = $old + $pred['pred_points_total'];
-                    $user[$pred['account_id']]['username'] = $pred['username'];
-                    $user[$pred['account_id']]['group'][$pred['pred_match_uid']] = $pred['match_group'];
-                    $user[$pred['account_id']]['userid'] = $pred['account_id'];
-                    $old = $old + $pred['pred_points_total'];
-					$user[$pred['account_id']]['points_total'] = $old;
-                }
+        if($query->num_rows() > 0)
+		{
+			$rows = $query->result_array();
+			$i = 0;
+			foreach($rows as $row)
+			{
+				$user[$i]['username'] = $row['username'];
+				$user[$i]['points_total'] = $row['points_total'];
+				$user[$i]['userid'] = $row['account_id'];
 				
-                $i++;
-                
-            }
-            $topusers = array_slice($user,0, $num);
-        }
-        else
-        {
-            $topusers = 0;
-        }
-        return($topusers);
-        
-    }
+				$account_id = $row['account_id'];
+				$sql_query = "SELECT *
+							  FROM `prediction`
+							  JOIN `match`
+							  ON `match`.`match_uid` = `prediction`.`pred_match_uid`
+							  AND `prediction`.`account_id` = $row[account_id]
+							  AND `prediction`.`pred_calculated` = 1";
+				$query= $CI->db->query($sql_query);
+				$preds= $query->result_array();
+				$old = 0;
+				foreach($preds as $pred)
+				{
+					$user[$i]['match'][$pred['pred_match_uid']] = $pred['pred_points_total'];
+					$user[$i]['group'][$pred['pred_match_uid']] = $pred['match_group'];
+					$user[$i]['aggregate'][$pred['pred_match_uid']] = $old + $pred['pred_points_total'];
+					$old = $old + $pred['pred_points_total'];
+				}
+				$i++;
+			}
+		}
+		else
+		{
+			$user = 0; // no results yet
+		}	
+			
+		return $user;
+	}	
 
     public function calculate_group($group)
     {
