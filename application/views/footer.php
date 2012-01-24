@@ -2,19 +2,35 @@
         <div id="footer">
             <div class='container_12'>
                 <div class='grid_7 alpha'><?php
+                    $time_offset = $this->config->item('time_offset');
                     $this->load->helper('date');
                     $sql_query = "SELECT `timestamp` FROM `match` WHERE `match_uid` = 1";
                     $query = $this->db->query($sql_query);
                     $match = $query->row_array();
-                    $first_match = $match['timestamp'];
+                    $first_match = $match['timestamp'] - $time_offset;
                     echo "<p>CET: ";
-                    $time_offset = $this->config->item('time_offset');
+                    
                     $local_time = mdate("%l %d %F %Y %H:%i",now() - $time_offset);
                     //$local_time = unix_to_human(now() - $time_offset, FALSE, 'eu');
                     $unix_time =  now() - $time_offset;
                     if ($unix_time < $first_match)
                     {
-                        echo $local_time." (".timespan($unix_time, $first_match).")</p>";
+                        echo $local_time." (<span id='tournament_start'></span>)</p>";
+                        ?>
+                            <div id="countdown"></div>
+                            <script type='text/javascript'>
+                            $(document).ready(function (){
+
+                                var autoRefresh = setInterval(
+                                    function(){
+                                        $.ajax({
+                                        url: "<?php echo site_url('predictions/countdown/1'); ?>",
+                                        success: function(data) { $('#tournament_start').empty().append(data);}
+                                        });
+                                        }, 1000);
+                            });
+                            </script>
+                        <?php    
                     }
                     else
                     {

@@ -132,7 +132,7 @@
                         }
                     ?>
                 </td>
-                <td><?php echo mdate("%d %M %Y %H:%i",$prediction['timestamp']); ?>
+                <td><?php echo mdate("%d %M %Y %H:%i",$prediction['timestamp'] - $this->config->item('time_offset')); ?>
                     <?php echo form_hidden('prediction_uid['.$i.']',$pid); ?>
                     <?php echo form_hidden('pred_match_uid['.$i.']',$prediction['pred_match_uid']);?>
                 </td>

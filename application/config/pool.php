@@ -8,7 +8,7 @@
 
 $config['pool_name'] = 'Euro 2012 Voetbalpool';
 // Time offset
-$config['time_offset']  = '0'; // Time offset from CET (Central European Time) on the hosting server, in seconds
+$config['time_offset']  = '-21600'; // Time offset from CET (Central European Time) on the hosting server, in seconds
 $config['predictions_open'] = TRUE; // If set to TRUE users can predict match results until the match starts. If set to FALSE, users can predict match results until Match #1 starts
 $config['predictions_open_offset'] = '0'; //The amount of seconds predictions are closed before the start of a match. If 'predictions_open' is FALSE, the amount of seconds predictions are closed before Match #1 starts.
 

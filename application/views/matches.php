@@ -61,7 +61,7 @@
 			<td class='centertext'><?php echo anchor('predictions/edit_match/'.$match['match_uid'],$match['pred_home_goals']." - ".$match['pred_away_goals']); ?></td>
             <!-- <td class='centertext'><?php echo $match['pred_home_goals']." - ".$match['pred_away_goals']; ?></td> -->
             <td class='centertext'><?php echo $match['home_goals']." - ".$match['away_goals'];?></td>
-            <td><?php echo mdate("%d %M %Y %H:%i",$match['timestamp']); ?></td>
+            <td><?php echo mdate("%d %M %Y %H:%i",$match['timestamp'] - $this->config->item('time_offset')); ?></td>
             <td><?php echo anchor('predictions/edit_match/'.$match['match_uid'],lang('statistics'), 'class="button chart-bar"'); ?></td>
             <?php if($match['match_calculated'] == 1)
                   { ?>

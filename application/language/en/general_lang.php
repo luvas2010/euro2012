@@ -39,6 +39,7 @@ $lang['your_prediction']                        = 'your prediction';
 $lang['warnings']                               = 'Click here to read some warnings for you';
 $lang['not_payed_yet'] = "You have not payed yet. Please do this as soon as possible!";
 $lang['no_more_matches']						= 'All matches have been played';
+$lang['time_left']                              = 'Time left';
 /* navigation */
 
 $lang['navhome']           = 'Home';

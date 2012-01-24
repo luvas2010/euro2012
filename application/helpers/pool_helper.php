@@ -201,9 +201,10 @@ if ( ! function_exists('prediction_closed'))
         $match = $query->row_array(); 
         
         // Calculate if it is past kick-off time, with the configured offset if necessary
-        $now = now() - $CI->config->item('time_offset');
+        $time_offset = $CI->config->item('time_offset');
+        $now = now() - $time_offset;
         $offset = $CI->config->item('predictions_open_offset');
-        $closing_time = $match['timestamp'] - $offset;
+        $closing_time = $match['timestamp'] - $time_offset - $offset;
 
         if ($now < $closing_time)
         {

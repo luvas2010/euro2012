@@ -321,11 +321,31 @@
         
 	</div>	
 	<div class='grid_4 omega'>
-	<?php if (isset($predictions[0]))
+	<?php
+    if(!prediction_closed($prediction['pred_match_uid']) && $prediction['pred_calculated'] == 0)
+    {
+    ?>
+    <h3><?php echo lang('time_left'); ?></h3>
+    <div id="countdown"></div>
+    <script type='text/javascript'>
+    $(document).ready(function (){
+
+        var autoRefresh = setInterval(
+            function(){
+                $.ajax({
+                url: "<?php echo site_url('predictions/countdown/'.$prediction['pred_match_uid']); ?>",
+                success: function(data) { $('#countdown').empty().append(data);}
+                });
+                }, 1000);
+    });
+    </script>
+    <?php
+    }
+    ?>
+    <?php if (isset($predictions[0]))
 	{
-	
 	?>
-    <h3 class='centertext'><?php echo lang('statistics'); ?></h3>
+    <h3><?php echo lang('statistics'); ?></h3>
 	<p><?php echo sprintf(lang('statistics_prediction_help'), $num); ?></p>
         <div class='grid_4 alpha omega'>
         <?php echo sprintf(lang('who_will_win_stat'), anchor('stats/view_team/'.$predictions[0]['home_team'],lang($predictions[0]['home_team'])),anchor('stats/view_team/'.$predictions[0]['away_team'],lang($predictions[0]['away_team']))); ?>

@@ -1105,7 +1105,47 @@ class Predictions extends CI_Controller {
         {
             redirect('account/sign_in/?continue='.site_url('predictions/show').'/'.$account_id.'/'.$group);
         }
-    } 
+    }
+    
+    function countdown($match_uid)
+    {
+        $this->load->helper(array('date'));
+        
+        if ($this->config->item('predictions_open'))
+        {
+            // Predictions can be made until the match starts (with optional offset)
+            $sql_query = "SELECT * FROM `match`
+                          WHERE `match`.`match_uid` = '$match_uid'";
+
+        }
+        else
+        {
+            // Predictions are closed when the tournament starts (Match #1)
+            $sql_query = "SELECT * FROM `match`
+                          WHERE `match`.`match_uid` = '1'";
+           
+        }
+        
+        $query = $this->db->query($sql_query);
+        $match = $query->row_array(); 
+        
+        // Calculate if it is past kick-off time, with the configured offset if necessary
+        $time_offset = $this->config->item('time_offset');
+        $now = now() - $time_offset;
+        $offset = $this->config->item('predictions_open_offset');
+        $closing_time = $match['timestamp'] - $time_offset - $offset;
+
+        if ($now < $closing_time)
+        {
+            $time_left = timespan($now, $closing_time);
+        }
+        else
+        {
+            $time_left = "Match has started";
+        }
+        
+        echo $time_left;
+    }    
  
 }
 ?>
