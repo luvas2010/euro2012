@@ -52,32 +52,30 @@
             </div>
 			
 			<script type='text/javascript'>
-		$(document).ready(function (){
-        $("#shout").val('<?php echo lang('type_message_here'); ?>');
-		$("#shout").focus(function(){
-			// Check for the change
-			if(this.value == this.defaultValue){
-				$('#shout').val('');
-			}
-		});		
+                $(document).ready(function (){
+                    $("#shout").val('<?php echo lang('type_message_here'); ?>');
+                    $("#shout").focus(function(){
+                        // Check for the change
+                        if(this.value == this.defaultValue){
+                            $('#shout').val('');
+                        }
+                    });		
 
-		$('#shout_submit').click(function() {
-			var shouttxt = $('#shout').val();
-			// alert(shouttxt);
-			$.post("<?php echo site_url('shoutbox/addshout'); ?>", { 'shouttxt' : shouttxt },
-					function(data) {
-						//console.log(data);
-						$('#shoutlist').empty().append(data);
-						$('#shout').val('');
-						}
-				);
-		});
-    
-    $.ajax({
-            url: "<?php echo site_url('shoutbox/getshouts/5'); ?>",
-            success: function(data) { $('#shoutlist').empty().append(data);}
-            });
-			});
+                    $('#shout_submit').click(function() {
+                        var shouttxt = $('#shout').val();
+                        $.post("<?php echo site_url('shoutbox/addshout'); ?>", { 'shouttxt' : shouttxt },
+                                function(data) {
+                                    $('#shoutlist').empty().append(data);
+                                    $('#shout').val('');
+                                    }
+                            );
+                    });
+        
+                    $.ajax({
+                            url: "<?php echo site_url('shoutbox/getshouts/5'); ?>",
+                            success: function(data) { $('#shoutlist').empty().append(data);}
+                            });
+                });
 			</script>
         </div>
     </div> <!-- end column1 -->

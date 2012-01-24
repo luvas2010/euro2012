@@ -39,6 +39,7 @@ $lang['your_prediction']                        = 'jouw voorspelling';
 $lang['warnings']                               = 'Je hebt waarschuwingen. Klik hier om ze te zien!';
 $lang['not_payed_yet'] = "Je hebt nog niet betaald. Doe dit zo snel mogelijk!";
 $lang['no_more_matches']						= 'Alle wedstrijden zijn op dit moment gespeeld';
+$lang['time_left']                              = 'Aftellen';
 /* navigation */
 
 $lang['navhome']        = 'Home';
