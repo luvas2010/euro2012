@@ -1107,6 +1107,7 @@ class Predictions extends CI_Controller {
         }
     }
     
+	// This function gets you a countdown timer to the given match_uid. Use match_uid = 1 for the first game of the tournament
     function countdown($match_uid)
     {
         $this->load->helper(array('date'));
