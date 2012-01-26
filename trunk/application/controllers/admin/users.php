@@ -9,6 +9,9 @@ class Users extends CI_Controller {
         $this->load->library(array('authentication'));
         $this->load->model(array('account_model'));
         $this->load->model(array('account_details_model'));
+        $this->load->model(array('account_twitter_model'));
+        $this->load->model(array('account_facebook_model'));
+		$this->load->model(array('account_openid_model'));
         $this->db->select('language');
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
@@ -23,6 +26,8 @@ class Users extends CI_Controller {
             $sql_query = "SELECT *
                            FROM `account`
                            JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
+                           LEFT JOIN `account_facebook` ON `account_facebook`.`account_id` = `account`.`id`
+                           LEFT JOIN `account_twitter` ON `account_twitter`.`account_id` = `account`.`id`
                            ORDER BY `account`.`username`";
             $query = $this->db->query($sql_query);
             $users = $query->result_array();

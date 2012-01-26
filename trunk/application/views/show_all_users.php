@@ -37,12 +37,10 @@
 			</td>
 			<td>
 			<?php
-			if(isset($twitter_accounts[$user['id']]['screen_name']))
+			if(isset($users_social[$user['id']]['twitter_id']))
 			{
-				$screen_name = $twitter_accounts[$user['id']]['screen_name'];
-				//echo $screen_name;
-                echo anchor('http://twitter.com/'.$screen_name, $screen_name, array('target' => '_blank', 'title' => $screen_name));
-                
+                //echo anchor('http://twitter.com/'.$screen_name, $screen_name, array('target' => '_blank', 'title' => $screen_name));
+                echo anchor('https://twitter.com/account/redirect_by_id?id='.$users_social[$user['id']]['twitter_id'], 'Twitter profile');
             }
 			?>			
 			</td>
