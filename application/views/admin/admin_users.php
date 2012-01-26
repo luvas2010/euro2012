@@ -1,3 +1,6 @@
+<!-- <pre>
+<?php print_r($users); ?>
+</pre> -->
 <div class="container_12">
     <div class="grid_12 alpha omega">
         <h2><?php echo $title; ?></h2>
@@ -20,14 +23,25 @@
                 </td>
                 <td class="smalltext">    
                     <?php echo lang('email_address').": ".safe_mailto($user['email'])."<br />"; ?>
+                    <?php
+                    if ($user['twitter_id'] != "")
+                    { 
+                        https://twitter.com/account/redirect_by_id?id=783214
+                        echo 'Twitter ID: '. anchor('https://twitter.com/account/redirect_by_id?id='.$user['twitter_id'], $user['twitter_id']).'<br/>';
+                    } ?>
+                    <?php
+                    if ($user['facebook_id'] != "")
+                    {
+                        echo 'Facebook ID: '. anchor('http://facebook.com/profile.php?id='.$user['facebook_id'],$user['facebook_id']).'<br/>';
+                    } ?>
                     <?php echo lang('company').": ".$user['company']; ?>                    
                 </td>
                 <td class="smalltext">    
-                    <?php echo lang('created_on').": ".$user['createdon']."<br />";?>
-                    <?php echo lang('last_signed_in_on').": ".$user['lastsignedinon']."<br />";?>
+                    <?php echo lang('created_on').":<br/>".$user['createdon']."<br />";?>
+                    <?php echo lang('last_signed_in_on').":<br/>".$user['lastsignedinon']."<br />";?>
                     <?php if (isset($user['verifiedon']))
                           {
-                            echo lang('verified_on').": ".$user['verifiedon'];
+                            echo lang('verified_on').":<br/>".$user['verifiedon'];
                           }
                      ?>                     
                 </td>            
