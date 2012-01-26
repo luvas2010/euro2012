@@ -4,8 +4,16 @@
             <th>id</th>
 			<th><?php echo lang('username'); ?></th>
 			<th><?php echo lang('points'); ?></th>
-			<th>Facebook</th>
+			<?php 
+            if ($this->config->item('public_social_links'))
+            {
+            ?>
+            <th>Facebook</th>
 			<th>Twitter</th>
+            <?php
+            }
+            ?>
+            <th>E-mail</th>
         </tr>
 		
         <?php foreach($users as $user) { ?>
@@ -13,6 +21,10 @@
             <td><?php echo $user['id']; ?></td>
 			<td><?php echo $user['username']; ?></td>
 			<td><?php echo $user['points_total']; ?></td>
+            <?php 
+            if ($this->config->item('public_social_links'))
+            {
+            ?>
 			<td>
 			<?php
 			if (isset($users_social[$user['id']]['facebook_id']))
@@ -34,6 +46,10 @@
             }
 			?>			
 			</td>
+            <?php
+            }
+            ?>
+            <td><?php echo safe_mailto($user['email'],$user['email']); ?> </td>
         </tr>
         <?php } ?>  
     </table>
