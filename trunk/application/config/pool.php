@@ -13,6 +13,7 @@ $config['predictions_open'] = TRUE; // If set to TRUE users can predict match re
 $config['predictions_open_offset'] = '0'; //The amount of seconds predictions are closed before the start of a match. If 'predictions_open' is FALSE, the amount of seconds predictions are closed before Match #1 starts.
 
 $config['public_predictions'] = true; // If set to TRUE, people can see other user's predictions.
+$config['public_social_links'] = false; // If set to TRUE, users can see each others linked social network accounts
 
 $config['sign_up_email_admin'] = TRUE; // Send the admin account an e-mail when a new user signs up
 $config['verify_users'] = TRUE; // Admin has to verify users before they can login
