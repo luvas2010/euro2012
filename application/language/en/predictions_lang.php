@@ -13,7 +13,7 @@ $lang['overview_of_predictions_for']    = "Overview of predictions for %s";
 $lang['edit_all_predictions']           = "Edit All Predictions";
 $lang['prediction']                     = "Prediction";
 $lang['points_scored']                  = "Points Scored";
-$lang['total_points_awarded']           = "For this match you are awarded <span class='boldtext'>%s points</span>."
+$lang['total_points_awarded']           = "For this match you are awarded <span class='boldtext'>%s points</span>.";
 $lang['goals_correct']             = "You had the number of goals for %s correct, that is <span class='boldtext'>%s points</span>";
 $lang['result_right_win']               = "You predicted the result right, %s won the match against %s. This is awarded with <span class='boldtext'>%s punten</span>.";
 $lang['result_right_tie']               = "You predicted the result right, %s and %s were tied. This is awarded with <span class='boldtext'>%s punten</span>.";
