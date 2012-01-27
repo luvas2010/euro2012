@@ -74,26 +74,9 @@ class Users extends CI_Controller {
                 $query = $this->db->query($sql_query);
                 $sql_query = "DELETE FROM `prediction` WHERE `account_id` = '$account_id'";
                 $query = $this->db->query($sql_query);
-
-                $sql_query = "SELECT *
-                               FROM `account`
-                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
-                               ORDER BY `account`.`username`";
-                $query = $this->db->query($sql_query);
-                $users = $query->result_array();
-
-                $this->load->library('pool');
-               
-                $data = array(
-                            'users'   => $users,
-                            'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
-                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
-                            'content_main' => 'admin/admin_users',
-                            'title' => lang('usermanagement'),
-                            'info' => sprintf(lang('account_deleted'),$username)
-                            );
-               
-                $this->load->view('template/template', $data);
+                
+                $this->session->set_flashdata('info', sprintf(lang('account_deleted'),$username));
+                redirect('admin/users');
             }
             else
             {
@@ -127,6 +110,10 @@ class Users extends CI_Controller {
                 redirect('/');
             }
         }
+        else
+        {
+            redirect('account/sign_in');
+        }
     }
     
     function make_admin($account_id)
@@ -152,10 +139,8 @@ class Users extends CI_Controller {
     
     function verify_user($account_id)
     {
-        if ($this->authentication->is_signed_in())
+        if ($this->authentication->is_signed_in() && is_admin())
         {
-            if (is_admin())
-            {
                 $now = mdate('%Y-%m-%d %H:%i:%s', now());
                 $sql_query = "UPDATE `account`
                               SET `verifiedon` = '$now'
@@ -193,36 +178,19 @@ class Users extends CI_Controller {
                     @$this->email->send();
                 }                
                 
-
-                $sql_query = "SELECT *
-                               FROM `account`
-                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
-                               ORDER BY `account`.`username`";
-                $query = $this->db->query($sql_query);
-                $users = $query->result_array();
-
-                $this->load->library('pool');
-               
-                $data = array(
-                            'users'   => $users,
-                            'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
-                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
-                            'content_main' => 'admin/admin_users',
-                            'title' => lang('usermanagement'),
-                            'info' => sprintf(lang('account_verified'),$username, $user_email)
-                            );
-               
-                $this->load->view('template/template', $data);
-            }
+                $this->session->set_flashdata('info', sprintf(lang('account_verified'),$username, $user_email));
+                redirect('admin/users/unverified');
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('admin/users/unverified'));
         }
     }                              
 
     function user_payed($account_id)
     {
-        if ($this->authentication->is_signed_in())
+        if ($this->authentication->is_signed_in() && is_admin())
         {
-            if (is_admin())
-            {
                 $sql_query = "UPDATE `account`
                               SET `payed` = 1
                               WHERE `account`.`id` = '$account_id'";
@@ -259,25 +227,13 @@ class Users extends CI_Controller {
                     @$this->email->send();
                 }                
                 
+                $this->session->set_flashdata('info', sprintf(lang('account_payed'),$username, $user_email));
+                redirect('admin/users/unpayed');
 
-                $sql_query = "SELECT *
-                               FROM `account`
-                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
-                               ORDER BY `account`.`username`";
-                $query = $this->db->query($sql_query);
-                $users = $query->result_array();
-               
-                $data = array(
-                            'users'   => $users,
-                            'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
-                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
-                            'content_main' => 'admin/admin_users',
-                            'title' => lang('usermanagement'),
-                            'info' => sprintf(lang('account_payed'),$username, $user_email)
-                            );
-               
-                $this->load->view('template/template', $data);
-            }
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('admin/users/unpayed'));
         }
     }                              
 
@@ -292,10 +248,12 @@ class Users extends CI_Controller {
             if (is_admin())
             {
                 $sql_query = "SELECT *
-                               FROM `account`
-                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
-                               AND `account`.`verifiedon` IS NULL
-                               ORDER BY `account`.`username`";
+                           FROM `account`
+                           JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
+                           AND `account`.`verifiedon` IS NULL
+                           LEFT JOIN `account_facebook` ON `account_facebook`.`account_id` = `account`.`id`
+                           LEFT JOIN `account_twitter` ON `account_twitter`.`account_id` = `account`.`id`
+                           ORDER BY `account`.`username`";                               
                 $query = $this->db->query($sql_query);
                 $users = $query->result_array();
 
@@ -331,10 +289,12 @@ class Users extends CI_Controller {
             if (is_admin())
             {
                 $sql_query = "SELECT *
-                               FROM `account`
-                               JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
-                               AND `account`.`payed` = 0
-                               ORDER BY `account`.`username`";
+                           FROM `account`
+                           JOIN `account_details` ON `account`.`id` = `account_details`.`account_id`
+                           AND `account`.`payed` = 0
+                           LEFT JOIN `account_facebook` ON `account_facebook`.`account_id` = `account`.`id`
+                           LEFT JOIN `account_twitter` ON `account_twitter`.`account_id` = `account`.`id`
+                           ORDER BY `account`.`username`";
                 $query = $this->db->query($sql_query);
                 $users = $query->result_array();
 
