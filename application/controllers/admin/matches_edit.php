@@ -46,67 +46,73 @@ class Matches_edit extends CI_Controller {
             if ($action == 'save')
             {
             
-            foreach ($post_array['delete'] as $match_uid => $value)
+            if(isset($post_array['delete']))
             {
-                $this->load->library('pool');
-                $this->pool->delete_calc($match_uid);
+                foreach ($post_array['delete'] as $match_uid => $value)
+                {
+                    $this->load->library('pool');
+                    $this->pool->delete_calc($match_uid);
+                }
             }
             
-            foreach ($post_array['save'] as $match_uid => $value)
+            if(isset($post_array['save']))
             {
+                foreach ($post_array['save'] as $match_uid => $value)
+                {
 
-                for ($i=0;$i<$num;$i++)
-                {
-                    $match_uid = $post_array['match_uid'][$i];
-                    if ($post_array['home_goals'][$i] != "")
+                    for ($i=0;$i<$num;$i++)
                     {
-                        $home_goals = $post_array['home_goals'][$i];
-                        $home_goals_sql = "`home_goals` =  '$home_goals'";
-                    }
-                    else
-                    {
-                        $home_goals_sql = "`home_goals` =  NULL";
-                    }
-                    if ($post_array['away_goals'][$i] != "")
-                    {
-                        $away_goals = $post_array['away_goals'][$i];
-                        $away_goals_sql = "`away_goals` =  '$away_goals'";
-                    }
-                    else
-                    {
-                        $away_goals_sql = "`away_goals` =  NULL";
-                    }
-                    $sql_query = "UPDATE `match`
-                                  SET ".$home_goals_sql.",
-                                       ".$away_goals_sql."
-                                  WHERE `match_uid` = '$match_uid'";
-                    $query = $this->db->query($sql_query);
-                    
-                    if ($match_uid == 31)
-                    {
-                        $champion = $this->input->post('champion');
+                        $match_uid = $post_array['match_uid'][$i];
+                        if ($post_array['home_goals'][$i] != "")
+                        {
+                            $home_goals = $post_array['home_goals'][$i];
+                            $home_goals_sql = "`home_goals` =  '$home_goals'";
+                        }
+                        else
+                        {
+                            $home_goals_sql = "`home_goals` =  NULL";
+                        }
+                        if ($post_array['away_goals'][$i] != "")
+                        {
+                            $away_goals = $post_array['away_goals'][$i];
+                            $away_goals_sql = "`away_goals` =  '$away_goals'";
+                        }
+                        else
+                        {
+                            $away_goals_sql = "`away_goals` =  NULL";
+                        }
                         $sql_query = "UPDATE `match`
-                                      SET `winning_team` = '$champion'
+                                      SET ".$home_goals_sql.",
+                                           ".$away_goals_sql."
                                       WHERE `match_uid` = '$match_uid'";
-                        $query = $this->db->query($sql_query);              
+                        $query = $this->db->query($sql_query);
+                        
+                        if ($match_uid == 31)
+                        {
+                            $champion = $this->input->post('champion');
+                            $sql_query = "UPDATE `match`
+                                          SET `winning_team` = '$champion'
+                                          WHERE `match_uid` = '$match_uid'";
+                            $query = $this->db->query($sql_query);              
+                        }
+                        
                     }
-                    
-                }
-                $this->load->library('pool');
-                foreach ($post_array['save'] as $key => $value)
-                {
-                    if ($key >= 1  and $key <= 31)
+                    $this->load->library('pool');
+                    foreach ($post_array['save'] as $key => $value)
                     {
-                        $num_calc = $this->pool->calculate_match($key);
-                        $this->session->set_flashdata('info', sprintf(lang('data_saved_and_calculated'), $num_calc));
-                    }
-                    elseif ($key == 99)
-                    {
-                        $this->session->set_flashdata('info', lang('data_saved'));
-                    }
-                    else
-                    {
-                        $this->session->set_flashdata('info', 'WTF?');
+                        if ($key >= 1  and $key <= 31)
+                        {
+                            $num_calc = $this->pool->calculate_match($key);
+                            $this->session->set_flashdata('info', sprintf(lang('data_saved_and_calculated'), $num_calc));
+                        }
+                        elseif ($key == 99)
+                        {
+                            $this->session->set_flashdata('info', lang('data_saved'));
+                        }
+                        else
+                        {
+                            $this->session->set_flashdata('info', 'WTF?');
+                        }
                     }
                 }
             }
