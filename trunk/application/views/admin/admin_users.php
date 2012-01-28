@@ -26,7 +26,6 @@
                     <?php
                     if ($user['twitter_id'] != "")
                     { 
-                        https://twitter.com/account/redirect_by_id?id=783214
                         echo 'Twitter ID: '. anchor('https://twitter.com/account/redirect_by_id?id='.$user['twitter_id'], $user['twitter_id']).'<br/>';
                     } ?>
                     <?php
