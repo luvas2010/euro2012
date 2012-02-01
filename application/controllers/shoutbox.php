@@ -122,6 +122,7 @@ class Shoutbox extends CI_Controller {
         $this->session->set_flashdata('info', lang('shout_deleted'));
         if ($return='box')
         {
+			redirect('shoutbox/showall');
         }
         else
         {
