@@ -2,6 +2,28 @@
     <div class='grid_12 alpha omega'>
         <h2><?php echo $title;?></h2>
         <div class='clear'></div>
+        <div class='buttons'>
+            <?php echo anchor('admin/check_settings/cat/0', lang('category_0'), 'class="button"');?>
+            <?php echo anchor('admin/check_settings/cat/1', lang('category_1'), 'class="button"');?>
+            <?php echo anchor('admin/check_settings/cat/2', lang('category_2'), 'class="button"');?>
+            <?php echo anchor('admin/check_settings/cat/3', lang('category_3'), 'class="button"');?>
+        </div>
+        <div class='clear'></div>
+        <table class="stripeMe">
+            <tr>
+                <th>Setting</th>
+                <th>Value</th>
+                <th>Information</th>
+            </tr>
+        <?php foreach ($settings as $setting) { ?>
+            <tr>
+                <td><?php echo $setting['setting']; ?></td>
+                <td><?php echo $setting['value']; ?></td>
+                <td><?php echo lang($setting['setting']); ?></td>
+            </tr>    
+        <?php  } ?>
+        </table>
+            
         <div class='info'><?php echo lang('config_change');?></div>
         <div class='grid_6 alpha'>
             <p>

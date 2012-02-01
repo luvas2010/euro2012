@@ -54,17 +54,32 @@ class Poolconfig_model extends CI_Model {
 	/* get a value by setting name
 	 * return just the value!
 	 */ 
-	function get_value($setting)
+	function item($setting)
 	{
 	    $row = $this->db->get_where('pool_config', array('setting' => $setting))->row_array();
-		return $row['value'];
+        if(isset($row['value']))
+        {
+            return $row['value'];
+        }
+        else
+        {
+            return FALSE;
+        }    
     }
 	
 	/* get all settings as an array */
 	
-	function get_all_settings()
+	function get_all_settings($category='')
 	{
-		return $this->db->get('pool_config')->result_array();
+		if ($category != '')
+        {
+            $result = $this->db->get_where('pool_config', array('category' => $category))->result_array();
+            return $result;
+        }
+        else
+        {
+        return $this->db->get('pool_config')->result_array();
+        }
 	}
 
 	// to do: update setttings when saved
