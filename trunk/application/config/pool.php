@@ -86,7 +86,7 @@ $config['pred_points_champion'] = '20'; // Points for predicting the champion co
     | Third Party Auth
     |--------------------------------------------------------------------------
     */
-    $config['third_party_auth_providers']           = array('facebook', 'twitter');
+    $config['third_party_auth_providers']           = array('facebook', 'twitter'); // simply change this to '' if you don't want any social stuff
     $config['openid_what_is_url']                   = 'http://openidexplained.com/';
 
     /*

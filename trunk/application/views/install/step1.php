@@ -2691,6 +2691,58 @@
                         NULL , '0', 'Schop', 'Installatie Versie 1.2 succesvol!', '$timestamp'
                         )";
         
+		$sql_query[] = "CREATE TABLE IF NOT EXISTS `pool_config` (
+						  `setting_uid` int(11) NOT NULL AUTO_INCREMENT,
+						  `setting` varchar(255) NOT NULL,
+						  `value` varchar(255) DEFAULT NULL,
+						  PRIMARY KEY (`setting_uid`)
+						)";
+		
+		$sql_query[] = "REPLACE INTO `pool_config`
+					  (`setting`,`value`)
+					  VALUES
+					  ('version','1.2'),
+					  ('pool_name','Euro 2012 Voetbalpool'),
+					  ('time_offset','0'),
+					  ('predictions_open','1'),
+					  ('predictions_open_offset','0'),
+					  ('public_predictions','1'),
+					  ('public_social_links','1'),
+					  ('sign_up_email_admin','1'),
+					  ('verify_users','1'),
+					  ('email_from_address','info@voetbalpool.nl'),
+					  ('play_for_money','0'),
+					  ('payment_per_user','10'),
+					  ('currency','&euro;'),
+					  ('payout_schedule','50,30,20'),
+					  ('pred_points_goals','3'),
+					  ('pred_points_result','2'),
+					  ('pred_points_qf_team','7'),
+					  ('pred_points_sf_team','9'),
+					  ('pred_points_f_team','13'),
+					  ('pred_points_bonus','15'),
+					  ('pred_points_champion','20'),
+					  ('ssl_enabled','0'),
+					  ('sign_in_recaptcha_enabled','0'),
+					  ('sign_in_recaptcha_offset','3'),
+					  ('sign_up_recaptcha_enabled','1'),
+					  ('sign_up_auto_sign_in','0'),
+					  ('sign_out_view_enabled','1'),
+					  ('openid_file_store_path','system/cache'),
+					  ('openid_google_discovery_endpoint','http://www.google.com/accounts/o8/id'),
+					  ('openid_yahoo_discovery_endpoint','http://www.yahoo.com/'),
+					  ('third_party_auth_providers','facebook,twitter'),
+					  ('openid_what_is_url','http://openidexplained.com/'),
+					  ('password_reset_expiration','1800'),
+					  ('password_reset_secret','ED95244060F22EE456022E091CBCE39BCD177E3992FFB61D1E3B455DAA4EF7B7'),
+					  ('recaptcha_public_key','6LdFA8sSAAAAAOITG6KpgretCNakHS1aEciP2176'),
+					  ('recaptcha_private_key','6LdFA8sSAAAAAIJfViuwlcCsz72Dp6fnRxGo5UCn'),
+					  ('recaptcha_theme','clean'),
+					  ('twitter_consumer_key',''),
+					  ('twitter_consumer_secret',''),
+					  ('facebook_app_id',''),
+					  ('facebook_secret','')";
+		
         foreach ($sql_query as $query)
         {
             $q = $this->db->query($query);

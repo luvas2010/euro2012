@@ -701,8 +701,12 @@ a.user_go, input.user_go, button.user_go {
 a.comment_delete, input.comment_delete, button.comment_delete {
     background: url(icons/comment_delete.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
+    }
+a.link_delete, input.link_delete, button.link_delete {
+    background: url(icons/link_delete.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
     } 	
-    a.add {
+a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;
 }

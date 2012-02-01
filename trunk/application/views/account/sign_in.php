@@ -92,8 +92,10 @@
             <?php echo form_fieldset_close(); ?>
             <?php echo form_close(); ?>
         </div>
-        <div class="grid_4">
-            <h3><?php echo sprintf(lang('sign_in_third_party_heading')); ?></h3>
+        <?php if ($this->config->item('third_party_auth_providers') != "")
+		{ ?>
+		<div class="grid_4">
+		    <h3><?php echo sprintf(lang('sign_in_third_party_heading')); ?></h3>
             <ul>
                 <?php foreach($this->config->item('third_party_auth_providers') as $provider) : ?>
                 <li class="third_party <?php echo $provider; ?>"><?php echo anchor('account/connect_'.$provider, lang('connect_'.$provider), 
@@ -102,6 +104,7 @@
             </ul>
             <div class="clear"></div>
         </div>
+		<?php } ?>
         <div class="clear"></div>
     </div>
 </div>
