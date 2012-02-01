@@ -33,7 +33,7 @@
                         <?php echo form_hidden('facebook_id', $facebook_link->facebook_id); ?>
                         <?php echo form_button(array(
                                 'type' => 'submit',
-                                'class' => 'button delete',
+                                'class' => 'button link_delete',
                                 'content' => lang('linked_remove')
                             )); ?>
                     <?php echo form_fieldset_close(); ?>
@@ -61,7 +61,7 @@
                         <?php echo form_hidden('twitter_id', $twitter_link->twitter_id); ?>
                         <?php echo form_button(array(
                                 'type' => 'submit',
-                                'class' => 'button delete',
+                                'class' => 'button link_delete',
                                 'content' => lang('linked_remove')
                             )); ?>
                     <?php echo form_fieldset_close(); ?>
@@ -89,7 +89,7 @@
                         <?php echo form_hidden('openid', $openid_link->openid); ?>
                         <?php echo form_button(array(
                                 'type' => 'submit',
-                                'class' => 'button delete',
+                                'class' => 'button link_delete',
                                 'content' => lang('linked_remove')
                             )); ?>
                     <?php echo form_fieldset_close(); ?>
