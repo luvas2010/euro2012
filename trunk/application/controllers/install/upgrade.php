@@ -55,7 +55,7 @@ class Upgrade extends CI_Controller {
 		$sql_query[] = "REPLACE INTO `pool_config`
 					  (`setting`,`value`)
 					  VALUES
-					  ('version','".$this->config->item('pool_version')."'),
+					  ('version','1.2'),
 					  ('pool_name','".$this->config->item('pool_name')."'),
 					  ('time_offset','".$this->config->item('time_offset')."'),
 					  ('predictions_open','".$this->config->item('predictions_open')."'),
