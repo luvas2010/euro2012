@@ -14,7 +14,7 @@ class Check_settings extends CI_Controller {
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
         if (isset($lang['language']))  {$this->config->set_item('language',$lang['language']);}
-        $this->lang->load(array('general','install'));
+        $this->lang->load(array('general', 'poolconfig'));
         
     }
 
@@ -23,6 +23,7 @@ class Check_settings extends CI_Controller {
         if ($this->authentication->is_signed_in() && is_admin())
         {
             $data = array(
+                            'settings'  => $this->poolconfig_model->get_all_settings(),
                             'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
                             'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
                             'content_main' => 'admin/check_settings',
@@ -36,4 +37,26 @@ class Check_settings extends CI_Controller {
             redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings')));
         }            
     }
+    
+    public function cat($category)
+    {
+        if ($this->authentication->is_signed_in() && is_admin())
+        {
+            $data = array(
+                            'settings'  => $this->poolconfig_model->get_all_settings($category),
+                            'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                            'content_main' => 'admin/check_settings',
+                            'title' => lang('check_settings')
+                            );
+
+            $this->load->view('template/template', $data);
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings')));
+        }            
+    }
+    
+    
 }
