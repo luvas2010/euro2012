@@ -46,7 +46,7 @@
             $admin_warning = 0;
 			if (is_admin())
 			{
-				if ($this->config->item('verify_users'))
+				if ($this->poolconfig_model->item('verify_users'))
 				{
 					$sql_query = "SELECT * FROM `account` WHERE `verifiedon` IS NULL";
 					$query = $this->db->query($sql_query);
@@ -56,7 +56,7 @@
 						$admin_warning = 1;
 					}
 				}
-				if ($this->config->item('play_for_money'))
+				if ($this->poolconfig_model->item('play_for_money'))
 				{
 					$sql_query = "SELECT * FROM `account` WHERE `payed` = 0";
 					$query = $this->db->query($sql_query);
@@ -70,7 +70,7 @@
 			}	
 				
 			if (
-                    ($not_payed = $account->payed == 0 && $this->config->item('play_for_money')) ||
+                    ($not_payed = $account->payed == 0 && $this->poolconfig_model->item('play_for_money')) ||
                     (!get_total_goals($account->id)) ||
                     ($missing_teams =  get_missing_teams_list(array(
                             'heading'   => "<div class='error warning'><p>%heading%</p>",

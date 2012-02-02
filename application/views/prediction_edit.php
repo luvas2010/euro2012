@@ -195,26 +195,26 @@
                 <p><?php echo sprintf(lang('total_points_awarded'), $prediction['pred_points_total']); ?></p>
                 
                 <?php if ($prediction['pred_home_goals'] == $prediction['home_goals']) { ?>
-                <p><?php echo sprintf(lang('goals_correct'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->config->item('pred_points_goals')); ?></p>
+                <p><?php echo sprintf(lang('goals_correct'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->poolconfig_model->item('pred_points_goals')); ?></p>
                 <?php } else { ?>
                 <p><?php echo sprintf(lang('goals_wrong'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team']))); ?></p>
                 <?php } ?>
                 <?php if ($prediction['pred_away_goals'] == $prediction['away_goals']) { ?>
-                <p><?php echo sprintf(lang('goals_correct'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $this->config->item('pred_points_goals')); ?></p>
+                <p><?php echo sprintf(lang('goals_correct'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $this->poolconfig_model->item('pred_points_goals')); ?></p>
                 <?php } else { ?>
                 <p><?php echo sprintf(lang('goals_wrong'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team']))); ?></p>
                 <?php } ?>
                 <?php if($prediction['pred_home_goals'] > $prediction['pred_away_goals'] && $prediction['home_goals'] > $prediction['away_goals'])
                        { ?>
-                <p><?php echo sprintf(lang('result_right_win'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $this->config->item('pred_points_result')); ?></p>
+                <p><?php echo sprintf(lang('result_right_win'), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $this->poolconfig_model->item('pred_points_result')); ?></p>
                 <?php  }  ?>                       
                 <?php if($prediction['pred_home_goals'] < $prediction['pred_away_goals'] && $prediction['home_goals'] < $prediction['away_goals'])
                        { ?>
-                <p><?php echo sprintf(lang('result_right_win'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->config->item('pred_points_result')); ?></p>
+                <p><?php echo sprintf(lang('result_right_win'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->poolconfig_model->item('pred_points_result')); ?></p>
                 <?php  }  ?>                            
                 <?php if($prediction['pred_home_goals'] == $prediction['pred_away_goals'] && $prediction['home_goals'] == $prediction['away_goals'])
                        { ?>
-                <p><?php echo sprintf(lang('result_right_tie'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->config->item('pred_points_result')); ?></p>
+                <p><?php echo sprintf(lang('result_right_tie'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), anchor('stats/view_team/'.$prediction['home_team'],lang($prediction['home_team'])), $this->poolconfig_model->item('pred_points_result')); ?></p>
                 <?php  }  ?> 
 
                 <?php
@@ -222,15 +222,15 @@
                 { 
                     if($prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 28)
                     {
-                        $points_for_team = $this->config->item('pred_points_qf_team');
+                        $points_for_team = $this->poolconfig_model->item('pred_points_qf_team');
                     }
                     elseif ($prediction['pred_match_uid'] >= 29 && $prediction['pred_match_uid'] <= 30 )
                     {
-                        $points_for_team = $this->config->item('pred_points_sf_team');
+                        $points_for_team = $this->poolconfig_model->item('pred_points_sf_team');
                     }
                     elseif ($prediction['pred_match_uid'] == 31)
                     {
-                        $points_for_team = $this->config->item('pred_points_f_team');
+                        $points_for_team = $this->poolconfig_model->item('pred_points_f_team');
                     }                      
                 ?>
                     <?php if($prediction['pred_home_team'] == $prediction['home_team'])

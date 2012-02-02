@@ -28,7 +28,7 @@ class Sign_up extends CI_Controller {
     function index()
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Redirect signed in users to homepage
         if ($this->authentication->is_signed_in()) redirect('');
@@ -61,7 +61,7 @@ class Sign_up extends CI_Controller {
                 $data['sign_up_email_error'] = lang('sign_up_email_exist');
             }
             // Either already pass recaptcha or just passed recaptcha
-            elseif ( ! ($this->session->userdata('sign_up_recaptcha_pass') == TRUE || $recaptcha_result === TRUE) && $this->config->item("sign_up_recaptcha_enabled") === TRUE)
+            elseif ( ! ($this->session->userdata('sign_up_recaptcha_pass') == TRUE || $recaptcha_result === TRUE) && $this->poolconfig_model->item("sign_up_recaptcha_enabled") === TRUE)
             {
                 $data['sign_up_recaptcha_error'] = $this->input->post('recaptcha_response_field') ? lang('sign_up_recaptcha_incorrect') : lang('sign_up_recaptcha_required');
             }
@@ -82,12 +82,12 @@ class Sign_up extends CI_Controller {
                 $this->account_details_model->update($user_id, $attributes);
                 
                 // Auto sign in?
-                if ($this->config->item("sign_up_auto_sign_in") && !$this->config->item('verify_users'))
+                if ($this->poolconfig_model->item("sign_up_auto_sign_in") && !$this->poolconfig_model->item('verify_users'))
                 {
                     // Run sign in routine
                     $this->authentication->sign_in($user_id);
                 }
-                if (!$this->config->item('verify_users'))
+                if (!$this->poolconfig_model->item('verify_users'))
                 {
                     redirect('account/sign_in');
                 }
@@ -105,9 +105,9 @@ class Sign_up extends CI_Controller {
         
         if (!isset($skip)) {
             // Load recaptcha code
-            if ($this->config->item("sign_up_recaptcha_enabled") === TRUE)
+            if ($this->poolconfig_model->item("sign_up_recaptcha_enabled") === TRUE)
                 if ($this->session->userdata('sign_up_recaptcha_pass') != TRUE) 
-                    $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
+                    $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->poolconfig_model->item("ssl_enabled"));
             
             // Load sign up view
             $data['title'] = lang('sign_up_page_name');

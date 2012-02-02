@@ -16,7 +16,7 @@ class Facebook_lib {
         $this->CI->load->helper('facebook');
         
         // Require Facebook app keys to be configured
-        if ( ! $this->CI->config->item('facebook_app_id') || ! $this->CI->config->item('facebook_secret'))
+        if ( ! $this->CI->poolconfig_model->item('facebook_app_id') || ! $this->CI->poolconfig_model->item('facebook_secret'))
         {
             echo 'Visit '.anchor('http://www.facebook.com/developers/createapp.php', 'http://www.facebook.com/developers/createapp.php').' to create your app.'.
             '<br />The config file is located at "system\application\config\facebook.php"';
@@ -25,8 +25,8 @@ class Facebook_lib {
         
         // Create the Facebook object
         $this->fb = new Facebook(array(
-            'appId' => $this->CI->config->item('facebook_app_id'),
-            'secret' => $this->CI->config->item('facebook_secret'),
+            'appId' => $this->CI->poolconfig_model->item('facebook_app_id'),
+            'secret' => $this->CI->poolconfig_model->item('facebook_secret'),
             'cookie' => true,
         ));
         

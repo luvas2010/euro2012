@@ -1112,7 +1112,7 @@ class Predictions extends CI_Controller {
     {
         $this->load->helper(array('date'));
         
-        if ($this->config->item('predictions_open'))
+        if ($this->poolconfig_model->item('predictions_open'))
         {
             // Predictions can be made until the match starts (with optional offset)
             $sql_query = "SELECT * FROM `match`
@@ -1131,9 +1131,9 @@ class Predictions extends CI_Controller {
         $match = $query->row_array(); 
         
         // Calculate if it is past kick-off time, with the configured offset if necessary
-        $time_offset = $this->config->item('time_offset');
+        $time_offset = $this->poolconfig_model->item('time_offset');
         $now = now() - $time_offset;
-        $offset = $this->config->item('predictions_open_offset');
+        $offset = $this->poolconfig_model->item('predictions_open_offset');
         $closing_time = $match['timestamp'] - $time_offset - $offset;
 
         if ($now < $closing_time)

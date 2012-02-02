@@ -35,7 +35,7 @@ class Sign_out extends CI_Controller {
         $this->authentication->sign_out();
         
         // Redirect to homepage
-        if ( ! $this->config->item("sign_out_view_enabled")) redirect('');
+        if ( ! $this->poolconfig_model->item("sign_out_view_enabled")) redirect('');
         
         // Load sign out view
         $data['title'] = lang('sign_out_successful');

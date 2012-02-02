@@ -33,7 +33,7 @@ class Recaptcha {
         
         if ($this->CI->input->post('recaptcha_response_field'))
         {
-            $recaptcha_private_key = $this->CI->config->item('recaptcha_private_key');
+            $recaptcha_private_key = $this->CI->poolconfig_model->item('recaptcha_private_key');
             $recaptcha_response = recaptcha_check_answer($recaptcha_private_key, $this->CI->input->ip_address(), $this->CI->input->post('recaptcha_challenge_field'), $this->CI->input->post('recaptcha_response_field'));
             $response = $recaptcha_response->is_valid ? TRUE : $recaptcha_response->error;
         }
@@ -54,8 +54,8 @@ class Recaptcha {
      */
     function load($error, $ssl = FALSE)
     {
-        $recaptcha_public_key = $this->CI->config->item('recaptcha_public_key');
-        $captcha = '<script type="text/javascript">var RecaptchaOptions = { theme : "'.$this->CI->config->item('recaptcha_theme').'" };</script>';
+        $recaptcha_public_key = $this->CI->poolconfig_model->item('recaptcha_public_key');
+        $captcha = '<script type="text/javascript">var RecaptchaOptions = { theme : "'.$this->CI->poolconfig_model->item('recaptcha_theme').'" };</script>';
         $captcha .= recaptcha_get_html($recaptcha_public_key, $error, $ssl);
         
         return $captcha;

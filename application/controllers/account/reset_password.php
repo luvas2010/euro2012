@@ -25,7 +25,7 @@ class Reset_password extends CI_Controller {
 	function index() 
 	{
 		// Enable SSL?
-		maintain_ssl($this->config->item("ssl_enabled"));
+		maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
 		
 		// Redirect signed in users to homepage
 		if ($this->authentication->is_signed_in()) redirect('');
@@ -42,7 +42,7 @@ class Reset_password extends CI_Controller {
 			}
 			
 			// Load recaptcha code
-			$data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
+			$data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->poolconfig_model->item("ssl_enabled"));
 			
 			// Load reset password captcha view
             $data['title'] = lang('reset_password_page_name');
@@ -57,10 +57,10 @@ class Reset_password extends CI_Controller {
 		if ($account = $this->account_model->get_by_id($this->input->get('id')))
 		{
 			// Check if reset password has expired
-			if (now() < (strtotime($account->resetsenton) + $this->config->item("password_reset_expiration")))
+			if (now() < (strtotime($account->resetsenton) + $this->poolconfig_model->item("password_reset_expiration")))
 			{
 				// Check if token is valid
-				if ($this->input->get('token') == sha1($account->id.strtotime($account->resetsenton).$this->config->item('password_reset_secret')))
+				if ($this->input->get('token') == sha1($account->id.strtotime($account->resetsenton).$this->poolconfig_model->item('password_reset_secret')))
 				{
 					// Remove reset sent on datetime
 					$this->account_model->remove_reset_sent_datetime($account->id);

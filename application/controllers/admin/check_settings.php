@@ -6,7 +6,7 @@ class Check_settings extends CI_Controller {
     {
         parent::__construct();
         $this->load->database();
-        $this->load->helper(array('url','date', 'language'));
+        $this->load->helper(array('url','date', 'language', 'form'));
         $this->load->model(array('account_model'));
         $this->load->model(array('account_details_model'));
         $this->load->library(array('session', 'authentication'));

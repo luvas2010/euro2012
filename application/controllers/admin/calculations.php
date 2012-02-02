@@ -24,9 +24,9 @@ class Calculations extends CI_Controller {
         if ($this->authentication->is_signed_in() && is_admin())
         {
 
-            $pred_points_goals = $this->config->item('pred_points_goals');
-            $pred_points_result = $this->config->item('pred_points_result');
-            $pred_points_bonus = $this->config->item('pred_points_bonus');
+            $pred_points_goals = $this->poolconfig_model->item('pred_points_goals');
+            $pred_points_result = $this->poolconfig_model->item('pred_points_result');
+            $pred_points_bonus = $this->poolconfig_model->item('pred_points_bonus');
             
             
             $sql_query = "SELECT *
@@ -88,7 +88,7 @@ class Calculations extends CI_Controller {
                 {
                     if ($prediction['pred_home_team'] == $match['home_team'])
                     {
-                        $points_home_team = $this->config->item('pred_points_qf_team');
+                        $points_home_team = $this->poolconfig_model->item('pred_points_qf_team');
                     }
                     else
                     {
@@ -96,7 +96,7 @@ class Calculations extends CI_Controller {
                     }
                     if ($prediction['pred_away_team'] == $match['away_team'])
                     {
-                        $points_away_team = $this->config->item('pred_points_qf_team');
+                        $points_away_team = $this->poolconfig_model->item('pred_points_qf_team');
                     }
                     else
                     {
@@ -107,7 +107,7 @@ class Calculations extends CI_Controller {
                 {
                     if ($prediction['pred_home_team'] == $match['home_team'])
                     {
-                        $points_home_team = $this->config->item('pred_points_sf_team');
+                        $points_home_team = $this->poolconfig_model->item('pred_points_sf_team');
                     }
                     else
                     {
@@ -115,7 +115,7 @@ class Calculations extends CI_Controller {
                     }
                     if ($prediction['pred_away_team'] == $match['away_team'])
                     {
-                        $points_away_team = $this->config->item('pred_points_sf_team');
+                        $points_away_team = $this->poolconfig_model->item('pred_points_sf_team');
                     }
                     else
                     {
@@ -126,7 +126,7 @@ class Calculations extends CI_Controller {
                 {                  
                     if ($prediction['pred_home_team'] == $match['home_team'])
                     {
-                        $points_home_team = $this->config->item('pred_points_f_team');
+                        $points_home_team = $this->poolconfig_model->item('pred_points_f_team');
                     }
                     else
                     {
@@ -134,7 +134,7 @@ class Calculations extends CI_Controller {
                     }
                     if ($prediction['pred_away_team'] == $match['away_team'])
                     {
-                        $points_away_team = $this->config->item('pred_points_f_team');
+                        $points_away_team = $this->poolconfig_model->item('pred_points_f_team');
                     }
                     else
                     {
@@ -153,7 +153,7 @@ class Calculations extends CI_Controller {
                     $pred = $query->row_array();
                     
                     $diff = abs($pred['pred_total_goals'] - $totalgoals_tournament);
-                    $max_bonus = $this->config->item('pred_points_bonus');
+                    $max_bonus = $this->poolconfig_model->item('pred_points_bonus');
                     if ($diff < $max_bonus && $pred['pred_total_goals'] > 0)
                     {
                         //echo "yes, diff: ".$diff."<br>";
@@ -173,7 +173,7 @@ class Calculations extends CI_Controller {
                     
                     if ($pred['pred_champion'] == $champion['winning_team'])
                     {
-                        $bonus_points = $bonus_points + $this->config->item('pred_points_champion');
+                        $bonus_points = $bonus_points + $this->poolconfig_model->item('pred_points_champion');
                     }
                     
                 }

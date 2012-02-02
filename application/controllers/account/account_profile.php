@@ -29,7 +29,7 @@ class Account_profile extends CI_Controller {
     function index($action = NULL)
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Redirect unauthenticated users to signin page
         if ( ! $this->authentication->is_signed_in()) 

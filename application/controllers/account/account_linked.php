@@ -29,7 +29,7 @@ class Account_linked extends CI_Controller {
     function index()
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Redirect unauthenticated users to signin page
         if ( ! $this->authentication->is_signed_in()) 
@@ -71,7 +71,7 @@ class Account_linked extends CI_Controller {
             foreach ($data['twitter_links'] as $index => $twitter_link) 
             {
                 $data['num_of_linked_accounts']++;
-                $epiTwitter = new EpiTwitter($this->config->item('twitter_consumer_key'), $this->config->item('twitter_consumer_secret'), $twitter_link->oauth_token, $twitter_link->oauth_token_secret);
+                $epiTwitter = new EpiTwitter($this->poolconfig_model->item('twitter_consumer_key'), $this->poolconfig_model->item('twitter_consumer_secret'), $twitter_link->oauth_token, $twitter_link->oauth_token_secret);
                 $data['twitter_links'][$index]->twitter = $epiTwitter->get_usersShow(array('user_id' => $twitter_link->twitter_id));
             }
         }

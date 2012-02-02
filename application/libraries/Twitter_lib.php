@@ -16,7 +16,7 @@ class Twitter_lib {
         $this->CI->load->helper('twitter');
         
         // Require Facebook app keys to be configured
-        if ( ! $this->CI->config->item('twitter_consumer_key') || ! $this->CI->config->item('twitter_consumer_secret'))
+        if ( ! $this->CI->poolconfig_model->item('twitter_consumer_key') || ! $this->CI->poolconfig_model->item('twitter_consumer_secret'))
         {
             echo 'Visit '.anchor('http://dev.twitter.com/apps', 'http://dev.twitter.com/apps').' to register your app.'.
             '<br />The config file is located at "system\application\modules\account\config\twitter.php"';
@@ -24,7 +24,7 @@ class Twitter_lib {
         }
         
         // Create EpiTwitter object
-        $this->etw = new EpiTwitter($this->CI->config->item('twitter_consumer_key'), $this->CI->config->item('twitter_consumer_secret'));
+        $this->etw = new EpiTwitter($this->CI->poolconfig_model->item('twitter_consumer_key'), $this->CI->poolconfig_model->item('twitter_consumer_secret'));
         
         // Complain loudly if base url contains "://localhost"
         if (strpos($this->CI->config->item('base_url'), '://localhost') !== FALSE)

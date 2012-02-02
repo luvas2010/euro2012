@@ -123,12 +123,13 @@
             <?php echo form_fieldset_close(); ?>
             <?php echo form_close(); ?>
         </div>
-		<?php if ($this->config->item('third_party_auth_providers') != "")
+		<?php if ($this->poolconfig_model->item('third_party_auth_providers') != "")
 		{ ?>
         <div class="grid_4">
             <h3><?php echo sprintf(lang('sign_up_third_party_heading')); ?></h3>
             <ul>
-                <?php foreach($this->config->item('third_party_auth_providers') as $provider) : ?>
+            <?php $providers = explode(',',$this->poolconfig_model->item('third_party_auth_providers'); ?>
+                <?php foreach($providers as $provider) : ?>
                 <li class="third_party <?php echo $provider; ?>"><?php echo anchor('account/connect_'.$provider, lang('connect_'.$provider), 
                     array('title'=>sprintf(lang('sign_up_with'), lang('connect_'.$provider)))); ?></li>
                 <?php endforeach; ?>

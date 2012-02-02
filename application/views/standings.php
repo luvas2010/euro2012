@@ -1,6 +1,6 @@
 <!-- <?php print_r($points); ?> -->
     <h2><?php echo lang('standings'); ?></h2>
-    <?php if ($account->payed == 0 && $this->config->item('play_for_money') == 1)
+    <?php if ($account->payed == 0 && $this->poolconfig_model->item('play_for_money') == 1)
           {?>
         <div class='error'><?php echo lang('why_am_i_not_here_payed');?></div>
     <?php } ?>

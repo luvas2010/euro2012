@@ -24,7 +24,7 @@ class Standings extends CI_Controller {
         {       
             $account_id = $this->session->userdata('account_id');
             
-            if ($this->config->item('play_for_money'))
+            if ($this->poolconfig_model->item('play_for_money'))
             {
             $sql_query = "SELECT *
                             FROM `prediction`

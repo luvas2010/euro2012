@@ -28,13 +28,13 @@ class Sign_in extends CI_Controller {
     function index()
     {   
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Redirect signed in users to homepage
         if ($this->authentication->is_signed_in()) redirect('');
         
         // Set default recaptcha pass
-        $recaptcha_pass = $this->session->userdata('sign_in_failed_attempts') < $this->config->item('sign_in_recaptcha_offset') ? TRUE : FALSE;
+        $recaptcha_pass = $this->session->userdata('sign_in_failed_attempts') < $this->poolconfig_model->item('sign_in_recaptcha_offset') ? TRUE : FALSE;
         
         // Check recaptcha
         $recaptcha_result = $this->recaptcha->check();
@@ -58,7 +58,7 @@ class Sign_in extends CI_Controller {
             else
             {
                 // Either don't need to pass recaptcha or just passed recaptcha
-                if ( ! ($recaptcha_pass === TRUE || $recaptcha_result === TRUE) && $this->config->item("sign_in_recaptcha_enabled") === TRUE)
+                if ( ! ($recaptcha_pass === TRUE || $recaptcha_result === TRUE) && $this->poolconfig_model->item("sign_in_recaptcha_enabled") === TRUE)
                 {
                     $data['sign_in_recaptcha_error'] = $this->input->post('recaptcha_response_field') ? lang('sign_in_recaptcha_incorrect') : lang('sign_in_recaptcha_required');
                 }
@@ -74,7 +74,7 @@ class Sign_in extends CI_Controller {
                     }
                     else
                     {
-                        if ($this->config->item('verify_users') && !isset($user->verifiedon)) {
+                        if ($this->poolconfig_model->item('verify_users') && !isset($user->verifiedon)) {
                             $data['sign_in_verify_error'] = lang('sign_in_verification_required');
                         }
                         else
@@ -91,9 +91,9 @@ class Sign_in extends CI_Controller {
         }
         
         // Load recaptcha code
-        if ($this->config->item("sign_in_recaptcha_enabled") === TRUE) 
-            if ($this->config->item('sign_in_recaptcha_offset') <= $this->session->userdata('sign_in_failed_attempts')) 
-                $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
+        if ($this->poolconfig_model->item("sign_in_recaptcha_enabled") === TRUE) 
+            if ($this->poolconfig_model->item('sign_in_recaptcha_offset') <= $this->session->userdata('sign_in_failed_attempts')) 
+                $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->poolconfig_model->item("ssl_enabled"));
         
         // Load sign in view
         

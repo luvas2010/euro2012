@@ -28,7 +28,7 @@ class Connect_create extends CI_Controller {
     function index()
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Redirect user to home if 'connect_create' session data doesn't exist
         if ( ! $this->session->userdata('connect_create')) redirect('');
