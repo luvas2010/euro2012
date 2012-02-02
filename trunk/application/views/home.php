@@ -3,7 +3,7 @@
         <?php if ($this->authentication->is_signed_in()) { ?>
             <h3><?php echo sprintf(lang('website_welcome_username'), '<strong>'.$account_details->firstname.'</strong>'); ?></h3>
             <p><?php echo sprintf(lang('user_points'), get_user_points($account->id)); ?></p><p><?php echo anchor('standings#me',lang('check_user_pos')); ?></p>
-        <?php if($this->config->item('play_for_money'))
+        <?php if($this->poolconfig_model->item('play_for_money'))
               { ?>
         <div class="infostay">
             
@@ -14,10 +14,10 @@
                               
                 $query = $this->db->query($sql_query);
                 $num = $query->num_rows();
-                $payment_per_user = $this->config->item('payment_per_user');
-                $curr = $this->config->item('currency');
+                $payment_per_user = $this->poolconfig_model->item('payment_per_user');
+                $curr = $this->poolconfig_model->item('currency');
                 $total_money = $num * $payment_per_user;
-                $payout_sched = explode(",",$this->config->item('payout_schedule'));
+                $payout_sched = explode(",",$this->poolconfig_model->item('payout_schedule'));
                 $total_payed_out = array_sum($payout_sched);
                 echo "<p>".sprintf(lang('total_money'), $num, $curr.$payment_per_user, $curr.$total_money)."</p>";
                 if ($total_payed_out<100)

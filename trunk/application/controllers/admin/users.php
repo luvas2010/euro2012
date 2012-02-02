@@ -164,7 +164,7 @@ class Users extends CI_Controller {
                     $user_email = $row['email'];
                                 
                     // Send user sign up e-mail
-                    $this->email->from($this->config->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
+                    $this->email->from($this->poolconfig_model->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
                     $this->email->to($user_email);
                     $this->email->subject(lang('verified_email_subject'));
                     
@@ -213,7 +213,7 @@ class Users extends CI_Controller {
                     $user_email = $row['email'];
                                 
                     // Send user sign up e-mail
-                    $this->email->from($this->config->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
+                    $this->email->from($this->poolconfig_model->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
                     $this->email->to($user_email);
                     $this->email->subject(lang('payed_email_subject'));
                     

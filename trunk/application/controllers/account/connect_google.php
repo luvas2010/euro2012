@@ -23,10 +23,10 @@ class Connect_google extends CI_Controller {
     function index()
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Get OpenID store object
-        $store = new Auth_OpenID_FileStore($this->config->item("openid_file_store_path"));
+        $store = new Auth_OpenID_FileStore($this->poolconfig_model->item("openid_file_store_path"));
         
         // Get OpenID consumer object
         $consumer = new Auth_OpenID_Consumer($store);
@@ -108,7 +108,7 @@ class Connect_google extends CI_Controller {
         }
         
         // Begin OpenID authentication process
-        $auth_request = $consumer->begin($this->config->item("openid_google_discovery_endpoint"));
+        $auth_request = $consumer->begin($this->poolconfig_model->item("openid_google_discovery_endpoint"));
         
         // Create ax request (Attribute Exchange)
         $ax_request = new Auth_OpenID_AX_FetchRequest;

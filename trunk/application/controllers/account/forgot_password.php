@@ -25,7 +25,7 @@ class Forgot_password extends CI_Controller {
     function index()
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Redirect signed in users to homepage
         if ($this->authentication->is_signed_in()) redirect('');
@@ -76,10 +76,10 @@ class Forgot_password extends CI_Controller {
 
                     $this->email->initialize($config);
                     // Generate reset password url
-                    $password_reset_url = site_url('account/reset_password?id='.$account->id.'&token='.sha1($account->id.$time.$this->config->item('password_reset_secret')));
+                    $password_reset_url = site_url('account/reset_password?id='.$account->id.'&token='.sha1($account->id.$time.$this->poolconfig_model->item('password_reset_secret')));
                     
                     // Send reset password email
-                    $this->email->from($this->config->item('email_from_address'), lang('reset_password_email_sender'));
+                    $this->email->from($this->poolconfig_model->item('email_from_address'), lang('reset_password_email_sender'));
                     $this->email->to($account->email);
                     $this->email->subject(lang('reset_password_email_subject'));
                     $this->email->message($this->load->view('account/reset_password_email', array('username' => $account->username, 'password_reset_url' => anchor($password_reset_url, $password_reset_url)), TRUE));
@@ -100,7 +100,7 @@ class Forgot_password extends CI_Controller {
         
         // Load recaptcha code
         if ($this->session->userdata('forget_password_recaptcha_pass') != TRUE) 
-            $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->config->item("ssl_enabled"));
+            $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->poolconfig_model->item("ssl_enabled"));
         
         // Load forgot password view
         

@@ -22,7 +22,7 @@ class Connect_openid extends CI_Controller {
     function index()
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Retrieve sign in user
         if ($this->authentication->is_signed_in())
@@ -32,7 +32,7 @@ class Connect_openid extends CI_Controller {
         //$data['account_details'] = $this->account_details_model->get_by_account_id($this->session->userdata('account_id'));
         
         // Get OpenID store object
-        $store = new Auth_OpenID_FileStore($this->config->item("openid_file_store_path"));
+        $store = new Auth_OpenID_FileStore($this->poolconfig_model->item("openid_file_store_path"));
         
         // Get OpenID consumer object
         $consumer = new Auth_OpenID_Consumer($store);
@@ -125,7 +125,7 @@ class Connect_openid extends CI_Controller {
         if ($this->form_validation->run()) 
         {
             // Get OpenID store object
-            $store = new Auth_OpenID_FileStore($this->config->item("openid_file_store_path"));
+            $store = new Auth_OpenID_FileStore($this->poolconfig_model->item("openid_file_store_path"));
             
             // Get OpenID consumer object
             $consumer = new Auth_OpenID_Consumer($store);

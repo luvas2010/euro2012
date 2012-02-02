@@ -182,7 +182,7 @@ if ( ! function_exists('prediction_closed'))
         $CI =& get_instance();
         $CI->load->helper(array('date'));
         
-        if ($CI->config->item('predictions_open'))
+        if ($CI->poolconfig_model->item('predictions_open'))
         {
             // Predictions can be made until the match starts (with optional offset)
             $sql_query = "SELECT * FROM `match`
@@ -201,9 +201,9 @@ if ( ! function_exists('prediction_closed'))
         $match = $query->row_array(); 
         
         // Calculate if it is past kick-off time, with the configured offset if necessary
-        $time_offset = $CI->config->item('time_offset');
+        $time_offset = $CI->poolconfig_model->item('time_offset');
         $now = now() - $time_offset;
-        $offset = $CI->config->item('predictions_open_offset');
+        $offset = $CI->poolconfig_model->item('predictions_open_offset');
         $closing_time = $match['timestamp'] - $time_offset - $offset;
 
         if ($now < $closing_time)
@@ -308,7 +308,7 @@ if ( ! function_exists('get_next_matches') )
         $CI =& get_instance();
         $CI->load->helper(array('language', 'date'));
         $CI->load->language(array('general'));
-        $now = now() + $CI->config->item('time_offset');
+        $now = now() + $CI->poolconfig_model->item('time_offset');
         $account_id = $CI->session->userdata('account_id');
         $sql_query = "SELECT *
                       FROM `prediction`
@@ -372,7 +372,7 @@ if ( ! function_exists('get_missing_result_list') )
         $CI->load->helper(array('language', 'date', 'url'));
         $CI->load->language(array('general'));
         
-        $now = now() + $CI->config->item('time_offset');
+        $now = now() + $CI->poolconfig_model->item('time_offset');
         $next_48_hours = $now + 172800;
         $account_id = $CI->session->userdata('account_id');
         $sql_query = "SELECT *

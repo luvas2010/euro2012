@@ -273,9 +273,9 @@ class Pool {
     {
         $CI =& get_instance();
         
-            $pred_points_goals = $CI->config->item('pred_points_goals');
-            $pred_points_result = $CI->config->item('pred_points_result');
-            $pred_points_bonus = $CI->config->item('pred_points_bonus');
+            $pred_points_goals = $CI->poolconfig_model->item('pred_points_goals');
+            $pred_points_result = $CI->poolconfig_model->item('pred_points_result');
+            $pred_points_bonus = $CI->poolconfig_model->item('pred_points_bonus');
             
             
             $sql_query = "SELECT *
@@ -334,7 +334,7 @@ class Pool {
                 {
                     if ($prediction['pred_home_team'] == $match['home_team'])
                     {
-                        $points_home_team = $CI->config->item('pred_points_qf_team');
+                        $points_home_team = $CI->poolconfig_model->item('pred_points_qf_team');
                     }
                     else
                     {
@@ -342,7 +342,7 @@ class Pool {
                     }
                     if ($prediction['pred_away_team'] == $match['away_team'])
                     {
-                        $points_away_team = $CI->config->item('pred_points_qf_team');
+                        $points_away_team = $CI->poolconfig_model->item('pred_points_qf_team');
                     }
                     else
                     {
@@ -353,7 +353,7 @@ class Pool {
                 {
                     if ($prediction['pred_home_team'] == $match['home_team'])
                     {
-                        $points_home_team = $CI->config->item('pred_points_sf_team');
+                        $points_home_team = $CI->poolconfig_model->item('pred_points_sf_team');
                     }
                     else
                     {
@@ -361,7 +361,7 @@ class Pool {
                     }
                     if ($prediction['pred_away_team'] == $match['away_team'])
                     {
-                        $points_away_team = $CI->config->item('pred_points_sf_team');
+                        $points_away_team = $CI->poolconfig_model->item('pred_points_sf_team');
                     }
                     else
                     {
@@ -372,7 +372,7 @@ class Pool {
                 {                  
                     if ($prediction['pred_home_team'] == $match['home_team'])
                     {
-                        $points_home_team = $CI->config->item('pred_points_f_team');
+                        $points_home_team = $CI->poolconfig_model->item('pred_points_f_team');
                     }
                     else
                     {
@@ -380,7 +380,7 @@ class Pool {
                     }
                     if ($prediction['pred_away_team'] == $match['away_team'])
                     {
-                        $points_away_team = $CI->config->item('pred_points_f_team');
+                        $points_away_team = $CI->poolconfig_model->item('pred_points_f_team');
                     }
                     else
                     {
@@ -399,7 +399,7 @@ class Pool {
                     $pred = $query->row_array();
                     
                     $diff = abs($pred['pred_total_goals'] - $totalgoals_tournament);
-                    $max_bonus = $CI->config->item('pred_points_bonus');
+                    $max_bonus = $CI->poolconfig_model->item('pred_points_bonus');
                     if ($diff < $max_bonus && $pred['pred_total_goals'] > 0)
                     {
                         //echo "yes, diff: ".$diff."<br>";
@@ -419,7 +419,7 @@ class Pool {
                     
                     if ($pred['pred_champion'] == $champion['winning_team'])
                     {
-                        $bonus_points = $bonus_points + $CI->config->item('pred_points_champion');
+                        $bonus_points = $bonus_points + $CI->poolconfig_model->item('pred_points_champion');
                     }
                     
                 }

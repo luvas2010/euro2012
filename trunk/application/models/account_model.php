@@ -101,7 +101,7 @@ class Account_model extends CI_Model {
             'createdon' => mdate('%Y-%m-%d %H:%i:%s', now())
             );
         
-        if (!$this->config->item('verify_users'))
+        if (!$this->poolconfig_model->item('verify_users'))
             {
                 // users are automatically verified in this case
                 $data['verifiedon'] = mdate('%Y-%m-%d %H:%i:%s', now());
@@ -122,7 +122,7 @@ class Account_model extends CI_Model {
                 $insert = $this->db->query($sql_query);
             }
         
-         if ($this->config->item('sign_up_email_admin')) // Need to send the admin account an e-mail
+         if ($this->poolconfig_model->item('sign_up_email_admin')) // Need to send the admin account an e-mail
          {
             // Email administrator account
             
@@ -141,12 +141,12 @@ class Account_model extends CI_Model {
                 $admin_email = $row['email'];
                             
                 // Send user sign up e-mail
-                $this->email->from($this->config->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
+                $this->email->from($this->poolconfig_model->item('email_from_address'), lang('reset_password_email_sender')); //same account as reset password e-mail
                 $this->email->to($admin_email);
                 $this->email->subject(lang('signup_email_subject'));
                 
                 $message = sprintf(lang('signup_email_message'), $username);
-                if ($this->config->item('verify_users'))
+                if ($this->poolconfig_model->item('verify_users'))
                 {
                     $verify_link = anchor('admin/users/unverified');
                     $message = $message.sprintf(lang('signup_verify_message'), $verify_link);

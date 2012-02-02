@@ -22,7 +22,7 @@ class Connect_facebook extends CI_Controller {
     function index()
     {
         // Enable SSL?
-        maintain_ssl($this->config->item("ssl_enabled"));
+        maintain_ssl($this->poolconfig_model->item("ssl_enabled"));
         
         // Check if user is signed in on facebook
         if ($this->facebook_lib->user)
@@ -37,7 +37,7 @@ class Connect_facebook extends CI_Controller {
                     if ( ! $this->authentication->is_signed_in())
                     {
                             $vuser = $this->account_model->get_by_id($user->account_id);
-                            if ($this->config->item('verify_users') && !isset($vuser->verifiedon)) {
+                            if ($this->poolconfig_model->item('verify_users') && !isset($vuser->verifiedon)) {
                                 $this->session->set_flashdata('info',lang('sign_in_verification_required'));
                                 redirect('account/sign_in');
                             }

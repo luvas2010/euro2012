@@ -8,7 +8,7 @@
 												anchor('predictions/extra', lang('total_goals_pred')),
 												anchor('predictions/extra', lang('champion_pred'))); ?>
 	
-            <?php if($this->config->item('play_for_money'))
+            <?php if($this->poolconfig_model->item('play_for_money'))
               { ?>
         <div class="infostay">
             
@@ -19,10 +19,10 @@
                               
                 $query = $this->db->query($sql_query);
                 $num = $query->num_rows();
-                $payment_per_user = $this->config->item('payment_per_user');
-                $curr = $this->config->item('currency');
+                $payment_per_user = $this->poolconfig_model->item('payment_per_user');
+                $curr = $this->poolconfig_model->item('currency');
                 $total_money = $num * $payment_per_user;
-                $payout_sched = explode(",",$this->config->item('payout_schedule'));
+                $payout_sched = explode(",",$this->poolconfig_model->item('payout_schedule'));
                 $total_payed_out = array_sum($payout_sched);
                 echo "<p>".sprintf(lang('total_money'), $num, $curr.$payment_per_user, $curr.$total_money)."</p>";
                 if ($total_payed_out<100)
@@ -50,14 +50,14 @@
         <?php } ?>    
 	</div>
 	<div id="rules" class="grid_6 omega">
-        <?php echo sprintf(lang('points_awarded'), $this->config->item("pred_points_goals"),
-                                                $this->config->item("pred_points_result"),
-                                                $this->config->item("pred_points_qf_team"),
-                                                $this->config->item("pred_points_sf_team"),
-                                                $this->config->item("pred_points_f_team"),
-                                                $this->config->item('pred_points_bonus'),
-                                                $this->config->item('pred_points_bonus'),
-                                                $this->config->item('pred_points_champion')); ?>
+        <?php echo sprintf(lang('points_awarded'), $this->poolconfig_model->item("pred_points_goals"),
+                                                $this->poolconfig_model->item("pred_points_result"),
+                                                $this->poolconfig_model->item("pred_points_qf_team"),
+                                                $this->poolconfig_model->item("pred_points_sf_team"),
+                                                $this->poolconfig_model->item("pred_points_f_team"),
+                                                $this->poolconfig_model->item('pred_points_bonus'),
+                                                $this->poolconfig_model->item('pred_points_bonus'),
+                                                $this->poolconfig_model->item('pred_points_champion')); ?>
 		<div class='errorstay'><?php echo lang('result_rules'); ?></div>
 	</div>
     <div class='clear'></div>

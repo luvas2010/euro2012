@@ -2,7 +2,7 @@
         <div id="footer">
             <div class='container_12'>
                 <div class='grid_7 alpha'><?php
-                    $time_offset = $this->config->item('time_offset');
+                    $time_offset = $this->poolconfig_model->item('time_offset');
                     $this->load->helper('date');
                     $sql_query = "SELECT `timestamp` FROM `match` WHERE `match_uid` = 1";
                     $query = $this->db->query($sql_query);

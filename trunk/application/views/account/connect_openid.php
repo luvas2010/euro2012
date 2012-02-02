@@ -20,7 +20,7 @@
             <?php echo form_open(uri_string()); ?>
             <?php echo form_fieldset(); ?>
             <h3><?php echo sprintf(lang('connect_enter_your'), lang('connect_openid_url')); ?> 
-                <small><?php echo anchor($this->config->item('openid_what_is_url'), lang('connect_start_what_is_openid'), array('target'=>'_blank')); ?></small></h3>
+                <small><?php echo anchor($this->poolconfig_model->item('openid_what_is_url'), lang('connect_start_what_is_openid'), array('target'=>'_blank')); ?></small></h3>
             <?php if (isset($connect_openid_error)) : ?>
             <div class="grid_6 alpha">
                 <div class="form_error"><?php echo $connect_openid_error; ?></div>

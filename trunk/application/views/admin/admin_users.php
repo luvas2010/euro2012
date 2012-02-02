@@ -54,7 +54,7 @@
                                 {    
                                     echo anchor('admin/users/verify_user/'.$user['id'], lang('verify_user'), 'class="button user_go"');
                                 }
-						   $play_for_money = $this->config->item('play_for_money');
+						   $play_for_money = $this->poolconfig_model->item('play_for_money');
 						   if ($play_for_money == 1)
 						   {
 								if($user['payed'] == 0)

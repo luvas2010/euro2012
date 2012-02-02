@@ -44,7 +44,7 @@
            <?php } else { ?>
                 <td><?php echo $prediction['pred_total_goals']; ?></td>
            <?php  } ?>
-                <td><?php echo sprintf(lang('predict_total_goals'), $this->config->item('pred_points_bonus'), $this->config->item('pred_points_bonus') -1, $this->config->item('pred_points_bonus')-2);?></td>
+                <td><?php echo sprintf(lang('predict_total_goals'), $this->poolconfig_model->item('pred_points_bonus'), $this->poolconfig_model->item('pred_points_bonus') -1, $this->poolconfig_model->item('pred_points_bonus')-2);?></td>
 
             </tr>
             <tr>
@@ -73,7 +73,7 @@
            <?php } else { ?>
                 <td><?php echo get_team_name($prediction['champion']); ?></td>
            <?php  } ?>
-                <td><?php echo sprintf(lang('predict_champion'), $this->config->item('pred_points_champion'));?></td>
+                <td><?php echo sprintf(lang('predict_champion'), $this->poolconfig_model->item('pred_points_champion'));?></td>
 
             </tr>
             

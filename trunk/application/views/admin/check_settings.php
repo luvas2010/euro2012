@@ -9,159 +9,31 @@
             <?php echo anchor('admin/check_settings/cat/3', lang('category_3'), 'class="button"');?>
         </div>
         <div class='clear'></div>
-        <table class="stripeMe">
-            <tr>
-                <th>Setting</th>
-                <th>Value</th>
-                <th>Information</th>
-            </tr>
+        <div class='grid_4 alpha'><h3>Setting</h3></div>
+        <div class='grid_4'><h3>Value</h3></div>
+        <div class='grid_4 omega'><h3>Info</h3></div>
+        <div class='clear'></div>
         <?php foreach ($settings as $setting) { ?>
-            <tr>
-                <td><?php echo $setting['setting']; ?></td>
-                <td><?php echo $setting['value']; ?></td>
-                <td><?php echo lang($setting['setting']); ?></td>
-            </tr>    
+        <div class='settingrow'>
+            <div class='grid_4 alpha'><?php echo $setting['setting']; ?></div>
+            <div class='grid_4'>
+            <?php if(!$setting['is_writeable']) { ?>
+                    <?php echo $setting['value']; ?>
+                    <?php } else { ?>
+                    <?php $data = array(
+                      'name'        => 'setting['.$setting['setting'].']',
+                      'value'       => $setting['value'],
+                      'style'       => 'width:100%'
+                    );
+                    ?>
+                    <?php echo form_input($data);?>
+                    <?php } ?>
+            </div>
+            <div class="grid_4 omega"><?php echo lang($setting['setting']); ?></div>
+            <div class='clear'></div>
+        </div>
+        
         <?php  } ?>
-        </table>
-            
-        <div class='info'><?php echo lang('config_change');?></div>
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['time_offset']  = '<?php echo $this->config->item('time_offset');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo sprintf(lang('time_offset_check'), $this->config->item('time_offset')); ?>
-            <br/>
-            <?php echo sprintf(lang('timezone_check'), date_default_timezone_get())." "; ?>
-            
-            <?php $Date = new DateTime(); echo sprintf(lang('try_this_offset'), timezone_offset_get(timezone_open(date_default_timezone_get()), $Date) - 3600);?>
-            </p>
-        </div>
         <div class='clear'></div>
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['predictions_open']  = '<?php echo $this->config->item('predictions_open');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('predictions_open'); ?>
-            </p>
-        </div>
-        <div class='clear'></div>
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['sign_up_email_admin']  = '<?php echo $this->config->item('sign_up_email_admin');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('sign_up_email_admin'); ?>
-            </p>
-        </div>
-        <div class='clear'></div>
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['verify_users']  = '<?php echo $this->config->item('verify_users');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('verify_users'); ?>
-            </p>
-        </div>
-        <div class='clear'></div>
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['email_from_address']  = '<?php echo $this->config->item('email_from_address');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('email_from_address'); ?>
-            </p>
-        </div>
-        <div class='clear'></div>       <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['pred_points_goals']  = '<?php echo $this->config->item('pred_points_goals');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('pred_points_goals'); ?>
-            </p>
-        </div>
-        <div class='clear'></div>
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['pred_points_result']  = '<?php echo $this->config->item('pred_points_result');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('pred_points_result'); ?>
-            </p>
-        </div>
-        <div class='clear'></div>
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['pred_points_qf_team']  = '<?php echo $this->config->item('pred_points_qf_team');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('pred_points_qf_team'); ?>
-            </p>
-        </div>
-        <div class='clear'></div> 
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['pred_points_sf_team']  = '<?php echo $this->config->item('pred_points_sf_team');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('pred_points_sf_team'); ?>
-            </p>
-        </div>
-        <div class='clear'></div> 
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['pred_points_f_team']  = '<?php echo $this->config->item('pred_points_f_team');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('pred_points_f_team'); ?>
-            </p>
-        </div>
-        <div class='clear'></div> 
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['pred_points_bonus']  = '<?php echo $this->config->item('pred_points_bonus');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('pred_points_bonus'); ?>
-            </p>
-        </div>
-        <div class='clear'></div> 
-        <div class='grid_6 alpha'>
-            <p>
-                <span class='code'>$config['pred_points_champion']  = '<?php echo $this->config->item('pred_points_champion');?>';</span><br />
-            </p>
-        </div>
-        <div class='grid_6 omega'>
-            <p>
-            <?php echo lang('pred_points_champion'); ?>
-            </p>
-        </div>
-        <div class='clear'></div>
-    </div>
-    <div class='grid_12 alpha omega'>
-        <?php echo lang('account_settings');?>
     </div>    
 </div>

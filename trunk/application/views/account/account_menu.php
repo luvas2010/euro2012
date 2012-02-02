@@ -7,7 +7,7 @@
                 <li<?php if ($current == 'account_password') echo ' class="active"'; ?>><?php echo anchor('account/account_password', lang('website_password'), "class='button lock_edit'"); ?></li>
                 <?php endif; ?>
                 <li<?php if ($current == 'account_profile') echo ' class="active"'; ?>><?php echo anchor('account/account_profile', lang('website_profile'), "class='button vcard'"); ?></li>
-            	<?php if ($this->config->item('third_party_auth_providers') != "")
+            	<?php if ($this->poolconfig_model->item('third_party_auth_providers') != "")
 				{ ?>
 				<li<?php if ($current == 'account_linked') echo ' class="active"'; ?>><?php echo anchor('account/account_linked', lang('website_linked'), "class='button link'"); ?></li>
                 <?php  } ?>

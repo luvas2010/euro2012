@@ -5,7 +5,7 @@
 			<th><?php echo lang('username'); ?></th>
 			<th><?php echo lang('points'); ?></th>
 			<?php 
-            if ($this->config->item('public_social_links'))
+            if ($this->poolconfig_model->item('public_social_links'))
             {
             ?>
             <th>Facebook</th>
@@ -22,7 +22,7 @@
 			<td><?php echo $user['username']; ?></td>
 			<td><?php echo $user['points_total']; ?></td>
             <?php 
-            if ($this->config->item('public_social_links'))
+            if ($this->poolconfig_model->item('public_social_links'))
             {
             ?>
 			<td>

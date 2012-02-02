@@ -30,7 +30,7 @@
         <a href="https://twitter.com/share" class="twitter-share-button" 
            data-url='<?php echo $share_url;?>' 
            data-text= '<?php echo $share_text_twitter;?>' 
-           data-hashtags='<?php echo $this->config->item("pool_name");?>' 
+           data-hashtags='<?php echo $this->poolconfig_model->item("pool_name");?>' 
            data-lang="en" 
            data-count="horizontal">Tweet
         </a>
@@ -122,8 +122,8 @@
 <?php
     //$this->load->config('twitter');
     //$this->load->helper('twitter');  
-    //$consumer_key = $this->config->item('twitter_consumer_key');
-    //$consumer_secret = $this->config->item('twitter_consumer_secret');
+    //$consumer_key = $this->poolconfig_model->item('twitter_consumer_key');
+    //$consumer_secret = $this->poolconfig_model->item('twitter_consumer_secret');
     //$account_id = $account->id;
     //$sql_query = "SELECT * FROM `account_twitter`
                   //WHERE `account_id` = '$account_id'";

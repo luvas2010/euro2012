@@ -50,13 +50,13 @@
                         <ul>
                             <li><?php echo anchor('admin/users',lang('list_all_users')); ?></li>
                             <li><?php echo anchor('admin/users/unverified',lang('show_unverified_users')); ?></li>
-                            <?php if ($this->config->item('play_for_money'))
+                            <?php if ($this->poolconfig_model->item('play_for_money'))
 							{ ?>
 							<li><?php echo anchor('admin/users/unpayed',lang('show_unpayed_users')); ?></li>
 							<?php } ?>
                         </ul>
                     </li>
-                    <li><?php echo anchor('admin/check_settings', lang('check_settings'));?></li>
+                    <li><?php echo anchor('admin/check_settings/cat/0', lang('check_settings'));?></li>
                     <li><?php echo anchor('admin/manual', 'Handleiding');?></li>
                 </ul>
             </li>
