@@ -257,7 +257,7 @@ if ( ! function_exists('get_last_matches') )
                       AND `match`.`timestamp` > $now
                       AND `prediction`.`account_id` = '$account_id'
 					  AND `match`.`match_calculated` = 1
-                      ORDER BY `match`.`timestamp` ASC
+                      ORDER BY `match`.`timestamp` DESC
                       LIMIT $num";
         $query = $CI->db->query($sql_query);
         $matches = $query->result_array();

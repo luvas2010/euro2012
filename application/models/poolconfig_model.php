@@ -82,8 +82,10 @@ class Poolconfig_model extends CI_Model {
         }
 	}
 
-	// to do: update setttings when saved
-	// to do: batch update settings
-	// to do: replace all $this->config->item('name') with $this->poolconfig_model->get_value('name')
+    function update_setting($setting, $new_value)
+    {
+        $this->db->update('pool_config', array('value' => $new_value), array('setting' => $setting));
+    }
+
 	
 }

@@ -34,16 +34,33 @@ class Check_settings extends CI_Controller {
         }
         else
         {
-            redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings')));
+            redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings/cat/0')));
         }            
     }
     
-    public function cat($category)
+    public function cat($category, $action= NULL)
     {
-        if ($this->authentication->is_signed_in() && is_admin())
+        if ($this->authentication->is_signed_in() && is_admin() && $action ==  'save')
+        {
+			//echo "<pre>";
+			//print_r($this->input->post());
+			//echo "</pre>";
+			$settings = $this->input->post('setting');
+			
+			foreach($settings as $setting => $value)
+			{
+				$this->poolconfig_model->update_setting($setting, $value);
+			}
+			$this->session->set_flashdata('info',lang('data_saved'));
+			redirect('admin/check_settings/cat/'.$category);
+		
+		}
+		
+		if ($this->authentication->is_signed_in() && is_admin() && $action == NULL)
         {
             $data = array(
-                            'settings'  => $this->poolconfig_model->get_all_settings($category),
+                            'category'	=> $category,
+							'settings'  => $this->poolconfig_model->get_all_settings($category),
                             'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
                             'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
                             'content_main' => 'admin/check_settings',
@@ -52,9 +69,9 @@ class Check_settings extends CI_Controller {
 
             $this->load->view('template/template', $data);
         }
-        else
+        elseif(!$this->authentication->is_signed_in() || !is_admin())
         {
-            redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings')));
+            redirect('account/sign_in/?continue='.urlencode(site_url('admin/check_settings/cat/'.$category)));
         }            
     }
     
