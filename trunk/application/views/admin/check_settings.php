@@ -9,6 +9,9 @@
             <?php echo anchor('admin/check_settings/cat/3', lang('category_3'), 'class="button"');?>
         </div>
         <div class='clear'></div>
+		<?php 
+		
+		echo form_open('admin/check_settings/cat/'.$category.'/save'); ?>
         <div class='grid_4 alpha'><h3>Setting</h3></div>
         <div class='grid_4'><h3>Value</h3></div>
         <div class='grid_4 omega'><h3>Info</h3></div>
@@ -34,6 +37,8 @@
         </div>
         
         <?php  } ?>
+		<div class='grid_12 alpha omega'><input type='submit' name='save' value='<?php echo lang('save'); ?>' class='button save' /></div>
+		<?php echo form_close(); ?>
         <div class='clear'></div>
     </div>    
 </div>

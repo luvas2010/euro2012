@@ -43,6 +43,10 @@
             ?>
         </div>
         <?php } ?>
+		<?php
+		if($this->poolconfig_model->item('enable_shoutbox') == 1)
+		{
+		?>
         <div id="shoutbox">
             <h3><?php echo anchor('shoutbox/showall',lang('user_messages'),"title='".lang('show_all_shouts')."'");?></h3>
             <input type="text" id="shout" name="shout" maxlength="255" value="<?php echo lang('type_message_here');?>" class='text' />
@@ -77,7 +81,8 @@
                             });
                 });
 			</script>
-        </div>
+        </div> <!-- end shoutbox -->
+		<?php } ?>
     </div> <!-- end column1 -->
     <div class='grid_4'>
             <?php if(!tournament_done())
