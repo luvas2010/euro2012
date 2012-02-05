@@ -15,7 +15,7 @@ class Connect_create extends CI_Controller {
         //$this->load->config('account');
         $this->load->helper(array('language', 'ssl', 'url'));
         $this->load->library(array('authentication', 'form_validation'));
-        $this->load->model(array('account_model', 'account_details_model', 'account_facebook_model', 'account_twitter_model', 'account_openid_model'));
+        $this->load->model(array('account_model', 'account_details_model', 'account_facebook_model', 'account_twitter_model', 'account_openid_model','poolconfig_model'));
         $this->load->language(array('general', 'connect_third_party'));
     }
     

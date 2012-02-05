@@ -15,7 +15,7 @@ class Connect_twitter extends CI_Controller {
         //$this->load->config('account');
         $this->load->helper(array('language', 'ssl', 'url'));
         $this->load->library(array('authentication', 'twitter_lib'));
-        $this->load->model(array('account_model', 'account_twitter_model'));
+        $this->load->model(array('account_model', 'account_twitter_model','poolconfig_model'));
         $this->load->language(array('general', 'sign_in', 'account_linked', 'connect_third_party'));
     }
     
