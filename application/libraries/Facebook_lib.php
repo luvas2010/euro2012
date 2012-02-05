@@ -14,6 +14,7 @@ class Facebook_lib {
         
         //$this->CI->load->config('facebook');
         $this->CI->load->helper('facebook');
+        $this->CI->load->model('poolconfig_model');
         
         // Require Facebook app keys to be configured
         if ( ! $this->CI->poolconfig_model->item('facebook_app_id') || ! $this->CI->poolconfig_model->item('facebook_secret'))
