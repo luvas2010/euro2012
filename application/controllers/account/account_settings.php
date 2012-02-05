@@ -15,7 +15,7 @@ class Account_settings extends CI_Controller {
         //$this->load->config('account');
         $this->load->helper(array('date', 'language', 'ssl', 'url'));
         $this->load->library(array('authentication', 'form_validation'));
-        $this->load->model(array('account_model', 'account_details_model', 'ref_country_model', 'ref_language_model', 'ref_zoneinfo_model'));
+        $this->load->model(array('account_model', 'account_details_model', 'ref_country_model', 'ref_language_model', 'ref_zoneinfo_model', 'poolconfig_model'));
         $this->db->select('language');
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();

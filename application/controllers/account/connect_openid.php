@@ -15,7 +15,7 @@ class Connect_openid extends CI_Controller {
         //$this->load->config('account');
         $this->load->helper(array('language', 'ssl', 'url', 'openid'));
         $this->load->library(array('authentication'));
-        $this->load->model(array('account_model', 'account_openid_model'));
+        $this->load->model(array('account_model', 'account_openid_model','poolconfig_model'));
         $this->load->language(array('general', 'sign_in', 'account_linked', 'connect_third_party'));
     }
     

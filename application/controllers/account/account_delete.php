@@ -15,7 +15,7 @@ class Account_delete extends CI_Controller {
 		//$this->load->config('account');
 		$this->load->helper(array('language', 'ssl', 'url'));
         $this->load->library(array('authentication', 'form_validation'));
-		$this->load->model(array('account_model', 'account_details_model'));
+		$this->load->model(array('account_model', 'account_details_model', 'poolconfig_model'));
 		$this->load->language(array('general', 'account_profile'));
 	}
 	
