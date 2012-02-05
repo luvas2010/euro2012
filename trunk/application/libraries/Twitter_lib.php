@@ -14,6 +14,7 @@ class Twitter_lib {
         
         //$this->CI->load->config('twitter');
         $this->CI->load->helper('twitter');
+        $this->CI->load->model('poolconfig_model');
         
         // Require Facebook app keys to be configured
         if ( ! $this->CI->poolconfig_model->item('twitter_consumer_key') || ! $this->CI->poolconfig_model->item('twitter_consumer_secret'))
