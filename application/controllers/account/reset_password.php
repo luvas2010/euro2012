@@ -15,7 +15,7 @@ class Reset_password extends CI_Controller {
 		//$this->load->config('account');
 		$this->load->helper(array('date', 'language', 'ssl', 'url'));
         $this->load->library(array('authentication', 'recaptcha', 'form_validation'));
-		$this->load->model(array('account_model'));
+		$this->load->model(array('account_model','poolconfig_model'));
 		$this->load->language(array('general', 'reset_password'));
 	}
 	
