@@ -14,7 +14,7 @@ class Recaptcha {
         
         // Load reCAPTCHA helper
         $this->CI->load->helper('recaptcha');
-        
+        $this->CI->load->model('poolconfig_model');
         // Load reCAPTCHA config
         //$this->CI->config->load('recaptcha');
     }
