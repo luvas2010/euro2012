@@ -13,6 +13,7 @@ class Sign_out extends CI_Controller {
         
         // Load the necessary stuff...
         $this->load->helper(array('language', 'url'));
+		$this->load->model('poolconfig_model');
         //$this->load->config('account');
         $this->load->language(array('general', 'sign_out'));
         $this->load->library(array('authentication'));
