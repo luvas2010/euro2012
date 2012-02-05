@@ -17,6 +17,7 @@ class Install extends CI_Controller {
         $data['title'] = lang('start');
         $data['content_main'] = 'install/start';
         $this->load->view('install/install_template', $data);
+	 //echo "ja";
     }
     
     public function step1()
@@ -36,7 +37,7 @@ class Install extends CI_Controller {
     public function create_admin()
     {
         
-        $this->load->model(array('account_model'));
+        $this->load->model(array('account_model','poolconfig_model'));
         $this->load->model(array('account_details_model'));
         $username   = $this->input->post('username');
         $email      = $this->input->post('email');
@@ -68,7 +69,7 @@ class Install extends CI_Controller {
         @$this->email->send();
         
         $this->session->set_flashdata('info', sprintf(lang('user_created'),$username));
-        redirect('/install/install/step2');
+        redirect('/admin/check_settings/cat/0');
     }
 }
 

@@ -7,7 +7,7 @@ class Stats extends CI_Controller {
 
         $this->load->helper(array('language', 'url', 'form', 'ssl', 'pool', 'date'));
         $this->load->library(array('authentication'));
-        $this->load->model(array('account_model'));
+        $this->load->model(array('account_model','poolconfig_model'));
         $this->load->model(array('account_details_model'));
         $this->db->select('language');
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
