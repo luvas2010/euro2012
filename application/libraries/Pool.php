@@ -31,7 +31,7 @@ class Pool {
 	{
 	
 		$CI =& get_instance();
-		$this->CI->load->model('poolconfig_model');
+		$CI->load->model('poolconfig_model');
 		$sql_query = "SELECT *, SUM(`prediction`.`pred_points_total`) AS points_total
                 FROM `prediction`
                 JOIN `account`
@@ -85,7 +85,7 @@ class Pool {
     public function calculate_group($group)
     {
         $CI =& get_instance();
-		$this->CI->load->model('poolconfig_model');
+		$CI->load->model('poolconfig_model');
 
         $sql_query = "SELECT * FROM `match` WHERE `match`.`match_group` = '$group'";
         $query = $CI->db->query($sql_query);
@@ -177,7 +177,7 @@ class Pool {
     public function calculate_pred_group($group)
     {
         $CI =& get_instance();
-		$this->CI->load->model('poolconfig_model');
+		$CI->load->model('poolconfig_model');
         $account_id = $CI->session->userdata('account_id');
         $sql_query = "SELECT *
                       FROM `prediction`
@@ -275,7 +275,7 @@ class Pool {
     public function calculate_match($match_uid)
     {
         $CI =& get_instance();
-        $this->CI->load->model('poolconfig_model');
+        $CI->load->model('poolconfig_model');
             $pred_points_goals = $CI->poolconfig_model->item('pred_points_goals');
             $pred_points_result = $CI->poolconfig_model->item('pred_points_result');
             $pred_points_bonus = $CI->poolconfig_model->item('pred_points_bonus');
