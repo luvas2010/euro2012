@@ -7,9 +7,8 @@ class Install extends CI_Controller {
         parent::__construct();
         $this->load->database();
         $this->load->helper(array('url','date', 'language'));
-        $this->load->library(array('session', 'authentication'));
+        $this->load->library(array('session'));
         $this->lang->load(array('install'));
-        
     }
 
     public function index()
