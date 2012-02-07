@@ -61,7 +61,7 @@ class Sign_up extends CI_Controller {
                 $data['sign_up_email_error'] = lang('sign_up_email_exist');
             }
             // Either already pass recaptcha or just passed recaptcha
-            elseif ( ! ($this->session->userdata('sign_up_recaptcha_pass') == TRUE || $recaptcha_result === TRUE) && $this->poolconfig_model->item("sign_up_recaptcha_enabled") === TRUE)
+            elseif ( ! ($this->session->userdata('sign_up_recaptcha_pass') == TRUE || $recaptcha_result === TRUE) && $this->poolconfig_model->item("sign_up_recaptcha_enabled") == 1)
             {
                 $data['sign_up_recaptcha_error'] = $this->input->post('recaptcha_response_field') ? lang('sign_up_recaptcha_incorrect') : lang('sign_up_recaptcha_required');
             }
@@ -105,7 +105,7 @@ class Sign_up extends CI_Controller {
         
         if (!isset($skip)) {
             // Load recaptcha code
-            if ($this->poolconfig_model->item("sign_up_recaptcha_enabled") === TRUE)
+            if ($this->poolconfig_model->item("sign_up_recaptcha_enabled") == 1)
                 if ($this->session->userdata('sign_up_recaptcha_pass') != TRUE) 
                     $data['recaptcha'] = $this->recaptcha->load($recaptcha_result, $this->poolconfig_model->item("ssl_enabled"));
             
