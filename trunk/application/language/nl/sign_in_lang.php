@@ -24,6 +24,13 @@ $lang['sign_in_recaptcha_incorrect']            = 'De captcha test is onjuist.';
 $lang['sign_in_combination_incorrect']          = 'Sorry, de combinatie gebruikersnaam/email en wachtwoord is onjuist.';
 $lang['sign_in_verification_required']          = 'Je account is nog niet geverifi&euml;erd. Zodra de beheerder je account verifi&eumlert, ontvang je een email.';
 
-
+$lang['intro_text']                             = '<h2>Welkom bij de EURO2012 Voetbalpool!</h2>
+                                                   <p>Meedoen aan de pool is eenvoudig! Maak een account aan door op deze link te klikken: %s (of log hieronder in als je al een account hebt).</p>
+                                                   <p>Voorspel vervolgens de uitslag voor iedere wedstrijd, en raad welke landen er doorgaan naar de kwart finales, halve finales en de finale. 
+                                                   Zelfs als je het niet helemaal goed raadt, krijg je al punten!</p>
+                                                   <p>Het EK in Polen & Oekra&iuml;ne gaat van start op 8 juni 2012 en eindigt met de finale op 1 juli in Kiev, Oekra&iuml;ne.</p>
+                                                   <p>De aftrap van het toernooi vindt plaats in Warschau met gastland Polen als een van de ploegen die het EK opent. De aanvangstijden van de wedstrijden zijn 18.00 uur en 20.45 uur.</p>';
+$lang['intro_payed']                            = 'Om mee te doen moet je wel de inleg van %s betalen. Aan het eind van het toernooi wordt de pot als volgt verdeeld: %s';                                                  
+$lang['ranking']                                = 'plaats';
 /* End of file sign_in_lang.php */
 /* Location: ./application/modules/account/language/nl/sign_in_lang.php */

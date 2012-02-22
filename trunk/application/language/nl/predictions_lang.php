@@ -40,6 +40,7 @@ $lang['number_of_times_predicted']      = "Aantal keer voorspeld";
 $lang['make_prediction_for']			= "Voorspelling voor wedstrijd %s";
 $lang['results_for_match']              = "Uitslag &amp; resultaten van wedstrijd %s";
 $lang['statistics_prediction_help']     = "Er zijn %s voorspellingen gemaakt voor deze wedstrijd. Hieronder kun je zien wat de andere deelnemers denken.";
+$lang['see_all_predictions_for_match']  = "Bekijk alle voorspellingen";
 $lang['prediction_closed']              = "De tijdslimiet voor deze wedstrijd is verstreken. Je kunt je voorspelling niet meer wijzigen!";
 $lang['tournament_started']             = "Het toernooi is begonnen, je kunt de teams niet meer veranderen";
 $lang['predict_teams_knockout_phase']   = "<p>Voor de Kwart finales, Halve Finales en de Finale moet je ook de teams voorspellen.

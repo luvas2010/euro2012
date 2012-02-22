@@ -347,6 +347,9 @@
 	?>
     <h3><?php echo lang('statistics'); ?></h3>
 	<p><?php echo sprintf(lang('statistics_prediction_help'), $num); ?></p>
+    <?php if($this->poolconfig_model->item('public_predictions') == 1 || prediction_closed($match_uid) || $prediction['pred_calculated'] == 1) { ?>
+    <p><?php echo anchor('predictions/show_match/'.$match_uid, lang('see_all_predictions_for_match'), "class='button magnifier'"); ?></p>
+    <?php } ?>
         <div class='grid_4 alpha omega'>
         <?php echo sprintf(lang('who_will_win_stat'), anchor('stats/view_team/'.$predictions[0]['home_team'],lang($predictions[0]['home_team'])),anchor('stats/view_team/'.$predictions[0]['away_team'],lang($predictions[0]['away_team']))); ?>
         <?php

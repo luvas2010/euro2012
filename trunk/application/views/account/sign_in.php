@@ -2,8 +2,23 @@
 <div id="content">
     <div class="container_12">
         <div class="grid_12">
-            <h2><?php echo anchor(uri_string().($this->input->get('continue')?'/?continue='.urlencode($this->input->get('continue')):''), lang('sign_in_page_name')); ?></h2>
-        </div>
+            <?php echo sprintf(lang('intro_text'), anchor('account/sign_up', lang('website_sign_up')));?>
+            <?php
+            if ($this->poolconfig_model->item('play_for_money'))
+			{
+            $payout_schedule = explode(",",$this->poolconfig_model->item('payout_schedule'));
+            $payout = "<ul>";
+            $i = 1;
+            foreach($payout_schedule as $pay)
+            {
+                $payout .= "<li>".$i."e ".lang('ranking').": ".$pay."%</li>";
+                $i++;
+            }    
+            
+            $payout .= "</ul>";
+			echo sprintf(lang('intro_payed'), $this->poolconfig_model->item('currency')." ".$this->poolconfig_model->item('payment_per_user'), $payout);
+			} ?>
+        </div>    
         <div class="clear"></div>
         <div class="grid_8">
         <?php $attributes = array('id' => 'validateMe'); ?>

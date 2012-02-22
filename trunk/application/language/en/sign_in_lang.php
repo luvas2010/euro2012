@@ -24,6 +24,14 @@ $lang['sign_in_recaptcha_incorrect']			= 'The captcha test is incorrect.';
 $lang['sign_in_combination_incorrect']			= 'Sorry, your Username/Email and Password combination is incorrect.';
 $lang['sign_in_verification_required']          = 'Your account has not been verified yet. You will recieve an e-mail as soon as the administrator verifies your account.';
 
-
+$lang['intro_text']                             = '<h2>Welcome to the EURO2012 Footballpool!</h2>
+                                                   <p>Competing in this game in simple! Create an account by clicking on this link: %s (or log in below if you already have an account).</p>
+                                                   <p>Then predict the result for every match, and guess which teams will make it to the knockout matches. 
+                                                   Even if you don&rsquo;t get it exactly right, you will still earn points!
+                                                   </p>
+                                                   <p>The tournament starts on June 8th, 2012 and finishes with the final on July 1st in Kiev, Oekra&iuml;ne.</p>';
+                                                   
+$lang['intro_payed']                            = '<p>To join the game, you will have to pay %s. At the end of the game, the money will be divided like this: %s';                                                  
+$lang['ranking']                                = 'position';
 /* End of file sign_in_lang.php */
 /* Location: ./application/modules/account/language/english/sign_in_lang.php */

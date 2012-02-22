@@ -706,7 +706,11 @@ a.link_delete, input.link_delete, button.link_delete {
     background: url(icons/link_delete.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
     } 	
-a.add {
+a.magnifier, input.magnifier, button.magnifier {
+    background: url(icons/magnifier.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+    a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;
 }
