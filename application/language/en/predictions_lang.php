@@ -36,6 +36,7 @@ $lang['number_of_times_predicted']      = "Number of times predicted";
 $lang['make_prediction_for']			= "Prediction for match %s";
 $lang['results_for_match']              = "Results for match %s";
 $lang['statistics_prediction_help']     = "For this match %s predicitons have been made. Look below to see what the other contestants are thinking.";
+$lang['see_all_predictions_for_match']  = "See all predictions";
 $lang['total_number_of_predictions']    = "For this match %s predictions were calculated.";
 $lang['pred_goals_correct_number']      = "The number of goals for %s was predicted correctly %s times.";
 $lang['pred_everything_correct_number'] = "%s people had the goals for both teams correct.";

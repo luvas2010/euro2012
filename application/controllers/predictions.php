@@ -1073,6 +1073,47 @@ class Predictions extends CI_Controller {
         }
     }
     
+    function show_match($match_uid)
+    {
+        if ($this->authentication->is_signed_in())
+        {       
+                            
+                $sql_query = "SELECT *
+                            FROM `prediction`
+                            JOIN `match`
+                            ON `match`.`match_uid` = `prediction`.`pred_match_uid`
+                            AND `pred_match_uid` = $match_uid
+                            JOIN `account`
+                            ON `account`.`id` = `prediction`.`account_id`
+                           JOIN `account_details` ON `account_details`.`account_id` = `prediction`.`account_id`
+                           LEFT JOIN `account_facebook` ON `account_facebook`.`account_id` = `prediction`.`account_id`
+                           LEFT JOIN `account_twitter` ON `account_twitter`.`account_id` = `prediction`.`account_id`
+                            ORDER BY `account`.`username`";
+                $query = $this->db->query($sql_query);
+                $results = $query->result_array();
+                echo "<!--";
+                echo $sql_query."<br/>";
+                echo "<PRE>";
+                print_r($results);
+                echo "</PRE>";
+                echo "-->";
+                $data = array(
+                            'match_uid' => $match_uid,
+                            'title' => get_match($match_uid)." (".lang($results[0]['match_group']).")",
+                            'results' => $results,
+                            'account' => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                            'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                            'content_main' => 'show_match_pred'
+                        );
+                $this->load->view('template/template', $data);        
+        }
+        else
+        {
+             redirect('account/sign_in/?continue='.site_url('predictions/show_predictions').'/'.$what.'/'.$where);
+        }       
+    }
+    
+    
     function show($view_account_id, $group)
     {
 
