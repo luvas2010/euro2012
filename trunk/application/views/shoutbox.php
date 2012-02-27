@@ -9,7 +9,14 @@ foreach ($shouts as $shout)
         $shout_account_details = $this->account_details_model->get_by_account_id($shout['account_id']);
         if (isset($shout_account_details->picture))
             {
-                    $imgstring = "<img src='".base_url()."resource/user/profile/".$shout_account_details->picture."?t=".md5(time())."' alt='' style='float:left;' />";
+                    if (substr($shout_account_details->picture,0,4) == "http")
+                    {
+                        $imgstring = "<img src='".$shout_account_details->picture."' alt='' style='float:left;' />";
+                    }
+                    else
+                    {
+                        $imgstring = "<img src='".base_url()."resource/user/profile/".$shout_account_details->picture."?t=".md5(time())."' alt='' style='float:left;' />";
+                    }
             }
             else
             {
