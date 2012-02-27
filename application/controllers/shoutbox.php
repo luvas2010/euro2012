@@ -92,7 +92,14 @@ class Shoutbox extends CI_Controller {
 			$account_details = $this->account_details_model->get_by_account_id($shout['account_id']);
 			if (isset($account_details->picture))
 			{
-                    $imgstring = "<img src='".base_url()."resource/user/profile/".$account_details->picture."?t=".md5(time())."' alt='' width='50px' height='50px' style='float:left;' />";
+                 if (substr($account_details->picture,0,4) == "http")
+                    {    
+                        $imgstring = "<img src='".$account_details->picture."' alt='' width='50px' height='50px' style='float:left;' />";
+                    }
+                    else
+                    {
+                        $imgstring = "<img src='".base_url()."resource/user/profile/".$account_details->picture."?t=".md5(time())."' alt='' width='50px' height='50px' style='float:left;' />";
+                    }
             }
 			else
 			{
