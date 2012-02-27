@@ -1,5 +1,5 @@
     <h2><?php echo $title; ?></h2>
-    <div class='buttons'><?php echo anchor("/predictions/edit",lang('edit_all_predictions'),"class='button'"); ?></div>
+    <div class='buttons'><?php echo anchor("/predictions/editgroup/".strtoupper($group),lang('edit_all_predictions'),"class='button'"); ?></div>
     <div class='clear'></div>
     <table class='stripeMe'>
         <tr>

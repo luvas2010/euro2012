@@ -1137,7 +1137,8 @@ class Predictions extends CI_Controller {
                         'predictions'       => $predictions,
                         'content_main'      => "show_user_pred",
                         'title'             => sprintf(lang('overview_of_points_for'), $view_account->username, lang($group)),
-                        'view_account'       => $view_account
+                        'view_account'       => $view_account,
+                        'group'             => $group
                         );
     
             $this->load->view('template/template', $data);
