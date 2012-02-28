@@ -112,7 +112,7 @@
                     <?php
                         if ($prediction['pred_calculated'] == '1')
                         {
-                            echo anchor('standings/show/'.$account->id.'/'.$prediction['match_group'],$prediction['pred_points_home_goals']
+                            echo anchor('predictions/show/'.$account->id.'/'.$prediction['match_group'],$prediction['pred_points_home_goals']
                                  + $prediction['pred_points_away_goals']
                                  + $prediction['pred_points_result']
                                  + $prediction['pred_points_bonus']
