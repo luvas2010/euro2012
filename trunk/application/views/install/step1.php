@@ -2097,7 +2097,8 @@
 
         $sql_query[] = "REPLACE INTO `ref_language` (`one`, `two`, `language`, `native`) VALUES
                         ('nl', 'nld', 'Nederlands', 'Dutch'),
-                        ('en', 'eng', 'English', 'English')";
+                        ('en', 'eng', 'English', 'English'),
+                        ('de', 'deu', 'Deutsch', 'German')";
         
         $sql_query[] = "CREATE TABLE IF NOT EXISTS `ref_timezone` (
                           `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
