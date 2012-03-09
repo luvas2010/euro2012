@@ -44,7 +44,10 @@ class Upgrade extends CI_Controller {
                         VALUES (
                         NULL , '0', 'Schop', 'Installatie Versie 1.2 succesvol!', '$timestamp'
                         )";
-						
+                        
+		$sql_query[] = "REPLACE INTO `ref_language` (`one`, `two`, `language`, `native`) VALUES
+                        ('de', 'deu', 'Deutsch', 'German')";
+                           
 		$sql_query[] = "CREATE TABLE IF NOT EXISTS `pool_config` (
                           `setting_uid` int(11) NOT NULL AUTO_INCREMENT,
                           `setting` varchar(255) NOT NULL,
