@@ -39,7 +39,7 @@ $lang['your_prediction']                        = 'Ihre Tipps';
 $lang['warnings']                               = 'Klicken Sie hier um die Warnungen nachzulesen';
 $lang['not_payed_yet'] = "Sie haben noch nicht bezahlt. Bitte &auml;ndern Sie das so schnell wie m&ouml;glich!";
 $lang['no_more_matches']						= 'Alle Spiele wurden gespielt';
-$lang['time_left']                              = 'Übrigezeit';
+$lang['time_left']                              = '&Uuml;brigezeit';
 /* navigation */
 
 $lang['navhome']           = 'Home';
@@ -63,7 +63,7 @@ $lang['list_all_users'] = 'Auflistung aller Nutzer';
 $lang['show_unverified_users'] = 'Zeige alle unbest&auml;tigten Nutzer';
 $lang['show_unpayed_users'] = 'Zeige Nutzer, die noch nicht bezahlt &rsquo;t haben';
 $lang['admin_unverified_users'] = 'Es gibt %s unbest&auml;tigte Nutzer';
-$lang['check_settings']			= 'Überpr&uuml;fe Einstellungen';
+$lang['check_settings']			= '&Uuml;berpr&uuml;fe Einstellungen';
 $lang['delete_account']			= 'L&ouml;sche Account';
 $lang['number_of_users']		= 'Anzahl der Nutzer';
 $lang['unverified_users_link']		= 'Admin: Es gibt %s unbest&auml;tigte Nutzer. %s';

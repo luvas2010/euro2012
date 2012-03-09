@@ -1,5 +1,5 @@
 <?php
-$lang['group_name_overview'] = "Gruppen %s Übersicht";
+$lang['group_name_overview'] = "Gruppen %s &Uuml;bersicht";
 $lang['match_number']       = "#";
 $lang['group']              = "Gruppee";
 $lang['home']               = "Home";

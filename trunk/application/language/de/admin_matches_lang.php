@@ -4,7 +4,7 @@ $lang['edit_match_results']     = "Administration: Spielergebnis bearbeiten";
 
 
 $lang['matches']            = "Begegnungen";
-$lang['overview_matches']   = "Übersicht aller Begegnungen";
+$lang['overview_matches']   = "&Uuml;bersicht aller Begegnungen";
 $lang['match_number']       = "#";
 $lang['group']              = "Gruppe";
 $lang['home']               = "Home";
