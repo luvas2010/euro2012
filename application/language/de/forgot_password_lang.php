@@ -18,8 +18,8 @@ $lang['forgot_password_recaptcha_incorrect']			= 'Der Erfassungstest ist nicht k
 $lang['reset_password_sent_instructions']				= "<h3>Okay, Wir versandten die Istruktionen an Ihre E-mailadresse.<br />Go check it!</h3>
 <p>You can keep this page open while you're checking your email.<br />Sollten Sie die Instruktionen nicht binnen einer oder zwei Minuten erhalten, versuchen Sie das Folgende %s!</p>";
 $lang['reset_password_resend_the_instructions']			= 'Wiederholung des Instruktionenversandts';
-$lang['reset_password_email_sender'] 					= 'Fuﬂball-Tipp-Spiel';
-$lang['reset_password_email_subject'] 					= 'Fuﬂball-Tipp-Spiel Passwortzur&uuml;cksetzung';
+$lang['reset_password_email_sender'] 					= 'Fu&szlig;ball-Tipp-Spiel';
+$lang['reset_password_email_subject'] 					= 'Fu&szlig;ball-Tipp-Spiel Passwortzur&uuml;cksetzung';
 $lang['reset_password_email']							= 'Hi %s,<br /><br />Wir haben die Anfrage auf Passwortzur&uuml;cksetzung erhalten.<br /><br />
 Um Ihr Passwort zur&uuml;ckzusetzen, klicken Sie bitte auf den untenstehenden Link  oder kopieren Sie den Link in Ihren Browser:<br />%s';
 

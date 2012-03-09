@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 $lang['sign_up_page_name']                      = 'Anmelden';
-$lang['sign_up_heading']                        = 'Erstelle ein Fuﬂballtippspielaccount';
+$lang['sign_up_heading']                        = 'Erstelle ein Fu&szlig;balltippspielaccount';
 $lang['sign_up_third_party_heading']            = 'Anmelden mit Ihrem Account von';
 $lang['sign_up_with']                           = 'Anmelden mit %s';
 

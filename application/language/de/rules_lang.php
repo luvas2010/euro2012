@@ -31,7 +31,7 @@ $lang['points_awarded'] = '<div class="info">
                           </div>';
 $lang['total_goals_pred'] = "Totale Anzahl der Tore";
 $lang['champion_pred'] = "Euro2012 Gewinner";
-$lang['result_rules'] = "Das Ergebnis eines Spiels wird  nach m&ouml;glicher Extrazeit ber&uuml;cksichtigt.Sollte ein Spiel durch as Elfmeterschieﬂen entschieden werden, werden diese erzielten Tore nicht gez&auml;hlt.";
+$lang['result_rules'] = "Das Ergebnis eines Spiels wird  nach m&ouml;glicher Extrazeit ber&uuml;cksichtigt.Sollte ein Spiel durch as Elfmeterschie&szlig;en entschieden werden, werden diese erzielten Tore nicht gez&auml;hlt.";
 
 
 $lang['total_money'] = "%s Nutzer haben sich angemeldet. Wenn diese alle %s bezahlen, wird die Bank aus %s bestehen.";

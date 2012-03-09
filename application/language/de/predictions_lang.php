@@ -57,7 +57,7 @@ $lang['choose_a_team']                  = "W&auml;hlen Sie ein Team";
 $lang['explanation']                    = "Erkl&auml;rung"; 
 $lang['no_info_yet']                    = "Diese Information steht im Moment nicht zur Verf&uuml;gung.";
 $lang['randomizer_intro']               = "<p> Wenn Sie nicht alles selber ausf&uuml;llen m&ouml;chten, dr&uuml;cken Sie das Feld f&uuml;r den `Randomizer`.
-                                          Die Tipps werden dann automatisch f&uuml;r Sie gemacht, auﬂer Sie haben Ihre Tipps bereits selber abgegeben.<br/>
+                                          Die Tipps werden dann automatisch f&uuml;r Sie gemacht, au&szlig;er Sie haben Ihre Tipps bereits selber abgegeben.<br/>
                                            Bestehende Ergebnisse und Tipps werden <span class='boldtext'>nicht &uuml;berschrieben</span>. Sie k&ouml;nnen Ihre Tipps danach &auml;ndern.</p>";                                      
 $lang['position']           = "Pos.";
 $lang['team']               = "Team";
