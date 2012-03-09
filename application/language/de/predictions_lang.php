@@ -1,6 +1,6 @@
 <?php
 $lang['username']                       = "Benutzername";
-$lang['overview_of_points_for']         = "Übersicht aller Punkte erzielt in %s in %s";
+$lang['overview_of_points_for']         = "&Uuml;bersicht aller Punkte erzielt in %s in %s";
 $lang['match']                          = "Begegnung";
 $lang['match_number']                   = "#";
 $lang['group']                          = "Gruppe";
@@ -9,7 +9,7 @@ $lang['away']                           = "Away";
 $lang['result']                         = "Ergebnis";
 $lang['knockout_phase']                 = "Ko-Phase";
 $lang['predictions_for']                = "Tipps f&uuml;r %s";
-$lang['overview_of_predictions_for']    = "Übersicht der Tipps f&uuml;r %s";
+$lang['overview_of_predictions_for']    = "&Uuml;bersicht der Tipps f&uuml;r %s";
 $lang['edit_all_predictions']           = "Bearbeite alle Tipps";
 $lang['prediction']                     = "Tipps";
 $lang['points_scored']                  = "Punkte erzielt";
