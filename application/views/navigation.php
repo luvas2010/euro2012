@@ -77,9 +77,12 @@
                 $query = $this->db->query($sql_query);
                 $languages = $query->result_array();
                 $path = $this->config->item('base_url');
+                
                 foreach($languages as $language)
                 {
+                $image_url = '<img src="'.$path.'/css/flags/lang_'.$language['one'].'.png"/>';
             ?>
-            <li><a href="http://localhost/euro2012/index.php/account/account_settings/set_language/<?php echo $language['one'];?>?continue=<?php echo urlencode(current_url());?>" title="<?php echo $language['language'];?>"><img src="<?php echo $path;?>/css/flags/lang_<?php echo $language['one'];?>.png"/></a></li>
+            <li><?php echo anchor('account/account_settings/set_language/'.$language['one'].'?continue='.urlencode(current_url()), $image_url, 'title="'.$language['language'].'"' );?></li>
+            
             <?php } ?>
         </ul>
