@@ -2100,7 +2100,7 @@
                         ('nl', 'nld', 'Nederlands', 'Dutch',1),
                         ('en', 'eng', 'English', 'English',1),
                         ('pl', 'pol', 'Polska', 'Polish',0),
-                        ('fr', 'fra', 'Francais', 'French',0),
+                        ('fr', 'fra', 'Français', 'French',0),
                         ('es', 'esp', 'Español', 'Spanish',0),
                         ('it', 'ita', 'Italiano', 'Italian',0),
                         ('de', 'deu', 'Deutsch', 'German',1)";
