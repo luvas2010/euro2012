@@ -2091,14 +2091,19 @@
                           `two` char(3) NOT NULL,
                           `language` varchar(120) NOT NULL,
                           `native` varchar(80) DEFAULT NULL,
+                          `active` tinyint(4) NOT NULL DEFAULT '0', 
                           PRIMARY KEY (`one`),
                           KEY `two` (`two`)
                         )";
 
-        $sql_query[] = "REPLACE INTO `ref_language` (`one`, `two`, `language`, `native`) VALUES
-                        ('nl', 'nld', 'Nederlands', 'Dutch'),
-                        ('en', 'eng', 'English', 'English'),
-                        ('de', 'deu', 'Deutsch', 'German')";
+        $sql_query[] = "REPLACE INTO `ref_language` (`one`, `two`, `language`, `native`, `active`) VALUES
+                        ('nl', 'nld', 'Nederlands', 'Dutch',1),
+                        ('en', 'eng', 'English', 'English',1),
+                        ('pl', 'pol', 'Polska', 'Polish',0),
+                        ('fr', 'fra', 'Francais', 'French',0),
+                        ('es', 'esp', 'Español', 'Spanish',0),
+                        ('it', 'ita', 'Italiano', 'Italian',0),
+                        ('de', 'deu', 'Deutsch', 'German',1)";
         
         $sql_query[] = "CREATE TABLE IF NOT EXISTS `ref_timezone` (
                           `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,

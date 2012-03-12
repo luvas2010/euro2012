@@ -123,6 +123,13 @@ class Account_settings extends CI_Controller {
         return $this->account_model->get_by_email($email) ? TRUE : FALSE;
     }
     
+    function set_language($lang)
+    {
+        $attributes['language'] = $lang;
+        $account_id = $this->session->userdata('account_id');
+        $this->account_details_model->update($account_id, $attributes);
+        redirect($this->input->get('continue')); 
+    }
 }
 
 

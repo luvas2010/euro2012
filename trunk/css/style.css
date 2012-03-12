@@ -370,6 +370,17 @@ label {
     margin-bottom: 10px;
     }
 
+ul.languages {
+    margin: 0;
+    padding-top:8px;
+}
+    
+    
+ul.languages li {
+    float:left;
+    margin: 0 5px 0 0;
+}
+
 /*** ESSENTIAL STYLES ***/
 
 li.third_party { list-style:none; padding:0; margin:0; width:64px; height:64px; float:left; padding:0 10px 10px 0; }
