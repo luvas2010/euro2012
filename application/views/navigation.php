@@ -71,3 +71,15 @@
                 <li class=""><?php echo anchor('account/sign_in', lang('website_sign_in')); ?></li>
             <?php } ?>
         </ul>
+        <ul class='languages'>
+            <?php
+                $sql_query = "SELECT * FROM `ref_language` WHERE `active` = 1 ORDER BY `one`";
+                $query = $this->db->query($sql_query);
+                $languages = $query->result_array();
+                $path = $this->config->item('base_url');
+                foreach($languages as $language)
+                {
+            ?>
+            <li><a href="http://localhost/euro2012/index.php/account/account_settings/set_language/<?php echo $language['one'];?>?continue=<?php echo urlencode(current_url());?>" title="<?php echo $language['language'];?>"><img src="<?php echo $path;?>/css/flags/lang_<?php echo $language['one'];?>.png"/></a></li>
+            <?php } ?>
+        </ul>

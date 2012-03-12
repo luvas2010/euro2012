@@ -44,9 +44,20 @@ class Upgrade extends CI_Controller {
                         VALUES (
                         NULL , '0', 'Schop', 'Installatie Versie 1.2 succesvol!', '$timestamp'
                         )";
+
+        if(!$this->db->field_exists('active','ref_language'))
+        {
+            $sql_query[] = "ALTER TABLE `ref_language` ADD `active` TINYINT NOT NULL DEFAULT '0'"; //to version 1.3
+        }
                         
-		$sql_query[] = "REPLACE INTO `ref_language` (`one`, `two`, `language`, `native`) VALUES
-                        ('de', 'deu', 'Deutsch', 'German')";
+		$sql_query[] = "REPLACE INTO `ref_language` (`one`, `two`, `language`, `native`, `active`) VALUES
+                        ('nl', 'nld', 'Nederlands', 'Dutch', 1),
+                        ('en', 'eng', 'English', 'English', 1),
+                        ('pl', 'pol', 'Polska', 'Polish',0),
+                        ('fr', 'fra', 'Francais', 'French',0),
+                        ('es', 'esp', 'Español', 'Spanish',0),
+                        ('it', 'ita', 'Italiano', 'Italian',0),
+                        ('de', 'deu', 'Deutsch', 'German', 1)";
                            
 		$sql_query[] = "CREATE TABLE IF NOT EXISTS `pool_config` (
                           `setting_uid` int(11) NOT NULL AUTO_INCREMENT,
@@ -109,7 +120,7 @@ class Upgrade extends CI_Controller {
             $q = $this->db->query($query);
         }
         
-        echo "Upgraded to version 1.2";
+        echo "Upgraded to version 1.3";
     }
 }
 
