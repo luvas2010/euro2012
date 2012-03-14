@@ -8,7 +8,7 @@
 $lang['forgot_password_page_name']						= 'Passwort vergessen?';
 $lang['forgot_password_instructions']					= 'Wir senden Ihnen umgehend die Instruktionen zum Zur&uuml;cksetzen Ihres Passworts auf die in Ihrem Account gespeicherte E-mailadresse.';
 $lang['forgot_password_username_email']					= "Benutzername/E-mail";
-$lang['forgot_password_send_instructions']				= 'Sende Instruktionen'
+$lang['forgot_password_send_instructions']				= 'Sende Instruktionen';
 
 $lang['forgot_password_username_email_does_not_exist']	= 'Dieser Benutzername/E-mail existiert nicht.';
 $lang['forgot_password_does_not_manage_password']		= 'Entschuldigen Sie, wir verwalten das Passwort zu Ihrem Account nicht.';
