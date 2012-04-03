@@ -6,12 +6,12 @@
 |--------------------------------------------------------------------------
 */
 $lang['sign_up_page_name']                      = 'Anmelden';
-$lang['sign_up_heading']                        = 'Erstelle ein Fu&szlig;balltippspielaccount';
-$lang['sign_up_third_party_heading']            = 'Anmelden mit Ihrem Account von';
-$lang['sign_up_with']                           = 'Anmelden mit %s';
+$lang['sign_up_heading']                        = 'Erstellung eines Fu&szlig;balltippspielaccounts';
+$lang['sign_up_third_party_heading']            = 'Anmeldung mit Ihrem Account von';
+$lang['sign_up_with']                           = 'Anmeldung mit %s';
 
 $lang['sign_up_username']                       = 'Benutzername';
-$lang['sign_up_firstname']                      = 'Vorame';
+$lang['sign_up_firstname']                      = 'Vorname';
 $lang['sign_up_lastname']                       = 'Nachname';
 $lang['sign_up_password']                       = 'Passwort';
 $lang['sign_up_email']                          = 'E-mail';
@@ -29,7 +29,7 @@ $lang['verify_before_signin']                   = 'Es wurde eine E-mail an den A
 
 $lang['signup_email_subject']                   = 'Ein neuer Benutzer wurde registriert';
 $lang['signup_email_message']                   = 'Ein neuer Benutzer hat sich mit dem Benutzernamen %s<br /><br /> registriert';
-$lang['signup_verify_message']                  = 'Als Administrator m&uuml;ssen Sie dem Nutzer best&auml;igen, dass Sie seinen Account aktiviert haben.Klicken Sie hierzu auf den untenstehenden Link um dies zu best&auml;tigen oder um den Benutzer zu l&ouml;schen:<br />%s<br />';
+$lang['signup_verify_message']                  = 'Als Administrator m&uuml;ssen Sie dem Nutzer best&auml;tigen, dass Sie seinen Account aktiviert haben.Klicken Sie hierzu auf den untenstehenden Link um dies zu best&auml;tigen oder um den Benutzer zu l&ouml;schen:<br />%s<br />';
 $lang['signup_email_footer']                    = '<hr />Diese E-mail wurde verschickt von %s<br/>';
 /* End of file sign_up_lang.php */
 /* Location: ./application/modules/account/language/english/sign_up_lang.php */

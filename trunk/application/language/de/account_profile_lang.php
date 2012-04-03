@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 $lang['profile_page_name']						= 'Mein Profil';
-$lang['profile_instructions']					= 'Die Informationen, die Sie auf dieser Seite ver&ouml;ffentlichen sind von der Öffentlichkeit einsehbar.';
+$lang['profile_instructions']					= 'Die Informationen, die Sie auf dieser Seite ver&ouml;ffentlichen, sind von der Öffentlichkeit einsehbar.';
 $lang['profile_username']						= 'Benutzername';
 $lang['profile_picture']						= 'Bild';
 $lang['profile_save']							= 'Speichern';

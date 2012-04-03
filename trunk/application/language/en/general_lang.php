@@ -95,6 +95,27 @@ $lang['D2']    = 'Sweden';
 $lang['D3']    = 'France';
 $lang['D4']    = 'England';
 
+/* Group A */
+$lang['A1_utf']    = 'Poland';
+$lang['A2_utf']    = 'Greece';
+$lang['A3_utf']    = 'Russia';
+$lang['A4_utf']    = 'Czech Republic';
+/* Group B */
+$lang['B1_utf']    = 'Netherlands';
+$lang['B2_utf']    = 'Denmark';
+$lang['B3_utf']    = 'Germany';
+$lang['B4_utf']    = 'Portugal';
+/* Group C */
+$lang['C1_utf']    = 'Spain';
+$lang['C2_utf']    = 'Italy';
+$lang['C3_utf']    = 'Ireland';
+$lang['C4_utf']    = 'Croatia';
+/* Group D */
+$lang['D1_utf']    = 'Ukraine';
+$lang['D2_utf']    = 'Sweden';
+$lang['D3_utf']    = 'France';
+$lang['D4_utf']    = 'England';
+
 $lang['WA']    = 'Winner&nbsp;Group&nbsp;A';
 $lang['RA']    = 'Runner&nbsp;Up Group&nbsp;A';
 $lang['WB']    = 'Winner&nbsp;Group&nbsp;B';

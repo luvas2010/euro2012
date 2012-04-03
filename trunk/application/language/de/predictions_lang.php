@@ -17,7 +17,7 @@ $lang['total_points_awarded']           = "F&uuml;r dieses Spiel wurden Sie ausg
 $lang['goals_correct']             = "Sie hatten die Anzahl der Tore %s richtig, das sind <span class='boldtext'>%s Punkte</span>";
 $lang['result_right_win']               = "Sie tippten das Ergebnis richtig.%s gewann das Spiel gegen %s. Das wird ausgezeichnet durch <span class='boldtext'>%s Punkten</span>.";
 $lang['result_right_tie']               = "Sie tippten das Ergebnis richtig. %s und %s waren unentschieden. Das wird ausgezeichnet durch <span class='boldtext'>%s Punkten</span>.";
-$lang['team_correct']                   = "Sie hatten %s richtig, uns Sie bekommen <span class='boldtext'>%s points</span> daf&uuml;r.";
+$lang['team_correct']                   = "Sie hatten %s richtig, und Sie bekommen <span class='boldtext'>%s points</span> daf&uuml;r.";
 $lang['goals_wrong']               = "Die Anzahl der Tore f&uuml;r %s wurde nicht richtig getippt";
 $lang['total_points']                   = "Totale Anzahl";
 $lang['match_time']                     = "Austragungszeit";
@@ -48,7 +48,7 @@ $lang['predict_teams_knockout_phase']   = "<p>F&uuml;r das Viertelfinale, Halbfi
                                            Sie bekommen extra Punkte, wenn Sie die richtigen Teams getippt haben.<br />
                                            <span class='boldtext redtext'>Diese Tipps m&uuml;ssen vor dem Beginn des Tuniers gemacht worden sein, damit Schummlerein vermieden werden k&ouml;nnen.</strong></p>";
 $lang['total_goals_prediction']         = "Tippen Sie die totale Anzahl der Tore.";
-$lang['predict_total_goals']            = "Um am Ende des Tuniers Bonuspunkte zu bekommen, tippen sie alle gefallenen Tore der  31 Spiele dieses Tuniers.<br />
+$lang['predict_total_goals']            = "Um am Ende des Tuniers Bonuspunkte zu bekommen, tippen sie alle gefallenen Tore der 31 Spiele dieses Tuniers.<br />
                                            Sollten alle Tipps richtig sein, bekommen Sie %s Bonuspunkte. Ist 1 Tor falsch, bekommen Sie %s Punkte. Sollten 2 Tore falsch sein, bekommen Sie %s Punkte, usw.<br/>
                                            <span class='boldtext'>Achtung: Sie m&uuml;ssen Ihren Tipp vor dem Start des Tuniers abgeben!</span>";
 $lang['predict_champion']               = "Sie k&ouml;nnen %s Extrapunkte gewinnen, wenn sie den europ&auml;ischen Gewinner richtig tippen. Das muss aber nicht unbedingt ein Team sein, das Sie als Finalist getippt haben.<br />
@@ -57,7 +57,7 @@ $lang['choose_a_team']                  = "W&auml;hlen Sie ein Team";
 $lang['explanation']                    = "Erkl&auml;rung"; 
 $lang['no_info_yet']                    = "Diese Information steht im Moment nicht zur Verf&uuml;gung.";
 $lang['randomizer_intro']               = "<p> Wenn Sie nicht alles selber ausf&uuml;llen m&ouml;chten, dr&uuml;cken Sie das Feld f&uuml;r den `Randomizer`.
-                                          Die Tipps werden dann automatisch f&uuml;r Sie gemacht, au&szlig;er Sie haben Ihre Tipps bereits selber abgegeben.<br/>
+                                          Die Tipps werden dann automatisch f&uuml;r Sie gemacht, au&szlig;er Sie haben Ihre Tipps bereits selbst abgegeben.<br/>
                                            Bestehende Ergebnisse und Tipps werden <span class='boldtext'>nicht &uuml;berschrieben</span>. Sie k&ouml;nnen Ihre Tipps danach &auml;ndern.</p>";                                      
 $lang['position']           = "Pos.";
 $lang['team']               = "Team";

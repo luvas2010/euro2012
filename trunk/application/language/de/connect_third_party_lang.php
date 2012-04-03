@@ -13,7 +13,7 @@ $lang['connect_facebook']						= 'Facebook';
 $lang['connect_myspace']						= 'MySpace';
 $lang['connect_twitter']						= 'Twitter';
 
-$lang['connect_with_x']							= 'Verbinde mit %s';
+$lang['connect_with_x']							= 'Verbinde mit%s';
 $lang['connect_click_button']					= 'Um fortzufahren, klicken Sie auf den follgenden Link.';
 
 $lang['connect_create_account']					= 'Erstelle einen Account';

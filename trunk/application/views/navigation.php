@@ -80,7 +80,7 @@
                 
                 foreach($languages as $language)
                 {
-                $image_url = '<img src="'.$path.'/css/flags/lang_'.$language['one'].'.png"/>';
+                $image_url = '<img src="'.$path.'css/flags/lang_'.$language['one'].'.png"/>';
             ?>
             <li><?php echo anchor('account/account_settings/set_language/'.$language['one'].'?continue='.urlencode(current_url()), $image_url, 'title="'.$language['language'].'"' );?></li>
             

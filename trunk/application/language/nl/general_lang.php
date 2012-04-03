@@ -60,13 +60,13 @@ $lang['edit_match_results']     = 'Uitslagen invoeren';
 $lang['edit_teams_knockout_phase'] = 'Teams knockout fase invoeren';
 $lang['usermanagement'] = 'Gebruikersbeheer';
 $lang['list_all_users'] = 'Alle gebruikers';
-$lang['show_unverified_users'] = 'Niet geverifiëerde gebruikers';
+$lang['show_unverified_users'] = 'Niet geverifi&euml;erde gebruikers';
 $lang['show_unpayed_users'] = 'Niet betaalde gebruikers';
 $lang['admin_unverified_users'] = 'Er zijn %s niet geverifi&eumlerde gebruikers';
 $lang['check_settings']			= 'Instellingen';
 $lang['delete_account']			= 'Account Verwijderen';
 $lang['number_of_users']		= 'Aantal gebruikers';
-$lang['unverified_users_link']		= 'Beheer: Er zijn %s ongeverifiëerde gebruikers. %s';
+$lang['unverified_users_link']		= 'Beheer: Er zijn %s ongeverifi&euml;erde gebruikers. %s';
 $lang['unpayed_users_link']		    = 'Beheer: Er zijn %s gebruikers die nog niet betaald hebben. %s';
 
 $lang['quarter_final']  = 'Kwart Finale';
@@ -79,7 +79,7 @@ $lang['save']           = 'Opslaan';
 $lang['A1']    = 'Polen';
 $lang['A2']    = 'Griekenland';
 $lang['A3']    = 'Rusland';
-$lang['A4']    = 'Tsjechië';
+$lang['A4']    = 'Tsjechi&euml;';
 /* Group B */
 $lang['B1']    = 'Nederland';
 $lang['B2']    = 'Denemarken';
@@ -87,14 +87,34 @@ $lang['B3']    = 'Duitsland';
 $lang['B4']    = 'Portugal';
 /* Group C */
 $lang['C1']    = 'Spanje';
-$lang['C2']    = 'Italië';
+$lang['C2']    = 'Itali&euml;';
 $lang['C3']    = 'Ierland';
-$lang['C4']    = 'Kroatië';
+$lang['C4']    = 'Kroati&euml;';
 /* Group D */
-$lang['D1']    = 'Oekraïne';
+$lang['D1']    = 'Oekra&iuml;ne';
 $lang['D2']    = 'Zweden';
 $lang['D3']    = 'Frankrijk';
 $lang['D4']    = 'Engeland';
+
+$lang['A1_utf']    = 'Polen';
+$lang['A2_utf']    = 'Griekenland';
+$lang['A3_utf']    = 'Rusland';
+$lang['A4_utf']    = 'Tsjechie';
+/* Group B */
+$lang['B1_utf']    = 'Nederland';
+$lang['B2_utf']    = 'Denemarken';
+$lang['B3_utf']    = 'Duitsland';
+$lang['B4_utf']    = 'Portugal';
+/* Group C */
+$lang['C1_utf']    = 'Spanje';
+$lang['C2_utf']    = 'Italie';
+$lang['C3_utf']    = 'Ierland';
+$lang['C4_utf']    = 'Kroatie';
+/* Group D */
+$lang['D1_utf']    = 'Oekraine';
+$lang['D2_utf']    = 'Zweden';
+$lang['D3_utf']    = 'Frankrijk';
+$lang['D4_utf']    = 'Engeland';
 
 $lang['WA']    = 'Winnaar Groep A';
 $lang['RA']    = 'Tweede Groep A';

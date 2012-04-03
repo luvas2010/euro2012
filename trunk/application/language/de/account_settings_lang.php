@@ -6,14 +6,14 @@
 |--------------------------------------------------------------------------
 */
 $lang['settings_page_name']						= 'Account Einstellungen';
-$lang['settings_privacy_statement']				= 'Die gesammelten Informationen auf dieser Seite sind privat und werden weder auf dieser Webseite noch einer dritten Partei, ohne Ihre ausdr&uuml;ckliche Erlaubnis, zug&auml;nglich gemacht. F&uuml;r mehr Informationen lesen Sie unser %s.';
+$lang['settings_privacy_statement']				= 'Die gesammelten Informationen auf dieser Seite sind privat und werden weder auf dieser Website, noch einer dritten Partei, ohne Ihre ausdr&uuml;ckliche Erlaubnis, zug&auml;nglich gemacht. F&uuml;r mehr Informationen lesen Sie unsere %s.';
 $lang['settings_privacy_policy']				= 'Datenschutzregelung';
 $lang['settings_email']							= 'E-mail';
 $lang['settings_fullname']						= 'Vollst&auml;ndiger Name';
 $lang['settings_firstname']						= 'Vorname';
 $lang['settings_lastname']						= 'Nachname';
 $lang['settings_company']                       = 'Firma';
-$lang['settings_dateofbirth']					= 'Geburtstdatum';
+$lang['settings_dateofbirth']					= 'Geburtsdatum';
 $lang['settings_gender']						= 'Geschlecht';
 $lang['settings_postalcode']					= 'Postleitzahl';
 $lang['settings_country']						= 'Land';
@@ -42,6 +42,7 @@ $lang['month_dec']								= 'Dez';
 $lang['settings_select']						= '- W&auml;hle -';
 $lang['gender_male']							= 'M&auml;nnlich';
 $lang['gender_female']							= 'Weiblich';
+
 
 
 /* End of file account_settings_lang.php */

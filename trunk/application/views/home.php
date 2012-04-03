@@ -154,8 +154,8 @@
                             reset($champions);
                             foreach ($champions as $champion)
                             {
-                                $chartdata[get_team_name($champion['pred_champion'])] = number_format($champion['number']/$total * 100, 1);
-                            }    
+                                $chartdata[get_team_name($champion['pred_champion']."_utf")] = number_format($champion['number']/$total * 100, 1);
+                            }     
                             
                             echo "<div id='champchart'></div>";
                             $categories = "";
