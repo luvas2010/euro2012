@@ -721,7 +721,23 @@ a.magnifier, input.magnifier, button.magnifier {
     background: url(icons/magnifier.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
     }
-    a.add {
+a.email_add, input.email_add, button.email_add {
+    background: url(icons/email_add.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.email_delete, input.email_delete, button.email_delete {
+    background: url(icons/email_delete.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.email_go, input.email_go, button.email_go {
+    background: url(icons/email_go.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.money_add, input.money_add, button.money_add {
+    background: url(icons/money_add.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
+a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;
 }
