@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 $lang['linked_page_name']						= 'Registrierte Accounts';
-$lang['linked_no_linked_accounts']				= 'Sie haben kein registrierten Account.';
+$lang['linked_no_linked_accounts']				= 'Sie haben keinen registrierten Account.';
 $lang['linked_currently_linked_accounts']		= 'Aktuell registrierte Accounts';
 $lang['linked_link_with_your_account_from']		= 'Registrieren Sie sich mit dem Account von...';
 $lang['linked_remove']							= 'L&ouml;schen';

@@ -19,7 +19,7 @@ $lang['mark_payed']			= 'Heeft betaald';
 $lang['account_deleted']    = 'Account &lsquo;%s&rsquo; verwijderd.';
 $lang['account_verified']   = 'Account &lsquo;%s&rsquo; geverifi&euml;erd, er is een e-mail gestuurd naar %s.';
 $lang['account_payed']   = 'Betaling voor &lsquo;%s&rsquo; is bevestigd, er is een e-mail gestuurd naar %s.';
-$lang['unverified_users']   = 'Beheer: Ongeverifiëerde gebruikers';
+$lang['unverified_users']   = 'Beheer: Ongeverifi&euml;erde gebruikers';
 $lang['unpayed_users']		= 'Gebruikers die nog niet betaald hebben';
 $lang['no_users_found']     = 'Geen gebruikers gevonden.';
 

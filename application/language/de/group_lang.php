@@ -1,7 +1,7 @@
 <?php
 $lang['group_name_overview'] = "Gruppen %s &Uuml;bersicht";
 $lang['match_number']       = "#";
-$lang['group']              = "Gruppee";
+$lang['group']              = "Gruppe";
 $lang['home']               = "Home";
 $lang['away']               = "Away";
 $lang['prediction']         = "Tipp";
@@ -18,7 +18,7 @@ $lang['pred_standings_in_group'] = "Spielst&auml;nde in der Gruppe %s mit Ihren 
 $lang['position']           = "Position";
 $lang['team']               = "Team";
 $lang['played']             = "Gespielt";
-$lang['won']                = "Gewinnen";
+$lang['won']                = "Gewonnen";
 $lang['tie']                = "Remis";
 $lang['lost']               = "Verloren";
 $lang['points']             = "Punkte";

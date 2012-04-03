@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 */
 $lang['forgot_password_page_name']						= 'Passwort vergessen?';
-$lang['forgot_password_instructions']					= 'Wir senden Ihnen umgehend die Instruktionen zum Zur&uuml;cksetzen Ihres Passworts auf die in Ihrem Account gespeicherte E-mailadresse.';
+$lang['forgot_password_instructions']					= 'Wir senden Ihnen umgehend die Instruktionen zum Zur&uuml;cksetzen Ihres Passworts auf die, in Ihrem Account gespeicherte, E-mailadresse.';
 $lang['forgot_password_username_email']					= "Benutzername/E-mail";
 $lang['forgot_password_send_instructions']				= 'Sende Instruktionen';
 
@@ -20,8 +20,8 @@ $lang['reset_password_sent_instructions']				= "<h3>Okay, Wir versandten die Ist
 $lang['reset_password_resend_the_instructions']			= 'Wiederholung des Instruktionenversandts';
 $lang['reset_password_email_sender'] 					= 'Fu&szlig;ball-Tipp-Spiel';
 $lang['reset_password_email_subject'] 					= 'Fu&szlig;ball-Tipp-Spiel Passwortzur&uuml;cksetzung';
-$lang['reset_password_email']							= 'Hi %s,<br /><br />Wir haben die Anfrage auf Passwortzur&uuml;cksetzung erhalten.<br /><br />
-Um Ihr Passwort zur&uuml;ckzusetzen, klicken Sie bitte auf den untenstehenden Link  oder kopieren Sie den Link in Ihren Browser:<br />%s';
+$lang['reset_password_email']							= 'Hi %s,<br /><br />Wir haben die Anfrage auf eine Passwortzur&uuml;cksetzung erhalten.<br /><br />
+Um Ihr Passwort zur&uuml;ckzusetzen, klicken Sie bitte auf den untenstehenden Link oder kopieren Sie den Link in Ihren Browser:<br />%s';
 
 
 /* End of file forgot_password_lang.php */

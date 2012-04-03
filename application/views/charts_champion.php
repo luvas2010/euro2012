@@ -8,13 +8,14 @@
     if (is_array($percentage))
     {
     foreach ($percentage as $key => $value) {
+        $team_utf = $key."_utf";
         if ($data == "")
         {
-            $data = "[['".get_team_name($key)."', ".$value."]";
+            $data = "[['".lang($team_utf)."', ".$value."]";
         }
         else
         {
-            $data .= ",['".get_team_name($key)."', ".$value."]";
+            $data .= ",['".get_team_name($team_utf)."', ".$value."]";
         }
     }
     $data .=  "]";

@@ -119,7 +119,7 @@ class Emailer extends CI_Controller {
     {
         if ($this->authentication->is_signed_in() && is_admin())
         {
-            echo "<pre>";print_r($this->input->post());echo "</pre>";
+            //echo "<pre>";print_r($this->input->post());echo "</pre>";
             
             // Load email library
             $this->load->library('email');
@@ -138,8 +138,16 @@ class Emailer extends CI_Controller {
                 $this->email->message($this->input->post('rte1'));
                 
                 @$this->email->send();
-                echo $this->email->print_debugger();
-        
+                
+            $data = array(
+                    'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                    'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                    'debug_info' => $this->email->print_debugger(),
+                    'content_main' => 'admin/admin_emailer_finished',
+                    'title' => "Finished"
+                    );
+       
+            $this->load->view('template/template', $data);        
         }    
     }     
     

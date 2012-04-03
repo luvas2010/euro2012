@@ -51,7 +51,7 @@ $lang['nav_standings']  =   'Spielst&auml;nde';
 $lang['nav_extra']    = 'Extra Fragen';
 $lang['statistics']     = "Statistiken";
 $lang['nav_champ_graph'] = "Wer wird der Champion?";
-$lang['nav_top_ten'] = "Top ten in der Rangliste";
+$lang['nav_top_ten'] = "Top Ten der Rangliste";
 $lang['nav_totalgoals_graph'] = "Wieviele Tore werden erzielt werden?";
 $lang['predictions']    = 'Tipps';
 $lang['all_predictions']= 'Alle Tipps';
@@ -96,13 +96,13 @@ $lang['D3']    = 'Frankreich';
 $lang['D4']    = 'England';
 
 $lang['WA']    = 'Gewinner&nbsp;Gruppe&nbsp;A';
-$lang['RA']    = 'Zweitplatzierter&nbsp;Up Gruppe&nbsp;A';
+$lang['RA']    = 'Zweitplatzierter&nbsp;Gruppe&nbsp;A';
 $lang['WB']    = 'Gewinner&nbsp;Gruppe&nbsp;B';
-$lang['RB']    = 'Zweitplatzierter&nbsp;Up&nbsp;Gruppe&nbsp;B';
+$lang['RB']    = 'Zweitplatzierter&nbsp;Gruppe&nbsp;B';
 $lang['WC']    = 'Gewinner&nbsp;Gruppe&nbsp;C';
-$lang['RC']    = 'Zweitplatzierter&nbsp;Up&nbsp;Gruppe&nbsp;C';
+$lang['RC']    = 'Zweitplatzierter&nbsp;Gruppe&nbsp;C';
 $lang['WD']    = 'Gewinner&nbsp;Gruppe&nbsp;D';
-$lang['RD']    = 'Zweitplatzierter&nbsp;Up&nbsp;Gruppe&nbsp;D';
+$lang['RD']    = 'Zweitplatzierter&nbsp;Gruppe&nbsp;D';
 
 $lang['W25']    = 'Gewinner&nbsp;#25';
 $lang['W26']    = 'Gewinner&nbsp;#26';
@@ -116,9 +116,30 @@ $lang['A']      = 'Gruppe A';
 $lang['B']      = 'Gruppe B';
 $lang['C']      = 'Gruppe C';
 $lang['D']      = 'Gruppe D';
-$lang['QF']      = 'Viertel&nbsp;Finale';
-$lang['SF']      = 'Halb&nbsp;Finale';
+$lang['QF']      = 'Viertelfinale&nbsp;';
+$lang['SF']      = 'Halbfinale&nbsp;';
 $lang['F']      = 'Finale';
+
+/* Group A */
+$lang['A1_utf']    = 'Polen';
+$lang['A2_utf']    = 'Griechenland';
+$lang['A3_utf']    = 'Russland';
+$lang['A4_utf']    = 'Tschechische Republik';
+/* Group B */
+$lang['B1_utf']    = 'Niederlande';
+$lang['B2_utf']    = 'Danemark';
+$lang['B3_utf']    = 'Deutschland';
+$lang['B4_utf']    = 'Portugal';
+/* Group C */
+$lang['C1_utf']    = 'Spanien';
+$lang['C2_utf']    = 'Italien';
+$lang['C3_utf']    = 'Irland';
+$lang['C4_utf']    = 'Kroatien';
+/* Group D */
+$lang['D1_utf']    = 'Ukraine';
+$lang['D2_utf']    = 'Schweden';
+$lang['D3_utf']    = 'Frankreich';
+$lang['D4_utf']    = 'England';
 
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */

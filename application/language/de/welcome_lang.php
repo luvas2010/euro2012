@@ -9,18 +9,18 @@ $lang['welcome_maintext']                       = 'Willkommen bei %s';
 
 
 $lang['welcometext']    = '<p>Willkommen bei %s.</p>
-                           <p>Treten Sie dem Wettbewerb bei, es&rsquo;ist einfacher, als Sie glauben m&ouml;gen:</p>
+                           <p>Treten Sie dem Wettbewerb bei, es ist einfacher, als Sie vielleicht glauben m&ouml;gen:</p>
                            <ul>
-                                <li>Erstellen Sie einen Account, wenn Sie das nicht bereits getan haben.</li>
+                                <li>Erstellen Sie einen Account, wenn Sie das nicht schon bereits getan haben.</li>
                                 <li>Tippen Sie das Ergebnis aller Begegnungen. Sie k&ouml;nnen Ihren Tipp &auml;ndern bis das Spiel beginnt.</li>
-                                <li>Tippen Sie die Teams, die im Viertelfinale, Halbfinale und im Finale spielen werden. Sie m&uuml;ssen dies erledigt haben, bevor das Tunier beginnt.</li>
+                                <li>Tippen Sie die Teams, die voraussichtlich das Viertelfinale, Halbfinale und im Finale erreichen werden. Sie m&uuml;ssen dies erledigt haben, bevor das Tunier beginnt.</li>
                                 <li>Tippen Sie die totale Anzahl der Tore in allen 31 Begegnungen. Dies m&uuml;ssen Sie getan haben, bevor das Tunier startet.</li>
-                                <li>Tippen Sie, wer der Gewinner des Euro2012 wird, bevor das Tunier seinen Anfang gefunden hat.</li>
+                                <li>Überlegen Sie sich, wer der Gewinner des Euro2012 wird, bevor das Tunier seinen Anfang gefunden hat.</li>
                             </ul>
                           <div class="info">
-                              <p>Wier k&ouml;nnen Sie nachlesen, wie sie Punkte erzielen k&ouml;nnen:</p>
+                              <p>Hier finden Sie die Erkl&auml;rungen, wie Sie Punkte erzielen k&ouml;nnen:</p>
                               <ul>
-                                    <li>Punkte f&uuml;r das richtige Tippen auf home oder away Tore: %s</li>
+                                    <li>Es gibt Punkte f&uuml;r das richtige Tippen auf home oder away Tore: %s</li>
                                     <li>Punkte f&uuml;r das richtige Tippen auf die Spielergebnisse(win-tie-loss): %s</li>
                                     <li>Punkte f&uuml;r das richtige Tippen auf ein Team im Viertelfinale: %s</li>
                                     <li>Punkte f&uuml;r das richtige Tippen auf ein Team im Halbfinale: %s</li>
@@ -43,7 +43,7 @@ $lang['user_messages'] = "Nutzer Nachricht";
 $lang['post_message'] = "Post Nachricht";
 $lang['not_so_fast'] = "Sie posten zu viele Nachrichten nacheinander.";
 $lang['message_too_long'] = "Ihre Nachricht ist zu lang.";
-$lang['you_already_said_that'] = "Sie haben schon gesagt, dass!";
+$lang['you_already_said_that'] = "Sie haben schon gesagt, dass";
 $lang['type_message_here'] = "Tippen Sie hier Ihre Nachricht ein(max 255 Zeichen)";
 $lang['shout_deleted']  = "Ihre Nachricht wurde gel&ouml;scht";
 $lang['show_all_shouts'] = "Zeige alle Nachrichten";
