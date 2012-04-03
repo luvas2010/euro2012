@@ -19,6 +19,18 @@ class Account_model extends CI_Model {
     }
     
     /**
+     * Get all
+     *
+     * @access public
+     * @return array
+     */
+    function get_all()
+    {
+        $users = $this->db->get('account');
+        return $users->result_array();
+    }
+
+    /**
      * Get account by id
      *
      * @access public

@@ -45,7 +45,7 @@
                 <ul>
                     <li><?php echo anchor('admin/matches_edit',lang('edit_match_results')); ?></li>
                     <li><?php echo anchor('admin/teams_knockout_edit',lang('edit_teams_knockout_phase')); ?></li>
-
+                    <li><?php echo anchor('admin/emailer',"E-Mail"); ?></li>
                     <li><?php echo anchor('#',lang('usermanagement')); ?>
                         <ul>
                             <li><?php echo anchor('admin/users',lang('list_all_users')); ?></li>
