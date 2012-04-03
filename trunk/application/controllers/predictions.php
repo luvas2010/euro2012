@@ -1176,7 +1176,7 @@ class Predictions extends CI_Controller {
         $time_offset = $this->poolconfig_model->item('time_offset');
         $now = now() - $time_offset;
         $offset = $this->poolconfig_model->item('predictions_open_offset');
-        $closing_time = $match['timestamp'] - $time_offset - $offset;
+        $closing_time = $match['timestamp'];
 
         if ($now < $closing_time)
         {
