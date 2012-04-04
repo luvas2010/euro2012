@@ -7,6 +7,11 @@
          
             $('input#bcc.checkbox.unpayed').attr('checked', 'checked');
         }
+
+        function set_incomplete() {
+         
+            $('input#bcc.checkbox.incomplete').attr('checked', 'checked');
+        }
         
         function set_all() {
          
@@ -27,7 +32,7 @@
         ?>
                     <?php
             
-            echo form_submit('send','Create the email', 'class="button email_go"');
+            echo form_submit('send',lang('create_email'), 'class="button email_go"');
             ?>
         <hr/>
         <div class='clear'></div>
@@ -36,13 +41,15 @@
               { ?>
         <input type="button" onclick="set_unpayed()" value = "<?php echo lang('select_unpayed'); ?>" class="button money_add"/>
         <?php } ?>
+        <input type="button" onclick="set_incomplete()" value = "<?php echo lang('select_incomplete'); ?>" class="button exclamation"/>
+        
         <input type="button" onclick="unset_all()" value = "<?php echo lang('deselect_all'); ?>" class="button email_delete"/>
         
 
         <table class="stripeMe">
         <tr>
             <th><?php echo lang('user_name'); ?></th>
-            <th><?php echo lang('email'); ?></th>
+            <th>Email</th>
             <th>To</th>
             <th>CC</th>
             <th>BCC</th>
@@ -89,6 +96,11 @@
                 $class .= ' unpayed';
             }
             
+            if (check_user($user['id']) == 0)
+            {
+                $class .= ' incomplete';
+            }    
+            
             $data = array(
                 'name'        => 'bcc['.$user['id'].']',
                 'id'          => 'bcc',
@@ -109,7 +121,7 @@
             <div class='clear'></div>
             <?php
             
-            echo form_submit('send','Create the email', 'class="button email_go"');
+            echo form_submit('send',lang('create_email'), 'class="button email_go"');
             ?>
     </div>    
 </div>

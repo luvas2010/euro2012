@@ -2,10 +2,11 @@
 
 $lang['send_an_email']          = 'Verstuur een e-mail';
 $lang['select_addresses']   = "Selecteer e-mail adressen";
-$lang['create_email']       = "Create the e-mail message";
+$lang['create_email']       = "Maak de e-mail";
 $lang['select_all']     = "Selecteer Alles";
 $lang['deselect_all']     = "Deselecteer Alles";
 $lang['select_unpayed']     = "Selecteer onbetaalde accounts";
+$lang['select_incomplete']  = "Selecteer deelnemers met ontbrekende voorspellingen";
 $lang['user_id']            = 'ID';
 $lang['user_name']          = 'Gebruikersnaam';
 $lang['first_name']         = 'Voornaam';

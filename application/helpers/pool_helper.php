@@ -521,6 +521,72 @@ if ( ! function_exists('get_total_goals') )
     }
 }
 
+if ( ! function_exists('check_user') )
+{
+    function check_user($account_id)
+    {
+
+        $CI =& get_instance();
+        $sql_query = "SELECT 
+                        *
+                      FROM `prediction`
+                      WHERE `account_id` = '$account_id'";
+        $query = $CI->db->query($sql_query);
+        $predictions = $query->result_array();
+        $complete = 1;
+        foreach ($predictions as $prediction)
+        {
+            
+            
+            if (!isset($prediction['pred_home_goals']) || $prediction['pred_home_goals'] === ""  || $prediction['pred_home_goals'] === NULL || !isset($prediction['pred_away_goals']) || $prediction['pred_away_goals'] === NULL || $prediction['pred_away_goals'] === "")
+            {  
+                $complete = 0;
+            }
+            
+
+            if ($prediction['pred_match_uid'] >= 25 &&
+                    (
+                        ($prediction['pred_home_team'] == NULL ||
+                         $prediction['pred_home_team'] == "" ||
+                         !isset($prediction['pred_home_team']) ||
+                         $prediction['pred_home_team'][0] == "W" ||
+                         $prediction['pred_home_team'][0] == "R")
+                        ||
+                        ($prediction['pred_away_team'] == NULL ||
+                         $prediction['pred_away_team'] == "" ||
+                         !isset($prediction['pred_away_team']) ||
+                         $prediction['pred_away_team'][0] == "W" ||
+                         $prediction['pred_away_team'][0] == "R")                    
+                    )
+                )
+            {          
+                $complete = 0;
+            }
+        }
+
+        $sql_query = "SELECT 
+                    *
+                  FROM `account_details`
+                  WHERE `account_id` = '$account_id'
+                  LIMIT 1";
+            $query = $CI->db->query($sql_query);
+            $extras = $query->result_array();
+       
+        foreach ($extras as $extra)
+        {
+            if ($extra['pred_total_goals'] == NULL || $extra['pred_total_goals'] == "" || !isset($extra['pred_total_goals'])
+                  ||
+                $extra['pred_champion'] == NULL  || $extra['pred_champion'] == "" || !isset($extra['pred_champion'])
+               )
+            {
+                $complete = 0;
+            }    
+        }
+        
+        return $complete;
+    }
+}
+
 
 function cleanString($in,$offset=null)
 {

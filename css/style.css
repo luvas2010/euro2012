@@ -737,6 +737,10 @@ a.money_add, input.money_add, button.money_add {
     background: url(icons/money_add.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
     }
+a.exclamation, input.exclamation, button.exclamation {
+    background: url(icons/exclamation.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
+    }
 a.add {
     background: url(sprite.png)  10px -27px no-repeat #f3f3f3;
     padding-left: 30px;
