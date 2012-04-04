@@ -6,7 +6,7 @@ $lang['create_email']       = "Create the e-mail message";
 $lang['select_all']     = "Select All";
 $lang['deselect_all']     = "Deselect All";
 $lang['select_unpayed']     = "Select unpayed accounts";
-
+$lang['select_incomplete']  = "Select accounts with incomplete predictions";
 $lang['user_id']            = 'ID';
 $lang['user_name']          = 'Gebruikersnaam';
 $lang['first_name']         = 'Voornaam';
