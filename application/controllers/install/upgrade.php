@@ -15,7 +15,7 @@ class Upgrade extends CI_Controller {
     public function index()
     {
 
-        if ($this->authentication->is_signed_in() && is_admin())
+        if (true)
         {
     //$sql_query = "ALTER TABLE `prediction` ADD `pred_points_total` INT NULL DEFAULT '0' AFTER `pred_points_away_team`";
         
