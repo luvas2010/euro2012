@@ -334,7 +334,7 @@ if ( ! function_exists('get_next_matches') )
 				$awaystring = "<span class='teamflag ".$match['away_team']."'>".anchor('stats/view_team/'.$match['away_team'],get_team_name($match['away_team']))."</span>";
 				$string = str_replace('%home%', $homestring, $format);
 				$string = str_replace('%away%', $awaystring, $string);
-				$string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp']), $string);
+				$string = str_replace('%matchtime%', mdate("%d %M %Y %H:%i",$match['timestamp'] - $CI->poolconfig_model->item('time_offset')), $string);
 				$string = str_replace('%prediction%', lang('your_prediction').": ".$match['pred_home_goals']." - ".$match['pred_away_goals'], $string);
 				$string = str_replace('%group%', lang($match['match_group']), $string);
 				
