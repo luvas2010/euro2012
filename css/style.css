@@ -680,6 +680,10 @@ a.user_comment, input.user_comment, button.user_comment {
 a.user_delete, input.user_delete, button.user_delete {
     background: url(icons/user_delete.png) 7px 7px no-repeat #f3f3f3;
     padding-left: 30px;
+    }
+a.user_edit, input.user_edit, button.user_edit {
+    background: url(icons/user_edit.png) 7px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
     }     
 a.user, input.user, button.user {
     background: url(icons/user.png) 7px 7px no-repeat #f3f3f3;

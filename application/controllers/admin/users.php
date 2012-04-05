@@ -320,6 +320,85 @@ class Users extends CI_Controller {
             redirect('account/sign_in/?continue='.site_url('admin/users/unpayed'));
         }
     }
+    function edit($account_id, $action = "")
+    {
+        if ($this->authentication->is_signed_in() && is_admin())
+        {
+            if ($action == 'save')
+            {
+                echo "<pre>";print_r($this->input->post('account'));echo "</pre>";
+                $account = $this->input->post('account');
+                $sql_query = "SELECT * FROM `account` WHERE `id` = $account_id";
+                $query = $this->db->query($sql_query);
+                $user_ex = $query->row_array();
+                
+                if($account['username'] != $user_ex['username'])
+                {
+                    $this->account_model->update_username($account_id, $account['username']);
+                } 
+
+                if($account['email'] != $user_ex['email'])
+                {
+                    $this->account_model->update_email($account_id, $account['email']);
+                }
+                 
+                
+                if (is_array($this->input->post('details')))
+                {
+                    $details = $this->input->post('details');
+                }
+                
+                if(isset($details))
+                {
+                    $this->account_details_model->update($account_id, $details);
+                }
+
+                $this->session->set_flashdata('info', lang('data_saved'));
+                redirect ('admin/users/edit/'.$account_id);                
+                
+            }
+            else
+            {
+            
+            $sql_query = "SELECT `id`,`username`,`email` FROM `account` WHERE `id` = '$account_id'";
+            $query = $this->db->query($sql_query);
+            $user = $query->row_array();
+            //print_r($user);
+            
+            $sql_query = "SELECT `fullname`, `firstname`, `lastname`, `pred_total_goals`, `pred_champion`, `company`, `dateofbirth`, `gender`, `postalcode`, `country`, `language`, `timezone`, `picture` FROM `account_details` WHERE `account_id` = '$account_id'";
+            $query = $this->db->query($sql_query);
+            $user_details = $query->row_array();
+            //print_r($user_details);
+
+            $sql_query = "SELECT `facebook_id`,`linkedon` FROM `account_facebook` WHERE `account_id` = '$account_id'";
+            $query = $this->db->query($sql_query);
+            $user_facebook = $query->row_array();
+
+            $sql_query = "SELECT `twitter_id`,`oauth_token`,`oauth_token_secret`, `linkedon` FROM `account_twitter` WHERE `account_id` = '$account_id'";
+            $query = $this->db->query($sql_query);
+            $user_twitter = $query->row_array();
+            
+            $data = array(
+                        'user'   => $user,
+                        'user_details' =>$user_details,
+                        'user_facebook' => $user_facebook,
+                        'user_twitter' => $user_twitter,
+                        'account'   => $this->account_model->get_by_id($this->session->userdata('account_id')),
+                        'account_details' => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                        'content_main' => 'admin/admin_user_edit',
+                        'title' => "Edit user"
+                        );
+           
+            $this->load->view('template/template', $data);
+            }
+        
+        }
+        else
+        {
+            redirect('account/sign_in/?continue='.site_url('admin/users/unpayed'));
+        }        
     
+    
+    }
 }
 ?>
