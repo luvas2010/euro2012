@@ -1,6 +1,4 @@
-<!-- <pre>
-<?php print_r($users); ?>
-</pre> -->
+
 <div class="container_12">
     <div class="grid_12 alpha omega">
         <h2><?php echo $title; ?></h2>
@@ -16,7 +14,10 @@
             </tr>
             <?php foreach($users as $user) { ?>
             <tr>
-                <td><?php echo "<span class='boldtext'>".$user['username']."</span><br />ID : ".$user['id'];?></td>
+                <td>
+                <?php echo "<span class='boldtext'>".$user['username']."</span><br />ID : ".$user['id'];?><br/>
+                <?php echo anchor('admin/users/edit/'.$user['id'], "Edit", 'class="button user_edit"')."<br />";?>
+                </td>
                 <td class="smalltext"><?php echo lang('first_name').": ".$user['firstname']."<br />"; ?>
                     <?php echo lang('last_name').": ".$user['lastname']."<br />"; ?>
                     <?php echo lang('full_name').": ".$user['fullname']."<br />"; ?>
