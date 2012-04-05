@@ -326,7 +326,7 @@ class Users extends CI_Controller {
         {
             if ($action == 'save')
             {
-                echo "<pre>";print_r($this->input->post('account'));echo "</pre>";
+                //echo "<pre>";print_r($this->input->post('account'));echo "</pre>";
                 $account = $this->input->post('account');
                 $sql_query = "SELECT * FROM `account` WHERE `id` = $account_id";
                 $query = $this->db->query($sql_query);
