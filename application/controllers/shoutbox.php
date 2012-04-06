@@ -14,7 +14,8 @@ class Shoutbox extends CI_Controller {
         $this->db->select('language');
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
-        if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);        
+        if ($lang['language'] == "") { $lang['language'] = $this->config->item('language'); }
+        if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);       
         $this->lang->load(array('general', 'welcome', 'shouts'));
     }
     
@@ -33,6 +34,7 @@ class Shoutbox extends CI_Controller {
 		$this->db->select('language');
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
+        if ($lang['language'] == "") { $lang['language'] = $this->config->item('language'); }
         if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);        
         $this->lang->load(array('general', 'welcome', 'shouts'));
         $shout = addslashes(strip_tags(trim($this->input->post('shouttxt'))));
