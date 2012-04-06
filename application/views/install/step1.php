@@ -2694,7 +2694,7 @@
                         `postedon`
                         )
                         VALUES (
-                        NULL , '0', 'Schop', 'Installatie Versie 1.2 succesvol!', '$timestamp'
+                        NULL , '0', 'Schop', 'Installatie Versie 1.31 succesvol!', '$timestamp'
                         )";
         
 		$sql_query[] = "CREATE TABLE IF NOT EXISTS `pool_config` (
@@ -2710,7 +2710,7 @@
 		$sql_query[] = "REPLACE INTO `pool_config`
 					  (`setting`,`value`, `is_writeable`,`category`)
 					  VALUES
-					  ('version','1.2',0,0),
+					  ('version','1.31',0,0),
 					  ('pool_name','Euro 2012 Voetbalpool',1,0),
 					  ('time_offset','0',1,0),
 					  ('predictions_open','1',1,0),

@@ -79,7 +79,7 @@ class Upgrade extends CI_Controller {
             $sql_query[] = "REPLACE INTO `pool_config`
                           (`setting`,`value`, `is_writeable`, `category`)
                           VALUES
-                          ('version','1.2',0,0),
+                          ('version','1.31',0,0),
                           ('pool_name','".$this->config->item('pool_name')."',1,0),
                           ('time_offset','".$this->config->item('time_offset')."',1,0),
                           ('predictions_open','".$this->config->item('predictions_open')."',1,0),
@@ -133,7 +133,7 @@ class Upgrade extends CI_Controller {
             $q = $this->db->query($query);
         }
         
-        echo "Upgraded to version 1.3";
+        echo "Upgraded to version 1.31";
         }
     
     else
