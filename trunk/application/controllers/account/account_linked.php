@@ -19,7 +19,8 @@ class Account_linked extends CI_Controller {
         $this->db->select('language');
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
-        if ($lang['language'] != '') $this->config->set_item('language',$lang['language']);     
+        if ($lang['language'] == "") { $lang['language'] = $this->config->item('language'); }
+        if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);    
         $this->load->language(array('general', 'account_linked', 'connect_third_party'));
     }
     
