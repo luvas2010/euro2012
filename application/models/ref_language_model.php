@@ -29,7 +29,8 @@ class Ref_language_model extends CI_Model {
 	function get_all()
 	{
 		$this->db->order_by('language', 'asc');
-		return $this->db->get('ref_language')->result();
+     // return $this->db->get('ref_language')->result();
+    return $this->db->get_where('ref_language', array('active' => 1))->result();
 	}
 	
 }
