@@ -141,5 +141,7 @@ $lang['D2_utf']    = 'Schweden';
 $lang['D3_utf']    = 'Frankreich';
 $lang['D4_utf']    = 'England';
 
+$lang['reset_password_email_sender'] 					= 'Fu&szlig;ball-Tipp-Spiel';
+
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */

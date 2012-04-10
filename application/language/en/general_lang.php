@@ -141,5 +141,8 @@ $lang['QF']      = 'Quarter&nbsp;Finals';
 $lang['SF']      = 'Semi&nbsp;Finals';
 $lang['F']      = 'Final';
 
+$lang['reset_password_email_sender'] 					= 'Football Prediction Game';
+
+
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */
