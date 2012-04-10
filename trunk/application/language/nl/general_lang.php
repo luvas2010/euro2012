@@ -140,5 +140,8 @@ $lang['QF']      = 'Kwart Finales';
 $lang['SF']      = 'Halve Finales';
 $lang['F']      = 'Finale';
 
+$lang['reset_password_email_sender']                    = 'Euro 2012 Voetbal Pool';
+
+
 /* End of file general_lang.php */
 /* Location: ./application/language/nederlands/general_lang.php */
