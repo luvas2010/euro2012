@@ -14,8 +14,22 @@ class Home extends CI_Controller {
         $this->db->select('language');
         $query = $this->db->get_where('account_details', array('account_id' => $this->session->userdata('account_id')));
         $lang = $query->row_array();
-        if ($lang['language'] == "") { $lang['language'] = $this->config->item('language'); }
-        if (isset($lang['language'])) $this->config->set_item('language',$lang['language']);       
+        if (isset($lang['language']))
+        {
+            if ($lang['language'] == "de" || $lang['language'] == "en" || $lang['language'] == "nl")
+            {
+                $this->config->set_item('language',$lang['language']);
+            }
+            else
+            {
+                $lang['language'] = $this->config->item('language');
+                $this->config->set_item('language',$lang['language']);
+            }
+        }
+        else
+        {
+            $lang['language'] = $this->config->item('language');
+        }     
         $this->lang->load(array('general', 'welcome'));
     }
     
