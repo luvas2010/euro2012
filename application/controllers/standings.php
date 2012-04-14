@@ -69,7 +69,11 @@ class Standings extends CI_Controller {
             {
                 foreach($results as $result)
                 {
+                    $account_details = $this->account_details_model->get_by_account_id($result['account_id']);
+                    $company = $account_details->company;
+                    
                     $points[$result['account_id']]['total_points'] =  0;
+                    $points[$result['account_id']]['company'] = $company;
                     $points[$result['account_id']]['matches'][$result['match_group']] = 0;
                     $points[$result['account_id']]['username'] =  $result['username'];
                     $points[$result['account_id']]['account_id'] =  $result['account_id'];
@@ -93,12 +97,14 @@ class Standings extends CI_Controller {
             {
                 $points = 0;
             }
+            
             //echo "<pre>";print_r($points); echo "</pre>";
             $data = array(
                         'points'           => $points,
                         'num'               => $num,
                         'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
-                        'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id'))
+                        'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                        'filter'            => $this->input->post('company')
                         );
 
             $data['content_main'] = "standings";

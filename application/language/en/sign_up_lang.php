@@ -13,6 +13,7 @@ $lang['sign_up_with']                           = 'Sign Up with %s';
 $lang['sign_up_username']                       = 'Username';
 $lang['sign_up_firstname']                      = 'First Name';
 $lang['sign_up_lastname']                       = 'Last Name';
+$lang['sign_up_company']                       = 'Company';
 $lang['sign_up_password']                       = 'Password';
 $lang['sign_up_email']                          = 'Email';
 $lang['sign_up_create_my_account']              = 'Create my account';

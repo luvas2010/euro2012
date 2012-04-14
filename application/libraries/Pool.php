@@ -66,9 +66,12 @@ class Pool {
 				$old = 0;
 				foreach($preds as $pred)
 				{
-					$user[$i]['match'][$pred['pred_match_uid']] = $pred['pred_points_total'];
+					$account_details = $CI->account_details_model->get_by_account_id($pred['account_id']);
+                    $company = $account_details->company;
+                    $user[$i]['match'][$pred['pred_match_uid']] = $pred['pred_points_total'];
 					$user[$i]['group'][$pred['pred_match_uid']] = $pred['match_group'];
 					$user[$i]['aggregate'][$pred['pred_match_uid']] = $old + $pred['pred_points_total'];
+                    $user[$i]['company'] = $company;
 					$old = $old + $pred['pred_points_total'];
 				}
 				$i++;
