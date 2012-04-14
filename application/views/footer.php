@@ -55,8 +55,7 @@
                         echo $local_time."</p>";
                     }
                 ?>
-                <?php echo "<p>".lang('number_of_users').": ".$this->db->count_all('account').""; ?>, Organisatie
-                 <a href="http://www.goederen-recycling.nl">: Goederen-Recycling</a>, voor een beter milieu.</a></p>
+                <?php echo "<p>".lang('number_of_users').": ".$this->db->count_all('account')."";?></p>
                 </div>
                 <div class='grid_5 omega'>
                 <p>Voetbalpool software is belangeloos gemaakt door <a href="https://twitter.com/#!/johnschop">John Schop</a>, &copy;2011. Liefhebbers kunnen <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=YTT9NSRN2LB54">doneren</a>.</p>
