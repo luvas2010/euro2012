@@ -42,7 +42,13 @@ $lang['month_dec']								= 'Dec';
 $lang['settings_select']						= '- Selecteer -';
 $lang['gender_male']							= 'Man';
 $lang['gender_female']							= 'Vrouw';
-
+$lang['settings_pool_style']					= 'Stijl van de website';
+$lang['pool_style_standard']			    	= 'Standaard';
+$lang['pool_style_orange']					    = 'Oranje';
+$lang['pool_style_green']					    = 'Groen';
+$lang['pool_style_blue']					    = 'Blauw';
+$lang['pool_style_purple']					    = 'Paars';
+$lang['pool_style_grey']					    = 'Grijs';
 
 /* End of file account_settings_lang.php */
 /* Location: ./application/modules/account/language/nl/account_settings_lang.php */

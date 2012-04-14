@@ -1,4 +1,22 @@
+<!--NIEUW oranjestijl variabele footer START-->  
+<?php if ($this->authentication->is_signed_in())
+        {
+          if($account_details->pool_style!=null) { ?>
+          
+    <script type="text/javascript">   
+       $(window).load(function() {
+		    $("#footer").pinFooter("relative");
+		});
 
+		$(window).resize(function() {
+		    $("#footer").pinFooter("absolute");
+		});
+      </script>
+ <?php } ?> 
+ <?php } ?> 
+
+<!--NIEUW oranjestijl variabele footer END-->      
+       
         <div id="footer">
             <div class='container_12'>
                 <div class='grid_7 alpha'><?php
@@ -37,18 +55,18 @@
                         echo $local_time."</p>";
                     }
                 ?>
-                <?php echo "<p>".lang('number_of_users').": ".$this->db->count_all('account')."</p>"; ?>
+                <?php echo "<p>".lang('number_of_users').": ".$this->db->count_all('account').""; ?>, Organisatie
+                 <a href="http://www.goederen-recycling.nl">: Goederen-Recycling</a>, voor een beter milieu.</a></p>
                 </div>
                 <div class='grid_5 omega'>
-                    <p>Voetbalpool software is belangeloos gemaakt door <a href="https://twitter.com/#!/johnschop">John Schop</a>, &copy;2011. Liefhebbers kunnen <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=YTT9NSRN2LB54">doneren</a>.</p>
+                <p>Voetbalpool software is belangeloos gemaakt door <a href="https://twitter.com/#!/johnschop">John Schop</a>, &copy;2011. Liefhebbers kunnen <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=YTT9NSRN2LB54">doneren</a>.</p>
+                   
                 </div>
             </div>
             <div class='clear'></div>
         </div>
-
-
-
-<script type="text/javascript" src="<?php echo base_url(); ?>js/functions.js"></script>
-
+        
+<script type="text/javascript" src="<?php echo base_url(); ?>js/functions.js"></script>        
+        
 </body>
 </html>

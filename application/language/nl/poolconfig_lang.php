@@ -28,6 +28,7 @@ $lang['ssl_enabled']				= "SSL verbinding toestaan (niet mee rommelen tenzij je 
 $lang['sign_in_recaptcha_enabled']	= "Als je dit op '1' zet moet er een re-captcha worden ingevuld bij het inloggen.";
 $lang['sign_in_recaptcha_offset']	= "Niet mee rommelen, tenzij je verstand hebt van re-captcha.";
 $lang['sign_up_recaptcha_enabled']	= "Als je dit op '1' zet moet er een re-captcha worden ingevuld bij het aanmelden.";
+
 $lang['sign_up_auto_sign_in']		= "Als je dit op '1' zet, zijn mensen na de aanmeldprocedure meteen ingelogd. Dit werkt natuurlijk alleen als ze niet eerst heoven te worden geverifi&euml;erd.";
 $lang['sign_out_view_enabled']		= "Als je dit op '1' zet, worden mensen na het uitloggen naar de 'je bent uitgelogd' pagina gestuurd. Staat het op '0', gaan ze meteen door naar de home pagina.";
 $lang['password_reset_expiration']  = "Aantal seconden dat de wachtwoord reset link geldig is. Standaard is dit 1800 seconden, oftewel 30 minuten. Daarna moet dus een nieuwe link worden aangevraagd.";
@@ -35,6 +36,7 @@ $lang['password_reset_secret']		= "Een code van 64 karakters om wachtwoord-reset
 $lang['recaptcha_public_key']		= "'Public Key' voor re-captcha. De default waarde zou moeten werken, maar je kunt ook je eigen set sleutels aanvragen op <a href='https://www.google.com/recaptcha/admin/create'>de re-captcha website</a>.";
 $lang['recaptcha_private_key']		= "'Private Key' voor re-captcha. De default waarde zou moeten werken, maar je kunt ook je eigen set sleutels aanvragen op <a href='https://www.google.com/recaptcha/admin/create'>de re-captcha website</a>.";
 $lang['recaptcha_theme']			= "Kleurstelling van de recaptcha's. Waardes: 'red' | 'white' | 'blackglass' | 'clean' | 'custom'";
+
 
 $lang['openid_file_store_path']		= "Folder op de server waar OpenID bestanden worden opgeslagen. Alleen belangrijk a;s je OpenID wilt gebruiken als log-in mogelijkheid (dit werkt niet in de huidige versie van de pool, en misschien wel nooit).";
 $lang['openid_google_discovery_endpoint']	= "Wordt niet gebruikt, misschien in de toekomst.";
@@ -53,6 +55,7 @@ $lang['category_1']                 = "Punten Instellingen";
 $lang['category_2']                 = "Account Instellingen";
 $lang['category_3']                 = "Social Media";
 
+$lang['pool_style']                 = "Uiterlijk van de pool (voordat een gebruiker is ingelogd!). Mogelijkheden: orange|green|blue|purple|grey, leeg = standaard uiterlijk";
 
 /* End of file poolconfig_lang.php */
 /* Location: ./application/language/en/poolconfig_lang.php */

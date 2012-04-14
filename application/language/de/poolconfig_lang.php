@@ -13,5 +13,7 @@ $lang['category_1']                 = "Punkte Einstellungen";
 $lang['category_2']                 = "Account Einstellungen";
 $lang['category_3']                 = "Sozialemedien";
 
+$lang['pool_style']                 = "Aussehen des Pools (bevor ein Benutzer angemeldet ist!). M&ouml;glichkeiten: orange|green|blue|purple|grey, blank = Standarddarstellung";
+
 /* End of file poolconfig_lang.php */
 /* Location: ./application/language/en/poolconfig_lang.php */
