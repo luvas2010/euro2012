@@ -1,3 +1,22 @@
+<?php
+    $mysql_query = "SELECT DISTINCT `company` FROM `account_details` ORDER BY `company`";
+    $query = $this->db->query($mysql_query);
+    $companies = $query->result_array();
+    $string = "";
+    foreach ($companies as $company)
+    {
+        $string .= '"'.$company['company'].'",';
+    }
+    $string = rtrim($string,",");
+    ?>
+<script>
+	$(function() {
+		var availableTags = [ <?php echo $string; ?> ];
+		$( "#sign_up_company" ).autocomplete({
+			source: availableTags
+		});
+	});
+	</script>
 <div id="content">
     <div class="container_12">
         <div class="grid_12">
@@ -63,6 +82,25 @@
                 <?php echo form_error('sign_up_lastname'); ?>
                 <?php if (isset($sign_up_lastname_error)) : ?>
                 <span class="field_error"><?php echo $sign_up_lastname_error; ?></span>
+                <?php endif; ?>
+            </div>
+            <div class="clear"></div>
+
+            <div class="grid_2 alpha align_right">
+                <?php echo form_label(lang('sign_up_company'), 'sign_up_company'); ?>
+            </div>
+            <div class="grid_6 omega">
+                <?php echo form_input(array(
+                        'name' => 'sign_up_company',
+                        'id' => 'sign_up_company',
+                        'value' => set_value('sign_up_company'),
+                        'minlength' => '2',
+                        'maxlength' => '24',
+                        'class' => 'text'
+                    )); ?>
+                <?php echo form_error('sign_up_company'); ?>
+                <?php if (isset($sign_up_company_error)) : ?>
+                <span class="field_error"><?php echo $sign_up_company_error; ?></span>
                 <?php endif; ?>
             </div>
             <div class="clear"></div>

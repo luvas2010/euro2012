@@ -48,7 +48,8 @@ class Charts extends CI_Controller {
                             'topusers'          => $topusers,
                             'num'               => $num,
                             'account'           => $this->account_model->get_by_id($this->session->userdata('account_id')),
-                            'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id'))
+                            'account_details'   => $this->account_details_model->get_by_account_id($this->session->userdata('account_id')),
+                            'filter'            => $this->input->post('company')
                             );
                 $data['content_main'] = "charts_topuser";
                 $data['title'] = lang('standings');

@@ -1,4 +1,22 @@
-
+<?php
+    $mysql_query = "SELECT DISTINCT `company` FROM `account_details` ORDER BY `company`";
+    $query = $this->db->query($mysql_query);
+    $companies = $query->result_array();
+    $string = "";
+    foreach ($companies as $company)
+    {
+        $string .= '"'.$company['company'].'",';
+    }
+    $string = rtrim($string,",");
+    ?>
+<script>
+	$(function() {
+		var availableTags = [ <?php echo $string; ?> ];
+		$( "#settings_company" ).autocomplete({
+			source: availableTags
+		});
+	});
+	</script>
 <div id="content">
     <div class="container_12">
         <div class="grid_12">

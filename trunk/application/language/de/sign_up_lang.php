@@ -14,6 +14,8 @@ $lang['sign_up_username']                       = 'Benutzername';
 $lang['sign_up_firstname']                      = 'Vorname';
 $lang['sign_up_lastname']                       = 'Nachname';
 $lang['sign_up_password']                       = 'Passwort';
+$lang['sign_up_company']                       = 'Firma';
+
 $lang['sign_up_email']                          = 'E-mail';
 $lang['sign_up_create_my_account']              = 'Erstelle meinen Account';
 $lang['sign_up_sign_in_now']                    = 'Jetzt einloggen';
