@@ -43,6 +43,13 @@ $lang['settings_select']						= '- W&auml;hle -';
 $lang['gender_male']							= 'M&auml;nnlich';
 $lang['gender_female']							= 'Weiblich';
 
+$lang['settings_pool_style']					= 'Style-Website';
+$lang['pool_style_standard']				  	= 'Standard';
+$lang['pool_style_orange']					    = 'Orange';
+$lang['pool_style_green']					    = 'Gr&uuml;n';
+$lang['pool_style_blue']					    = 'Blau';
+$lang['pool_style_purple']					    = 'Violett';
+$lang['pool_style_grey']					    = 'Grau';
 
 
 /* End of file account_settings_lang.php */

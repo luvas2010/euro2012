@@ -112,9 +112,13 @@ class Account_settings extends CI_Controller {
                 $attributes['country'] = $this->input->post('settings_country') ? $this->input->post('settings_country') : NULL;
                 $attributes['language'] = $this->input->post('settings_language') ? $this->input->post('settings_language') : NULL;
                 $attributes['timezone'] = $this->input->post('settings_timezone') ? $this->input->post('settings_timezone') : NULL;
+                //Poolstyle
+                $attributes['pool_style'] = $this->input->post('settings_pool_style') ? $this->input->post('settings_pool_style') : NULL;
+                //Poolstyle
                 $this->account_details_model->update($data['account']->id, $attributes);
                 
                 $data['settings_info'] = lang('settings_details_updated');
+                redirect('account/account_settings');
             }
         }
         

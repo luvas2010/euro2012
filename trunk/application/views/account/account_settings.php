@@ -223,6 +223,23 @@
                 </select>
             </div>
             <div class="clear"></div>
+            <div class="grid_2 alpha">
+                <?php echo form_label(lang('settings_pool_style')); ?>
+            </div>
+            <div class="grid_8 omega">
+                <?php $s = ($this->input->post('settings_pool_style') ? $this->input->post('settings_pool_style') : (isset($account_details->pool_style) ? $account_details->pool_style : '')); ?>
+                <select name="settings_pool_style">
+                    <option value=""><?php echo lang('settings_select'); ?></option>
+                    <option value=<?php null?><?php if ($s == 'standard') echo ' selected="selected"'; ?>><?php echo lang('pool_style_standard'); ?></option>
+                    <option value="orange"<?php if ($s == 'orange') echo ' selected="selected"'; ?>><?php echo lang('pool_style_orange'); ?></option>
+                    <option value="green"<?php if ($s == 'green') echo ' selected="selected"'; ?>><?php echo lang('pool_style_green'); ?></option>
+                    <option value="blue"<?php if ($s == 'blue') echo ' selected="selected"'; ?>><?php echo lang('pool_style_blue'); ?></option>
+                    <option value="purple"<?php if ($s == 'purple') echo ' selected="selected"'; ?>><?php echo lang('pool_style_purple'); ?></option>
+                    <option value="grey"<?php if ($s == 'grey') echo ' selected="selected"'; ?>><?php echo lang('pool_style_grey'); ?></option>
+                </select>
+            </div>
+            <div class="clear"></div>
+            
             <div class="prefix_2 grid_6 alpha omega">
                 <?php echo form_button(array(
                         'type' => 'submit',

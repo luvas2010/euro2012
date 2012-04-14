@@ -36,21 +36,6 @@ class Upgrade extends CI_Controller {
                           `postedon` int(11) NOT NULL,
                           PRIMARY KEY (`id`)
                         )";
-                        
-        if(!$this->db->field_exists('pool_style','account_details'))
-        {
-            $sql_query[] = "ALTER TABLE `account_details` ADD `pool_style` varchar(10)  DEFAULT NULL"; //to version 1.4
-        }
-        
-        $sql_query[] = "CREATE TABLE IF NOT EXISTS `shoutbox` (
-                          `id` int(11) NOT NULL AUTO_INCREMENT,
-                          `account_id` bigint(20) NOT NULL,
-                          `username` varchar(24) NOT NULL,
-                          `message` varchar(255) NOT NULL,
-                          `postedon` int(11) NOT NULL,
-                          PRIMARY KEY (`id`)
-                        )";                        
-                        
         $timestamp = now();                
         $sql_query[] = "REPLACE INTO `shoutbox` (
                         `id` ,
@@ -94,7 +79,7 @@ class Upgrade extends CI_Controller {
             $sql_query[] = "REPLACE INTO `pool_config`
                           (`setting`,`value`, `is_writeable`, `category`)
                           VALUES
-                          ('version','1.4',0,0),
+                          ('version','1.31',0,0),
                           ('pool_name','".$this->config->item('pool_name')."',1,0),
                           ('time_offset','".$this->config->item('time_offset')."',1,0),
                           ('predictions_open','".$this->config->item('predictions_open')."',1,0),
@@ -136,15 +121,10 @@ class Upgrade extends CI_Controller {
                           ('twitter_consumer_secret','".$this->config->item('twitter_consumer_secret')."',1,3),
                           ('facebook_app_id','".$this->config->item('facebook_app_id')."',1,3),
                           ('facebook_secret','".$this->config->item('facebook_secret')."',1,3)";
-                          
         }
         else
         {
-                    $sql_query[] = "UPDATE `pool_config` SET `value` = '1.4' WHERE `setting` = 'version'";
-                    $sql_query[] = "REPLACE INTO `pool_config`
-                          (`setting`,`value`, `is_writeable`, `category`)
-                          VALUES
-                          ('pool_style','1',1,0)";
+                    $sql_query[] = "UPDATE `pool_config` SET `value` = '1.3' WHERE `setting` = 'version'";
                           
         }
         
@@ -153,7 +133,7 @@ class Upgrade extends CI_Controller {
             $q = $this->db->query($query);
         }
         
-        echo "Upgraded to version 1.4";
+        echo "Upgraded to version 1.31";
         }
     
     else

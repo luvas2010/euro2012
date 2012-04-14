@@ -36,6 +36,7 @@
                           `language` char(2) DEFAULT NULL,
                           `timezone` varchar(40) DEFAULT NULL,
                           `picture` varchar(240) DEFAULT NULL,
+                          `pool_style` varchar(10) DEFAULT NULL,
                           PRIMARY KEY (`account_id`)
                         )";
         
@@ -2710,7 +2711,7 @@
 		$sql_query[] = "REPLACE INTO `pool_config`
 					  (`setting`,`value`, `is_writeable`,`category`)
 					  VALUES
-					  ('version','1.31',0,0),
+					  ('version','1.4',0,0),
 					  ('pool_name','Euro 2012 Voetbalpool',1,0),
 					  ('time_offset','0',1,0),
 					  ('predictions_open','1',1,0),
@@ -2751,7 +2752,8 @@
 					  ('twitter_consumer_key','',1,3),
 					  ('twitter_consumer_secret','',1,3),
 					  ('facebook_app_id','',1,3),
-					  ('facebook_secret','',1,3)";
+					  ('facebook_secret','',1,3),
+                      ('pool_style','',1,0)";
 		
         foreach ($sql_query as $query)
         {
