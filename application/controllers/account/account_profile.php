@@ -91,7 +91,7 @@ class Account_profile extends CI_Controller {
                 $this->load->library('upload', array(
                     'file_name' => md5($data['account']->id).'.jpg',
                     'overwrite' => true,
-                    'upload_path' => FCPATH.'/resource/user/profile',
+                    'upload_path' => FCPATH.'resource/user/profile',
                     'allowed_types' => 'jpg|png|gif',
                     'max_size' => '800' // kilobytes
                 ));
