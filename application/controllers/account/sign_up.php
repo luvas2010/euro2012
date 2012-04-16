@@ -76,7 +76,9 @@ class Sign_up extends CI_Controller {
                 // Add user details (auto detected country, language, timezone)
                 $attributes = array('firstname' => $this->input->post('sign_up_firstname'),
                                     'lastname' => $this->input->post('sign_up_lastname'),
-                                    'fullname' => $this->input->post('sign_up_firstname')." ".$this->input->post('sign_up_lastname')
+                                    'fullname' => $this->input->post('sign_up_firstname')." ".$this->input->post('sign_up_lastname'),
+                                    'pool_style'=> $this->poolconfig_model->item('pool_style'),
+                                    'company' => $this->input->post('sign_up_company')
                                     );
 
                 $this->account_details_model->update($user_id, $attributes);
