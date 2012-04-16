@@ -1042,7 +1042,7 @@ class CI_Upload {
 		if (function_exists('mime_content_type'))
 		{
 			$this->file_type = @mime_content_type($file['tmp_name']);
-			return;
+			if (strlen($this->file_type) > 0) return;
 		}
 
 		/* This is an ugly hack, but UNIX-type systems provide a native way to detect the file type,
@@ -1055,7 +1055,7 @@ class CI_Upload {
 		if (DIRECTORY_SEPARATOR !== '\\' && function_exists('exec'))
 		{
 			$output = array();
-			@exec('file --brief --mime-type ' . escapeshellarg($file['tmp_path']), $output, $return_code);
+			@exec('file --brief --mime-type ' . escapeshellarg($file['tmp_name']), $output, $return_code);
 			if ($return_code === 0 && strlen($output[0]) > 0) // A return status code != 0 would mean failed execution
 			{
 				$this->file_type = rtrim($output[0]);
