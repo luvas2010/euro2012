@@ -1106,12 +1106,7 @@ class Predictions extends CI_Controller {
                             ORDER BY `account`.`username`";
                 $query = $this->db->query($sql_query);
                 $results = $query->result_array();
-                echo "<!--";
-                echo $sql_query."<br/>";
-                echo "<PRE>";
-                print_r($results);
-                echo "</PRE>";
-                echo "-->";
+
                 $data = array(
                             'match_uid' => $match_uid,
                             'title' => get_match($match_uid)." (".lang($results[0]['match_group']).")",
