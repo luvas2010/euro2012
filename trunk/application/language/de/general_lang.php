@@ -50,6 +50,7 @@ $lang['nav_rules']		= 'Spielregeln';
 $lang['nav_standings']  =   'Spielst&auml;nde';
 $lang['nav_extra']    = 'Extra Fragen';
 $lang['statistics']     = "Statistiken";
+$lang['statistics_more']     = "Mehr Statistiken";
 $lang['nav_champ_graph'] = "Wer wird der Champion?";
 $lang['nav_top_ten'] = "Top Ten der Rangliste";
 $lang['nav_totalgoals_graph'] = "Wieviele Tore werden erzielt werden?";
