@@ -444,7 +444,7 @@
             ?>
         </div>
         <div class='grid_4 alpha omega'>
-        <h3>Meer statistieken</h3>
+        <h3><?php echo lang('statistics_more'); ?></h3>
             <ul class='hasbullets'>
             <?php   $home_goals_total = 0;
                     $away_goals_total = 0;

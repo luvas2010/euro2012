@@ -49,6 +49,7 @@ $lang['nav_matches']    = 'Wedstrijden';
 $lang['nav_rules']		= 'Spelregels';
 $lang['nav_standings']  =   'Ranglijst';
 $lang['statistics']     = "Statistieken";
+$lang['statistics_more']     = "Meer Statistieken";
 $lang['nav_champ_graph'] = "Kampioen";
 $lang['nav_top_ten'] = "Top tien";
 $lang['nav_totalgoals_graph'] = "Totaal doelpunten";
