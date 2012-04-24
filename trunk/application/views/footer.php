@@ -1,22 +1,3 @@
-<!--NIEUW oranjestijl variabele footer START-->  
-<?php if ($this->authentication->is_signed_in())
-        {
-          if($account_details->pool_style!=null) { ?>
-          
-    <script type="text/javascript">   
-       $(window).load(function() {
-		    $("#footer").pinFooter("relative");
-		});
-
-		$(window).resize(function() {
-		    $("#footer").pinFooter("absolute");
-		});
-      </script>
- <?php } ?> 
- <?php } ?> 
-
-<!--NIEUW oranjestijl variabele footer END-->      
-       
         <div id="footer">
             <div class='container_12'>
                 <div class='grid_7 alpha'><?php
@@ -65,7 +46,24 @@
             <div class='clear'></div>
         </div>
         
-<script type="text/javascript" src="<?php echo base_url(); ?>js/functions.js"></script>        
+
+<!--NIEUW JS pinheader activeren bij standaard lay-out START-->
+    <?php if ($this->authentication->is_signed_in())
+          {
+    if($account_details->pool_style==null) { ?>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/functions.js"></script>   
+    <?php } else { ?>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/relativefunctions.js"></script>   
+    <?php } ?>
+    <?php } else { ?>
+    <?php if (($this->poolconfig_model->item('pool_style')==null))
+         { ?>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/functions.js"></script>   
+    <?php } else { ?>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/relativefunctions.js"></script>   
+    <?php } ?>
+    <?php } ?>
+    <!--NIEUW JS pinheader activeren bij standaard lay-out  END-->       
         
 </body>
 </html>

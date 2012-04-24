@@ -27,7 +27,7 @@ $(document).ready(function (){
     });
     
    $('#footer').pinFooter();
-   $('#navigation').pinHeader(); 
+ //$('#navigation').pinHeader(); //geeft ruimte onder footer daarom uit en deze relative functions
    
    $('.warnings h5').click(function() {
     $('.warning').slideToggle("slow");
@@ -43,13 +43,14 @@ $(document).ready(function (){
     $("select, input:radio, input:file").uniform();
 });
 
+
 $(window).load(function() {
 
 });
 
 $(window).resize(function() {
    $('#footer').pinFooter(); 
-   $('#navigation').pinHeader();
+//   $('#navigation').pinHeader();
 });
 
 

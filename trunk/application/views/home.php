@@ -71,15 +71,36 @@
                                 function(data) {
                                     $('#shoutlist').empty().append(data);
                                     $('#shout').val('');
-                                    }
+                                     }
                             );
                     });
-        
-                    $.ajax({
+                    
+                  <?php if ($this->authentication->is_signed_in())
+                          {
+                        if($account_details->pool_style==null) { ?>
+    
+                        $.ajax({
                             url: "<?php echo site_url('shoutbox/getshouts/5'); ?>",
-                            success: function(data) { $('#shoutlist').empty().append(data);}
+                            success: function(data) { $('#shoutlist').empty().append(data);
+                                                    }
                             });
-                });
+                        <?php } else { ?>
+                        $.ajax({
+                            url: "<?php echo site_url('shoutbox/getshouts/5'); ?>",
+                            success: function(data) { $('#shoutlist').empty().append(data);
+                                                  if( $(window).height() > $('body').height() )   //after load shoubox re-initiate footer properties 
+                                                     {$('#footer').css("position","fixed");  
+                                                      $('#footer').css("bottom","0");
+                                                      $('#footer').css("width","100%");}
+                                                  else
+                                                     {$('#footer').css("position","relative")
+                                                      $('#footer').css("width","");
+                                                     }
+                                                    }
+                            });
+                        <?php } ?>
+                        <?php } ?>
+                    });
 			</script>
         </div> <!-- end shoutbox -->
 		<?php } ?>
