@@ -107,7 +107,7 @@
             <div class="form_error"><?php echo $this->session->flashdata('linked_error'); ?></div>
             <?php endif; ?>
             <ul class="third_party">
-            <? $providers = explode(',',$this->poolconfig_model->item('third_party_auth_providers')); ?>
+            <?php $providers = explode(',',$this->poolconfig_model->item('third_party_auth_providers')); ?>
                 <?php foreach($providers as $provider) : ?>
                 <li class="third_party <?php echo $provider; ?>"><?php echo anchor('account/connect_'.$provider, lang('connect_'.$provider), 
                     array('title'=>sprintf(lang('connect_with_x'), lang('connect_'.$provider)))); ?></li>
