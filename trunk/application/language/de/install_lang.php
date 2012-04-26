@@ -16,7 +16,7 @@ $lang['version']                        =   "Version";
 $lang['installation_not_possible']      =   "Ihr Server erf&uuml;llt die Installationsanforderungen nicht";
 $lang['user_created']                   =   "Benutzer %s erstellt!";
 $lang['config_change']                  =   "Sie k&ouml;nnen die Einstellungen &auml;ndern in <span class='code'>/application/config/pool.php</span>.
-                                             Aktuallisieren Sie die Seite, nachdem Sie Ihre Änderungen abgeschlossen haben.";
+                                             Aktuallisieren Sie die Seite, nachdem Sie Ihre &Auml;nderungen abgeschlossen haben.";
 $lang['time_offset_check']              =   "Ihr Zeitausgleich ist <span class='boldtext'>%s seconds</span>. Sollte die unten angezeigte Zeit nicht stimmen, &auml;ndern Sie diese in <span class='code'>/application/config/pool.php</span>.";
 $lang['timezone_check']                 =   "Es scheint, als sei Ihr Server in timezone <span class='boldtext'><em>'%s'</em></span>.";
 $lang['try_this_offset']                =   "Wenn das Korrekt ist, sollte Ihr Zeitausgleich <span class='boldtext'>%s seconds</span> sein";
