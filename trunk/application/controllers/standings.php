@@ -41,7 +41,7 @@ class Standings extends CI_Controller {
             
             if ($this->poolconfig_model->item('play_for_money'))
             {
-            $sql_query = "SELECT *
+            $sql_query = "SELECT `prediction`.`account_id`, `prediction`.`pred_points_total`, `account`.`username`, `account`.`id`, `match`.`match_group`
                             FROM `prediction`
                             JOIN `account`
                             ON  `account`.`id` = `prediction`.`account_id`
@@ -53,7 +53,7 @@ class Standings extends CI_Controller {
             }
             else
             {
-            $sql_query = "SELECT *
+            $sql_query = "SELECT `prediction`.`account_id`, `prediction`.`pred_points_total`, `account`.`username`, `account`.`id`, `match`.`match_group`
                             FROM `prediction`
                             JOIN `account`
                             ON  `account`.`id` = `prediction`.`account_id`
