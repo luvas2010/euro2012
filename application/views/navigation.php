@@ -1,6 +1,17 @@
-        <ul class="sf-menu">
+    <ul class="sf-menu">
             <li><?php echo anchor('/',lang('navhome')); ?></li>
+                                       
+            <!-- hide menu when not logged in -->
+            <?php if (($this->authentication->is_signed_in()) or
+                     ($this->poolconfig_model->item('pool_style')==null)) { ?>
+            
             <li><?php echo anchor('matches',lang('nav_matches')); ?></li>
+            
+             
+            <?php } ?>
+            <!-- hide menu when not logged in -->
+            <?php if (($this->authentication->is_signed_in()) or
+                     ($this->poolconfig_model->item('pool_style')==null)) { ?>
             <li><a href="#"><?php echo lang('predictions'); ?></a>
                 <ul>
                     <li><?php echo anchor('predictions/editgroup/A',lang('group').' A'); ?></li>
@@ -14,7 +25,12 @@
                     <li><?php echo anchor('predictions/editgroup/ALL',lang('all_predictions')); ?></li>
                 </ul>
             </li>
-			<li><?php echo anchor('rules', lang('nav_rules')); ?></li>
+            <?php } ?>
+      <li><?php echo anchor('rules', lang('nav_rules')); ?></li>
+      <!-- hide menu when not logged in -->
+      <?php if (($this->authentication->is_signed_in()) or
+                ($this->poolconfig_model->item('pool_style')==null)) { ?>
+			
             <li><?php echo anchor('standings', lang('nav_standings')); ?></li>
             <li><a href="#"><?php echo lang('statistics'); ?> </a>
                 <ul>
@@ -37,7 +53,12 @@
                     
                 </ul>
             </li>
-            <?php if ($this->authentication->is_signed_in()) { ?>
+            <?php } ?>
+            
+           
+            <!-- hide admin menu if not logged in and not admin user -->
+            <?php if (($this->authentication->is_signed_in()) or
+                     ($this->poolconfig_model->item('pool_style')==null)) { ?>
             <?php
                 if (is_admin()) {
                     ?>
@@ -57,13 +78,14 @@
                         </ul>
                     </li>
                     <li><?php echo anchor('admin/check_settings/cat/0', lang('check_settings'));?></li>
-                    <li><?php echo anchor('admin/manual', 'Handleiding');?></li>
+                   
                 </ul>
             </li>
        
             <?php } ?>
             <?php } ?>
-            <?php if ($this->authentication->is_signed_in()) { ?>
+            <?php if ($this->authentication->is_signed_in()) 
+                      { ?>
                 <li><?php echo anchor('account/account_settings', lang('website_account')); ?></li>
                 <li class=""><?php echo anchor('account/sign_out', lang('website_sign_out')); ?></li>
             <?php } else {?>
@@ -71,6 +93,7 @@
                 <li class=""><?php echo anchor('account/sign_in', lang('website_sign_in')); ?></li>
             <?php } ?>
         </ul>
+                
         <ul class='languages'>
             <?php
                 $sql_query = "SELECT * FROM `ref_language` WHERE `active` = 1 ORDER BY `one`";
@@ -80,9 +103,11 @@
                 
                 foreach($languages as $language)
                 {
-                $image_url = '<img src="'.$path.'css/flags/lang_'.$language['one'].'.png"/>';
+                $image_url = '<img src="'.$path.'/css/flags/lang_'.$language['one'].'.png"/>';
             ?>
             <li><?php echo anchor('account/account_settings/set_language/'.$language['one'].'?continue='.urlencode(current_url()), $image_url, 'title="'.$language['language'].'"' );?></li>
             
             <?php } ?>
         </ul>
+        
+  

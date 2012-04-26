@@ -15,7 +15,7 @@ $lang['welcometext']    = '<p>Willkommen bei %s.</p>
                                 <li>Tippen Sie das Ergebnis aller Begegnungen. Sie k&ouml;nnen Ihren Tipp &auml;ndern bis das Spiel beginnt.</li>
                                 <li>Tippen Sie die Teams, die voraussichtlich das Viertelfinale, Halbfinale und im Finale erreichen werden. Sie m&uuml;ssen dies erledigt haben, bevor das Tunier beginnt.</li>
                                 <li>Tippen Sie die totale Anzahl der Tore in allen 31 Begegnungen. Dies m&uuml;ssen Sie getan haben, bevor das Tunier startet.</li>
-                                <li>Überlegen Sie sich, wer der Gewinner des Euro2012 wird, bevor das Tunier seinen Anfang gefunden hat.</li>
+                                <li>&Uuml;berlegen Sie sich, wer der Gewinner des Euro2012 wird, bevor das Tunier seinen Anfang gefunden hat.</li>
                             </ul>
                           <div class="info">
                               <p>Hier finden Sie die Erkl&auml;rungen, wie Sie Punkte erzielen k&ouml;nnen:</p>

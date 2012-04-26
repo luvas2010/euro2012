@@ -27,7 +27,7 @@ $lang['match']									= 'Spiel';
 $lang['to_do_list']                             = 'To-do-Liste';
 $lang['missing_results_heading']                = 'Keine Tipps gemacht f&uuml;r:';
 $lang['missing_teams_heading']                  = 'Keine Teamtipps gemacht f&uuml;r:';
-$lang['change_picture']                         = 'Ändere Bild';
+$lang['change_picture']                         = '&Auml;ndere Bild';
 $lang['check_user_pos']                         = 'Ihren Spielstand abfragen';
 $lang['user_points']                            = 'Sie haben %s Punkte.';
 $lang['total_goals_missing']                    = 'Sie haben (nicht) &rsquo;t alle extra Fragen getippt';
@@ -144,5 +144,8 @@ $lang['D4_utf']    = 'England';
 
 $lang['reset_password_email_sender'] 					= 'Fu&szlig;ball-Tipp-Spiel';
 
+
+
 /* End of file general_lang.php */
 /* Location: ./application/language/english/general_lang.php */
+
