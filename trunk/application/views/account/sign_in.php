@@ -1,7 +1,7 @@
 
 <div id="content">
     <div class="container_12">
-        <div class="grid_12">
+        <div class="grid_8 alpha">
             <?php echo sprintf(lang('intro_text'), anchor('account/sign_up', lang('website_sign_up')));?>
             <?php
             if ($this->poolconfig_model->item('play_for_money'))
@@ -18,7 +18,20 @@
             $payout .= "</ul>";
 			echo sprintf(lang('intro_payed'), $this->poolconfig_model->item('currency')." ".$this->poolconfig_model->item('payment_per_user'), $payout);
 			} ?>
-        </div>    
+        </div>
+        <div class="grid_4 omega">
+         <script type="text/javascript"><!--
+google_ad_client = "ca-pub-2098404720901613";
+/* pool */
+google_ad_slot = "7735837555";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+        </div>
         <div class="clear"></div>
         <div class="grid_8">
         <?php $attributes = array('id' => 'validateMe'); ?>
