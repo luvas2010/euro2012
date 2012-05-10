@@ -20,6 +20,7 @@ $lang['goals_wrong']               = "Het aantal doelpunten voor %s had je niet 
 $lang['result_right_win']               = "Zoals je had voorspeld won %s de wedstrijd van %s. Dat levert <span class='boldtext'>%s punten</span> op.";
 $lang['result_right_tie']               = "%s en %s speelden gelijk, en dat had je voorspeld. Dat levert <span class='boldtext'>%s punten</span> op.";
 $lang['team_correct']                   = "Je had %s goed voorspeld, en daar krijg je <span class='boldtext'>%s punten</span> voor.";
+$lang['team_correct_wrong_pos']         = "Je had %s voorspeld, en die spelen in deze ronde nog mee, daar krijg je <span class='boldtext'>%s punten</span> voor.";
 $lang['total_number_of_predictions']    = "Voor deze wedstrijd zijn %s voorspellingen berekend.";
 $lang['pred_goals_correct_number'] = "Het aantal doelpunten voor %s is %s keer goed voorspeld.";
 $lang['pred_everything_correct_number'] = "%s keer is het aantal doelpunten voor beide landen goed voorspeld.";

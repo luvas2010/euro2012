@@ -223,14 +223,17 @@
                     if($prediction['pred_match_uid'] >= 25 && $prediction['pred_match_uid'] <= 28)
                     {
                         $points_for_team = $this->poolconfig_model->item('pred_points_qf_team');
+                        $points_for_team_wrong_pos = $this->poolconfig_model->item('pred_points_qf_team_wrong_pos');
                     }
                     elseif ($prediction['pred_match_uid'] >= 29 && $prediction['pred_match_uid'] <= 30 )
                     {
                         $points_for_team = $this->poolconfig_model->item('pred_points_sf_team');
+                        $points_for_team_wrong_pos = $this->poolconfig_model->item('pred_points_sf_team_wrong_pos');
                     }
                     elseif ($prediction['pred_match_uid'] == 31)
                     {
                         $points_for_team = $this->poolconfig_model->item('pred_points_f_team');
+                        $points_for_team_wrong_pos = $this->poolconfig_model->item('pred_points_f_team_wrong_pos');
                     }                      
                 ?>
                     <?php if($prediction['pred_home_team'] == $prediction['home_team'])
@@ -241,8 +244,17 @@
                             { ?>
                                 <p><?php echo sprintf(lang('team_correct'), anchor('stats/view_team/'.$prediction['away_team'],lang($prediction['away_team'])), $points_for_team); ?> </p>
                             <?php } ?>
-                    <?php } ?>        
-                         
+                    <?php } ?>
+                    
+                    <?php if($prediction['pred_points_home_team'] == $points_for_team_wrong_pos && $points_for_team_wrong_pos != 0)
+                          { ?>
+                            <p><?php echo sprintf(lang('team_correct_wrong_pos'), anchor('stats/view_team/'.$prediction['pred_home_team'],lang($prediction['pred_home_team'])), $points_for_team_wrong_pos); ?> </p>
+                         <?php } ?>  
+                    <?php if($prediction['pred_points_away_team'] == $points_for_team_wrong_pos && $points_for_team_wrong_pos != 0)
+                          { ?>
+                            <p><?php echo sprintf(lang('team_correct_wrong_pos'), anchor('stats/view_team/'.$prediction['pred_away_team'],lang($prediction['pred_away_team'])), $points_for_team_wrong_pos); ?> </p>
+                            <?php
+                          } ?>       
             </div>
 
             

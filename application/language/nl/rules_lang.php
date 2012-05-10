@@ -19,9 +19,12 @@ $lang['points_awarded'] = '<div class="infostay">
                                 <ul>
                                     <li>Punten voor uit- of thuisdoelpunten goed: %s</li>
                                     <li>Punten voor winst-gelijk-verlies goed voorspeld: %s</li>
-                                    <li>Punten voor een team goed in de kwart finales: %s</li>
-                                    <li>Punten voor een team goed in de halve finales: %s</li>
-                                    <li>Punten voor een team goed in de finale: %s</li>
+                                    <li>Punten voor een team op de juiste plaats in de kwart finales: %s</li>
+                                    <li>Punten voor een team op de juiste plaats in de halve finales: %s</li>
+                                    <li>Punten voor een team op de juiste plaats in de finale: %s</li>
+                                    <li>Punten voor een team voorspeld in de kwart finales: %s</li>
+                                    <li>Punten voor een team voorspeld in de halve finales: %s</li>
+                                    <li>Punten voor een team voorspeld in de finale: %s</li>
                                     <li>Je kunt maximaal %s bonus punten verdienen als je het totaal aantal goals goed hebt. Zit je er dichtbij dan krijg je minder bonuspunten. Zit je er meer dan %s doelpunten naast dan krijg je helaas geen bonuspunten.</li>
                                     <li>Als je de winnaar van Euro2012 goed voorspelt, krijg je nog eens %s bonuspunten</li>
                                 </ul>

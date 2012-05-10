@@ -22,9 +22,12 @@ $lang['points_awarded'] = '<div class="info">
                               <ul>
                                     <li>Points for predicting home or away goals correct: %s</li>
                                     <li>Points for getting the match result correct (win-tie-loss): %s</li>
-                                    <li>Points for predicting a team in the Quarter Finals correct: %s</li>
-                                    <li>Points for predicting a team in the Semi Finals correct: %s</li>
-                                    <li>Points for predicting a team in the Final correct: %s</li>
+                                    <li>Points for predicting a team in the Quarter Finals exactly correct: %s</li>
+                                    <li>Points for predicting a team in the Semi Finals exactly correct: %s</li>
+                                    <li>Points for predicting a team in the Final exactly correct: %s</li>
+                                    <li>Points for a team predicted to reach the quarter finals: %s</li>
+                                    <li>Points for a team predicted to reach the semi finals: %s</li>
+                                    <li>Points for a team predicted to reach the final: %s</li>
                                     <li>You can get a maximum of %s bonus points for predicting the total amount of goals correct. If you&rsquo;re close, you will still get some bonus points. If you&rsquo;re more than %s goals off, you will not get any bonus points.</li>
                                     <li>If you predict the winner of Euro2012 correct, you earn another %s bonuspoints</li>
                               </ul>

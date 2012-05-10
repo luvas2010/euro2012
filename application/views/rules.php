@@ -55,6 +55,9 @@
                                                 $this->poolconfig_model->item("pred_points_qf_team"),
                                                 $this->poolconfig_model->item("pred_points_sf_team"),
                                                 $this->poolconfig_model->item("pred_points_f_team"),
+                                                $this->poolconfig_model->item("pred_points_qf_team_wrong_pos"),
+                                                $this->poolconfig_model->item("pred_points_sf_team_wrong_pos"),
+                                                $this->poolconfig_model->item("pred_points_f_team_wrong_pos"),
                                                 $this->poolconfig_model->item('pred_points_bonus'),
                                                 $this->poolconfig_model->item('pred_points_bonus'),
                                                 $this->poolconfig_model->item('pred_points_champion')); ?>
