@@ -296,6 +296,19 @@ class Pool {
                           WHERE `match_uid` = $match_uid";
             $query = $CI->db->query($sql_query);
             $match = $query->row_array();
+            
+            $sql_query = "SELECT `home_team`, `away_team` FROM `match` WHERE `match_uid` >= 25 AND `match_uid` <= 28";
+            $query = $CI->db->query($sql_query);
+            $qf_teams = $query->row_array();
+
+            $sql_query = "SELECT `home_team`, `away_team` FROM `match` WHERE `match_uid` >= 29 AND `match_uid` <= 30";
+            $query = $CI->db->query($sql_query);
+            $sf_teams = $query->row_array();
+
+            $sql_query = "SELECT `home_team`, `away_team` FROM `match` WHERE `match_uid` = 31";
+            $query = $CI->db->query($sql_query);
+            $f_teams = $query->row_array();
+            
             $i = 0;
             foreach ($predictions as $prediction)
             {
@@ -342,14 +355,22 @@ class Pool {
                     {
                         $points_home_team = $CI->poolconfig_model->item('pred_points_qf_team');
                     }
+                    elseif (in_array($prediction['pred_home_team'], $qf_teams))
+                    {
+                        $points_home_team = $CI->poolconfig_model->item('pred_points_qf_team_wrong_pos');
+                    }
                     else
                     {
                         $points_home_team = 0;
-                    }
+                    }    
                     if ($prediction['pred_away_team'] == $match['away_team'])
                     {
                         $points_away_team = $CI->poolconfig_model->item('pred_points_qf_team');
                     }
+                    elseif (in_array($prediction['pred_away_team'], $qf_teams))
+                    {
+                        $points_away_team = $CI->poolconfig_model->item('pred_points_qf_team_wrong_pos');
+                    }                    
                     else
                     {
                         $points_away_team = 0;
@@ -361,6 +382,10 @@ class Pool {
                     {
                         $points_home_team = $CI->poolconfig_model->item('pred_points_sf_team');
                     }
+                    elseif (in_array($prediction['pred_home_team'], $sf_teams))
+                    {
+                        $points_home_team = $CI->poolconfig_model->item('pred_points_sf_team_wrong_pos');
+                    }                    
                     else
                     {
                         $points_home_team = 0;
@@ -369,6 +394,10 @@ class Pool {
                     {
                         $points_away_team = $CI->poolconfig_model->item('pred_points_sf_team');
                     }
+                    elseif (in_array($prediction['pred_away_team'], $qf_teams))
+                    {
+                        $points_away_team = $CI->poolconfig_model->item('pred_points_sf_team_wrong_pos');
+                    }                      
                     else
                     {
                         $points_away_team = 0;
@@ -380,6 +409,10 @@ class Pool {
                     {
                         $points_home_team = $CI->poolconfig_model->item('pred_points_f_team');
                     }
+                    elseif (in_array($prediction['pred_home_team'], $f_teams))
+                    {
+                        $points_home_team = $CI->poolconfig_model->item('pred_points_f_team_wrong_pos');
+                    }                      
                     else
                     {
                         $points_home_team = 0;
@@ -388,6 +421,10 @@ class Pool {
                     {
                         $points_away_team = $CI->poolconfig_model->item('pred_points_f_team');
                     }
+                    elseif (in_array($prediction['pred_away_team'], $f_teams))
+                    {
+                        $points_away_team = $CI->poolconfig_model->item('pred_points_f_team_wrong_pos');
+                    }  
                     else
                     {
                         $points_away_team = 0;

@@ -18,9 +18,13 @@ $lang['enable_shoutbox']			= "Shoutbox aan of uit, mogelijke waarden 0 (uit) of 
 
 $lang['pred_points_goals']			= "Aantal punten voor thuis- of uitdoelpunten goed voorspeld.";
 $lang['pred_points_result']			= "Aantal punten voor winst - gelijk - verlies goed voorspeld.";
-$lang['pred_points_qf_team']		= "Aantal punten voor thuis of uit spelend team in de kwartfinales goed voorspeld.";
-$lang['pred_points_sf_team']		= "Aantal punten voor thuis of uit spelend team in de halve finales goed voorspeld.";
-$lang['pred_points_f_team']		= "Aantal punten voor thuis of uit spelend team in de finale goed voorspeld.";
+$lang['pred_points_qf_team']		= "Aantal punten voor thuis of uit spelend team in de kwartfinales exact voorspeld.";
+$lang['pred_points_sf_team']		= "Aantal punten voor thuis of uit spelend team in de halve finales exact voorspeld.";
+$lang['pred_points_f_team']		= "Aantal punten voor thuis of uit spelend team in de finale exact voorspeld.";
+$lang['pred_points_qf_team_wrong_pos']		= "Aantal punten voor team in de kwartfinales goed voorspeld.";
+$lang['pred_points_sf_team_wrong_pos']		= "Aantal punten voor team halve finales goed voorspeld.";
+$lang['pred_points_f_team_wrong_pos']		= "Aantal punten voor team in de finale goed voorspeld.";
+
 $lang['pred_points_bonus']			= "Maximaal aantal punten voor het totaal aantal doelpunten goed voorspeld. Voor elk doelpunt dan men naast het totaal aantal doelpunten zit, wordt er &eacute;&eacute;n punt minder toegekend.";
 $lang['pred_points_champion']		= "Aantal punten voor het correct voorspellen van de kampioen bij de extra vragen.";
 

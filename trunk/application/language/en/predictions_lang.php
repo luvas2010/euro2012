@@ -18,6 +18,7 @@ $lang['goals_correct']             = "You had the number of goals for %s correct
 $lang['result_right_win']               = "You predicted the result right, %s won the match against %s. This is awarded with <span class='boldtext'>%s punten</span>.";
 $lang['result_right_tie']               = "You predicted the result right, %s and %s were tied. This is awarded with <span class='boldtext'>%s punten</span>.";
 $lang['team_correct']                   = "You had %s correct, and you get <span class='boldtext'>%s points</span> for that.";
+$lang['team_correct_wrong_pos']         = "You predicted %s in this match. They play in this round in the tournament, so you get <span class='boldtext'>%s points</span> for that.";
 $lang['goals_wrong']               = "The number of goals for %s was not predicted correctly";
 $lang['total_points']                   = "Total Points";
 $lang['match_time']                     = "Match Time";

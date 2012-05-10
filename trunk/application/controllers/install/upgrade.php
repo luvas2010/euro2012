@@ -60,7 +60,7 @@ class Upgrade extends CI_Controller {
                         `postedon`
                         )
                         VALUES (
-                        NULL , '0', 'Schop', 'Installatie Versie 1.3 succesvol!', '$timestamp'
+                        NULL , '0', 'Schop', 'Installatie Versie 1.6 succesvol!', '$timestamp'
                         )";
 
         if(!$this->db->field_exists('active','ref_language'))
@@ -94,7 +94,7 @@ class Upgrade extends CI_Controller {
             $sql_query[] = "REPLACE INTO `pool_config`
                           (`setting`,`value`, `is_writeable`, `category`)
                           VALUES
-                          ('version','1.4',0,0),
+                          ('version','1.6',0,0),
                           ('pool_name','".$this->config->item('pool_name')."',1,0),
                           ('time_offset','".$this->config->item('time_offset')."',1,0),
                           ('predictions_open','".$this->config->item('predictions_open')."',1,0),
@@ -114,6 +114,9 @@ class Upgrade extends CI_Controller {
                           ('pred_points_qf_team','".$this->config->item('pred_points_qf_team')."',1,1),
                           ('pred_points_sf_team','".$this->config->item('pred_points_sf_team')."',1,1),
                           ('pred_points_f_team','".$this->config->item('pred_points_f_team')."',1,1),
+                          ('pred_points_qf_team_wrong_pos','3',1,1),
+                          ('pred_points_sf_team_wrong_pos','4',1,1),
+                          ('pred_points_f_team_wrong_pos','6',1,1),
                           ('pred_points_bonus','".$this->config->item('pred_points_bonus')."',1,1),
                           ('pred_points_champion','".$this->config->item('pred_points_champion')."',1,1),
                           ('ssl_enabled','".$this->config->item('ssl_enabled')."',1,2),
@@ -140,11 +143,14 @@ class Upgrade extends CI_Controller {
         }
         else
         {
-                    $sql_query[] = "UPDATE `pool_config` SET `value` = '1.4' WHERE `setting` = 'version'";
+                    $sql_query[] = "UPDATE `pool_config` SET `value` = '1.6' WHERE `setting` = 'version'";
                     $sql_query[] = "REPLACE INTO `pool_config`
                           (`setting`,`value`, `is_writeable`, `category`)
                           VALUES
-                          ('pool_style','1',1,0)";
+                          ('pool_style','1',1,0),
+                          ('pred_points_qf_team_wrong_pos','3',1,1),
+                          ('pred_points_sf_team_wrong_pos','4',1,1),
+                          ('pred_points_f_team_wrong_pos','6',1,1)";
                           
         }
         
@@ -153,7 +159,7 @@ class Upgrade extends CI_Controller {
             $q = $this->db->query($query);
         }
         
-        echo "Upgraded to version 1.4";
+        echo "Upgraded to version 1.6";
         }
     
     else

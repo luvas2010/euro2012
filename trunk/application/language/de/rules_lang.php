@@ -25,6 +25,9 @@ $lang['points_awarded'] = '<div class="info">
                                     <li>Punkte f&uuml;r das richtige Tippen auf ein Team im Viertelfinale: %s</li>
                                     <li>Punkte f&uuml;r das richtige Tippen auf ein Team im Halbfinale:%s</li>
                                     <li>Punkte f&uuml;r das richtige Tippen auf ein Team im Finale:%s</li>
+                                    <li>Points for a team predicted to reach the quarter finals: %s</li>
+                                    <li>Points for a team predicted to reach the semi finals: %s</li>
+                                    <li>Points for a team predicted to reach the final: %s</li>
                                     <li>Sie k&ouml;nnen ein Maximum von %s Bonuspunkten erhalten, wenn Sie die totale Anzahl aller Tore richtig getippt haben. Wenn Sie nahe dran sind, kriegen Sie auch noch Bonuspunkte. Haben Sie %s Tore falsch getippt, bekommen Sie keine Bonuspunkte.</li>
                                     <li>Sollten Sie den Gewinner des Euro2012 richtig getippt haben, bekommen Sie weitere %s Bonuspunkte</li>
                               </ul>

@@ -2711,7 +2711,7 @@
 		$sql_query[] = "REPLACE INTO `pool_config`
 					  (`setting`,`value`, `is_writeable`,`category`)
 					  VALUES
-					  ('version','1.4',0,0),
+					  ('version','1.6',0,0),
 					  ('pool_name','Euro 2012 Voetbalpool',1,0),
 					  ('time_offset','0',1,0),
 					  ('predictions_open','1',1,0),
@@ -2731,6 +2731,9 @@
 					  ('pred_points_qf_team','7',1,1),
 					  ('pred_points_sf_team','9',1,1),
 					  ('pred_points_f_team','13',1,1),
+					  ('pred_points_qf_team_wrong_pos','3',1,1),
+					  ('pred_points_sf_team_wrong_pos','4',1,1),
+					  ('pred_points_f_team_wrong_pos','6',1,1),
 					  ('pred_points_bonus','15',1,1),
 					  ('pred_points_champion','20',1,1),
 					  ('ssl_enabled','0',1,2),
