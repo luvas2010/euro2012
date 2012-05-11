@@ -91,7 +91,7 @@
             <?php echo form_hidden('match_uid['.$i.']',$match['match_uid']); ?> 
             <?php  $i++; } ?>
         </table>
-        <div class="buttons"><input type='submit' value='<?php echo lang('save'); ?>' class='button save' /></div>
+        <div class="buttons"><input type='submit' name='save[99]' value='<?php echo lang('save_no_calc'); ?>' class='button save' /></div>
         <div class='clear'></div>
     </div>
 </div>
