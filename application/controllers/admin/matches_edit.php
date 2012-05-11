@@ -104,6 +104,7 @@ class Matches_edit extends CI_Controller {
                         
                         if ($match_uid == 31)
                         {
+                            
                             $champion = $this->input->post('champion');
                             $sql_query = "UPDATE `match`
                                           SET `winning_team` = '$champion'
