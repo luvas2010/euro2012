@@ -2695,7 +2695,7 @@
                         `postedon`
                         )
                         VALUES (
-                        NULL , '0', 'Schop', 'Installatie Versie 1.31 succesvol!', '$timestamp'
+                        NULL , '0', 'Schop', 'Installatie Versie 1.6 succesvol!', '$timestamp'
                         )";
         
 		$sql_query[] = "CREATE TABLE IF NOT EXISTS `pool_config` (
