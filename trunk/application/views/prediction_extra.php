@@ -71,7 +71,7 @@
                 </td>
                 
            <?php } else { ?>
-                <td><?php echo get_team_name($prediction['champion']); ?></td>
+                <td><?php echo get_team_name($prediction['pred_champion']); ?></td>
            <?php  } ?>
                 <td><?php echo sprintf(lang('predict_champion'), $this->poolconfig_model->item('pred_points_champion'));?></td>
 
