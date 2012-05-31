@@ -31,14 +31,14 @@
                 {
                     if($i==1)
                     {
-                        echo lang('winner').": ".$curr.number_format(($pay/100)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
+                        echo lang('winner').": ".$curr.number_format(($pay/$total_payed_out)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
                     }
                     else
                     {
-                        echo lang('number')." ".$i.": ".$curr.number_format(($pay/100)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
+                        echo lang('number')." ".$i.": ".$curr.number_format(($pay/$total_payed_out)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
                     }
                     $i++;
-                }    
+                }      
                     
             ?>
         </div>
