@@ -218,6 +218,7 @@
                 <?php  }  ?> 
 
                 <?php
+                //strange...should have been in a revision
                 $points_for_team = 0;
                 $points_for_team_wrong_pos = 0;
                 if ($prediction['pred_match_uid'] >= 25)
