@@ -31,7 +31,7 @@ class Pool {
 	{
 	
 		$CI =& get_instance();
-		$CI->load->model('poolconfig_model');
+		$CI->load->model(array('poolconfig_model','account_details_model'));
 		$sql_query = "SELECT *, SUM(`prediction`.`pred_points_total`) AS points_total
                 FROM `prediction`
                 JOIN `account`
