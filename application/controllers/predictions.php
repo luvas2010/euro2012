@@ -1190,7 +1190,7 @@ class Predictions extends CI_Controller {
 
         if ($now < $closing_time)
         {
-            $time_left = timespan($now, $closing_time); // This deserves a check. Why do I have to take the time_offset off again?
+            $time_left = timespan($now, $closing_time - $time_offset); // This deserves a check. Why do I have to take the time_offset off again?
         }
         else
         {
