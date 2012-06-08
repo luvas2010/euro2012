@@ -252,11 +252,9 @@ if ( ! function_exists('get_last_matches') )
         $account_id = $CI->session->userdata('account_id');
         $sql_query = "SELECT *
                       FROM `prediction`
-                      JOIN `match`
-                      ON `prediction`.`pred_match_uid` = `match`.`match_uid`
-                      AND `match`.`timestamp` > $now
-                      AND `prediction`.`account_id` = '$account_id'
-					  AND `match`.`match_calculated` = 1
+                      JOIN `match` ON `prediction`.`pred_match_uid` = `match`.`match_uid`
+                      AND `match`.`match_calculated` =1
+                      GROUP BY `prediction`.`pred_match_uid`
                       ORDER BY `match`.`timestamp` DESC
                       LIMIT $num";
         $query = $CI->db->query($sql_query);
