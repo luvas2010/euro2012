@@ -1186,11 +1186,11 @@ class Predictions extends CI_Controller {
         $time_offset = $this->poolconfig_model->item('time_offset');
         $now = now() - $time_offset;
         $offset = $this->poolconfig_model->item('predictions_open_offset');
-        $closing_time = $match['timestamp'];
+        $closing_time = $match['timestamp'] - $time_offset;
 
         if ($now < $closing_time)
         {
-            $time_left = timespan($now, $closing_time - $time_offset); // This deserves a check. Why do I have to take the time_offset off again?
+            $time_left = timespan($now, $closing_time); // This deserves a check. Why do I have to take the time_offset off again?
         }
         else
         {
