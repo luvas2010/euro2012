@@ -21,7 +21,11 @@
         <li><?php echo anchor('predictions/editgroup/ALL',lang('all_predictions'), "class='button'"); ?></li>
     </ul>
     <div class='clear'></div>
-    <div class='info'>
+    
+    <?php if(!prediction_closed(1))
+    {
+    ?>
+   <div class='info'>
         <div class="grid_2 alpha">
             <div class='buttons'><?php echo anchor('predictions/randomizer/'.$group, 'Randomizer', "class='button flag wand'"); ?></div>
         </div>
@@ -30,7 +34,9 @@
         </div>
         <div class='clear'></div>
     </div>
-    
+    <?php
+    }
+    ?>    
 
     <div class='grid_12 alpha omega'>
         <?php 
