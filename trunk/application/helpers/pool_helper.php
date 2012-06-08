@@ -254,6 +254,7 @@ if ( ! function_exists('get_last_matches') )
                       FROM `prediction`
                       JOIN `match` ON `prediction`.`pred_match_uid` = `match`.`match_uid`
                       AND `match`.`match_calculated` =1
+                      WHERE account_id =".$account_id."
                       GROUP BY `prediction`.`pred_match_uid`
                       ORDER BY `match`.`timestamp` DESC
                       LIMIT $num";
