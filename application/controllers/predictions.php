@@ -544,7 +544,7 @@ class Predictions extends CI_Controller {
 
     function randomizer($group) {
         
-        if ($this->authentication->is_signed_in())
+        if ($this->authentication->is_signed_in() && !prediction_closed(1))
         {    
             $account_id = $this->session->userdata('account_id');
             $sql_query = "UPDATE `prediction`
