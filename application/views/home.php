@@ -31,14 +31,14 @@
                 {
                     if($i==1)
                     {
-                        echo lang('winner').": ".$curr.number_format(($pay/$total_payed_out)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
+                        echo lang('winner').": ".$curr.number_format(($pay/100)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
                     }
                     else
                     {
-                        echo lang('number')." ".$i.": ".$curr.number_format(($pay/$total_payed_out)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
+                        echo lang('number')." ".$i.": ".$curr.number_format(($pay/100)*($total_payed_out/100)*$total_money,2,'.','')."<br/>";
                     }
                     $i++;
-                }      
+                }    
                     
             ?>
         </div>
@@ -122,6 +122,18 @@
 			<?php } ?>
     </div>
      <div id="column2" class="grid_5 omega">
+              <div class="grid_5 alpha omega">
+            <script type="text/javascript"><!--
+google_ad_client = "ca-pub-2098404720901613";
+/* pool */
+google_ad_slot = "7735837555";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
 		<div class="grid_5 alpha omega">
 
 		    <h3><?php echo lang('played_matches'); ?></h3>
@@ -134,23 +146,27 @@
             } else {
             echo "<div class='infostay'>".lang('no_info_yet')."</div>";
             } ?>
-			<h3><?php echo lang('top_10');?></h3>
-			<?php $this->load->library('pool');
-				  $topusers = $this->pool->get_top_ranking(10);
-				  if (is_array($topusers))
-				  {
-					echo "<ul>";
-					foreach ($topusers as $user)
-					  {
-							echo "<li><span class='boldtext'>".$user['username'].": </span>".$user['points_total']." ".lang('points')."</li>";
-					  }
-					  echo "</ul><br/>".anchor('charts/top/10',lang('see_top_ten'), 'class="button chart-line"');;
-				  }
-				  else
-				  {
-					echo "<div class='infostay'>".lang('no_info_yet')."</div>";
-				  }
-			?>
+<h3><?php echo lang('top_10');?></h3>
+         <?php $this->load->library('pool');
+              $topusers = $this->pool->get_top_ranking(10);
+              if (is_array($topusers))
+              {
+               echo "<table style='border:none;'>";
+               echo "<tr><th>#</th><th>Gebruiker</th><th>punten</th></tr>";
+               echo '<!--'. var_export($topusers, true) . '-->';
+               foreach ($topusers as $i => $user)
+                 {
+                     echo "<tr style='border: none;'><td>".($i+1)."&nbsp;(".$user['lastranking'].")</td><td><span class='boldtext'>".$user['username']; if (!empty($user['company'])) echo ' ('.$user['company'].')';
+                     echo "</span></td><td>".$user['points_total']."</td></tr>";
+                 }
+               echo "</table>";  
+                 echo "</ul><br/>".anchor('charts/top/10',lang('see_top_ten'), 'class="button chart-line"');;
+              }
+              else
+              {
+               echo "<div class='infostay'>".lang('no_info_yet')."</div>";
+              }
+         ?>
 			
 		</div>
         <br/>
